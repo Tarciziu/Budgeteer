@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4601DF8F2E633FF10028EEC0 /* BTCoreUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF8E2E633FF10028EEC0 /* BTCoreUI.framework */; };
+		4601DF912E63400A0028EEC0 /* BTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF902E63400A0028EEC0 /* BTCore.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		46CFAD252E564A8000931D2B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -23,7 +28,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		46C2E81E2E6313BC0022119E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4601DF8E2E633FF10028EEC0 /* BTCoreUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTCoreUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4601DF902E63400A0028EEC0 /* BTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CFAD172E564A7F00931D2B /* Budgeteer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budgeteer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CFAD242E564A8000931D2B /* BudgeteerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgeteerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CFAD2E2E564A8000931D2B /* BudgeteerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgeteerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4601DF912E63400A0028EEC0 /* BTCore.framework in Frameworks */,
+				4601DF8F2E633FF10028EEC0 /* BTCoreUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,15 +94,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46C2E7C22E62EC3E0022119E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4601DF902E63400A0028EEC0 /* BTCore.framework */,
+				4601DF8E2E633FF10028EEC0 /* BTCoreUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		46CFAD0E2E564A7F00931D2B = {
 			isa = PBXGroup;
 			children = (
 				46CFAD192E564A7F00931D2B /* Budgeteer */,
 				46CFAD272E564A8000931D2B /* BudgeteerTests */,
 				46CFAD312E564A8000931D2B /* BudgeteerUITests */,
+				46C2E7C22E62EC3E0022119E /* Frameworks */,
 				46CFAD182E564A7F00931D2B /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		46CFAD182E564A7F00931D2B /* Products */ = {
 			isa = PBXGroup;
@@ -102,6 +136,7 @@
 				46CFAD132E564A7F00931D2B /* Sources */,
 				46CFAD142E564A7F00931D2B /* Frameworks */,
 				46CFAD152E564A7F00931D2B /* Resources */,
+				46C2E81E2E6313BC0022119E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -395,6 +430,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -423,6 +459,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
