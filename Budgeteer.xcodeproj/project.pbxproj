@@ -134,6 +134,7 @@
 			buildConfigurationList = 46CFAD382E564A8000931D2B /* Build configuration list for PBXNativeTarget "Budgeteer" */;
 			buildPhases = (
 				46CFAD132E564A7F00931D2B /* Sources */,
+				736BA8502E64356A00E0C5E1 /* ShellScript */,
 				46CFAD142E564A7F00931D2B /* Frameworks */,
 				46CFAD152E564A7F00931D2B /* Resources */,
 				46C2E81E2E6313BC0022119E /* Embed Frameworks */,
@@ -265,6 +266,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		736BA8502E64356A00E0C5E1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Tools/Setup/SetupScript.sh",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SETUP_SCRIPT_PATH=$PWD\"/Tools/Setup/SetupScript.sh\"\nbash $SETUP_SCRIPT_PATH\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		46CFAD132E564A7F00931D2B /* Sources */ = {
@@ -432,6 +455,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -461,6 +485,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
