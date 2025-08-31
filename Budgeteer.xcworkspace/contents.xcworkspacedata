@@ -10,4 +10,7 @@
    <FileRef
       location = "group:Modules/CoreUI/CoreUI.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Tools">
+   </FileRef>
 </Workspace>
