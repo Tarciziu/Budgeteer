@@ -23,7 +23,7 @@ public struct Spacing {
   public let spacerXL: CGFloat
   /// Default value is `24.0`.
   public let spacerXXL: CGFloat
-  
+
   /// Initializes a new instance of the spacing catalog.
   /// - Parameters:
   ///   - lineWidth: Width of a line.

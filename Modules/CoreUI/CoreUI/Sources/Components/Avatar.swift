@@ -122,7 +122,8 @@ public struct Avatar: View {
           .animation(
             .linear(
               duration: Constants.placeholderDuration
-            ).repeatForever(autoreverses: false),
+            )
+            .repeatForever(autoreverses: false),
             value: isLoading
           )
       }
