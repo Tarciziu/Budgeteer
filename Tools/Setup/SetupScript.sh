@@ -8,7 +8,9 @@
 
 # PREPARATIONS
 CONSTANTS_FILE_PATH=$PWD"/Tools/Setup/constants.sh"
+PRE_COMMIT_CONFIG_FILE_PATH=$PWD"/Tools/Setup/pre-commit-config.sh"
 source $CONSTANTS_FILE_PATH
+source $PRE_COMMIT_CONFIG_FILE_PATH
 
 # PATHS TO INSTALLATION SCRIPTS FOR TOOLS
 SWIFTLINT_INSTALL_PATH="Tools/SwiftLint/SwiftLintInstall.sh"
@@ -24,7 +26,11 @@ bash $SWIFTLINT_INSTALL_PATH
 # This will save the exit code of the last operation in the corresponding array.
 exit_codes+=($?)
 
+checkPreCommit
+exit_codes+=($?)
+
 for exit_code in ${exit_codes[@]}; do
+    echo $exit_code
     if [ $exit_code -eq $EXIT_CODE_FAILURE ]; then
         echo "warning: Errors appeared during the setup process. Please consult the build logs."
         break
