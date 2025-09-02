@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4601DF8F2E633FF10028EEC0 /* BTCoreUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF8E2E633FF10028EEC0 /* BTCoreUI.framework */; };
 		4601DF912E63400A0028EEC0 /* BTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF902E63400A0028EEC0 /* BTCore.framework */; };
+		73EDFB552E67108C008C83A3 /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 73EDFB542E67108C008C83A3 /* FactoryKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,11 +51,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		46CFAD192E564A7F00931D2B /* Budgeteer */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Budgeteer;
-			sourceTree = "<group>";
-		};
 		46CFAD272E564A8000931D2B /* BudgeteerTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BudgeteerTests;
@@ -65,6 +61,11 @@
 			path = BudgeteerUITests;
 			sourceTree = "<group>";
 		};
+		73EDFB6C2E6710D3008C83A3 /* Budgeteer */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Budgeteer;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73EDFB552E67108C008C83A3 /* FactoryKit in Frameworks */,
 				4601DF912E63400A0028EEC0 /* BTCore.framework in Frameworks */,
 				4601DF8F2E633FF10028EEC0 /* BTCoreUI.framework in Frameworks */,
 			);
@@ -106,7 +108,7 @@
 		46CFAD0E2E564A7F00931D2B = {
 			isa = PBXGroup;
 			children = (
-				46CFAD192E564A7F00931D2B /* Budgeteer */,
+				73EDFB6C2E6710D3008C83A3 /* Budgeteer */,
 				46CFAD272E564A8000931D2B /* BudgeteerTests */,
 				46CFAD312E564A8000931D2B /* BudgeteerUITests */,
 				46C2E7C22E62EC3E0022119E /* Frameworks */,
@@ -144,10 +146,11 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				46CFAD192E564A7F00931D2B /* Budgeteer */,
+				73EDFB6C2E6710D3008C83A3 /* Budgeteer */,
 			);
 			name = Budgeteer;
 			packageProductDependencies = (
+				73EDFB542E67108C008C83A3 /* FactoryKit */,
 			);
 			productName = Budgeteer;
 			productReference = 46CFAD172E564A7F00931D2B /* Budgeteer.app */;
@@ -207,7 +210,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
-				LastUpgradeCheck = 1640;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					46CFAD162E564A7F00931D2B = {
 						CreatedOnToolsVersion = 16.4;
@@ -231,6 +234,9 @@
 			);
 			mainGroup = 46CFAD0E2E564A7F00931D2B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				73EDFB532E67108C008C83A3 /* XCRemoteSwiftPackageReference "Factory" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 46CFAD182E564A7F00931D2B /* Products */;
 			projectDirPath = "";
@@ -385,6 +391,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -441,6 +448,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -616,6 +624,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		73EDFB532E67108C008C83A3 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		73EDFB542E67108C008C83A3 /* FactoryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 73EDFB532E67108C008C83A3 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = FactoryKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 46CFAD0F2E564A7F00931D2B /* Project object */;
 }
