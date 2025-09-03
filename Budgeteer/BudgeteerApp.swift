@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import FactoryKit
 
 @main
 struct BudgeteerApp: App {
+  // Example of accessing a dependency.
+  let dataSource = Container.shared.dataSource()
+
   var body: some Scene {
     WindowGroup {
       ContentView()
