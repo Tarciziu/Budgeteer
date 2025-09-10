@@ -22,7 +22,8 @@ extension Container {
     self {
       BTTheme(
         typography: Typography.mainTypography,
-        spacing: Spacing.mainSpacing
+        spacing: Spacing.mainSpacing,
+        iconSize: IconSize.mainIconSize
       )
     }
     .shared

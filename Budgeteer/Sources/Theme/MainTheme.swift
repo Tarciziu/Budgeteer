@@ -48,3 +48,17 @@ extension Spacing {
     spacerXXL: 24.0
   )
 }
+
+// MARK: - IconSize Definition
+
+extension IconSize {
+  static let mainIconSize = IconSize(
+    iconXXS: 10.0,
+    iconXS: 14.0,
+    iconS: 16.0,
+    iconM: 18.0,
+    iconL: 20.0,
+    iconXL: 24.0,
+    iconXXL: 32.0
+  )
+}
