@@ -26,6 +26,13 @@ extension Container {
         iconSize: IconSize.mainIconSize
       )
     }
-    .shared
+  }
+
+  var appLaunchViewModel: Factory<AppLaunchViewModel> {
+    self { AppLaunchViewModel() }.shared
+  }
+
+  var mainWindowViewModel: Factory<MainWindowViewModel> {
+    self { MainWindowViewModel() }.shared
   }
 }
