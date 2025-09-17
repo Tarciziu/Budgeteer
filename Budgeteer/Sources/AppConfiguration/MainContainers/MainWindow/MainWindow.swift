@@ -11,13 +11,15 @@ import UIKit
 import Combine
 import SwiftUI
 
+import BTCoreUI
+
 /// Main UI window used in the app.
 final class MainWindow: UIWindow {
   // MARK: - Private Properties
 
   private let mainWindowViewModel = Container.shared.appLaunchViewModel()
   private let appLaunchViewModel = Container.shared.appLaunchViewModel()
-  private var mainNavigationController = UINavigationController()
+  private var mainNavigationController = BTNavigationController()
   private var cancellable: AnyCancellable?
 
   // MARK: - Init
