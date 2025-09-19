@@ -23,15 +23,19 @@ public class BTTheme {
   /// The currently used icon sizes inside the application.
   public var iconSize: IconSize
 
+  public var colorPalette: ColorPalette
+
   // MARK: - Lifecycle
 
   public init(
     typography: Typography,
     spacing: Spacing,
-    iconSize: IconSize
+    iconSize: IconSize,
+    colorPalette: ColorPalette
   ) {
     self.typography = typography
     self.spacing = spacing
     self.iconSize = iconSize
+    self.colorPalette = colorPalette
   }
 }
