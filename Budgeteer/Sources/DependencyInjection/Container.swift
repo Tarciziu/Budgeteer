@@ -23,7 +23,8 @@ extension Container {
       BTTheme(
         typography: Typography.mainTypography,
         spacing: Spacing.mainSpacing,
-        iconSize: IconSize.mainIconSize
+        iconSize: IconSize.mainIconSize,
+        colorPalette: .appColorPalette
       )
     }
   }
