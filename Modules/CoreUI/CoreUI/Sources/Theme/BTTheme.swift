@@ -23,7 +23,11 @@ public class BTTheme {
   /// The currently used icon sizes inside the application.
   public var iconSize: IconSize
 
+  /// The currently used color palette inside the application.
   public var colorPalette: ColorPalette
+
+  /// The currently used image catalog inside the application.
+  public var imageCatalog: ImageCatalog
 
   // MARK: - Lifecycle
 
@@ -31,11 +35,13 @@ public class BTTheme {
     typography: Typography,
     spacing: Spacing,
     iconSize: IconSize,
-    colorPalette: ColorPalette
+    colorPalette: ColorPalette,
+    imageCatalog: ImageCatalog
   ) {
     self.typography = typography
     self.spacing = spacing
     self.iconSize = iconSize
     self.colorPalette = colorPalette
+    self.imageCatalog = imageCatalog
   }
 }
