@@ -9,8 +9,8 @@ import FactoryKit
 import BTCore
 import BTCoreUI
 
-// All dependencies for the app features should be added as an extension of the `Container` class.
-// For more information see: https://github.com/hmlongco/Factory
+/// All dependencies for the app features should be added as an extension of the `Container` class.
+/// For more information see: https://github.com/hmlongco/Factory
 extension Container {
   var dataSource: Factory<UserDataSource> {
     self { DefaultUserDataSource() }.shared
@@ -24,7 +24,8 @@ extension Container {
         typography: Typography.mainTypography,
         spacing: Spacing.mainSpacing,
         iconSize: IconSize.mainIconSize,
-        colorPalette: .appColorPalette
+        colorPalette: .appColorPalette,
+        imageCatalog: .appImageCatalog
       )
     }
   }
