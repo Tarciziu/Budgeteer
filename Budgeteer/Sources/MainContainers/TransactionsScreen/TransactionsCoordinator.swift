@@ -13,7 +13,6 @@ class TransactionsCoordinator {
   // MARK: - Private Properties
 
   private let navigationController: BTNavigationController
-  private let theme = Container.shared.theme
 
   // MARK: - Init
 
@@ -28,8 +27,8 @@ class TransactionsCoordinator {
       title: "Transactions Screen",
       action: nil
     )
-    let homeScreen = HomeScreen(config: navigationBarConfiguration)
-    let hostingController = BTHostingController(containedView: homeScreen)
+    let transactionsScreen = TransactionsScreen(config: navigationBarConfiguration)
+    let hostingController = BTHostingController(containedView: transactionsScreen)
     navigationController.viewControllers = [hostingController]
   }
 }

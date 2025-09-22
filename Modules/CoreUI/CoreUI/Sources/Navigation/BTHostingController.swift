@@ -35,7 +35,7 @@ public class BTHostingController: UIViewController {
     super.init(nibName: nil, bundle: nil)
 
     addChild(hostingController)
-    view.addSubview(hostingController.view)
+    view.addSubviewFilled(subView: hostingController.view)
     hostingController.didMove(toParent: self)
     hostingController.sizingOptions = [.intrinsicContentSize]
   }
