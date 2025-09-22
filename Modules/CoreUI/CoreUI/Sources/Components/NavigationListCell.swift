@@ -62,6 +62,7 @@ public struct NavigationListCell: View {
     .padding(.horizontal, theme.spacing.spacerL)
     .padding(.vertical, theme.spacing.spacerL)
     .redacted(reason: isLoading ? .placeholder : [])
+    .shimmer(style: ShimmerStyle(theme: theme), active: isLoading)
   }
 
   private var leadingContent: some View {

@@ -107,25 +107,8 @@ public struct Avatar: View {
       .frame(width: avatarDimension, height: avatarDimension)
       .overlay {
         contentView
-          .if(isLoading) { view in
-            view
-            // TODO: update colors for gradient
-              .foregroundStyle(
-                .linearGradient(
-                  colors: [.black.opacity(0.1), .black.opacity(0.9)],
-                  startPoint: .leading,
-                  endPoint: .trailing
-                )
-              )
-              .redacted(reason: .placeholder)
-              .animation(
-                .linear(
-                  duration: Constants.placeholderDuration
-                )
-                .repeatForever(autoreverses: false),
-                value: isLoading
-              )
-          }
+          .redacted(reason: isLoading ? .placeholder : [])
+          .shimmer(style: ShimmerStyle(theme: theme), active: isLoading)
       }
       .if(hasBorder) { view in
         view
