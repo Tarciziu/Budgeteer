@@ -25,9 +25,11 @@ extension Container {
         spacing: Spacing.mainSpacing,
         iconSize: IconSize.mainIconSize,
         colorPalette: .appColorPalette,
-        imageCatalog: .appImageCatalog
+        imageCatalog: .appImageCatalog,
+        shimmer: .mainShimmer
       )
     }
+    .singleton
   }
 
   var appLaunchViewModel: Factory<AppLaunchViewModel> {
