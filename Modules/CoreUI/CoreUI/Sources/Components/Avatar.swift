@@ -47,14 +47,14 @@ public struct Avatar: View {
     static let cornerRadius = 8.0
     static let maximumNumberOfCharacters = 1
     static let placeholderDuration = 1.0
-    // TODO: Replace with design system values (from spacing catalog)
-    static let lineWidth = 1.0
   }
 
   // MARK: - Environment Object
 
   @Environment(\.isLoading)
   private var isLoading
+  @Environment(BTTheme.self)
+  private var theme
 
   // MARK: - Private Properties
 
@@ -117,15 +117,15 @@ public struct Avatar: View {
                   endPoint: .trailing
                 )
               )
+              .redacted(reason: .placeholder)
+              .animation(
+                .linear(
+                  duration: Constants.placeholderDuration
+                )
+                .repeatForever(autoreverses: false),
+                value: isLoading
+              )
           }
-          .redacted(reason: .placeholder)
-          .animation(
-            .linear(
-              duration: Constants.placeholderDuration
-            )
-            .repeatForever(autoreverses: false),
-            value: isLoading
-          )
       }
       .if(hasBorder) { view in
         view
@@ -146,25 +146,23 @@ public struct Avatar: View {
     }
   }
 
-  // TODO: Update stroke values when catalogs are defined.
   @ViewBuilder private var borderView: some View {
     switch shape {
     case .circle:
       Circle()
-        .stroke(.black, lineWidth: Constants.lineWidth)
+        .stroke(theme.colorPalette.surface.primary, lineWidth: theme.spacing.lineWidth)
     case .square:
       RoundedRectangle(cornerRadius: Constants.cornerRadius)
-        .stroke(.black, lineWidth: Constants.lineWidth)
+        .stroke(theme.colorPalette.surface.primary, lineWidth: theme.spacing.lineWidth)
     }
   }
 
   // MARK: - Private Methods
 
-  // TODO: Update typography and color when design system is defined.
   private func makeTextView(_ text: String) -> some View {
     Text(text.prefix(Constants.maximumNumberOfCharacters).uppercased())
-      .font(size == .large ? .headline : .subheadline)
-      .foregroundStyle(.black)
+      .font(size == .large ? theme.typography.title.headline : theme.typography.body.subheadline)
+      .foregroundStyle(theme.colorPalette.text.primary)
   }
 
   private func makeImageView(_ imageName: String) -> some View {
