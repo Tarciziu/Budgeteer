@@ -19,6 +19,7 @@ public struct SurfaceColors {
   public let light: Color
   public let dark: Color
   public let overlay: Color
+  public let disabled: Color
 
   // MARK: - Initializer
 
@@ -28,7 +29,8 @@ public struct SurfaceColors {
     secondaryPressed: Color,
     light: Color,
     dark: Color,
-    overlay: Color
+    overlay: Color,
+    disabled: Color
   ) {
     self.primary = primary
     self.secondary = secondary
@@ -36,5 +38,6 @@ public struct SurfaceColors {
     self.light = light
     self.dark = dark
     self.overlay = overlay
+    self.disabled = disabled
   }
 }

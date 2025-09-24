@@ -29,6 +29,9 @@ public class BTTheme {
   /// The currently used image catalog inside the application.
   public var imageCatalog: ImageCatalog
 
+  /// The currently used shimmer catalog inside the application.
+  public var shimmer: ShimmerCatalog
+
   // MARK: - Lifecycle
 
   public init(
@@ -36,12 +39,14 @@ public class BTTheme {
     spacing: Spacing,
     iconSize: IconSize,
     colorPalette: ColorPalette,
-    imageCatalog: ImageCatalog
+    imageCatalog: ImageCatalog,
+    shimmer: ShimmerCatalog
   ) {
     self.typography = typography
     self.spacing = spacing
     self.iconSize = iconSize
     self.colorPalette = colorPalette
     self.imageCatalog = imageCatalog
+    self.shimmer = shimmer
   }
 }

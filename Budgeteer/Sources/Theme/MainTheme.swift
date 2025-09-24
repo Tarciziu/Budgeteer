@@ -62,3 +62,14 @@ extension IconSize {
     iconXXL: 32.0
   )
 }
+
+// MARK: - ShimmerCatalog Definition
+
+extension ShimmerCatalog {
+  static let mainShimmer = ShimmerCatalog(
+    baseColor: ColorPalette.appColorPalette.surface.disabled,
+    highlightColor: ColorPalette.appColorPalette.surface.secondaryPressed,
+    baseColorOpacity: 1,
+    highlightColorOpacity: 0.4
+  )
+}

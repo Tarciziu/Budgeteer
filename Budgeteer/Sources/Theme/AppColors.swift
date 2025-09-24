@@ -29,7 +29,8 @@ extension ColorPalette {
       secondaryPressed: Color("neutral-200"),
       light: Color("neutral-100"),
       dark: Color("neutral-900"),
-      overlay: Color("neutral-transparent-2")
+      overlay: Color("neutral-transparent-2"),
+      disabled: Color("neutral-300")
     )
   }
 
