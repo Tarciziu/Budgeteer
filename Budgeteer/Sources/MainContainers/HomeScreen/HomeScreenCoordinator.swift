@@ -12,7 +12,6 @@ class HomeScreenCoordinator {
   // MARK: - Private Properties
 
   private let navigationController: BTNavigationController
-  private let theme = Container.shared.theme
 
   // MARK: - Init
 

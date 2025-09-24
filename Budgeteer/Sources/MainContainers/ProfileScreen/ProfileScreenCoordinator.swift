@@ -13,7 +13,6 @@ class ProfileScreenCoordinator {
   // MARK: - Private Properties
 
   private let navigationController: BTNavigationController
-  private let theme = Container.shared.theme
 
   // MARK: - Init
 
@@ -28,8 +27,8 @@ class ProfileScreenCoordinator {
       title: "Profile Screen",
       action: nil
     )
-    let homeScreen = HomeScreen(config: navigationBarConfiguration)
-    let hostingController = BTHostingController(containedView: homeScreen)
+    let profileScreen = ProfileScreen(config: navigationBarConfiguration)
+    let hostingController = BTHostingController(containedView: profileScreen)
     navigationController.viewControllers = [hostingController]
   }
 }
