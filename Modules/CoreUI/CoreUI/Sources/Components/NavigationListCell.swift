@@ -38,7 +38,7 @@ public struct NavigationListCell: View {
     if let action {
       makeListCell(with: action)
     } else {
-      listCellWithoutAction
+      listCellContent
     }
   }
 
@@ -49,8 +49,19 @@ public struct NavigationListCell: View {
     Button {
       action()
     } label: {
-      listCellWithoutAction
+      listCellContent
     }
+  }
+
+  private var listCellContent: some View {
+    VStack(spacing: .zero) {
+      listCellWithoutAction
+      if content.hasDivider {
+        RegularDivider()
+      }
+    }
+    .redacted(reason: isLoading ? .placeholder : [])
+    .shimmer(style: ShimmerStyle(theme: theme), active: isLoading)
   }
 
   private var listCellWithoutAction: some View {
@@ -61,8 +72,6 @@ public struct NavigationListCell: View {
     }
     .padding(.horizontal, theme.spacing.spacerL)
     .padding(.vertical, theme.spacing.spacerL)
-    .redacted(reason: isLoading ? .placeholder : [])
-    .shimmer(style: ShimmerStyle(theme: theme), active: isLoading)
   }
 
   private var leadingContent: some View {
@@ -134,6 +143,7 @@ extension NavigationListCell {
     let title: String
     let caption: String?
     let navigationIcon: NavigationIconType
+    let hasDivider: Bool
 
     /// Creates a new content model for a navigation list cell.
     /// - Parameters:
@@ -141,16 +151,19 @@ extension NavigationListCell {
     ///   - title: The title displayed on the left.
     ///   - caption: The caption displayed below the title.
     ///   - navigationIcon: The navigation Icon displayed the the end.
+    ///   - hasDivider: A boolean value indicating whether the cell has a divider below it.
     public init(
       icon: String?,
       title: String,
       caption: String? = nil,
-      navigationIcon: NavigationIconType
+      navigationIcon: NavigationIconType,
+      hasDivider: Bool = false
     ) {
       self.icon = icon
       self.title = title
       self.caption = caption
       self.navigationIcon = navigationIcon
+      self.hasDivider = hasDivider
     }
   }
 }

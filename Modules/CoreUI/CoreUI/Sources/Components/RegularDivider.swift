@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// An UI component capable of separating content vertically.
+/// A UI component capable of separating content vertically.
 public struct RegularDivider: View {
   // MARK: - Environment
 
