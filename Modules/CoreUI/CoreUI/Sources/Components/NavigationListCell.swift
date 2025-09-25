@@ -139,7 +139,7 @@ extension NavigationListCell {
     /// - Parameters:
     ///   - icon: The icon displayed on the left side
     ///   - title: The title displayed on the left.
-    ///   - caption: The caption displayed bellow the title.
+    ///   - caption: The caption displayed below the title.
     ///   - navigationIcon: The navigation Icon displayed the the end.
     public init(
       icon: String?,
