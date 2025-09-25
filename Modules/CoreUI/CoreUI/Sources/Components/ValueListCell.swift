@@ -38,7 +38,7 @@ public struct ValueListCell: View {
     if let action {
       makeListCell(with: action)
     } else {
-      listCellWithoutAction
+      listCellContent
     }
   }
 
@@ -49,8 +49,19 @@ public struct ValueListCell: View {
     Button {
       action()
     } label: {
-      listCellWithoutAction
+      listCellContent
     }
+  }
+
+  private var listCellContent: some View {
+    VStack(spacing: .zero) {
+      listCellWithoutAction
+      if content.hasDivider {
+        RegularDivider()
+      }
+    }
+    .redacted(reason: isLoading ? .placeholder : [])
+    .shimmer(style: ShimmerStyle(theme: theme), active: isLoading)
   }
 
   private var listCellWithoutAction: some View {
@@ -60,8 +71,6 @@ public struct ValueListCell: View {
       trailingContent
     }
     .padding(theme.spacing.spacerL)
-    .redacted(reason: isLoading ? .placeholder : [])
-    .shimmer(style: ShimmerStyle(theme: theme), active: isLoading)
   }
 
   private var leadingContent: some View {
@@ -130,9 +139,13 @@ public struct ValueListCell: View {
 }
 
 extension ValueListCell {
+  /// The state of a label, which can affect its appearance (e.g., color).
   public enum LabelState {
+    /// Indicates a neutral state, often represented with default or gray colors.
     case neutral
+    /// Indicates a positive state, often represented with green or similar colors.
     case positive
+    /// Indicates a negative state, often represented with red or similar colors.
     case negative
   }
 
@@ -184,6 +197,7 @@ extension ValueListCell {
   public struct Content {
     let leadingContent: LeadingContent
     let trailingContent: TrailingContent?
+    let hasDivider: Bool
 
     /// Creates a new content model for a navigation list cell.
     /// - Parameters:
@@ -191,10 +205,12 @@ extension ValueListCell {
     ///   - trailingContent: Optional ``TrailingContent`` representing the trailing content of the list cell, such as additional information or actions displayed on the right side.
     public init(
       leadingContent: LeadingContent,
-      trailingContent: TrailingContent? = nil
+      trailingContent: TrailingContent? = nil,
+      hasDivider: Bool = false
     ) {
       self.leadingContent = leadingContent
       self.trailingContent = trailingContent
+      self.hasDivider = hasDivider
     }
   }
 }
