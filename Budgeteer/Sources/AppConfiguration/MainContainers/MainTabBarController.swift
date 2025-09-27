@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import BTCore
 import BTCoreUI
 
 class MainTabBarController: UITabBarController {
@@ -31,7 +32,7 @@ class MainTabBarController: UITabBarController {
     let navigationController = BTNavigationController()
     let coordinator = HomeScreenCoordinator(navigationController: navigationController)
     navigationController.tabBarItem = UITabBarItem(
-      title: "Home",
+      title: Strings.Budgeteer.singular("tabBar.home.title"),
       image: UIImage(systemName: "house"),
       selectedImage: UIImage(systemName: "house.fill")
     )
@@ -43,7 +44,7 @@ class MainTabBarController: UITabBarController {
     let navigationController = BTNavigationController()
     let coordinator = TransactionsCoordinator(navigationController: navigationController)
     navigationController.tabBarItem = UITabBarItem(
-      title: "Transactions",
+      title: Strings.Budgeteer.singular("tabBar.transactions.title"),
       image: UIImage(systemName: "long.text.page.and.pencil"),
       selectedImage: UIImage(systemName: "long.text.page.and.pencil.fill")
     )
@@ -55,7 +56,7 @@ class MainTabBarController: UITabBarController {
     let navigationController = BTNavigationController()
     let coordinator = ProfileScreenCoordinator(navigationController: navigationController)
     navigationController.tabBarItem = UITabBarItem(
-      title: "Profile",
+      title: Strings.Budgeteer.singular("tabBar.profile.title"),
       image: UIImage(systemName: "person"),
       selectedImage: UIImage(systemName: "person.fill")
     )

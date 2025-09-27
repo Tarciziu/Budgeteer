@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BTCore
 import BTCoreUI
 
 struct HomeScreen: View {
