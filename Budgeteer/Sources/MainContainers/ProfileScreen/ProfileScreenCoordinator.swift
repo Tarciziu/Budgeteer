@@ -23,12 +23,21 @@ class ProfileScreenCoordinator {
   // MARK: - Internal Methods
 
   func start() {
+    let profilePage = assembleProfilePage()
+    let hostingController = BTHostingController(containedView: profilePage)
+    navigationController.viewControllers = [hostingController]
+  }
+
+  // MARK: - Private Methods
+
+  private func assembleProfilePage() -> ProfilePage {
+    let repository = DefaultProfilePageRepository()
+    let interactor = DefaultProfilePageInteractor(repository: repository)
+    let viewModel = ProfilePageViewModel(interactor: interactor)
     let navigationBarConfiguration = NavigationBarConfiguration(
       title: "Profile Screen",
       action: nil
     )
-    let profileScreen = ProfileScreen(config: navigationBarConfiguration)
-    let hostingController = BTHostingController(containedView: profileScreen)
-    navigationController.viewControllers = [hostingController]
+    return ProfilePage(viewModel: viewModel, config: navigationBarConfiguration)
   }
 }
