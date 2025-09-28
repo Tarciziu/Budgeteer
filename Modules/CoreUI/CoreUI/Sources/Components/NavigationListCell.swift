@@ -124,7 +124,7 @@ public struct NavigationListCell: View {
     Image(systemName: name)
       .resizable()
       .renderingMode(.template)
-      .frame(width: theme.iconSize.iconL, height: theme.iconSize.iconL)
+      .frame(width: theme.iconSize.iconXXS, height: theme.iconSize.iconXXS)
       .foregroundStyle(theme.colorPalette.icon.primary)
   }
 }
