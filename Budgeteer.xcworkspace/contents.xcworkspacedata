@@ -5,6 +5,9 @@
       location = "group:Budgeteer.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Modules/CustomerExperience/CustomerExperience.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Modules/Core/Core.xcodeproj">
    </FileRef>
    <FileRef
