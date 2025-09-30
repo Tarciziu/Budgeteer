@@ -69,6 +69,7 @@ struct ProfilePage: View {
   ) -> some View {
     VStack(spacing: .zero) {
       makeSectionHeader(with: sectionContent.title, and: sectionContent.subtitle, of: sectionContent.type)
+      RegularDivider()
       let links = sectionContent.links.map(\.self)
       makeLinksList(links: links, in: sectionContent.type)
     }
@@ -84,15 +85,11 @@ struct ProfilePage: View {
     and subtitle: String?,
     of type: ProfilePageUIModel.SectionType
   ) -> some View {
-    // TODO: - Replce with dedicated section header component
-    // Design seem to need a variant of this where the title is bolded.
-    NavigationListCell(
+    SectionHeader(
       content: .init(
         icon: getSectionIcon(for: type),
         title: title,
-        caption: subtitle,
-        navigationIcon: .none,
-        hasDivider: true
+        caption: subtitle
       )
     )
   }
