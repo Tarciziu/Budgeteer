@@ -13,7 +13,8 @@ public struct NavigationBarConfiguration {
 
   public let isHidden: Bool
   public let title: String?
-  public let action: CloseAction?
+  public let leadingAction: CloseAction?
+  public let trailingAction: CloseAction?
 
   // MARK: - Init
 
@@ -21,11 +22,19 @@ public struct NavigationBarConfiguration {
   /// - Parameters:
   ///   - isHidden: Flag indicating if the navigation bar is hidden.
   ///   - title: The title of the navigation bar
-  ///   - action: Configuration for a custom button placed in the top right, as a close button.
-  public init(isHidden: Bool = false, title: String?, action: CloseAction?) {
+  ///   - leadingAction: Configuration for a custom button placed in the top left, as a back button.
+  ///   - trailingAction: Configuration for a custom button placed in the top right, as a close button.
+  ///
+  public init(
+    isHidden: Bool = false,
+    title: String?,
+    leadingAction: CloseAction? = nil,
+    trailingAction: CloseAction? = nil
+  ) {
     self.isHidden = isHidden
     self.title = title
-    self.action = action
+    self.leadingAction = leadingAction
+    self.trailingAction = trailingAction
   }
 }
 
@@ -65,13 +74,25 @@ public struct NavigationBarConfigurationModifier: ViewModifier {
   public func body(content: Content) -> some View {
     content
       .toolbar(config.isHidden ? .hidden : .visible, for: .navigationBar)
-      .navigationBarBackButtonHidden(config.action == nil)
-      .if(config.action != nil) { content in
+      .navigationBarBackButtonHidden(config.leadingAction == nil)
+      .if(config.leadingAction != nil) { content in
         content
           .navigationBarBackButtonHidden(true)
           .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-              if let action = config.action {
+            ToolbarItem(placement: .topBarLeading) {
+              if let action = config.leadingAction {
+                Button(action: action.action) {
+                  Image(systemName: action.icon)
+                }
+              }
+            }
+          }
+      }
+      .if(config.trailingAction != nil) { content in
+        content
+          .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+              if let action = config.trailingAction {
                 Button(action: action.action) {
                   Image(systemName: action.icon)
                 }

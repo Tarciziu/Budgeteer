@@ -24,8 +24,7 @@ class TransactionsCoordinator {
 
   func start() {
     let navigationBarConfiguration = NavigationBarConfiguration(
-      title: "Transactions Screen",
-      action: nil
+      title: "Transactions Screen"
     )
     let transactionsScreen = TransactionsScreen(config: navigationBarConfiguration)
     let hostingController = BTHostingController(containedView: transactionsScreen)

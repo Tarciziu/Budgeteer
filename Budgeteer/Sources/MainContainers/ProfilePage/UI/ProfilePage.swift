@@ -110,7 +110,7 @@ struct ProfilePage: View {
             hasDivider: index != links.count - 1
           )
         ) {
-          // TODO: - Add Option
+          viewModel.handleNavigationLinkTap(linkType: link.type)
         }
       }
     }

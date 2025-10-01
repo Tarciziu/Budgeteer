@@ -22,7 +22,7 @@ class HomeScreenCoordinator {
   // MARK: - Internal Methods
 
   func start() {
-    let navigationBarConfiguration = NavigationBarConfiguration(title: "Home Screen", action: nil)
+    let navigationBarConfiguration = NavigationBarConfiguration(title: "Home Screen")
     let homeScreen = HomeScreen(config: navigationBarConfiguration)
     let hostingController = BTHostingController(containedView: homeScreen)
     navigationController.viewControllers = [hostingController]
