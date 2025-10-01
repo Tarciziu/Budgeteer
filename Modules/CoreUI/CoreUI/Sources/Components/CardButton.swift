@@ -10,12 +10,6 @@ import SwiftUI
 /// Type serving as a reusable component for a card button.
 /// https://app.visily.ai/projects/a7ec36eb-a50d-4d81-8abf-b2c651567894/boards/2143621/elements/934120136
 public struct CardButton: View {
-  // MARK: - Nested Types
-
-  private enum Constants {
-    static let borderRadius: CGFloat = 6
-  }
-
   // MARK: - Environment Properties
 
   @Environment(BTTheme.self)
@@ -61,7 +55,7 @@ public struct CardButton: View {
     .padding(theme.spacing.spacerXXL)
     .frame(maxWidth: .infinity)
     .background(theme.colorPalette.surface.primary)
-    .clipShape(RoundedRectangle(cornerRadius: Constants.borderRadius))
+    .clipShape(RoundedRectangle(cornerRadius: theme.borderRadius.radiusS))
     .overlay {
       borderView
     }
@@ -81,7 +75,7 @@ public struct CardButton: View {
   }
 
   @ViewBuilder private var borderView: some View {
-    RoundedRectangle(cornerRadius: Constants.borderRadius)
+    RoundedRectangle(cornerRadius: theme.borderRadius.radiusS)
       .stroke(theme.colorPalette.icon.disabled, lineWidth: theme.spacing.lineWidth)
   }
 }

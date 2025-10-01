@@ -16,7 +16,6 @@ struct ProfilePage: View {
     static let appearanceIcon = "paintbrush"
     static let fedbackIcon = "message"
     static let remindersFeedback = "bell"
-    static let borderRadius: CGFloat = 6
   }
 
   // MARK: - Observed Properties
@@ -118,7 +117,7 @@ struct ProfilePage: View {
   }
 
   private var roundingShape: some Shape {
-    RoundedRectangle(cornerRadius: Constants.borderRadius)
+    RoundedRectangle(cornerRadius: theme.borderRadius.radiusS)
   }
 
   @ViewBuilder private var borderView: some View {
