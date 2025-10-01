@@ -73,3 +73,16 @@ extension ShimmerCatalog {
     highlightColorOpacity: 0.4
   )
 }
+
+// MARK: - BorderRadius Definition
+
+extension BorderRadius {
+  static let mainBorderRadius = BorderRadius(
+    radiusXS: 4.0,
+    radiusS: 6.0,
+    radiusM: 8.0,
+    radiusL: 12.0,
+    radiusXL: 16.0,
+    radiusXXL: 24.0
+  )
+}

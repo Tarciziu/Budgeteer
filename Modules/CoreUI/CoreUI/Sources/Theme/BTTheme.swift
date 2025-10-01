@@ -32,6 +32,9 @@ public class BTTheme {
   /// The currently used shimmer catalog inside the application.
   public var shimmer: ShimmerCatalog
 
+  /// The currently used border radius styles inside the application.
+  public var borderRadius: BorderRadius
+
   // MARK: - Lifecycle
 
   public init(
@@ -40,7 +43,8 @@ public class BTTheme {
     iconSize: IconSize,
     colorPalette: ColorPalette,
     imageCatalog: ImageCatalog,
-    shimmer: ShimmerCatalog
+    shimmer: ShimmerCatalog,
+    borderRadius: BorderRadius
   ) {
     self.typography = typography
     self.spacing = spacing
@@ -48,5 +52,6 @@ public class BTTheme {
     self.colorPalette = colorPalette
     self.imageCatalog = imageCatalog
     self.shimmer = shimmer
+    self.borderRadius = borderRadius
   }
 }

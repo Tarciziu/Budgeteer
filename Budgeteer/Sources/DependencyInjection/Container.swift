@@ -26,7 +26,8 @@ extension Container {
         iconSize: IconSize.mainIconSize,
         colorPalette: .appColorPalette,
         imageCatalog: .appImageCatalog,
-        shimmer: .mainShimmer
+        shimmer: .mainShimmer,
+        borderRadius: .mainBorderRadius
       )
     }
     .singleton
