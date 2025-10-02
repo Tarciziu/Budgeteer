@@ -11,6 +11,12 @@ import BTCore
 import BTCoreUI
 
 class MainTabBarController: UITabBarController {
+  // MARK: - Private Properties
+
+  private var profilePageCoordinator: ProfilePageCoordinator?
+  private var homeScreenCoordinator: HomeScreenCoordinator?
+  private var transacitonsListCoordinator: TransactionsCoordinator?
+
   // MARK: - UITabBarController Methods
 
   override func viewDidLoad() {
@@ -24,7 +30,7 @@ class MainTabBarController: UITabBarController {
     viewControllers = [
       assembleHomeScreen(),
       assembleTransactionsScreen(),
-      assembleProfileScreen()
+      assembleProfilePage()
     ]
   }
 
@@ -36,6 +42,7 @@ class MainTabBarController: UITabBarController {
       image: UIImage(systemName: "house"),
       selectedImage: UIImage(systemName: "house.fill")
     )
+    homeScreenCoordinator = coordinator
     coordinator.start()
     return navigationController
   }
@@ -48,18 +55,20 @@ class MainTabBarController: UITabBarController {
       image: UIImage(systemName: "long.text.page.and.pencil"),
       selectedImage: UIImage(systemName: "long.text.page.and.pencil.fill")
     )
+    transacitonsListCoordinator = coordinator
     coordinator.start()
     return navigationController
   }
 
-  private func assembleProfileScreen() -> UINavigationController {
+  private func assembleProfilePage() -> UINavigationController {
     let navigationController = BTNavigationController()
-    let coordinator = ProfileScreenCoordinator(navigationController: navigationController)
+    let coordinator = ProfilePageCoordinator(navigationController: navigationController)
     navigationController.tabBarItem = UITabBarItem(
       title: Strings.Budgeteer.singular("tabBar.profile.title"),
       image: UIImage(systemName: "person"),
       selectedImage: UIImage(systemName: "person.fill")
     )
+    profilePageCoordinator = coordinator
     coordinator.start()
     return navigationController
   }
