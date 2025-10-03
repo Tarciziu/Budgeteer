@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7344C5502E8BF65500FAAE51 /* BTCustomerExperience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7344C5442E8BF65500FAAE51 /* BTCustomerExperience.framework */; };
+		73D3B90D2E902C3200710529 /* BTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D3B90C2E902C3200710529 /* BTCore.framework */; };
+		73D3B90E2E902C3200710529 /* BTCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73D3B90C2E902C3200710529 /* BTCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		73D3B9102E902C5600710529 /* BTCoreUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D3B9082E90269B00710529 /* BTCoreUI.framework */; };
+		73D3B9112E902C5600710529 /* BTCoreUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73D3B9082E90269B00710529 /* BTCoreUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,9 +24,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		73D3B90F2E902C3200710529 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				73D3B90E2E902C3200710529 /* BTCore.framework in Embed Frameworks */,
+				73D3B9112E902C5600710529 /* BTCoreUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7344C5442E8BF65500FAAE51 /* BTCustomerExperience.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTCustomerExperience.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7344C54F2E8BF65500FAAE51 /* CustomerExperienceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomerExperienceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		73D3B9082E90269B00710529 /* BTCoreUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTCoreUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73D3B90C2E902C3200710529 /* BTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -43,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73D3B90D2E902C3200710529 /* BTCore.framework in Frameworks */,
+				73D3B9102E902C5600710529 /* BTCoreUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +85,7 @@
 			children = (
 				7344C5462E8BF65500FAAE51 /* CustomerExperience */,
 				7344C5532E8BF65500FAAE51 /* CustomerExperienceTests */,
+				73D3B9072E90269B00710529 /* Frameworks */,
 				7344C5452E8BF65500FAAE51 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +97,15 @@
 				7344C54F2E8BF65500FAAE51 /* CustomerExperienceTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		73D3B9072E90269B00710529 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				73D3B90C2E902C3200710529 /* BTCore.framework */,
+				73D3B9082E90269B00710529 /* BTCoreUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +129,7 @@
 				7344C5402E8BF65500FAAE51 /* Sources */,
 				7344C5412E8BF65500FAAE51 /* Frameworks */,
 				7344C5422E8BF65500FAAE51 /* Resources */,
+				73D3B90F2E902C3200710529 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
