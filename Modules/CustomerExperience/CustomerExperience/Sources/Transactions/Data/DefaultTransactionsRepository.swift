@@ -8,4 +8,9 @@
 import Foundation
 
 /// The default implementation of ``TransactionsRepository``.
-public class DefaultTransactionsRepository: TransactionsRepository {}
+public class DefaultTransactionsRepository: TransactionsRepository {
+  // MARK: - Initializer
+
+  /// Creates a new instance of ``DefaultTransactionsRepository``.
+  public init() {}
+}

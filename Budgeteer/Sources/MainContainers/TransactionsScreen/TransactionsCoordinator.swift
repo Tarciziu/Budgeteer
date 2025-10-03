@@ -5,11 +5,16 @@
 //  Created by Adrian-Zoltan Herczeg on 14.09.2025.
 //
 
+import Combine
 import Foundation
 import FactoryKit
 import BTCoreUI
 
 class TransactionsCoordinator {
+  // MARK: - Internal Properties
+
+  var cancellables: Set<AnyCancellable> = []
+
   // MARK: - Private Properties
 
   private let navigationController: BTNavigationController
@@ -23,11 +28,7 @@ class TransactionsCoordinator {
   // MARK: - Internal Methods
 
   func start() {
-    let navigationBarConfiguration = NavigationBarConfiguration(
-      title: "Transactions Screen"
-    )
-    let transactionsScreen = TransactionsScreen(config: navigationBarConfiguration)
-    let hostingController = BTHostingController(containedView: transactionsScreen)
+    let hostingController = makeFullTransactionsScreen()
     navigationController.viewControllers = [hostingController]
   }
 }
