@@ -7,6 +7,7 @@
 
 import Testing
 @testable import BTCustomerExperience
+import SwiftMocks
 
 struct CustomerExperienceTests {
   @Test

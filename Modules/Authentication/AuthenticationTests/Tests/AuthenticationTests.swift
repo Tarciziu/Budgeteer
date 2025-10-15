@@ -7,6 +7,7 @@
 
 import Testing
 @testable import BTAuthentication
+import SwiftMocks
 
 struct AuthenticationTests {
   @Test

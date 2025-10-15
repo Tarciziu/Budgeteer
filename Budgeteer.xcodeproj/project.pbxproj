@@ -12,6 +12,8 @@
 		467F2E2C2E9BCB1400AA8807 /* BTAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467F2E2B2E9BCB1400AA8807 /* BTAuthentication.framework */; };
 		467F2E2D2E9BCB1400AA8807 /* BTAuthentication.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 467F2E2B2E9BCB1400AA8807 /* BTAuthentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7344C55F2E8BF6A900FAAE51 /* BTCustomerExperience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7344C55E2E8BF6A900FAAE51 /* BTCustomerExperience.framework */; };
+		73D828F42E9F966800E7EF2B /* SwiftMocks in Frameworks */ = {isa = PBXBuildFile; productRef = 73D828F32E9F966800E7EF2B /* SwiftMocks */; };
+		73D828F62E9F966800E7EF2B /* SwiftMocksClient in Frameworks */ = {isa = PBXBuildFile; productRef = 73D828F52E9F966800E7EF2B /* SwiftMocksClient */; };
 		73EDFB552E67108C008C83A3 /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 73EDFB542E67108C008C83A3 /* FactoryKit */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73D828F42E9F966800E7EF2B /* SwiftMocks in Frameworks */,
+				73D828F62E9F966800E7EF2B /* SwiftMocksClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +181,8 @@
 			);
 			name = BudgeteerTests;
 			packageProductDependencies = (
+				73D828F32E9F966800E7EF2B /* SwiftMocks */,
+				73D828F52E9F966800E7EF2B /* SwiftMocksClient */,
 			);
 			productName = BudgeteerTests;
 			productReference = 46CFAD242E564A8000931D2B /* BudgeteerTests.xctest */;
@@ -213,6 +219,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				73EDFB532E67108C008C83A3 /* XCRemoteSwiftPackageReference "Factory" */,
+				73D828F22E9F966800E7EF2B /* XCRemoteSwiftPackageReference "SwiftMocks" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 46CFAD182E564A7F00931D2B /* Products */;
@@ -560,6 +567,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		73D828F22E9F966800E7EF2B /* XCRemoteSwiftPackageReference "SwiftMocks" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/frugoman/SwiftMocks";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		73EDFB532E67108C008C83A3 /* XCRemoteSwiftPackageReference "Factory" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hmlongco/Factory";
@@ -571,6 +586,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		73D828F32E9F966800E7EF2B /* SwiftMocks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 73D828F22E9F966800E7EF2B /* XCRemoteSwiftPackageReference "SwiftMocks" */;
+			productName = SwiftMocks;
+		};
+		73D828F52E9F966800E7EF2B /* SwiftMocksClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 73D828F22E9F966800E7EF2B /* XCRemoteSwiftPackageReference "SwiftMocks" */;
+			productName = SwiftMocksClient;
+		};
 		73EDFB542E67108C008C83A3 /* FactoryKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 73EDFB532E67108C008C83A3 /* XCRemoteSwiftPackageReference "Factory" */;
