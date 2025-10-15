@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		467F2DFD2E9BCA2800AA8807 /* BTAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467F2DF12E9BCA2800AA8807 /* BTAuthentication.framework */; };
-		73D828F92E9F968F00E7EF2B /* SwiftMocks in Frameworks */ = {isa = PBXBuildFile; productRef = 73D828F82E9F968F00E7EF2B /* SwiftMocks */; };
-		73D828FB2E9F968F00E7EF2B /* SwiftMocksClient in Frameworks */ = {isa = PBXBuildFile; productRef = 73D828FA2E9F968F00E7EF2B /* SwiftMocksClient */; };
+		73D832E42E9FB7D400E7EF2B /* AppTestingGround in Frameworks */ = {isa = PBXBuildFile; productRef = 73D832E32E9FB7D400E7EF2B /* AppTestingGround */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73D828FB2E9F968F00E7EF2B /* SwiftMocksClient in Frameworks */,
-				73D828F92E9F968F00E7EF2B /* SwiftMocks in Frameworks */,
+				73D832E42E9FB7D400E7EF2B /* AppTestingGround in Frameworks */,
 				467F2DFD2E9BCA2800AA8807 /* BTAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +85,7 @@
 				467F2DF32E9BCA2800AA8807 /* Authentication */,
 				467F2E002E9BCA2800AA8807 /* AuthenticationTests */,
 				73D826702E9F86F400E7EF2B /* AuthenticationHostingApp */,
+				73D832E22E9FB7D400E7EF2B /* Frameworks */,
 				467F2DF22E9BCA2800AA8807 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +98,13 @@
 				73D8266F2E9F86F400E7EF2B /* AuthenticationHostingApp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		73D832E22E9FB7D400E7EF2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,8 +162,7 @@
 			);
 			name = AuthenticationTests;
 			packageProductDependencies = (
-				73D828F82E9F968F00E7EF2B /* SwiftMocks */,
-				73D828FA2E9F968F00E7EF2B /* SwiftMocksClient */,
+				73D832E32E9FB7D400E7EF2B /* AppTestingGround */,
 			);
 			productName = AuthenticationTests;
 			productReference = 467F2DFC2E9BCA2800AA8807 /* AuthenticationTests.xctest */;
@@ -217,7 +222,6 @@
 			mainGroup = 467F2DE72E9BCA2800AA8807;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				73D828F72E9F968F00E7EF2B /* XCRemoteSwiftPackageReference "SwiftMocks" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 467F2DF22E9BCA2800AA8807 /* Products */;
@@ -657,27 +661,10 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		73D828F72E9F968F00E7EF2B /* XCRemoteSwiftPackageReference "SwiftMocks" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/frugoman/SwiftMocks";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		73D828F82E9F968F00E7EF2B /* SwiftMocks */ = {
+		73D832E32E9FB7D400E7EF2B /* AppTestingGround */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 73D828F72E9F968F00E7EF2B /* XCRemoteSwiftPackageReference "SwiftMocks" */;
-			productName = SwiftMocks;
-		};
-		73D828FA2E9F968F00E7EF2B /* SwiftMocksClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 73D828F72E9F968F00E7EF2B /* XCRemoteSwiftPackageReference "SwiftMocks" */;
-			productName = SwiftMocksClient;
+			productName = AppTestingGround;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

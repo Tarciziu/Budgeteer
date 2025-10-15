@@ -9,6 +9,11 @@
     }
   ],
   "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Budgeteer.xcodeproj",
+      "identifier" : "46CFAD162E564A7F00931D2B",
+      "name" : "Budgeteer"
+    },
     "testTimeoutsEnabled" : true
   },
   "testTargets" : [

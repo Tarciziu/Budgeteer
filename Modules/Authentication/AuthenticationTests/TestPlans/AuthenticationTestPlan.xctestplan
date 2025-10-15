@@ -9,6 +9,11 @@
     }
   ],
   "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Authentication.xcodeproj",
+      "identifier" : "73D8266E2E9F86F400E7EF2B",
+      "name" : "AuthenticationHostingApp"
+    },
     "testTimeoutsEnabled" : true
   },
   "testTargets" : [

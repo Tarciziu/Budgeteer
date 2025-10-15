@@ -9,12 +9,17 @@
     }
   ],
   "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:CoreUI.xcodeproj",
+      "identifier" : "73D826A32E9F876800E7EF2B",
+      "name" : "CoreUIHostingApp"
+    },
     "testTimeoutsEnabled" : true
   },
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:..\/CoreUI\/CoreUI.xcodeproj",
+        "containerPath" : "container:CoreUI.xcodeproj",
         "identifier" : "4601DF6E2E633E0B0028EEC0",
         "name" : "CoreUITests"
       }

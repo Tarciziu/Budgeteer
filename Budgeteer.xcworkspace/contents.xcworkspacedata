@@ -19,4 +19,7 @@
    <FileRef
       location = "group:Tools">
    </FileRef>
+   <FileRef
+      location = "group:CustomPackages/AppTestingGround">
+   </FileRef>
 </Workspace>
