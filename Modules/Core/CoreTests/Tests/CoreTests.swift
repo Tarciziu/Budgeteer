@@ -7,6 +7,7 @@
 
 import Testing
 @testable import BTCore
+import SwiftMocks
 
 struct CoreTests {
   @Test
