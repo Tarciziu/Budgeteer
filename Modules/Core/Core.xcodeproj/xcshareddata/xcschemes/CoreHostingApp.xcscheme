@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "46CFAD162E564A7F00931D2B"
-               BuildableName = "Budgeteer.app"
-               BlueprintName = "Budgeteer"
-               ReferencedContainer = "container:Budgeteer.xcodeproj">
+               BlueprintIdentifier = "73D826942E9F874D00E7EF2B"
+               BuildableName = "CoreHostingApp.app"
+               BlueprintName = "CoreHostingApp"
+               ReferencedContainer = "container:Core.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -30,23 +30,10 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:BudgeteerTests/TestPlans/MainTestPlan.xctestplan"
+            reference = "container:CoreTests/TestPlans/CoreTestPlan.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "46CFAD232E564A8000931D2B"
-               BuildableName = "BudgeteerTests.xctest"
-               BlueprintName = "BudgeteerTests"
-               ReferencedContainer = "container:Budgeteer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -62,10 +49,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "46CFAD162E564A7F00931D2B"
-            BuildableName = "Budgeteer.app"
-            BlueprintName = "Budgeteer"
-            ReferencedContainer = "container:Budgeteer.xcodeproj">
+            BlueprintIdentifier = "73D826942E9F874D00E7EF2B"
+            BuildableName = "CoreHostingApp.app"
+            BlueprintName = "CoreHostingApp"
+            ReferencedContainer = "container:Core.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -79,10 +66,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "46CFAD162E564A7F00931D2B"
-            BuildableName = "Budgeteer.app"
-            BlueprintName = "Budgeteer"
-            ReferencedContainer = "container:Budgeteer.xcodeproj">
+            BlueprintIdentifier = "73D826942E9F874D00E7EF2B"
+            BuildableName = "CoreHostingApp.app"
+            BlueprintName = "CoreHostingApp"
+            ReferencedContainer = "container:Core.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

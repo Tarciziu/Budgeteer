@@ -6,7 +6,7 @@
 //
 
 import Testing
-@testable import Core
+@testable import BTCore
 
 struct CoreTests {
   @Test
