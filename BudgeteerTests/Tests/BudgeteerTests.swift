@@ -7,6 +7,7 @@
 
 import Testing
 @testable import Budgeteer
+import SwiftMocks
 
 struct BudgeteerTests {
   @Test
