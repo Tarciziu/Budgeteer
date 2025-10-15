@@ -6,7 +6,7 @@
 //
 
 import Testing
-@testable import CustomerExperience
+@testable import BTCustomerExperience
 
 struct CustomerExperienceTests {
   @Test

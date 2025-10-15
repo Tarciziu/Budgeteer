@@ -18,11 +18,19 @@
 			remoteGlobalIDString = 467F2DF02E9BCA2800AA8807;
 			remoteInfo = Authentication;
 		};
+		73D826802E9F870200E7EF2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 467F2DE82E9BCA2800AA8807 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 73D8266E2E9F86F400E7EF2B;
+			remoteInfo = AuthenticationHostingApp;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		467F2DF12E9BCA2800AA8807 /* BTAuthentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTAuthentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		467F2DFC2E9BCA2800AA8807 /* AuthenticationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuthenticationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		73D8266F2E9F86F400E7EF2B /* AuthenticationHostingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthenticationHostingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -34,6 +42,11 @@
 		467F2E002E9BCA2800AA8807 /* AuthenticationTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = AuthenticationTests;
+			sourceTree = "<group>";
+		};
+		73D826702E9F86F400E7EF2B /* AuthenticationHostingApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AuthenticationHostingApp;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -54,6 +67,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		73D8266C2E9F86F400E7EF2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -62,6 +82,7 @@
 			children = (
 				467F2DF32E9BCA2800AA8807 /* Authentication */,
 				467F2E002E9BCA2800AA8807 /* AuthenticationTests */,
+				73D826702E9F86F400E7EF2B /* AuthenticationHostingApp */,
 				467F2DF22E9BCA2800AA8807 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +92,7 @@
 			children = (
 				467F2DF12E9BCA2800AA8807 /* BTAuthentication.framework */,
 				467F2DFC2E9BCA2800AA8807 /* AuthenticationTests.xctest */,
+				73D8266F2E9F86F400E7EF2B /* AuthenticationHostingApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +145,7 @@
 			);
 			dependencies = (
 				467F2DFF2E9BCA2800AA8807 /* PBXTargetDependency */,
+				73D826812E9F870200E7EF2B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				467F2E002E9BCA2800AA8807 /* AuthenticationTests */,
@@ -133,6 +156,28 @@
 			productName = AuthenticationTests;
 			productReference = 467F2DFC2E9BCA2800AA8807 /* AuthenticationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		73D8266E2E9F86F400E7EF2B /* AuthenticationHostingApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73D826792E9F86F500E7EF2B /* Build configuration list for PBXNativeTarget "AuthenticationHostingApp" */;
+			buildPhases = (
+				73D8266B2E9F86F400E7EF2B /* Sources */,
+				73D8266C2E9F86F400E7EF2B /* Frameworks */,
+				73D8266D2E9F86F400E7EF2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				73D826702E9F86F400E7EF2B /* AuthenticationHostingApp */,
+			);
+			name = AuthenticationHostingApp;
+			packageProductDependencies = (
+			);
+			productName = AuthenticationHostingApp;
+			productReference = 73D8266F2E9F86F400E7EF2B /* AuthenticationHostingApp.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -148,6 +193,10 @@
 						CreatedOnToolsVersion = 26.0.1;
 					};
 					467F2DFB2E9BCA2800AA8807 = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = 73D8266E2E9F86F400E7EF2B;
+					};
+					73D8266E2E9F86F400E7EF2B = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
 				};
@@ -168,6 +217,7 @@
 			targets = (
 				467F2DF02E9BCA2800AA8807 /* Authentication */,
 				467F2DFB2E9BCA2800AA8807 /* AuthenticationTests */,
+				73D8266E2E9F86F400E7EF2B /* AuthenticationHostingApp */,
 			);
 		};
 /* End PBXProject section */
@@ -181,6 +231,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		467F2DFA2E9BCA2800AA8807 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73D8266D2E9F86F400E7EF2B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -204,6 +261,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		73D8266B2E9F86F400E7EF2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -211,6 +275,11 @@
 			isa = PBXTargetDependency;
 			target = 467F2DF02E9BCA2800AA8807 /* Authentication */;
 			targetProxy = 467F2DFE2E9BCA2800AA8807 /* PBXContainerItemProxy */;
+		};
+		73D826812E9F870200E7EF2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 73D8266E2E9F86F400E7EF2B /* AuthenticationHostingApp */;
+			targetProxy = 73D826802E9F870200E7EF2B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -366,6 +435,10 @@
 				PRODUCT_NAME = BTAuthentication;
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_MODULE = YES;
@@ -402,6 +475,10 @@
 				PRODUCT_NAME = BTAuthentication;
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_MODULE = YES;
@@ -415,6 +492,7 @@
 		467F2E092E9BCA2800AA8807 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -422,17 +500,23 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobile4fun.AuthenticationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AuthenticationHostingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AuthenticationHostingApp";
 			};
 			name = Debug;
 		};
 		467F2E0A2E9BCA2800AA8807 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -440,8 +524,83 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobile4fun.AuthenticationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AuthenticationHostingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AuthenticationHostingApp";
+			};
+			name = Release;
+		};
+		73D826772E9F86F500E7EF2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.AuthenticationHostingApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		73D826782E9F86F500E7EF2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.AuthenticationHostingApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -474,6 +633,15 @@
 			buildConfigurations = (
 				467F2E092E9BCA2800AA8807 /* Debug */,
 				467F2E0A2E9BCA2800AA8807 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73D826792E9F86F500E7EF2B /* Build configuration list for PBXNativeTarget "AuthenticationHostingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73D826772E9F86F500E7EF2B /* Debug */,
+				73D826782E9F86F500E7EF2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

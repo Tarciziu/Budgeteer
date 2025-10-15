@@ -20,6 +20,13 @@
 			remoteGlobalIDString = 4601DF632E633E0B0028EEC0;
 			remoteInfo = CoreUI;
 		};
+		73D826B12E9F87AC00E7EF2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4601DF5B2E633E0B0028EEC0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 73D826A32E9F876800E7EF2B;
+			remoteInfo = CoreUIHostingApp;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,7 +47,25 @@
 		4601DF642E633E0B0028EEC0 /* BTCoreUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTCoreUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4601DF6F2E633E0B0028EEC0 /* CoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4601DF932E6340120028EEC0 /* BTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73D826A42E9F876800E7EF2B /* CoreUIHostingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreUIHostingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		73D828ED2E9F913300E7EF2B /* Exceptions for "CoreUITests" folder in "CoreUI" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CoreUITests.swift,
+			);
+			target = 4601DF632E633E0B0028EEC0 /* CoreUI */;
+		};
+		73D828EE2E9F913300E7EF2B /* Exceptions for "CoreUITests" folder in "CoreUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CoreUITests.swift,
+			);
+			target = 4601DF6E2E633E0B0028EEC0 /* CoreUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4601DF662E633E0B0028EEC0 /* CoreUI */ = {
@@ -48,8 +73,17 @@
 			path = CoreUI;
 			sourceTree = "<group>";
 		};
-		4601DF732E633E0B0028EEC0 /* CoreUITests */ = {
+		73D826A52E9F876800E7EF2B /* CoreUIHostingApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CoreUIHostingApp;
+			sourceTree = "<group>";
+		};
+		73D828EB2E9F913300E7EF2B /* CoreUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				73D828ED2E9F913300E7EF2B /* Exceptions for "CoreUITests" folder in "CoreUI" target */,
+				73D828EE2E9F913300E7EF2B /* Exceptions for "CoreUITests" folder in "CoreUITests" target */,
+			);
 			path = CoreUITests;
 			sourceTree = "<group>";
 		};
@@ -72,6 +106,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		73D826A12E9F876800E7EF2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -79,7 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				4601DF662E633E0B0028EEC0 /* CoreUI */,
-				4601DF732E633E0B0028EEC0 /* CoreUITests */,
+				73D828EB2E9F913300E7EF2B /* CoreUITests */,
+				73D826A52E9F876800E7EF2B /* CoreUIHostingApp */,
 				4601DF922E6340120028EEC0 /* Frameworks */,
 				4601DF652E633E0B0028EEC0 /* Products */,
 			);
@@ -90,6 +132,7 @@
 			children = (
 				4601DF642E633E0B0028EEC0 /* BTCoreUI.framework */,
 				4601DF6F2E633E0B0028EEC0 /* CoreUITests.xctest */,
+				73D826A42E9F876800E7EF2B /* CoreUIHostingApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,6 +174,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				4601DF662E633E0B0028EEC0 /* CoreUI */,
+				73D828EB2E9F913300E7EF2B /* CoreUITests */,
 			);
 			name = CoreUI;
 			packageProductDependencies = (
@@ -151,9 +195,7 @@
 			);
 			dependencies = (
 				4601DF722E633E0B0028EEC0 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				4601DF732E633E0B0028EEC0 /* CoreUITests */,
+				73D826B22E9F87AC00E7EF2B /* PBXTargetDependency */,
 			);
 			name = CoreUITests;
 			packageProductDependencies = (
@@ -161,6 +203,28 @@
 			productName = CoreUITests;
 			productReference = 4601DF6F2E633E0B0028EEC0 /* CoreUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		73D826A32E9F876800E7EF2B /* CoreUIHostingApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73D826AE2E9F876900E7EF2B /* Build configuration list for PBXNativeTarget "CoreUIHostingApp" */;
+			buildPhases = (
+				73D826A02E9F876800E7EF2B /* Sources */,
+				73D826A12E9F876800E7EF2B /* Frameworks */,
+				73D826A22E9F876800E7EF2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				73D826A52E9F876800E7EF2B /* CoreUIHostingApp */,
+			);
+			name = CoreUIHostingApp;
+			packageProductDependencies = (
+			);
+			productName = CoreUIHostingApp;
+			productReference = 73D826A42E9F876800E7EF2B /* CoreUIHostingApp.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -177,6 +241,10 @@
 					};
 					4601DF6E2E633E0B0028EEC0 = {
 						CreatedOnToolsVersion = 26.0;
+						TestTargetID = 73D826A32E9F876800E7EF2B;
+					};
+					73D826A32E9F876800E7EF2B = {
+						CreatedOnToolsVersion = 26.0.1;
 					};
 				};
 			};
@@ -196,6 +264,7 @@
 			targets = (
 				4601DF632E633E0B0028EEC0 /* CoreUI */,
 				4601DF6E2E633E0B0028EEC0 /* CoreUITests */,
+				73D826A32E9F876800E7EF2B /* CoreUIHostingApp */,
 			);
 		};
 /* End PBXProject section */
@@ -209,6 +278,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4601DF6D2E633E0B0028EEC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73D826A22E9F876800E7EF2B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -232,6 +308,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		73D826A02E9F876800E7EF2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -239,6 +322,11 @@
 			isa = PBXTargetDependency;
 			target = 4601DF632E633E0B0028EEC0 /* CoreUI */;
 			targetProxy = 4601DF712E633E0B0028EEC0 /* PBXContainerItemProxy */;
+		};
+		73D826B22E9F87AC00E7EF2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 73D826A32E9F876800E7EF2B /* CoreUIHostingApp */;
+			targetProxy = 73D826B12E9F87AC00E7EF2B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -441,6 +529,7 @@
 		4601DF7C2E633E0B0028EEC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -448,17 +537,23 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobile4fun.CoreUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoreUIHostingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CoreUIHostingApp";
 			};
 			name = Debug;
 		};
 		4601DF7D2E633E0B0028EEC0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -466,8 +561,83 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobile4fun.CoreUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoreUIHostingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CoreUIHostingApp";
+			};
+			name = Release;
+		};
+		73D826AC2E9F876900E7EF2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.CoreUIHostingApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		73D826AD2E9F876900E7EF2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.CoreUIHostingApp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -500,6 +670,15 @@
 			buildConfigurations = (
 				4601DF7C2E633E0B0028EEC0 /* Debug */,
 				4601DF7D2E633E0B0028EEC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73D826AE2E9F876900E7EF2B /* Build configuration list for PBXNativeTarget "CoreUIHostingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73D826AC2E9F876900E7EF2B /* Debug */,
+				73D826AD2E9F876900E7EF2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "EAFACDDF-36D2-49E5-BE36-7E4C84244601",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:..\/CoreUI\/CoreUI.xcodeproj",
+        "identifier" : "4601DF6E2E633E0B0028EEC0",
+        "name" : "CoreUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

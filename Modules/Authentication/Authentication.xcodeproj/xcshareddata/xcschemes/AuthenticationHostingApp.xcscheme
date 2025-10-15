@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "46CFAD162E564A7F00931D2B"
-               BuildableName = "Budgeteer.app"
-               BlueprintName = "Budgeteer"
-               ReferencedContainer = "container:Budgeteer.xcodeproj">
+               BlueprintIdentifier = "73D8266E2E9F86F400E7EF2B"
+               BuildableName = "AuthenticationHostingApp.app"
+               BlueprintName = "AuthenticationHostingApp"
+               ReferencedContainer = "container:Authentication.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -30,7 +30,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:BudgeteerTests/TestPlans/MainTestPlan.xctestplan"
+            reference = "container:AuthenticationTests/TestPlans/AuthenticationTestPlan.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -40,10 +40,10 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "46CFAD232E564A8000931D2B"
-               BuildableName = "BudgeteerTests.xctest"
-               BlueprintName = "BudgeteerTests"
-               ReferencedContainer = "container:Budgeteer.xcodeproj">
+               BlueprintIdentifier = "467F2DFB2E9BCA2800AA8807"
+               BuildableName = "AuthenticationTests.xctest"
+               BlueprintName = "AuthenticationTests"
+               ReferencedContainer = "container:Authentication.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -62,10 +62,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "46CFAD162E564A7F00931D2B"
-            BuildableName = "Budgeteer.app"
-            BlueprintName = "Budgeteer"
-            ReferencedContainer = "container:Budgeteer.xcodeproj">
+            BlueprintIdentifier = "73D8266E2E9F86F400E7EF2B"
+            BuildableName = "AuthenticationHostingApp.app"
+            BlueprintName = "AuthenticationHostingApp"
+            ReferencedContainer = "container:Authentication.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -79,10 +79,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "46CFAD162E564A7F00931D2B"
-            BuildableName = "Budgeteer.app"
-            BlueprintName = "Budgeteer"
-            ReferencedContainer = "container:Budgeteer.xcodeproj">
+            BlueprintIdentifier = "73D8266E2E9F86F400E7EF2B"
+            BuildableName = "AuthenticationHostingApp.app"
+            BlueprintName = "AuthenticationHostingApp"
+            ReferencedContainer = "container:Authentication.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
