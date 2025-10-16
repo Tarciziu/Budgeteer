@@ -9,6 +9,11 @@
     }
   ],
   "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Core.xcodeproj",
+      "identifier" : "73D826942E9F874D00E7EF2B",
+      "name" : "CoreHostingApp"
+    },
     "testTimeoutsEnabled" : true
   },
   "testTargets" : [

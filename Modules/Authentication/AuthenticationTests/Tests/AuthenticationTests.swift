@@ -6,12 +6,29 @@
 //
 
 import Testing
-@testable import BTAuthentication
-import SwiftMocks
 
-struct AuthenticationTests {
-  @Test
-  func example() async throws {
+@testable import BTAuthentication
+import AppTestingGround
+
+struct CoreTests {
+  @Test(
+    "Flaky test",
+    .tags(.flaky)
+  )
+  func flakyTest() {
+    // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+  }
+
+  @Test(
+    "Critical test",
+    .tags(.critical)
+  )
+  func criticalTest() {
+    // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+  }
+
+  @Test("Normal test")
+  func normalTest() {
     // Write your test here and use APIs like `#expect(...)` to check expected conditions.
   }
 }

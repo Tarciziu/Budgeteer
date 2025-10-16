@@ -1,0 +1,82 @@
+{
+  "configurations" : [
+    {
+      "id" : "3F783631-C44A-49E2-80FE-D2A93B0781EB",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Budgeteer.xcodeproj",
+      "identifier" : "46CFAD162E564A7F00931D2B",
+      "name" : "Budgeteer"
+    },
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "selectedTags" : {
+        "tags" : [
+          ".critical"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:Modules\/CustomerExperience\/CustomerExperience.xcodeproj",
+        "identifier" : "7344C54E2E8BF65500FAAE51",
+        "name" : "CustomerExperienceTests"
+      }
+    },
+    {
+      "selectedTags" : {
+        "tags" : [
+          ".critical"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:Modules\/Core\/Core.xcodeproj",
+        "identifier" : "4601DF482E633DB10028EEC0",
+        "name" : "CoreTests"
+      }
+    },
+    {
+      "selectedTags" : {
+        "tags" : [
+          ".critical"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:Modules\/CoreUI\/CoreUI.xcodeproj",
+        "identifier" : "4601DF6E2E633E0B0028EEC0",
+        "name" : "CoreUITests"
+      }
+    },
+    {
+      "selectedTags" : {
+        "tags" : [
+          ".critical"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:Budgeteer.xcodeproj",
+        "identifier" : "46CFAD232E564A8000931D2B",
+        "name" : "BudgeteerTests"
+      }
+    },
+    {
+      "selectedTags" : {
+        "tags" : [
+          ".critical"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:Modules\/Authentication\/Authentication.xcodeproj",
+        "identifier" : "467F2DFB2E9BCA2800AA8807",
+        "name" : "AuthenticationTests"
+      }
+    }
+  ],
+  "version" : 1
+}

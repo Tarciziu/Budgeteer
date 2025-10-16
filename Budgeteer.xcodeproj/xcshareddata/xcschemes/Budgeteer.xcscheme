@@ -33,6 +33,12 @@
             reference = "container:BudgeteerTests/TestPlans/MainTestPlan.xctestplan"
             default = "YES">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:BudgeteerTests/TestPlans/CriticalTestsPlan.xctestplan">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:BudgeteerTests/TestPlans/FlakyTestsPlan.xctestplan">
+         </TestPlanReference>
       </TestPlans>
       <Testables>
          <TestableReference

@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4601DF4A2E633DB10028EEC0 /* BTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF3E2E633DB10028EEC0 /* BTCore.framework */; };
-		73D829032E9F96C600E7EF2B /* SwiftMocks in Frameworks */ = {isa = PBXBuildFile; productRef = 73D829022E9F96C600E7EF2B /* SwiftMocks */; };
-		73D829052E9F96C600E7EF2B /* SwiftMocksClient in Frameworks */ = {isa = PBXBuildFile; productRef = 73D829042E9F96C600E7EF2B /* SwiftMocksClient */; };
+		73D832DF2E9FB1FB00E7EF2B /* AppTestingGround in Frameworks */ = {isa = PBXBuildFile; productRef = 73D832DE2E9FB1FB00E7EF2B /* AppTestingGround */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73D829052E9F96C600E7EF2B /* SwiftMocksClient in Frameworks */,
-				73D829032E9F96C600E7EF2B /* SwiftMocks in Frameworks */,
+				73D832DF2E9FB1FB00E7EF2B /* AppTestingGround in Frameworks */,
 				4601DF4A2E633DB10028EEC0 /* BTCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +85,7 @@
 				4601DF402E633DB10028EEC0 /* Core */,
 				4601DF4D2E633DB10028EEC0 /* CoreTests */,
 				73D826962E9F874D00E7EF2B /* CoreHostingApp */,
+				73D832DD2E9FB1FB00E7EF2B /* Frameworks */,
 				4601DF3F2E633DB10028EEC0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +98,13 @@
 				73D826952E9F874D00E7EF2B /* CoreHostingApp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		73D832DD2E9FB1FB00E7EF2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,8 +162,7 @@
 			);
 			name = CoreTests;
 			packageProductDependencies = (
-				73D829022E9F96C600E7EF2B /* SwiftMocks */,
-				73D829042E9F96C600E7EF2B /* SwiftMocksClient */,
+				73D832DE2E9FB1FB00E7EF2B /* AppTestingGround */,
 			);
 			productName = CoreTests;
 			productReference = 4601DF492E633DB10028EEC0 /* CoreTests.xctest */;
@@ -217,7 +222,6 @@
 			mainGroup = 4601DF342E633DB10028EEC0;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				73D829012E9F96C600E7EF2B /* XCRemoteSwiftPackageReference "SwiftMocks" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4601DF3F2E633DB10028EEC0 /* Products */;
@@ -655,27 +659,10 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		73D829012E9F96C600E7EF2B /* XCRemoteSwiftPackageReference "SwiftMocks" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/frugoman/SwiftMocks";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		73D829022E9F96C600E7EF2B /* SwiftMocks */ = {
+		73D832DE2E9FB1FB00E7EF2B /* AppTestingGround */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 73D829012E9F96C600E7EF2B /* XCRemoteSwiftPackageReference "SwiftMocks" */;
-			productName = SwiftMocks;
-		};
-		73D829042E9F96C600E7EF2B /* SwiftMocksClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 73D829012E9F96C600E7EF2B /* XCRemoteSwiftPackageReference "SwiftMocks" */;
-			productName = SwiftMocksClient;
+			productName = AppTestingGround;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

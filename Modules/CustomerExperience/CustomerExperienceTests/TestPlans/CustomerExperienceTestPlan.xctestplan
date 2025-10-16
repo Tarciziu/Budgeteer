@@ -9,6 +9,11 @@
     }
   ],
   "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:CustomerExperience.xcodeproj",
+      "identifier" : "73D826852E9F872E00E7EF2B",
+      "name" : "CustomerExperienceHostingApp"
+    },
     "testTimeoutsEnabled" : true
   },
   "testTargets" : [
