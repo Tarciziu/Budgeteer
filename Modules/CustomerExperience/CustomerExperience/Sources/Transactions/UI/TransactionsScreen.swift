@@ -73,6 +73,11 @@ public struct TransactionsScreen: View {
     RoundedRectangle(cornerRadius: theme.borderRadius.radiusM)
   }
 
+  private var borderView: some View {
+    roundingShape
+      .stroke(theme.colorPalette.border.primary, lineWidth: theme.spacing.lineWidth)
+  }
+
   // MARK: - ViewBuilders
 
   @ViewBuilder
@@ -111,6 +116,9 @@ public struct TransactionsScreen: View {
         }
       }
       .glassEffect(.regular, in: roundingShape)
+      .overlay {
+        borderView
+      }
     }
   }
 

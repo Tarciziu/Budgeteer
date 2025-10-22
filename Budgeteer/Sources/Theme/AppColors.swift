@@ -16,7 +16,8 @@ extension ColorPalette {
       navigationBar: makeNavigationBarColors(),
       bottomSheet: makeBottomSheetColors(),
       text: makeTextColors(),
-      icon: makeIconColors()
+      icon: makeIconColors(),
+      border: makeBorderColors()
     )
   }()
 }
@@ -88,6 +89,12 @@ extension ColorPalette {
       positive: Color("positive-100"),
       negative: Color("negative-100"),
       disabled: Color("neutral-300")
+    )
+  }
+
+  private static func makeBorderColors() -> BorderColors {
+    BorderColors(
+      primary: Color("neutral-300")
     )
   }
 }

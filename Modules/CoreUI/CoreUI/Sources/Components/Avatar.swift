@@ -133,10 +133,10 @@ public struct Avatar: View {
     switch shape {
     case .circle:
       Circle()
-        .stroke(theme.colorPalette.surface.primary, lineWidth: theme.spacing.lineWidth)
+        .stroke(theme.colorPalette.border.primary, lineWidth: theme.spacing.lineWidth)
     case .square:
       RoundedRectangle(cornerRadius: Constants.cornerRadius)
-        .stroke(theme.colorPalette.surface.primary, lineWidth: theme.spacing.lineWidth)
+        .stroke(theme.colorPalette.border.primary, lineWidth: theme.spacing.lineWidth)
     }
   }
 
