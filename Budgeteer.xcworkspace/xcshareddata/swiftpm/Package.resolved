@@ -1,5 +1,5 @@
 {
-  "originHash" : "58a46aafea386795a3a92c25a1cd0eb704bd8af691a05700394677e0be8d28b5",
+  "originHash" : "e91b49381586089b773fef57ead3fa2a806ffb2a39c4a36df8b307c9384026e8",
   "pins" : [
     {
       "identity" : "factory",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "ccc898f21992ebc130bc04cc197460a5ae230bcf",
         "version" : "2.5.3"
+      }
+    },
+    {
+      "identity" : "instantmock",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pirishd/InstantMock",
+      "state" : {
+        "revision" : "6a809d12b58969acea71875ef4bb7f2f8c811f99",
+        "version" : "2.5.6"
       }
     }
   ],

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4601DF4A2E633DB10028EEC0 /* BTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF3E2E633DB10028EEC0 /* BTCore.framework */; };
+		73492B432EAE607200382483 /* InstantMock in Frameworks */ = {isa = PBXBuildFile; productRef = 73492B422EAE607200382483 /* InstantMock */; };
 		73D832DF2E9FB1FB00E7EF2B /* AppTestingGround in Frameworks */ = {isa = PBXBuildFile; productRef = 73D832DE2E9FB1FB00E7EF2B /* AppTestingGround */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 			files = (
 				73D832DF2E9FB1FB00E7EF2B /* AppTestingGround in Frameworks */,
 				4601DF4A2E633DB10028EEC0 /* BTCore.framework in Frameworks */,
+				73492B432EAE607200382483 /* InstantMock in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +165,7 @@
 			name = CoreTests;
 			packageProductDependencies = (
 				73D832DE2E9FB1FB00E7EF2B /* AppTestingGround */,
+				73492B422EAE607200382483 /* InstantMock */,
 			);
 			productName = CoreTests;
 			productReference = 4601DF492E633DB10028EEC0 /* CoreTests.xctest */;
@@ -222,6 +225,7 @@
 			mainGroup = 4601DF342E633DB10028EEC0;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				73492B412EAE607200382483 /* XCRemoteSwiftPackageReference "InstantMock" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4601DF3F2E633DB10028EEC0 /* Products */;
@@ -659,7 +663,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		73492B412EAE607200382483 /* XCRemoteSwiftPackageReference "InstantMock" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pirishd/InstantMock";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		73492B422EAE607200382483 /* InstantMock */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 73492B412EAE607200382483 /* XCRemoteSwiftPackageReference "InstantMock" */;
+			productName = InstantMock;
+		};
 		73D832DE2E9FB1FB00E7EF2B /* AppTestingGround */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppTestingGround;
