@@ -35,7 +35,12 @@ class RemindersCoordinator {
 
   // MARK: - Private Methods
 
-  private func assembleRemindersPage() -> RemindersPage {
+  private func assembleRemindersPage() -> RemindersList {
+    let remindersRepository = DefaultRemindersListRepository(
+      dataSource: Container.shared.dataSource()
+    )
+    let remindersInteractor = DefaultRemindersListInteractor(repository: remindersRepository)
+    let remindersViewModel = RemindersListViewModel(interactor: remindersInteractor)
     let closeAction = NavigationBarConfiguration.CloseAction(
       icon: theme.imageCatalog.uiAction.chevronLeft) { [weak self] in
         self?.navigationController.popViewController(animated: true)
@@ -44,6 +49,6 @@ class RemindersCoordinator {
       title: "Reminders page",
       leadingAction: closeAction
     )
-    return RemindersPage(navigationBar: navigationBarConfiguration)
+    return RemindersList(viewModel: remindersViewModel, navigationBar: navigationBarConfiguration)
   }
 }
