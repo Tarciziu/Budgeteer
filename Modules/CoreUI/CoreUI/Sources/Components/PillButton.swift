@@ -14,6 +14,9 @@ public struct PillButton: View {
   @Environment(BTTheme.self)
   private var theme: BTTheme
 
+  @Environment(\.isLoading)
+  private var isLoading
+
   // MARK: - Private Properties
 
   private let content: Content
@@ -48,6 +51,8 @@ public struct PillButton: View {
     .overlay {
       borderView
     }
+    .redacted(reason: isLoading ? .placeholder : [])
+    .shimmer(style: ShimmerStyle(theme: theme), active: isLoading)
   }
 
   // MARK: - Subviews
