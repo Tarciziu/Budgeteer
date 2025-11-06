@@ -143,8 +143,8 @@ public extension PillButton {
       label: String,
       leadingIcon: String? = nil,
       trailingIcon: String? = nil,
-      action: (() -> Void)? = nil,
-      type: ButtonType = .idle
+      type: ButtonType = .idle,
+      action: (() -> Void)? = nil
     ) {
       self.label = label
       self.leadingIcon = leadingIcon

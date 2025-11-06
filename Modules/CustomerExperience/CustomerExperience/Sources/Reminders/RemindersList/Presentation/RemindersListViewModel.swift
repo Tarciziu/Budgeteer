@@ -26,4 +26,15 @@ final public class RemindersListViewModel: ObservableObject {
     self.interactor = interactor
     uiModel = mapper.map()
   }
+
+  // MARK: - Internal Methods
+
+  func handlePendingReminderEdit(at index: Int) {
+  }
+
+  func handlePendingReminderDelete(at index: Int) {
+  }
+
+  func handleExpiredReminderDelete(at index: Int) {
+  }
 }
