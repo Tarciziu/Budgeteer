@@ -37,7 +37,7 @@ class RemindersCoordinator {
 
   private func assembleRemindersPage() -> RemindersList {
     let remindersRepository = DefaultRemindersListRepository(
-      dataSource: Container.shared.dataSource()
+      userPreferences: Container.shared.userPreferences()
     )
     let remindersInteractor = DefaultRemindersListInteractor(repository: remindersRepository)
     let remindersViewModel = RemindersListViewModel(interactor: remindersInteractor)

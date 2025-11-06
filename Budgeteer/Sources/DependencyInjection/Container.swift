@@ -16,6 +16,10 @@ extension Container {
     self { DefaultUserDataSource() }.shared
   }
 
+  var userPreferences: Factory<UserPreferences> {
+    self { DefaultUserPreferences() }.shared
+  }
+
   // MARK: - Theme
 
   var theme: Factory<BTTheme> {
