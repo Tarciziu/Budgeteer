@@ -20,4 +20,18 @@ final public class DefaultRemindersListInteractor: RemindersListInteractor {
   public init(repository: RemindersListRepository) {
     self.repository = repository
   }
+
+  // MARK: - RemindersListInteractor Methods
+
+  public func getReminders() -> [Reminder] {
+    repository.getReminders()
+  }
+
+  public func storeReminder(_ reminder: Reminder) {
+    repository.storeReminder(reminder)
+  }
+
+  public func removeReminder(_ reminder: Reminder) {
+    repository.removeReminder(reminder)
+  }
 }
