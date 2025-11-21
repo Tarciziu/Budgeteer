@@ -31,7 +31,8 @@ extension ColorPalette {
       light: Color("neutral-100"),
       dark: Color("neutral-900"),
       overlay: Color("neutral-transparent-2"),
-      disabled: Color("neutral-300")
+      disabled: Color("neutral-300"),
+      inverted: Color("neutral-1000")
     )
   }
 
@@ -78,7 +79,9 @@ extension ColorPalette {
       primary: Color("neutral-900"),
       secondary: Color("neutral-600"),
       positive: Color("positive-100"),
-      negative: Color("negative-100")
+      negative: Color("negative-100"),
+      disabled: Color("neutral-transparent-2"),
+      inverted: Color("neutral-100")
     )
   }
 
