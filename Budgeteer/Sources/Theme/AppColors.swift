@@ -97,7 +97,8 @@ extension ColorPalette {
 
   private static func makeBorderColors() -> BorderColors {
     BorderColors(
-      primary: Color("neutral-300")
+      primary: Color("neutral-300"),
+      negative: Color("negative-100")
     )
   }
 }

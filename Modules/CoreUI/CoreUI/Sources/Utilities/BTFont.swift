@@ -54,7 +54,7 @@ struct BTFontApplier: ViewModifier {
   let btFont: BTFont
 
   func body(content: Content) -> some View {
-    content.font(btFont)
+    content.font(Font(btFont.font))
   }
 }
 

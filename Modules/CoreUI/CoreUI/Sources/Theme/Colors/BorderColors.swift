@@ -13,12 +13,17 @@ public struct BorderColors {
 
   /// The primary border color.
   public let primary: Color
+  /// The negative border color.
+  public let negative: Color
 
   // MARK: - Initializer
 
   /// Initializes a new instance of `BorderColors`.
-  /// - Parameter primary: The primary border color as a string.
-  public init(primary: Color) {
+  /// - Parameters:
+  ///   - primary: The primary border color.
+  ///   - negative: The negative border color.
+  public init(primary: Color, negative: Color) {
     self.primary = primary
+    self.negative = negative
   }
 }
