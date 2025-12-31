@@ -28,6 +28,8 @@ public struct InputField: View {
   // MARK: - State Properties
 
   @Binding private var text: String
+  @State private var formattedText = String()
+  @State private var formattedTextBuffer: (oldValue: String, currentValue: String) = (String(), String())
   @FocusState private var isFocused: Bool
 
   // MARK: - Private Properties
@@ -37,6 +39,7 @@ public struct InputField: View {
   private let hasClearIcon: Bool
   private let leadingIconConfig: IconConfig?
   private let trailingIconConfig: IconConfig?
+  private let visualTransformation: VisualTransformation?
 
   // MARK: - Initializer
 
@@ -48,13 +51,15 @@ public struct InputField: View {
   ///   - hasClearIcon: A boolean indicating whether the clear icon should be shown.
   ///   - leadingIconConfig: An optional leading icon configuration.
   ///   - trailingIconConfig: An optional trailing icon configuration.
+  ///   - visualTransformation: An optional visual transformation for the text input.
   public init(
     text: Binding<String>,
     label: String,
     inputFieldState: InputFieldState = .normal,
     hasClearIcon: Bool = false,
     leadingIconConfig: IconConfig? = nil,
-    trailingIconConfig: IconConfig? = nil
+    trailingIconConfig: IconConfig? = nil,
+    visualTransformation: VisualTransformation? = nil
   ) {
     self._text = text
     self.label = label
@@ -62,6 +67,7 @@ public struct InputField: View {
     self.hasClearIcon = hasClearIcon
     self.leadingIconConfig = leadingIconConfig
     self.trailingIconConfig = trailingIconConfig
+    self.visualTransformation = visualTransformation
   }
 
   // MARK: - Body
@@ -106,6 +112,11 @@ public struct InputField: View {
       textField
     }
     .padding(theme.spacing.spacerL)
+    .onChange(of: text) { oldValue, newValue in
+      if oldValue != newValue {
+        formatText(newValue)
+      }
+    }
   }
 
   private var labelView: some View {
@@ -128,6 +139,12 @@ public struct InputField: View {
         .disabled(inputFieldState == .disabled)
         .tint(theme.colorPalette.border.primary)
         .foregroundStyle(contentColor)
+        .onChange(of: formattedText) { _, newValue in
+          if newValue != formattedTextBuffer.currentValue {
+            formattedTextBuffer = (formattedTextBuffer.currentValue, newValue)
+          }
+          formatText(newValue)
+        }
       HStack(spacing: theme.spacing.spacerXS) {
         clearIconView
         makeIconView(iconConfig: trailingIconConfig)
@@ -140,7 +157,10 @@ public struct InputField: View {
   }
 
   private var textFieldView: some View {
-    TextField(String(), text: $text)
+    TextField(
+      String(),
+      text: visualTransformation != nil ? $formattedText : $text
+    )
   }
 
   @ViewBuilder private var borderView: some View {
@@ -194,7 +214,7 @@ public struct InputField: View {
   }
 }
 
-// MARK: - Helpers
+// MARK: - Color Helpers
 
 extension InputField {
   // MARK: - Helper Properties
@@ -245,6 +265,26 @@ extension InputField {
       return theme.colorPalette.icon.disabled
     case .error:
       return theme.colorPalette.icon.primary
+    }
+  }
+}
+
+// MARK: - Text Helpers
+
+extension InputField {
+  // MARK: - Private Methods
+
+  private func formatText(_ value: String) {
+    guard let visualTransformation else {
+      self.formattedText = value
+      return
+    }
+    if visualTransformation.isValidForTransformation(value) {
+      let transformation = visualTransformation.transform(value)
+      self.text = transformation.0
+      self.formattedText = transformation.1
+    } else {
+      self.formattedText = formattedTextBuffer.oldValue
     }
   }
 }
