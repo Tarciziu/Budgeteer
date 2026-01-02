@@ -7,6 +7,7 @@
 
 import Combine
 
+import BTCore
 import BTCoreUI
 
 import UIKit
@@ -45,9 +46,7 @@ class ProfilePageCoordinator {
   // MARK: - Private Methods
 
   private func assembleProfilePage() -> ProfilePage {
-    let repository = DefaultProfilePageRepository()
-    let interactor = DefaultProfilePageInteractor(repository: repository)
-    let viewModel = ProfilePageViewModel(interactor: interactor)
+    let viewModel = ProfilePageViewModel()
     observe(viewModel)
     let navigationBarConfiguration = NavigationBarConfiguration(title: "Profile Screen")
     return ProfilePage(viewModel: viewModel, config: navigationBarConfiguration)

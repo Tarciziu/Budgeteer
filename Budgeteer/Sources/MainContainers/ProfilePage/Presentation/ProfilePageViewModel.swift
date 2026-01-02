@@ -11,12 +11,12 @@ import Combine
 final class ProfilePageViewModel: ObservableObject {
   // MARK: - Nested Types
 
-  enum OutputEvent {
+  enum OutputEvent: Equatable {
     case externalNavigation(destination: URL)
     case internalNavigation(destination: InternalNavigationDestination)
   }
 
-  enum InternalNavigationDestination {
+  enum InternalNavigationDestination: Equatable {
     case reminders
     case themeCustomization
     case feedback
@@ -36,8 +36,8 @@ final class ProfilePageViewModel: ObservableObject {
 
   // MARK: - Init
 
-  init(interactor: ProfilePageInteractor) {
-    self.uiModel = ProfilePageUIMapper().map()
+  init() {
+    self.uiModel = mapper.map()
   }
 
   // MARK: - Internal Methods
