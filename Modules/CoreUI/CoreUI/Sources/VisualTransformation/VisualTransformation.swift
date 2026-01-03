@@ -11,7 +11,7 @@ import Foundation
 public protocol VisualTransformation {
   /// Transforms the given text and returns a tuple containing the transformed and original text.
   /// - Parameter text: The text to be transformed.
-  /// - Returns: A tuple where the first element is the transformed (formatted) text and the second element is the original (unformatted) text.
+  /// - Returns: A tuple where the first element is the original (unformatted) text and the second element is the transformed (formatted) text.
   func transform(_ text: String) -> (String, String)
   /// Checks if the given text is valid for transformation.
   /// - Parameter text: The text to be validated.

@@ -16,8 +16,8 @@ public class NumericalVisualTransformation: VisualTransformation {
   // MARK: - Initializer
 
   /// Initializes a new instance of ``NumericalVisualTransformation``.
-  /// - Parameter formatter: The formatter used for text formatting..
-  public init(formatter: NumberFormatter, ) {
+  /// - Parameter formatter: The formatter used for text formatting.
+  public init(formatter: NumberFormatter) {
     self.formatter = formatter
   }
 
@@ -49,10 +49,10 @@ public class NumericalVisualTransformation: VisualTransformation {
         digits: formatter.maximumIntegerDigits,
         unformattedValueComponents: unformattedValueComponents
       ) ?? unformattedValue
-      return (formattedValue, unformattedValue)
+      return (unformattedValue, formattedValue)
     }
     let formattedValue = getLimitedNumber(unformattedValueComponents: unformattedValueComponents) ?? unformattedValue
-    return (formattedValue, unformattedValue)
+    return (unformattedValue, formattedValue)
   }
 
   public func isValidForTransformation(_ text: String) -> Bool {
