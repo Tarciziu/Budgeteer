@@ -15,14 +15,14 @@ final public class RemindersListViewModel: ObservableObject {
 
   // MARK: - Private Properties
 
-  private let interactor: RemindersListInteractor
+  private let interactor: RemindersInteractor
   private let mapper = RemindersListUIMapper()
 
   // MARK: - Init
 
   /// Creates a new `RemindersListViewModel`
   /// - Parameter interactor: The interactor associated with the feature.
-  public init(interactor: RemindersListInteractor) {
+  public init(interactor: RemindersInteractor) {
     self.interactor = interactor
     uiModel = mapper.map()
   }

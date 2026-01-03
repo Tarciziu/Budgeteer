@@ -1,5 +1,5 @@
 //
-//  DefaultRemindersListInteractor.swift
+//  DefaultRemindersInteractor.swift
 //  CustomerExperience
 //
 //  Created by Adrian-Zoltan Herczeg on 03.11.2025.
@@ -7,21 +7,21 @@
 
 import Foundation
 
-/// Default implementation of the `RemindersListInteractor`.
-final public class DefaultRemindersListInteractor: RemindersListInteractor {
+/// Default implementation of the `RemindersInteractor`.
+final public class DefaultRemindersInteractor: RemindersInteractor {
   // MARK: - Private Properties
 
-  private let repository: RemindersListRepository
+  private let repository: RemindersRepository
 
   // MARK: - Init
 
-  /// Creates a new `DefaultRemindersListInteractor`.
+  /// Creates a new `DefaultRemindersInteractor`.
   /// - Parameter repository: The data layer entity used for information retrieval.
-  public init(repository: RemindersListRepository) {
+  public init(repository: RemindersRepository) {
     self.repository = repository
   }
 
-  // MARK: - RemindersListInteractor Methods
+  // MARK: - RemindersInteractor Methods
 
   public func getReminders() -> [Reminder] {
     repository.getReminders()

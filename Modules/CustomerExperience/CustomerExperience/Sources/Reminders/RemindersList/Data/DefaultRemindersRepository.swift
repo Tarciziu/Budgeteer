@@ -1,5 +1,5 @@
 //
-//  DefaultRemindersListRepository.swift
+//  DefaultRemindersRepository.swift
 //  CustomerExperience
 //
 //  Created by Adrian-Zoltan Herczeg on 03.11.2025.
@@ -8,8 +8,8 @@
 import BTCore
 import Foundation
 
-/// Default implementation of `DefaultRemindersListRepository`.
-final public class DefaultRemindersListRepository: RemindersListRepository {
+/// Default implementation of `RemindersRepository`.
+final public class DefaultRemindersRepository: RemindersRepository {
   // MARK: - Nested Types
 
   private enum Constants {
@@ -26,13 +26,13 @@ final public class DefaultRemindersListRepository: RemindersListRepository {
 
   // MARK: - Init
 
-  /// Creates a new `DefaultRemindersListRepository`.
+  /// Creates a new `DefaultRemindersRepository`.
   /// - Parameter userPreferences: The data source used to fetch cached information.
   public init(userPreferences: UserPreferences) {
     self.userPreferences = userPreferences
   }
 
-  // MARK: - RemindersListRepository Methods
+  // MARK: - RemindersRepository Methods
 
   public func getReminders() -> [Reminder] {
     let cachedData = userPreferences.read(Data.self, forKey: Constants.remindersKey)
