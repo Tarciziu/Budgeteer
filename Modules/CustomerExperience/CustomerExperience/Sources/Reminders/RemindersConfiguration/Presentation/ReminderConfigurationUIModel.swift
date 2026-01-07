@@ -7,4 +7,14 @@
 
 import Foundation
 
-struct ReminderConfigurationUIModel {}
+struct ReminderConfigurationUIModel {
+  let reminderTitleLabel: String
+  let reminderTitlePlaceholder: String
+  let reminderDateLabel: String
+  let reminderDatePlaceholder: String
+  let reminderAmountLabel: String
+  let noteLabel: String
+  let notePlaceholder: String
+  let saveButtonTitle: String
+  let cancelButtonTitle: String
+}

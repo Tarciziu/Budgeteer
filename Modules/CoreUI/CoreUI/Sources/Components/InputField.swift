@@ -35,6 +35,7 @@ public struct InputField: View {
   // MARK: - Private Properties
 
   private let label: String
+  private let placeholder: String
   private let inputFieldState: InputFieldState
   private let hasClearIcon: Bool
   private let leadingIconConfig: IconConfig?
@@ -47,6 +48,7 @@ public struct InputField: View {
   /// - Parameters:
   ///   - text: Binding to the text value of the input field.
   ///   - label: The label displayed above the input field.
+  ///   - placeholder: Placeholder indicating the purpose of the input field, displayed when no text is written inside.
   ///   - inputFieldState: The state of the input field (normal, disabled, error).
   ///   - hasClearIcon: A boolean indicating whether the clear icon should be shown.
   ///   - leadingIconConfig: An optional leading icon configuration.
@@ -55,6 +57,7 @@ public struct InputField: View {
   public init(
     text: Binding<String>,
     label: String,
+    placeholder: String = String(),
     inputFieldState: InputFieldState = .normal,
     hasClearIcon: Bool = false,
     leadingIconConfig: IconConfig? = nil,
@@ -63,6 +66,7 @@ public struct InputField: View {
   ) {
     self._text = text
     self.label = label
+    self.placeholder = placeholder
     self.inputFieldState = inputFieldState
     self.hasClearIcon = hasClearIcon
     self.leadingIconConfig = leadingIconConfig
@@ -158,7 +162,7 @@ public struct InputField: View {
 
   private var textFieldView: some View {
     TextField(
-      String(),
+      placeholder,
       text: visualTransformation != nil ? $formattedText : $text
     )
   }

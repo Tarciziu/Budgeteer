@@ -16,6 +16,12 @@ public struct ReminderConfigurationPage: View {
   private var theme
   @Bindable private var viewModel: ReminderConfigurationViewModel
 
+  // MARK: - Computed Properties
+
+  private var uiModel: ReminderConfigurationUIModel {
+    viewModel.uiModel
+  }
+
   // MARK: - Private Properties
 
   private let navigationBarConfiguration: NavigationBarConfiguration
@@ -23,7 +29,9 @@ public struct ReminderConfigurationPage: View {
   // MARK: - Init
 
   /// Creates a new `ReminderConfigurationPage`.
-  /// - Parameter viewModel: The presentation layer entity responsible for managing it.
+  /// - Parameters:
+  ///   - viewModel: The presentation layer entity responsible for managing it.
+  ///   - navigationBarConfiguration: Additional configurations for the navigation bar.
   public init(
     viewModel: ReminderConfigurationViewModel,
     navigationBarConfiguration: NavigationBarConfiguration
@@ -35,7 +43,66 @@ public struct ReminderConfigurationPage: View {
   // MARK: - Body
 
   public var body: some View {
-    Text("ReminderConfigurationPage")
-      .navigationBar(navigationBarConfiguration)
+    ScrollView {
+      VStack(spacing: theme.spacing.spacerL) {
+        reminderderTitleSection
+        reminderDateSection
+        amountSection
+        noteSection
+      }
+    }
+    .scrollIndicators(.hidden)
+    .padding(.top, theme.spacing.spacerL)
+    .navigationBar(navigationBarConfiguration)
+    .safeAreaInset(edge: .bottom) {
+      buttonsSet
+        .padding(theme.spacing.spacerXXL)
+    }
+  }
+
+  // MARK: - Subviews
+
+  private var reminderderTitleSection: some View {
+    InputField(
+      text: $viewModel.reminderTitleText,
+      label: uiModel.reminderTitleLabel,
+      placeholder: uiModel.reminderTitlePlaceholder
+    )
+  }
+
+  private var reminderDateSection: some View {
+    DatePicker(selection: $viewModel.reminderDate) {
+      Text(uiModel.reminderDatePlaceholder)
+        .font(theme.typography.body.subheadline)
+        .foregroundStyle(theme.colorPalette.text.secondary)
+    }
+    .datePickerStyle(.compact)
+    .padding(theme.spacing.spacerL)
+  }
+
+  private var amountSection: some View {
+    InputField(
+      text: $viewModel.amount,
+      label: uiModel.reminderAmountLabel
+    )
+  }
+
+  private var noteSection: some View {
+    InputField(
+      text: $viewModel.note,
+      label: uiModel.noteLabel,
+      placeholder: uiModel.notePlaceholder
+    )
+  }
+
+  private var buttonsSet: some View {
+    HStack(spacing: theme.spacing.spacerM) {
+      RegularButton(type: .secondary, text: uiModel.cancelButtonTitle, imageName: nil) {
+        viewModel.handleCancelButton()
+      }
+      RegularButton(type: .primary, text: uiModel.saveButtonTitle, imageName: nil) {
+        viewModel.handleSaveButton()
+      }
+    }
   }
 }
