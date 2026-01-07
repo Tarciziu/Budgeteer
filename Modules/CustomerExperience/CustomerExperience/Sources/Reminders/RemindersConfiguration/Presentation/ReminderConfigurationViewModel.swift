@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BTBusinessCore
 
 /// Presenation layer entity responsible for managing the reminder configuration page.
 @Observable

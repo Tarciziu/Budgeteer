@@ -9,10 +9,10 @@ import Foundation
 
 /// Domain model representing a user configured reminder.
 public struct Reminder: Equatable, Codable {
-  let name: String
-  let triggerDate: Date
-  let performance: ReminderPerformance?
-  let details: String?
+  public let name: String
+  public let triggerDate: Date
+  public let performance: ReminderPerformance?
+  public let details: String?
 
   /// Creates a new `Reminder`.
   /// - Parameters:
@@ -35,22 +35,18 @@ public struct Reminder: Equatable, Codable {
 
 /// Creates a new performance configuration for a reminder.
 public struct ReminderPerformance: Equatable, Codable {
-  let value: Float
-  let performance: Performance
-  let currency: Currency
-}
+  public let value: Float
+  public let performance: Performance
+  public let currency: CurrencyDM
 
-// TODO: - Move these in a separate module for core business entities
-
-/// Type representing the possbile states of a financial performance.
-public enum Performance: Equatable, Codable {
-  case positive
-  case nevative
-  case neutral
-}
-
-/// Type mapping supported currencies in the app.
-public enum Currency: Equatable, Codable {
-  case EUR
-  case USD
+  /// Creates a new `ReminderPerformance`.
+  /// - Parameters:
+  ///   - value: The value configured for the reminder.
+  ///   - performance: Performance indicating the trend of the reminder.
+  ///   - currency: Currency in whcih the reminder was stored.
+  public init(value: Float, performance: Performance, currency: CurrencyDM) {
+    self.value = value
+    self.performance = performance
+    self.currency = currency
+  }
 }

@@ -6,6 +6,7 @@
 //
 
 import Combine
+import BTBusinessCore
 
 /// Presentation layer entity responsible for operating the reminders list page.
 final public class RemindersListViewModel: ObservableObject {

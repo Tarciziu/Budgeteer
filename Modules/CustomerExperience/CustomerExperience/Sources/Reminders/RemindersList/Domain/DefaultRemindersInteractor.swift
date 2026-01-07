@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BTBusinessCore
 
 /// Default implementation of the `RemindersInteractor`.
 final public class DefaultRemindersInteractor: RemindersInteractor {

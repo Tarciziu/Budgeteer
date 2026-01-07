@@ -7,6 +7,7 @@
 
 import BTCore
 import Foundation
+import BTBusinessCore
 
 /// Default implementation of `RemindersRepository`.
 final public class DefaultRemindersRepository: RemindersRepository {

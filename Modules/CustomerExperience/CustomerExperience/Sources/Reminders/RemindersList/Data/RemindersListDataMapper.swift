@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import BTBusinessCore
 
 struct RemindersListDataMapper {
   // MARK: - Private Properties
@@ -39,7 +40,7 @@ struct RemindersListDataMapper {
       performanceDM = ReminderPerformance(
         value: performanceDTO.value,
         performance: performance,
-        currency: currencyMapper.map(currency: performanceDTO.currency)
+        currency: currencyMapper.map(currency: performanceDTO.currency) ?? CurrencyDM.defaultCurrency
       )
     }
 
@@ -65,32 +66,5 @@ struct RemindersListDataMapper {
       performance: performanceDTO,
       details: reminder.details
     )
-  }
-}
-
-private struct CurrencyMapper {
-  private enum Constants {
-    static let USD = "USD"
-    static let EUR = "EUR"
-  }
-
-  func map(currency: Currency) -> String {
-    switch currency {
-    case .EUR:
-      Constants.EUR
-    case .USD:
-      Constants.USD
-    }
-  }
-
-  func map(currency: String) -> Currency {
-    switch currency {
-    case Constants.USD:
-      return .USD
-    case Constants.EUR:
-      return .EUR
-    default:
-      return .EUR
-    }
   }
 }
