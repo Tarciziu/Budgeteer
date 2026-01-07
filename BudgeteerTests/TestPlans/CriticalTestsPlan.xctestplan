@@ -18,27 +18,10 @@
   },
   "testTargets" : [
     {
-      "selectedTags" : {
-        "tags" : [
-          ".critical"
-        ]
-      },
       "target" : {
-        "containerPath" : "container:Modules\/CustomerExperience\/CustomerExperience.xcodeproj",
-        "identifier" : "7344C54E2E8BF65500FAAE51",
-        "name" : "CustomerExperienceTests"
-      }
-    },
-    {
-      "selectedTags" : {
-        "tags" : [
-          ".critical"
-        ]
-      },
-      "target" : {
-        "containerPath" : "container:Modules\/Core\/Core.xcodeproj",
-        "identifier" : "4601DF482E633DB10028EEC0",
-        "name" : "CoreTests"
+        "containerPath" : "container:BusinessCore.xcodeproj",
+        "identifier" : "73855FAD2F0EB2270070923D",
+        "name" : "BusinessCoreTests"
       }
     },
     {
@@ -60,9 +43,33 @@
         ]
       },
       "target" : {
+        "containerPath" : "container:Modules\/CustomerExperience\/CustomerExperience.xcodeproj",
+        "identifier" : "7344C54E2E8BF65500FAAE51",
+        "name" : "CustomerExperienceTests"
+      }
+    },
+    {
+      "selectedTags" : {
+        "tags" : [
+          ".critical"
+        ]
+      },
+      "target" : {
         "containerPath" : "container:Budgeteer.xcodeproj",
         "identifier" : "46CFAD232E564A8000931D2B",
         "name" : "BudgeteerTests"
+      }
+    },
+    {
+      "selectedTags" : {
+        "tags" : [
+          ".critical"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:Modules\/Core\/Core.xcodeproj",
+        "identifier" : "4601DF482E633DB10028EEC0",
+        "name" : "CoreTests"
       }
     },
     {

@@ -13,6 +13,8 @@
 		467F2E2D2E9BCB1400AA8807 /* BTAuthentication.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 467F2E2B2E9BCB1400AA8807 /* BTAuthentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7344C55F2E8BF6A900FAAE51 /* BTCustomerExperience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7344C55E2E8BF6A900FAAE51 /* BTCustomerExperience.framework */; };
 		73492B402EAE605F00382483 /* InstantMock in Frameworks */ = {isa = PBXBuildFile; productRef = 73492B3F2EAE605F00382483 /* InstantMock */; };
+		73855F972F0EAA0D0070923D /* BTBusinessCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73855F962F0EAA0D0070923D /* BTBusinessCore.framework */; };
+		73855F982F0EAA0D0070923D /* BTBusinessCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73855F962F0EAA0D0070923D /* BTBusinessCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		73D832E12E9FB7CC00E7EF2B /* AppTestingGround in Frameworks */ = {isa = PBXBuildFile; productRef = 73D832E02E9FB7CC00E7EF2B /* AppTestingGround */; };
 		73EDFB552E67108C008C83A3 /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 73EDFB542E67108C008C83A3 /* FactoryKit */; };
 /* End PBXBuildFile section */
@@ -35,6 +37,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				467F2E2D2E9BCB1400AA8807 /* BTAuthentication.framework in Embed Frameworks */,
+				73855F982F0EAA0D0070923D /* BTBusinessCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,6 +52,7 @@
 		46CFAD172E564A7F00931D2B /* Budgeteer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budgeteer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CFAD242E564A8000931D2B /* BudgeteerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgeteerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7344C55E2E8BF6A900FAAE51 /* BTCustomerExperience.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTCustomerExperience.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73855F962F0EAA0D0070923D /* BTBusinessCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTBusinessCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -83,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73EDFB552E67108C008C83A3 /* FactoryKit in Frameworks */,
+				73855F972F0EAA0D0070923D /* BTBusinessCore.framework in Frameworks */,
 				4601DF912E63400A0028EEC0 /* BTCore.framework in Frameworks */,
 				7344C55F2E8BF6A900FAAE51 /* BTCustomerExperience.framework in Frameworks */,
 				467F2E2C2E9BCB1400AA8807 /* BTAuthentication.framework in Frameworks */,
@@ -105,6 +110,7 @@
 		46C2E7C22E62EC3E0022119E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				73855F962F0EAA0D0070923D /* BTBusinessCore.framework */,
 				467F2E2B2E9BCB1400AA8807 /* BTAuthentication.framework */,
 				467F2E0B2E9BCA4100AA8807 /* Authentication.framework */,
 				7344C55E2E8BF6A900FAAE51 /* BTCustomerExperience.framework */,
