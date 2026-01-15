@@ -7,44 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7344C5502E8BF65500FAAE51 /* BTCustomerExperience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7344C5442E8BF65500FAAE51 /* BTCustomerExperience.framework */; };
-		73492B462EAE608900382483 /* InstantMock in Frameworks */ = {isa = PBXBuildFile; productRef = 73492B452EAE608900382483 /* InstantMock */; };
-		73855F9A2F0EAA230070923D /* BTBusinessCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73855F992F0EAA230070923D /* BTBusinessCore.framework */; };
-		73855F9B2F0EAA230070923D /* BTBusinessCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73855F992F0EAA230070923D /* BTBusinessCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		73D3B90D2E902C3200710529 /* BTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D3B90C2E902C3200710529 /* BTCore.framework */; };
-		73D3B90E2E902C3200710529 /* BTCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73D3B90C2E902C3200710529 /* BTCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		73D3B9102E902C5600710529 /* BTCoreUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D3B9082E90269B00710529 /* BTCoreUI.framework */; };
-		73D3B9112E902C5600710529 /* BTCoreUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73D3B9082E90269B00710529 /* BTCoreUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		73D832E62E9FB7DB00E7EF2B /* AppTestingGround in Frameworks */ = {isa = PBXBuildFile; productRef = 73D832E52E9FB7DB00E7EF2B /* AppTestingGround */; };
+		73855F932F0EA9F90070923D /* BTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73855F922F0EA9F90070923D /* BTCore.framework */; };
+		73855F942F0EA9F90070923D /* BTCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73855F922F0EA9F90070923D /* BTCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		73855FCA2F0EB2420070923D /* AppTestingGround in Frameworks */ = {isa = PBXBuildFile; productRef = 73855FC92F0EB2420070923D /* AppTestingGround */; };
+		73855FCC2F0EB2550070923D /* InstantMock in Frameworks */ = {isa = PBXBuildFile; productRef = 73855FCB2F0EB2550070923D /* InstantMock */; };
+		73855FCD2F0EB2600070923D /* BTBusinessCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73855F5C2F0EA7AE0070923D /* BTBusinessCore.framework */; platformFilter = ios; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7344C5512E8BF65500FAAE51 /* PBXContainerItemProxy */ = {
+		73855FAF2F0EB2270070923D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7344C53B2E8BF65500FAAE51 /* Project object */;
+			containerPortal = 73855F252F0EA74A0070923D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7344C5432E8BF65500FAAE51;
-			remoteInfo = CustomerExperience;
+			remoteGlobalIDString = 73855FA12F0EB2260070923D;
+			remoteInfo = BusinessCoreHostingApp;
 		};
-		73D826AF2E9F879600E7EF2B /* PBXContainerItemProxy */ = {
+		73855FCF2F0EB2600070923D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7344C53B2E8BF65500FAAE51 /* Project object */;
+			containerPortal = 73855F252F0EA74A0070923D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 73D826852E9F872E00E7EF2B;
-			remoteInfo = CustomerExperienceHostingApp;
+			remoteGlobalIDString = 73855F5B2F0EA7AE0070923D;
+			remoteInfo = BusinessCore;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		73D3B90F2E902C3200710529 /* Embed Frameworks */ = {
+		73855F952F0EA9F90070923D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				73D3B90E2E902C3200710529 /* BTCore.framework in Embed Frameworks */,
-				73855F9B2F0EAA230070923D /* BTBusinessCore.framework in Embed Frameworks */,
-				73D3B9112E902C5600710529 /* BTCoreUI.framework in Embed Frameworks */,
+				73855F942F0EA9F90070923D /* BTCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,90 +46,99 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7344C5442E8BF65500FAAE51 /* BTCustomerExperience.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTCustomerExperience.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7344C54F2E8BF65500FAAE51 /* CustomerExperienceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomerExperienceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		73855F992F0EAA230070923D /* BTBusinessCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTBusinessCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		73D3B9082E90269B00710529 /* BTCoreUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTCoreUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		73D3B90C2E902C3200710529 /* BTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		73D826862E9F872E00E7EF2B /* CustomerExperienceHostingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomerExperienceHostingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		73855F5C2F0EA7AE0070923D /* BTBusinessCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTBusinessCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73855F852F0EA7EE0070923D /* BTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73855F922F0EA9F90070923D /* BTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73855FA22F0EB2260070923D /* BusinessCoreHostingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusinessCoreHostingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		73855FAE2F0EB2270070923D /* BusinessCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusinessCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		73855FD72F0EB4900070923D /* Exceptions for "BusinessCore" folder in "BusinessCore" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Sources/BusinessCore.docc,
+			);
+			target = 73855F5B2F0EA7AE0070923D /* BusinessCore */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7344C5462E8BF65500FAAE51 /* CustomerExperience */ = {
+		73855FA32F0EB2260070923D /* BusinessCoreHostingApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CustomerExperience;
+			path = BusinessCoreHostingApp;
 			sourceTree = "<group>";
 		};
-		7344C5532E8BF65500FAAE51 /* CustomerExperienceTests */ = {
+		73855FB12F0EB2270070923D /* BusinessCoreTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CustomerExperienceTests;
+			path = BusinessCoreTests;
 			sourceTree = "<group>";
 		};
-		73D826872E9F872E00E7EF2B /* CustomerExperienceHostingApp */ = {
+		73855FD22F0EB4300070923D /* BusinessCore */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CustomerExperienceHostingApp;
+			exceptions = (
+				73855FD72F0EB4900070923D /* Exceptions for "BusinessCore" folder in "BusinessCore" target */,
+			);
+			path = BusinessCore;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7344C5412E8BF65500FAAE51 /* Frameworks */ = {
+		73855F592F0EA7AE0070923D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73D3B90D2E902C3200710529 /* BTCore.framework in Frameworks */,
-				73855F9A2F0EAA230070923D /* BTBusinessCore.framework in Frameworks */,
-				73D3B9102E902C5600710529 /* BTCoreUI.framework in Frameworks */,
+				73855F932F0EA9F90070923D /* BTCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7344C54C2E8BF65500FAAE51 /* Frameworks */ = {
+		73855F9F2F0EB2260070923D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73D832E62E9FB7DB00E7EF2B /* AppTestingGround in Frameworks */,
-				7344C5502E8BF65500FAAE51 /* BTCustomerExperience.framework in Frameworks */,
-				73492B462EAE608900382483 /* InstantMock in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73D826832E9F872E00E7EF2B /* Frameworks */ = {
+		73855FAB2F0EB2270070923D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73855FCC2F0EB2550070923D /* InstantMock in Frameworks */,
+				73855FCD2F0EB2600070923D /* BTBusinessCore.framework in Frameworks */,
+				73855FCA2F0EB2420070923D /* AppTestingGround in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7344C53A2E8BF65500FAAE51 = {
+		73855F242F0EA74A0070923D = {
 			isa = PBXGroup;
 			children = (
-				7344C5462E8BF65500FAAE51 /* CustomerExperience */,
-				7344C5532E8BF65500FAAE51 /* CustomerExperienceTests */,
-				73D826872E9F872E00E7EF2B /* CustomerExperienceHostingApp */,
-				73D3B9072E90269B00710529 /* Frameworks */,
-				7344C5452E8BF65500FAAE51 /* Products */,
+				73855FD22F0EB4300070923D /* BusinessCore */,
+				73855FB12F0EB2270070923D /* BusinessCoreTests */,
+				73855FA32F0EB2260070923D /* BusinessCoreHostingApp */,
+				73855F842F0EA7EE0070923D /* Frameworks */,
+				73855F2E2F0EA74A0070923D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		7344C5452E8BF65500FAAE51 /* Products */ = {
+		73855F2E2F0EA74A0070923D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7344C5442E8BF65500FAAE51 /* BTCustomerExperience.framework */,
-				7344C54F2E8BF65500FAAE51 /* CustomerExperienceTests.xctest */,
-				73D826862E9F872E00E7EF2B /* CustomerExperienceHostingApp.app */,
+				73855F5C2F0EA7AE0070923D /* BTBusinessCore.framework */,
+				73855FA22F0EB2260070923D /* BusinessCoreHostingApp.app */,
+				73855FAE2F0EB2270070923D /* BusinessCoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		73D3B9072E90269B00710529 /* Frameworks */ = {
+		73855F842F0EA7EE0070923D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				73855F992F0EAA230070923D /* BTBusinessCore.framework */,
-				73D3B90C2E902C3200710529 /* BTCore.framework */,
-				73D3B9082E90269B00710529 /* BTCoreUI.framework */,
+				73855F922F0EA9F90070923D /* BTCore.framework */,
+				73855F852F0EA7EE0070923D /* BTCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,7 +146,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		7344C53F2E8BF65500FAAE51 /* Headers */ = {
+		73855F572F0EA7AE0070923D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -153,140 +156,138 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7344C5432E8BF65500FAAE51 /* CustomerExperience */ = {
+		73855F5B2F0EA7AE0070923D /* BusinessCore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7344C5582E8BF65500FAAE51 /* Build configuration list for PBXNativeTarget "CustomerExperience" */;
+			buildConfigurationList = 73855F732F0EA7AE0070923D /* Build configuration list for PBXNativeTarget "BusinessCore" */;
 			buildPhases = (
-				7344C53F2E8BF65500FAAE51 /* Headers */,
-				7344C5402E8BF65500FAAE51 /* Sources */,
-				7344C5412E8BF65500FAAE51 /* Frameworks */,
-				7344C5422E8BF65500FAAE51 /* Resources */,
-				73D3B90F2E902C3200710529 /* Embed Frameworks */,
+				73855F572F0EA7AE0070923D /* Headers */,
+				73855F582F0EA7AE0070923D /* Sources */,
+				73855F592F0EA7AE0070923D /* Frameworks */,
+				73855F5A2F0EA7AE0070923D /* Resources */,
+				73855F952F0EA9F90070923D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				7344C5462E8BF65500FAAE51 /* CustomerExperience */,
-			);
-			name = CustomerExperience;
+			name = BusinessCore;
 			packageProductDependencies = (
 			);
-			productName = CustomerExperience;
-			productReference = 7344C5442E8BF65500FAAE51 /* BTCustomerExperience.framework */;
+			productName = BusinessCore;
+			productReference = 73855F5C2F0EA7AE0070923D /* BTBusinessCore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7344C54E2E8BF65500FAAE51 /* CustomerExperienceTests */ = {
+		73855FA12F0EB2260070923D /* BusinessCoreHostingApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7344C55B2E8BF65500FAAE51 /* Build configuration list for PBXNativeTarget "CustomerExperienceTests" */;
+			buildConfigurationList = 73855FC02F0EB2270070923D /* Build configuration list for PBXNativeTarget "BusinessCoreHostingApp" */;
 			buildPhases = (
-				7344C54B2E8BF65500FAAE51 /* Sources */,
-				7344C54C2E8BF65500FAAE51 /* Frameworks */,
-				7344C54D2E8BF65500FAAE51 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7344C5522E8BF65500FAAE51 /* PBXTargetDependency */,
-				73D826B02E9F879600E7EF2B /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				7344C5532E8BF65500FAAE51 /* CustomerExperienceTests */,
-			);
-			name = CustomerExperienceTests;
-			packageProductDependencies = (
-				73D832E52E9FB7DB00E7EF2B /* AppTestingGround */,
-				73492B452EAE608900382483 /* InstantMock */,
-			);
-			productName = CustomerExperienceTests;
-			productReference = 7344C54F2E8BF65500FAAE51 /* CustomerExperienceTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		73D826852E9F872E00E7EF2B /* CustomerExperienceHostingApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 73D826902E9F872F00E7EF2B /* Build configuration list for PBXNativeTarget "CustomerExperienceHostingApp" */;
-			buildPhases = (
-				73D826822E9F872E00E7EF2B /* Sources */,
-				73D826832E9F872E00E7EF2B /* Frameworks */,
-				73D826842E9F872E00E7EF2B /* Resources */,
+				73855F9E2F0EB2260070923D /* Sources */,
+				73855F9F2F0EB2260070923D /* Frameworks */,
+				73855FA02F0EB2260070923D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				73D826872E9F872E00E7EF2B /* CustomerExperienceHostingApp */,
+				73855FA32F0EB2260070923D /* BusinessCoreHostingApp */,
+				73855FD22F0EB4300070923D /* BusinessCore */,
 			);
-			name = CustomerExperienceHostingApp;
+			name = BusinessCoreHostingApp;
 			packageProductDependencies = (
 			);
-			productName = CustomerExperienceHostingApp;
-			productReference = 73D826862E9F872E00E7EF2B /* CustomerExperienceHostingApp.app */;
+			productName = BusinessCoreHostingApp;
+			productReference = 73855FA22F0EB2260070923D /* BusinessCoreHostingApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		73855FAD2F0EB2270070923D /* BusinessCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73855FC32F0EB2270070923D /* Build configuration list for PBXNativeTarget "BusinessCoreTests" */;
+			buildPhases = (
+				73855FAA2F0EB2270070923D /* Sources */,
+				73855FAB2F0EB2270070923D /* Frameworks */,
+				73855FAC2F0EB2270070923D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				73855FB02F0EB2270070923D /* PBXTargetDependency */,
+				73855FD02F0EB2600070923D /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				73855FB12F0EB2270070923D /* BusinessCoreTests */,
+			);
+			name = BusinessCoreTests;
+			packageProductDependencies = (
+				73855FC92F0EB2420070923D /* AppTestingGround */,
+				73855FCB2F0EB2550070923D /* InstantMock */,
+			);
+			productName = BusinessCoreHostingAppTests;
+			productReference = 73855FAE2F0EB2270070923D /* BusinessCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7344C53B2E8BF65500FAAE51 /* Project object */ = {
+		73855F252F0EA74A0070923D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2600;
-				LastUpgradeCheck = 2600;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
-					7344C5432E8BF65500FAAE51 = {
-						CreatedOnToolsVersion = 26.0.1;
+					73855F5B2F0EA7AE0070923D = {
+						CreatedOnToolsVersion = 26.2;
 					};
-					7344C54E2E8BF65500FAAE51 = {
-						CreatedOnToolsVersion = 26.0.1;
-						TestTargetID = 73D826852E9F872E00E7EF2B;
+					73855FA12F0EB2260070923D = {
+						CreatedOnToolsVersion = 26.2;
 					};
-					73D826852E9F872E00E7EF2B = {
-						CreatedOnToolsVersion = 26.0.1;
+					73855FAD2F0EB2270070923D = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 73855FA12F0EB2260070923D;
 					};
 				};
 			};
-			buildConfigurationList = 7344C53E2E8BF65500FAAE51 /* Build configuration list for PBXProject "CustomerExperience" */;
+			buildConfigurationList = 73855F282F0EA74A0070923D /* Build configuration list for PBXProject "BusinessCore" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 7344C53A2E8BF65500FAAE51;
+			mainGroup = 73855F242F0EA74A0070923D;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				73492B442EAE608900382483 /* XCRemoteSwiftPackageReference "InstantMock" */,
+				73855F8F2F0EA9BC0070923D /* XCRemoteSwiftPackageReference "InstantMock" */,
 			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 7344C5452E8BF65500FAAE51 /* Products */;
+			productRefGroup = 73855F2E2F0EA74A0070923D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7344C5432E8BF65500FAAE51 /* CustomerExperience */,
-				7344C54E2E8BF65500FAAE51 /* CustomerExperienceTests */,
-				73D826852E9F872E00E7EF2B /* CustomerExperienceHostingApp */,
+				73855F5B2F0EA7AE0070923D /* BusinessCore */,
+				73855FA12F0EB2260070923D /* BusinessCoreHostingApp */,
+				73855FAD2F0EB2270070923D /* BusinessCoreTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7344C5422E8BF65500FAAE51 /* Resources */ = {
+		73855F5A2F0EA7AE0070923D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7344C54D2E8BF65500FAAE51 /* Resources */ = {
+		73855FA02F0EB2260070923D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73D826842E9F872E00E7EF2B /* Resources */ = {
+		73855FAC2F0EB2270070923D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -296,21 +297,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7344C5402E8BF65500FAAE51 /* Sources */ = {
+		73855F582F0EA7AE0070923D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7344C54B2E8BF65500FAAE51 /* Sources */ = {
+		73855F9E2F0EB2260070923D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73D826822E9F872E00E7EF2B /* Sources */ = {
+		73855FAA2F0EB2270070923D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -320,20 +321,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7344C5522E8BF65500FAAE51 /* PBXTargetDependency */ = {
+		73855FB02F0EB2270070923D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7344C5432E8BF65500FAAE51 /* CustomerExperience */;
-			targetProxy = 7344C5512E8BF65500FAAE51 /* PBXContainerItemProxy */;
+			target = 73855FA12F0EB2260070923D /* BusinessCoreHostingApp */;
+			targetProxy = 73855FAF2F0EB2270070923D /* PBXContainerItemProxy */;
 		};
-		73D826B02E9F879600E7EF2B /* PBXTargetDependency */ = {
+		73855FD02F0EB2600070923D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 73D826852E9F872E00E7EF2B /* CustomerExperienceHostingApp */;
-			targetProxy = 73D826AF2E9F879600E7EF2B /* PBXContainerItemProxy */;
+			platformFilter = ios;
+			target = 73855F5B2F0EA7AE0070923D /* BusinessCore */;
+			targetProxy = 73855FCF2F0EB2600070923D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		7344C5562E8BF65500FAAE51 /* Debug */ = {
+		73855F4C2F0EA74A0070923D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -367,7 +369,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -391,14 +392,11 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		7344C5572E8BF65500FAAE51 /* Release */ = {
+		73855F4D2F0EA74A0070923D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -432,7 +430,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -449,157 +446,101 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		73855F742F0EA7AE0070923D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.BTBusinessCore";
+				PRODUCT_MODULE_NAME = BTBusinessCore;
+				PRODUCT_NAME = BTBusinessCore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		73855F752F0EA7AE0070923D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.BTBusinessCore";
+				PRODUCT_MODULE_NAME = BTBusinessCore;
+				PRODUCT_NAME = BTBusinessCore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_MODULE = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		7344C5592E8BF65500FAAE51 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 1.0;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = "-.CustomerExperience";
-				PRODUCT_NAME = BTCustomerExperience;
-				SDKROOT = auto;
-				SKIP_INSTALL = YES;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INSTALL_MODULE = YES;
-				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				XROS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Debug;
-		};
-		7344C55A2E8BF65500FAAE51 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 1.0;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = "-.CustomerExperience";
-				PRODUCT_NAME = BTCustomerExperience;
-				SDKROOT = auto;
-				SKIP_INSTALL = YES;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INSTALL_MODULE = YES;
-				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				XROS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Release;
-		};
-		7344C55C2E8BF65500FAAE51 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-.CustomerExperienceTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CustomerExperienceHostingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CustomerExperienceHostingApp";
-				XROS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Debug;
-		};
-		7344C55D2E8BF65500FAAE51 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-.CustomerExperienceTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CustomerExperienceHostingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CustomerExperienceHostingApp";
-				XROS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Release;
-		};
-		73D8268E2E9F872F00E7EF2B /* Debug */ = {
+		73855FC12F0EB2270070923D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -619,7 +560,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-.CustomerExperienceHostingApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.BusinessCoreHostingApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -636,7 +577,7 @@
 			};
 			name = Debug;
 		};
-		73D8268F2E9F872F00E7EF2B /* Release */ = {
+		73855FC22F0EB2270070923D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -656,7 +597,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-.CustomerExperienceHostingApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.BusinessCoreHostingApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -674,41 +615,94 @@
 			};
 			name = Release;
 		};
+		73855FC42F0EB2270070923D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.BusinessCoreHostingAppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BusinessCoreHostingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BusinessCoreHostingApp";
+			};
+			name = Debug;
+		};
+		73855FC52F0EB2270070923D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.BusinessCoreHostingAppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BusinessCoreHostingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BusinessCoreHostingApp";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7344C53E2E8BF65500FAAE51 /* Build configuration list for PBXProject "CustomerExperience" */ = {
+		73855F282F0EA74A0070923D /* Build configuration list for PBXProject "BusinessCore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7344C5562E8BF65500FAAE51 /* Debug */,
-				7344C5572E8BF65500FAAE51 /* Release */,
+				73855F4C2F0EA74A0070923D /* Debug */,
+				73855F4D2F0EA74A0070923D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7344C5582E8BF65500FAAE51 /* Build configuration list for PBXNativeTarget "CustomerExperience" */ = {
+		73855F732F0EA7AE0070923D /* Build configuration list for PBXNativeTarget "BusinessCore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7344C5592E8BF65500FAAE51 /* Debug */,
-				7344C55A2E8BF65500FAAE51 /* Release */,
+				73855F742F0EA7AE0070923D /* Debug */,
+				73855F752F0EA7AE0070923D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7344C55B2E8BF65500FAAE51 /* Build configuration list for PBXNativeTarget "CustomerExperienceTests" */ = {
+		73855FC02F0EB2270070923D /* Build configuration list for PBXNativeTarget "BusinessCoreHostingApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7344C55C2E8BF65500FAAE51 /* Debug */,
-				7344C55D2E8BF65500FAAE51 /* Release */,
+				73855FC12F0EB2270070923D /* Debug */,
+				73855FC22F0EB2270070923D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		73D826902E9F872F00E7EF2B /* Build configuration list for PBXNativeTarget "CustomerExperienceHostingApp" */ = {
+		73855FC32F0EB2270070923D /* Build configuration list for PBXNativeTarget "BusinessCoreTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				73D8268E2E9F872F00E7EF2B /* Debug */,
-				73D8268F2E9F872F00E7EF2B /* Release */,
+				73855FC42F0EB2270070923D /* Debug */,
+				73855FC52F0EB2270070923D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -716,7 +710,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		73492B442EAE608900382483 /* XCRemoteSwiftPackageReference "InstantMock" */ = {
+		73855F8F2F0EA9BC0070923D /* XCRemoteSwiftPackageReference "InstantMock" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pirishd/InstantMock";
 			requirement = {
@@ -727,16 +721,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		73492B452EAE608900382483 /* InstantMock */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 73492B442EAE608900382483 /* XCRemoteSwiftPackageReference "InstantMock" */;
-			productName = InstantMock;
-		};
-		73D832E52E9FB7DB00E7EF2B /* AppTestingGround */ = {
+		73855FC92F0EB2420070923D /* AppTestingGround */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppTestingGround;
 		};
+		73855FCB2F0EB2550070923D /* InstantMock */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 73855F8F2F0EA9BC0070923D /* XCRemoteSwiftPackageReference "InstantMock" */;
+			productName = InstantMock;
+		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 7344C53B2E8BF65500FAAE51 /* Project object */;
+	rootObject = 73855F252F0EA74A0070923D /* Project object */;
 }
