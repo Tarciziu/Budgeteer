@@ -12,7 +12,14 @@ import Foundation
 public class ReminderConfigurationViewModel {
   // MARK: - Private Properties
 
+  var uiModel: ReminderConfigurationUIModel
+  var reminderTitleText = String()
+  var reminderDate = Date()
+  var amount = String()
+  var note = String()
+
   private let interactor: RemindersInteractor
+  private let mapper = ReminderConfigUIMapper()
 
   // MARK: - Init
 
@@ -20,5 +27,14 @@ public class ReminderConfigurationViewModel {
   /// - Parameter interactor: The interactor used by the feature.
   public init(interactor: RemindersInteractor) {
     self.interactor = interactor
+    uiModel = mapper.map()
+  }
+
+  // MARK: - Internal Methods
+
+  func handleCancelButton() {
+  }
+
+  func handleSaveButton() {
   }
 }
