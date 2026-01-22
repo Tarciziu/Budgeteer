@@ -20,6 +20,8 @@ final class MainWindow: UIWindow {
   private let mainWindowViewModel = Container.shared.appLaunchViewModel()
   private let appLaunchViewModel = Container.shared.appLaunchViewModel()
   private var mainNavigationController = BTNavigationController()
+  private var developerMenuCoordinator: DeveloperMenuCoordinator?
+  private var developerMenuSubscription: AnyCancellable?
   private var cancellable: AnyCancellable?
 
   // MARK: - Init
@@ -78,8 +80,28 @@ extension MainWindow {
   }
 
   override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-    let developerMenuScreen = DeveloperMenu()
-    let hostingController = UIHostingController(rootView: developerMenuScreen)
-    mainNavigationController.present(hostingController, animated: true)
+    switch motion {
+    case .motionShake:
+      #if DEVELOPER_MENU_ENABLED
+      presentDeveloperMenu()
+      #endif
+    default: break
+    }
+  }
+
+  private func presentDeveloperMenu() {
+    let developerMenuCoordinator = DeveloperMenuCoordinator(rootNavigationController: mainNavigationController)
+
+    developerMenuSubscription = developerMenuCoordinator.eventPublisher.sink { [weak self] event in
+      switch event {
+      case .close:
+        self?.developerMenuSubscription?.cancel()
+        self?.developerMenuSubscription = nil
+        self?.developerMenuCoordinator = nil
+      }
+    }
+
+    self.developerMenuCoordinator = developerMenuCoordinator
+    developerMenuCoordinator.start()
   }
 }
