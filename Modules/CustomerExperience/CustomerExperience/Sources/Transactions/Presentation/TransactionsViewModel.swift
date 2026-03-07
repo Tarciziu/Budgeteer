@@ -27,7 +27,7 @@ public class TransactionsViewModel: ObservableObject {
   // MARK: - Published Properties
 
   // TODO: Replace with actual model when available & use loadable component.
-  @Published var transactions: LoadableContent<TransactionsListUIModel, Never> = .empty
+  @Published var transactions: LoadableContent<TransactionsListUIModel, String> = .empty
 
   // MARK: - Private Properties
 
@@ -51,36 +51,12 @@ public class TransactionsViewModel: ObservableObject {
 
   func loadTransactions() {
     transactions = .isLoading(nil)
-    let transaction = TransactionUIModel(
-      title: "Salary Payment",
-      subtitle: nil,
-      amount: "+$2500.00",
-      isPositiveAmount: true
-    )
-    let section = TransactionSectionUIModel(title: "Today", transactions: [transaction])
-    let transactionOutgoing1 = TransactionUIModel(
-      title: "XBox",
-      subtitle: "Aquired a new XBox Series X",
-      amount: "-$500.00",
-      isPositiveAmount: false
-    )
-    let transactionOutgoing2 = TransactionUIModel(
-      title: "Groceries",
-      subtitle: "Cabbage, Tomatoes, Bread",
-      amount: "-$50.00",
-      isPositiveAmount: false
-    )
-    let transactionOutgoing3 = TransactionUIModel(
-      title: "Netflix",
-      subtitle: "Netflix subscription",
-      amount: "-$10.00",
-      isPositiveAmount: false
-    )
-    let sectionOutgoing = TransactionSectionUIModel(
-      title: "Yesterday",
-      transactions: [transactionOutgoing1, transactionOutgoing2, transactionOutgoing3]
-    )
-    let transactionsList = TransactionsListUIModel.full([section, sectionOutgoing])
-    transactions = .loaded(transactionsList)
+    do {
+      let fetchedTransactions = try interactor.getTransactions()
+      let transactionsList = TransactionsListUIModel.full(mapper.map(transactions: fetchedTransactions))
+      self.transactions = .loaded(transactionsList)
+    } catch {
+      self.transactions = .failed(nil)
+    }
   }
 }

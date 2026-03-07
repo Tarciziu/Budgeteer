@@ -8,7 +8,7 @@
 import Foundation
 
 struct TransactionUIModel: Identifiable, Equatable {
-  let id = UUID().uuidString
+  let id: String
   /// Title of a transaction.
   let title: String
   /// Description of the transaction.
@@ -20,7 +20,15 @@ struct TransactionUIModel: Identifiable, Equatable {
   /// Transaction date in case of compact layout or nothing in case of expanded layout.
   let transactionDate: String?
 
-  init(title: String, subtitle: String? = nil, amount: String, isPositiveAmount: Bool, transactionDate: String? = nil) {
+  init(
+    id: String,
+    title: String,
+    subtitle: String? = nil,
+    amount: String,
+    isPositiveAmount: Bool,
+    transactionDate: String? = nil
+  ) {
+    self.id = id
     self.title = title
     self.subtitle = subtitle
     self.amount = amount

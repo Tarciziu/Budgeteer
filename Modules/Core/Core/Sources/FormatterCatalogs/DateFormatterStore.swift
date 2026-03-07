@@ -13,6 +13,7 @@ public class DateFormatterStore {
 
   private enum Constants {
     static let hyphenDateFormat = "yyyy-MM-dd"
+    static let longMonthYearDateFormat = "MMMM yyyy"
   }
 
   // MARK: - Public Properties
@@ -21,6 +22,12 @@ public class DateFormatterStore {
   /// The date format is "yyyy-MM-dd".
   public var hyphenDateFormatter: DateFormatter {
     makeHyphenDateFormatter()
+  }
+
+  /// Formatter focused on month name and year  dates.
+  /// The date format is "MMMM yyyy".
+  public var longMonthYearDateFormatter: DateFormatter {
+    makeLongMonthYearDateFormatter()
   }
 
   // MARK: - Init
@@ -35,6 +42,12 @@ public class DateFormatterStore {
   private func makeHyphenDateFormatter() -> DateFormatter {
     let formatter = DateFormatter()
     formatter.dateFormat = Constants.hyphenDateFormat
+    return formatter
+  }
+
+  private func makeLongMonthYearDateFormatter() -> DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateFormat = Constants.longMonthYearDateFormat
     return formatter
   }
 }

@@ -1,0 +1,33 @@
+//
+//  TransactionParametersDM.swift
+//  CustomerExperience
+//
+//  Created by Tarciziu Gologan on 07.03.2026.
+//
+
+import Foundation
+
+/// Domain model representing the parameters for creating a transaction.
+public struct TransactionParametersDM: Equatable {
+  /// Title of a transaction.
+  public let title: String
+  /// Description of the transaction.
+  public let description: String?
+  /// Positive or negative amount of a transaction.
+  public let amount: Decimal
+  /// Transaction's date.
+  public let transactionDate: Date
+
+  /// Initializes a new instance of `TransactionParametersDM`.
+  /// - Parameters:
+  ///   - title: Title of a transaction.
+  ///   - description: Description of the transaction.
+  ///   - amount: Positive or negative amount of a transaction.
+  ///   - transactionDate: Transaction's date.
+  public init(title: String, description: String?, amount: Decimal, transactionDate: Date) {
+    self.title = title
+    self.description = description
+    self.amount = amount
+    self.transactionDate = transactionDate
+  }
+}

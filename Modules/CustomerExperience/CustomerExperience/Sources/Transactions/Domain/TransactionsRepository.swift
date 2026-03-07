@@ -8,4 +8,9 @@
 import Foundation
 
 /// Repository handling transactions related operations.
-public protocol TransactionsRepository { }
+public protocol TransactionsRepository {
+  func getTransactions() throws -> [TransactionDM]
+  @discardableResult
+  func create(parameters: TransactionParametersDM) throws -> TransactionDM
+  func delete(_ transaction: TransactionDM) throws
+}

@@ -20,4 +20,19 @@ public class DefaultTransactionsInteractor: TransactionsInteractor {
   public init(transactionsRepository: TransactionsRepository) {
     self.transactionsRepository = transactionsRepository
   }
+
+  // MARK: - TransactionsInteractor conformance
+
+  public func getTransactions() throws -> [TransactionDM] {
+    try transactionsRepository.getTransactions()
+  }
+
+  @discardableResult
+  public func create(parameters: TransactionParametersDM) throws -> TransactionDM {
+    try transactionsRepository.create(parameters: parameters)
+  }
+
+  public func delete(_ transaction: TransactionDM) throws {
+    try transactionsRepository.delete(transaction)
+  }
 }
