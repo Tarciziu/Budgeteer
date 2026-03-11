@@ -12,7 +12,7 @@ public enum LoadableContent<Content, Failure> {
   case loaded(Content)
   case isLoading(Content?)
   case empty
-  case failed(Failure)
+  case failed(Failure?)
 
   /// Specifies if the content is currently loading or not.
   public var isLoading: Bool {

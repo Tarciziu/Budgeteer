@@ -8,4 +8,9 @@
 import Foundation
 
 /// A protocol defining the interface for the Transactions interactor, responsible for handling use cases related to transactions.
-public protocol TransactionsInteractor {}
+public protocol TransactionsInteractor {
+  func getTransactions() throws -> [TransactionDM]
+  @discardableResult
+  func create(parameters: TransactionParametersDM) throws -> TransactionDM
+  func delete(_ transaction: TransactionDM) throws
+}

@@ -40,6 +40,8 @@ public struct TransactionsScreen: View {
       loadingView
     } loadedView: { transactions in
       makeTransactionsListView(transactions: transactions)
+    } failureView: { _ in
+      EmptyView()
     }
     .navigationBar(config)
     .onAppear {
