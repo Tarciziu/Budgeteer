@@ -17,12 +17,10 @@ extension TransactionsCoordinator {
     )
 
     viewModel.eventPublisher
-      .sink { event in
+      .sink { [weak self] event in
         switch event {
-        case .didTapTransaction(let transactionIdentifier):
-          // TODO: Open transaction details screen.
-          // Will be implemented in a future task.
-          break
+        case let .didTapTransaction(transactionIdentifier):
+          self?.openTransactionScreen(with: transactionIdentifier)
         case .didTapExpand:
           // TODO: Handle expand action if needed.
           break
@@ -32,12 +30,15 @@ extension TransactionsCoordinator {
       }
       .store(in: &cancellables)
 
-    let navigationBarConfiguration = NavigationBarConfiguration(
-      title: "Transactions Screen"
-    )
-    let transactionsScreen = TransactionsScreen(config: navigationBarConfiguration, viewModel: viewModel)
+    let transactionsScreen = TransactionsScreen(viewModel: viewModel)
     let hostingController = BTHostingController(containedView: transactionsScreen)
 
+    return hostingController
+  }
+
+  func makeTransactionScreen(for transactionIdentifier: String?) -> BTHostingController {
+    let screen = TransactionScreen()
+    let hostingController = BTHostingController(containedView: screen)
     return hostingController
   }
 }

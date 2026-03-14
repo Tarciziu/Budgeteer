@@ -18,17 +18,13 @@ public struct TransactionsScreen: View {
   // MARK: - Private Properties
 
   @ObservedObject private var viewModel: TransactionsViewModel
-  private let config: NavigationBarConfiguration
 
   // MARK: - Initializer
 
   /// Initializes a new ``TransactionsScreen``.
-  /// - Parameters:
-  ///   - config: Configuration object defining the style and behavior of the transactions list.
-  ///   - viewModel: The view model managing the state and logic of the transactions list.
-  public init(config: NavigationBarConfiguration, viewModel: TransactionsViewModel) {
+  /// - Parameter viewModel: The view model managing the state and logic of the transactions list.
+  public init(viewModel: TransactionsViewModel) {
     self.viewModel = viewModel
-    self.config = config
   }
 
   // MARK: - Body
@@ -43,7 +39,7 @@ public struct TransactionsScreen: View {
     } failureView: { _ in
       EmptyView()
     }
-    .navigationBar(config)
+    .navigationBar(makeConfiguration())
     .onAppear {
       viewModel.loadTransactions()
     }
@@ -78,6 +74,18 @@ public struct TransactionsScreen: View {
   private var borderView: some View {
     roundingShape
       .stroke(theme.colorPalette.border.primary, lineWidth: theme.spacing.lineWidth)
+  }
+
+  // MARK: - Navigation Configuration
+
+  private func makeConfiguration() -> NavigationBarConfiguration {
+    let trailingAction = NavigationBarConfiguration.CloseAction(icon: "plus") { [weak viewModel] in
+      viewModel?.handleNewTransaction()
+    }
+    return NavigationBarConfiguration(
+      title: TransactionsViewModel.Constants.screenTitle,
+      trailingAction: trailingAction
+    )
   }
 
   // MARK: - ViewBuilders
