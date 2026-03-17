@@ -40,8 +40,8 @@ public struct TransactionsScreen: View {
       EmptyView()
     }
     .navigationBar(makeConfiguration())
-    .onAppear {
-      viewModel.loadTransactions()
+    .task {
+      await viewModel.loadTransactions()
     }
   }
 

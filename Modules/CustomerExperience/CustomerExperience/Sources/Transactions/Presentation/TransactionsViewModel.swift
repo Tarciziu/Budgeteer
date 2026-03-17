@@ -7,6 +7,7 @@
 
 import Combine
 import BTCore
+import Foundation
 
 /// Entity responsible with handling the presentation logic for the transactions list screen.
 public class TransactionsViewModel: ObservableObject {
@@ -48,15 +49,14 @@ public class TransactionsViewModel: ObservableObject {
 
   // MARK: - Internal Methods
 
-  func loadTransactions() {
+  func loadTransactions() async {
     transactions = .isLoading(nil)
-    do {
-      let fetchedTransactions = try interactor.getTransactions()
-      let transactionsList = TransactionsListUIModel.full(mapper.map(transactions: fetchedTransactions))
-      self.transactions = .loaded(transactionsList)
-    } catch {
-      self.transactions = .failed(nil)
+    guard let transactions = try? await interactor.getTransactions() else {
+      transactions = .failed(nil)
+      return
     }
+    let transactionsList = TransactionsListUIModel.full(mapper.map(transactions: transactions))
+    self.transactions = .loaded(transactionsList)
   }
 
   func handleNewTransaction() {

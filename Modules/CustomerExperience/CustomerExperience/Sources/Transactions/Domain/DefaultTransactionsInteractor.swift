@@ -23,16 +23,16 @@ public class DefaultTransactionsInteractor: TransactionsInteractor {
 
   // MARK: - TransactionsInteractor conformance
 
-  public func getTransactions() throws -> [TransactionDM] {
-    try transactionsRepository.getTransactions()
+  public func getTransactions() async throws -> [TransactionDM] {
+    try await transactionsRepository.getTransactions()
   }
 
   @discardableResult
-  public func create(parameters: TransactionParametersDM) throws -> TransactionDM {
-    try transactionsRepository.create(parameters: parameters)
+  public func create(parameters: TransactionParametersDM) async throws -> TransactionDM {
+    try await transactionsRepository.create(parameters: parameters)
   }
 
-  public func delete(_ transaction: TransactionDM) throws {
-    try transactionsRepository.delete(transaction)
+  public func delete(_ transaction: TransactionDM) async throws {
+    try await transactionsRepository.delete(transaction)
   }
 }

@@ -1,28 +1,28 @@
 //
-//  TransactionDTO.swift
-//  CustomerExperience
+//  TransactionModel.swift
+//  Budgeteer
 //
-//  Created by Tarciziu Gologan on 07.03.2026.
+//  Created by Adrian-Zoltan Herczeg on 11.03.2026.
 //
 
 import Foundation
+import SwiftData
 import BTCore
 
-public class TransactionDTO: DataSourceModel {
-  public var id: String
+/// Type acting as a data model in the Swiftdata storage environment.
+@Model
+class TransactionModel: DataSourceModel {
   public var title: String
   public var information: String?
   public var amount: Decimal
   public var transactionDate: Date
 
   public init(
-    id: String,
     title: String,
     information: String? = nil,
     amount: Decimal,
     transactionDate: Date
   ) {
-    self.id = id
     self.title = title
     self.information = information
     self.amount = amount

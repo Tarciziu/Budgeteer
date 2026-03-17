@@ -5,71 +5,73 @@
 //  Created by Tarciziu Gologan on 01.10.2025.
 //
 
-import Foundation
-import SwiftData
+import BTCore
 
 /// The default implementation of ``TransactionsRepository``.
 public class DefaultTransactionsRepository: TransactionsRepository {
+  // MARK: - Nested Types
+
+  enum Constants {
+    static let transactionIdentifierHeaderKey = "txId"
+  }
+
   // MARK: - Private Properties
 
-  private let modelContext: ModelContext?
+  private let dataSource: DataSource
   private let mapper = TransactionsDataMapper()
 
   // MARK: - Initializer
 
   /// Creates a new instance of ``DefaultTransactionsRepository``.
-  /// - Parameter modelContext: Instance of ``ModelContext``.
-  public init(modelContext: ModelContext?) {
-    self.modelContext = modelContext
+  /// - Parameter dataSource: Instance of ``DataSource``.
+  public init(dataSource: DataSource) {
+    self.dataSource = dataSource
   }
 
   // MARK: - Read
 
-  public func getTransactions() throws -> [TransactionDM] {
-    guard let modelContext else {
-      throw TransactionsError.missingDatabase
-    }
-    var descriptor = FetchDescriptor<TransactionDTO>()
-    descriptor.sortBy = [SortDescriptor(\TransactionDTO.transactionDate, order: .reverse)]
-    do {
-      let models = try modelContext.fetch(descriptor)
-      return try mapper.map(from: models)
-    } catch {
+  public func getTransactions() async throws -> [TransactionDM] {
+    let request = Request(id: TransactionsEndpointsID.getTransacitons.rawValue)
+    let result: Result<[TransactionDTO]?, DataSourceError> = try await dataSource.executeRequest(request: request)
+
+    switch result {
+    case .success(let data):
+      return mapper.map(from: data ?? [])
+    case .failure:
       throw TransactionsError.internalInconsistency
     }
   }
 
   // MARK: - Create
 
-  @discardableResult
-  public func create(parameters: TransactionParametersDM) throws -> TransactionDM {
-    guard let modelContext else {
-      throw TransactionsError.missingDatabase
-    }
+  public func create(parameters: TransactionParametersDM) async throws -> TransactionDM {
     let transaction = mapper.map(from: parameters)
-    modelContext.insert(transaction)
-    do {
-      try modelContext.save()
-      return try mapper.map(from: transaction)
-    } catch {
+    let request = Request(id: TransactionsEndpointsID.createTransaction.rawValue, body: transaction)
+    let result: Result<[TransactionDTO]?, DataSourceError> = try await dataSource.executeRequest(request: request)
+
+    switch result {
+    case .success(let data):
+      if let createdTransaction = data?.first {
+        return mapper.map(from: createdTransaction)
+      }
+    case .failure:
       throw TransactionsError.internalInconsistency
     }
+    throw TransactionsError.internalInconsistency
   }
 
   // MARK: - Delete
 
-  public func delete(_ transaction: TransactionDM) throws {
-    guard let modelContext else {
-      throw TransactionsError.missingDatabase
-    }
-    do {
-      let transactionIdentifier: PersistentIdentifier = try mapper.map(from: transaction)
-      let predicate = #Predicate<TransactionDTO> { model in
-        model.persistentModelID == transactionIdentifier
-      }
-      try modelContext.delete(model: TransactionDTO.self, where: predicate)
-      try modelContext.save()
-    } catch {
+  public func delete(_ transaction: TransactionDM) async throws {
+    // TODO: - Decide where the requests headers keys should be placed and documented.
+    let headers: [String: String] = [Constants.transactionIdentifierHeaderKey: transaction.id]
+    let request = Request(id: TransactionsEndpointsID.deleteTransaction.rawValue, requestHeaders: headers)
+    let result: Result<[TransactionDTO]?, DataSourceError> = try await dataSource.executeRequest(request: request)
+
+    switch result {
+    case .success:
+      return
+    case .failure:
       throw TransactionsError.internalInconsistency
     }
   }
