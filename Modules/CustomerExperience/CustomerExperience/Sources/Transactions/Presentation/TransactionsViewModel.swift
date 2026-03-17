@@ -14,7 +14,7 @@ public class TransactionsViewModel: ObservableObject {
 
   /// Events emitted by the `TransactionsViewModel`.
   public enum TransactionsOutputEvents {
-    case didTapTransaction(transactionIdentifier: String)
+    case didTapTransaction(transactionIdentifier: String? = nil)
     case didTapExpand /// Only for compact transaction list type.
   }
 
@@ -26,7 +26,6 @@ public class TransactionsViewModel: ObservableObject {
 
   // MARK: - Published Properties
 
-  // TODO: Replace with actual model when available & use loadable component.
   @Published var transactions: LoadableContent<TransactionsListUIModel, String> = .empty
 
   // MARK: - Private Properties
@@ -58,5 +57,18 @@ public class TransactionsViewModel: ObservableObject {
     } catch {
       self.transactions = .failed(nil)
     }
+  }
+
+  func handleNewTransaction() {
+    eventSubject.send(.didTapTransaction())
+  }
+}
+
+// MARK: - Constants
+
+extension TransactionsViewModel {
+  enum Constants {
+    static let screenTitle =
+    Strings.CustomerExperience.singular("transactionsScreen.title")
   }
 }

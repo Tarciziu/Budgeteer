@@ -31,4 +31,12 @@ class TransactionsCoordinator {
     let hostingController = makeFullTransactionsScreen()
     navigationController.viewControllers = [hostingController]
   }
+
+  func openTransactionScreen(with transactionIdentifier: String?) {
+    let controller = makeTransactionScreen(for: transactionIdentifier)
+    let modalNavigationController = BTNavigationController()
+    modalNavigationController.viewControllers = [controller]
+    modalNavigationController.isModalInPresentation = true
+    navigationController.present(modalNavigationController, animated: true)
+  }
 }
