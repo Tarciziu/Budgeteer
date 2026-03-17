@@ -11,44 +11,47 @@ import SwiftData
 import BTCustomerExperience
 
 /// Implementation of the `GetTransactions` endpoint
-class GetTransactionsEndpoint: Endpoint {
+final actor GetTransactionsEndpoint: Endpoint, ModelActor {
   // MARK: - Endpoint Properties
 
-  var id: EndpointPath
+  let id: EndpointPath
 
-  // MARK: - Private Properties
+  // MARK: - ModelActor Properties
 
-  private let modelContext: ModelContext
+  let modelContainer: ModelContainer
+  let modelExecutor: any ModelExecutor
 
   // MARK: - Init
 
-  init(id: EndpointPath, modelContext: ModelContext) {
+  init(id: EndpointPath, modelContainer: ModelContainer) {
     self.id = id
-    self.modelContext = modelContext
+    self.modelContainer = modelContainer
+    let context = ModelContext(modelContainer)
+    self.modelExecutor = DefaultSerialModelExecutor(modelContext: context)
   }
 
   // MARK: - Endpoint Methods
 
   func executeRequest<R>(
     requestModel: Request
-  ) async throws -> Result<[R]?, DataSourceError> where R: DataSourceModel {
+  ) async throws -> [R]? where R: DataSourceModel {
     // Note: - This can be improved by passing the order and date sorting information as configuration in the
     // request headers.
     var descriptor = FetchDescriptor<TransactionModel>()
     descriptor.sortBy = [SortDescriptor(\TransactionModel.transactionDate, order: .reverse)]
 
     do {
-      let models = try modelContext.fetch(descriptor)
-      let transactionsDTOs = models.compactMap { [weak self] model in
-        self?.map(transacitonModel: model, id: model.id)
+      let models = (try? modelContext.fetch(descriptor)) ?? []
+      let transactionsDTOs = models.compactMap { model in
+        map(transacitonModel: model, id: model.id)
       }
       let transformedModels = transactionsDTOs as? [R]
       guard let transformedModels else {
-        return .failure(DataSourceError.internalInconsistency)
+        throw DataSourceError.internalInconsistency
       }
-      return .success(transformedModels)
+      return transformedModels
     } catch {
-      return .failure(DataSourceError.invalidDataSource)
+      throw DataSourceError.invalidDataSource
     }
   }
 

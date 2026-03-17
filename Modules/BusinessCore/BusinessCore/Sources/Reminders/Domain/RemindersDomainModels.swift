@@ -9,6 +9,7 @@ import Foundation
 
 /// Domain model representing a user configured reminder.
 public struct Reminder: Equatable, Codable {
+  public let id: String
   public let name: String
   public let triggerDate: Date
   public let performance: ReminderPerformance?
@@ -21,11 +22,13 @@ public struct Reminder: Equatable, Codable {
   ///   - performance: The monetary value attached to the reminder.
   ///   - details: Additional details speciifed by the user with regards to the reminder.
   public init(
+    id: String,
     name: String,
     triggerDate: Date,
     performance: ReminderPerformance?,
     details: String?
   ) {
+    self.id = id
     self.name = name
     self.triggerDate = triggerDate
     self.performance = performance

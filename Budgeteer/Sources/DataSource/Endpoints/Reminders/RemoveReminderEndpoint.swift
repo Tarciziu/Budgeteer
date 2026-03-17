@@ -1,21 +1,21 @@
 //
-//  DeleteTransactionEndpoint.swift
+//  RemoveReminderEndpoint.swift
 //  Budgeteer
 //
-//  Created by Adrian-Zoltan Herczeg on 09.03.2026.
+//  Created by Adrian-Zoltan Herczeg on 17.03.2026.
 //
 
 import Foundation
 import BTCore
-import SwiftData
 import BTCustomerExperience
+import SwiftData
 
-/// Implementation of the `DeleteTransactions` endpoint
-final actor DeleteTransactionsEndpoint: Endpoint, ModelActor {
-  // MARK: - Constants
+/// Local implementation of the `RemoveReminder` endpoint.
+final actor RemoveReminderEndpoint: Endpoint, ModelActor {
+  // MARK: - Nested type
 
-  enum Constants {
-    static let transactionIdentifierHeaderKey = "txId"
+  private enum Constants {
+    static let reminderIdentifierKey = "rmId"
   }
 
   // MARK: - Endpoint Properties
@@ -24,8 +24,8 @@ final actor DeleteTransactionsEndpoint: Endpoint, ModelActor {
 
   // MARK: - ModelActor Properties
 
-  let modelContainer: ModelContainer
   let modelExecutor: any ModelExecutor
+  let modelContainer: ModelContainer
 
   // MARK: - Init
 
@@ -43,18 +43,18 @@ final actor DeleteTransactionsEndpoint: Endpoint, ModelActor {
   ) async throws -> [R]? where R: DataSourceModel {
     // - Note: The contract between the endpoint and the repository is curretly not completly defined.
     guard
-      let payloadIdentifier = requestModel.headers[Constants.transactionIdentifierHeaderKey],
-      let transactionIdentifier = DataSourceHelper.shared.map(from: payloadIdentifier) else {
+      let payloadIdentifier = requestModel.headers[Constants.reminderIdentifierKey],
+      let reminderIdentifier = DataSourceHelper.shared.map(from: payloadIdentifier) else {
       throw DataSourceError.invalidHeaders
     }
 
-    let predicate = Predicate<TransactionModel> { model in
+    let predicate = Predicate<ReminderModel> { model in
       let modelKeyPath = PredicateExpressions.KeyPath(root: model, keyPath: \.id)
-      let queryValue = PredicateExpressions.Value(transactionIdentifier)
+      let queryValue = PredicateExpressions.Value(reminderIdentifier)
       return PredicateExpressions.Equal(lhs: modelKeyPath, rhs: queryValue)
     }
 
-    try modelContext.delete(model: TransactionModel.self, where: predicate)
+    try modelContext.delete(model: ReminderModel.self, where: predicate)
     try modelContext.save()
 
     return nil

@@ -15,5 +15,5 @@ public protocol DataSource {
   /// Execute a reqeust to the data source with the given parameters.
   func executeRequest<R>(
     request: Request
-  ) async throws -> Result<[R]?, DataSourceError> where R: DataSourceModel
+  ) async throws -> [R]? where R: DataSourceModel
 }

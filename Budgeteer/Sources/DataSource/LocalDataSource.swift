@@ -26,13 +26,13 @@ class LocalDataSource: DataSource {
 
   func executeRequest<R>(
     request: Request
-  ) async throws -> Result<[R]?, DataSourceError> where R: DataSourceModel {
+  ) async throws -> [R]? where R: DataSourceModel {
     let endpoint = endpoints.first {
       $0.id == request.id
     }
 
     guard let endpoint else {
-      return .failure(DataSourceError.invalidRequest)
+      throw DataSourceError.invalidRequest
     }
     return try await endpoint.executeRequest(requestModel: request)
   }

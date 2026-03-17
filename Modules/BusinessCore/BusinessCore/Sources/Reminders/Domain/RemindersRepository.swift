@@ -11,13 +11,13 @@ import Foundation
 public protocol RemindersRepository {
   /// Returns the list created reminders, stored on the device.
   /// - Returns: The list of stored reminders on the device.
-  func getReminders() -> [Reminder]
+  func getReminders() async throws -> [Reminder]
 
   /// Stores a new reminder.
   /// - Parameter reminder: The new reminder to be cached.
-  func storeReminder(_ reminder: Reminder)
+  func storeReminder(_ reminder: Reminder) async throws
 
   /// Removes a remidner from the list of reminders stored on the device.
   /// - Parameter reminder: Reminder which should be removed.
-  func removeReminder(_ reminder: Reminder)
+  func removeReminder(_ reminder: Reminder) async throws
 }

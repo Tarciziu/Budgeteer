@@ -15,6 +15,9 @@ class RemindersCoordinator {
   @Injected(\.theme)
   private var theme
 
+  @Injected(\.remindersInteractor)
+  private var remindersInteractor
+
   // MARK: - Private Properties
 
   private let navigationController: BTNavigationController
@@ -36,10 +39,6 @@ class RemindersCoordinator {
   // MARK: - Private Methods
 
   private func assembleRemindersPage() -> RemindersList {
-    let remindersRepository = DefaultRemindersRepository(
-      userPreferences: Container.shared.userPreferences()
-    )
-    let remindersInteractor = DefaultRemindersInteractor(repository: remindersRepository)
     let remindersViewModel = RemindersListViewModel(interactor: remindersInteractor)
     let closeAction = NavigationBarConfiguration.CloseAction(
       icon: theme.imageCatalog.uiAction.chevronLeft
@@ -68,10 +67,6 @@ class RemindersCoordinator {
   }
 
   private func assembleReminderConfigurationPage() -> ReminderConfigurationPage {
-    let remindersRepository = DefaultRemindersRepository(
-      userPreferences: Container.shared.userPreferences()
-    )
-    let remindersInteractor = DefaultRemindersInteractor(repository: remindersRepository)
     let reminderConfigurationViewModel = ReminderConfigurationViewModel(interactor: remindersInteractor)
 
     let closeAction = NavigationBarConfiguration.CloseAction(
