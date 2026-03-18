@@ -21,8 +21,21 @@ struct RemindersListDataMapper {
 
   // MARK: - DM to DTO
 
-  func map(_ remindersDMs: [Reminder]) -> [ReminderDTO] {
-    remindersDMs.map(map(_:))
+  func map(_ reminder: Reminder) -> ReminderDTO {
+    var performanceDTO: ReminderPerformanceDTO?
+    if let performanceDM = reminder.performance {
+      performanceDTO = ReminderPerformanceDTO(
+        value: performanceDM.value,
+        currency: currencyMapper.map(currency: performanceDM.currency)
+      )
+    }
+    return ReminderDTO(
+      id: reminder.id,
+      name: reminder.name,
+      date: reminder.triggerDate,
+      performance: performanceDTO,
+      details: reminder.details
+    )
   }
 
   // MARK: - Private methods
@@ -45,25 +58,10 @@ struct RemindersListDataMapper {
     }
 
     return Reminder(
+      id: reminder.id,
       name: reminder.name,
       triggerDate: reminder.date,
       performance: performanceDM,
-      details: reminder.details
-    )
-  }
-
-  private func map(_ reminder: Reminder) -> ReminderDTO {
-    var performanceDTO: ReminderPerformanceDTO?
-    if let performanceDM = reminder.performance {
-      performanceDTO = ReminderPerformanceDTO(
-        value: performanceDM.value,
-        currency: currencyMapper.map(currency: performanceDM.currency)
-      )
-    }
-    return ReminderDTO(
-      name: reminder.name,
-      date: reminder.triggerDate,
-      performance: performanceDTO,
       details: reminder.details
     )
   }

@@ -32,14 +32,8 @@ public class DefaultTransactionsRepository: TransactionsRepository {
 
   public func getTransactions() async throws -> [TransactionDM] {
     let request = Request(id: TransactionsEndpointsID.getTransacitons.rawValue)
-    let result: Result<[TransactionDTO]?, DataSourceError> = try await dataSource.executeRequest(request: request)
-
-    switch result {
-    case .success(let data):
-      return mapper.map(from: data ?? [])
-    case .failure:
-      throw TransactionsError.internalInconsistency
-    }
+    let result: [TransactionDTO]? = try await dataSource.executeRequest(request: request)
+    return mapper.map(from: result ?? [])
   }
 
   // MARK: - Create
@@ -47,17 +41,11 @@ public class DefaultTransactionsRepository: TransactionsRepository {
   public func create(parameters: TransactionParametersDM) async throws -> TransactionDM {
     let transaction = mapper.map(from: parameters)
     let request = Request(id: TransactionsEndpointsID.createTransaction.rawValue, body: transaction)
-    let result: Result<[TransactionDTO]?, DataSourceError> = try await dataSource.executeRequest(request: request)
-
-    switch result {
-    case .success(let data):
-      if let createdTransaction = data?.first {
-        return mapper.map(from: createdTransaction)
-      }
-    case .failure:
+    let result: [TransactionDTO]? = try await dataSource.executeRequest(request: request)
+    guard let createdTransaction = result?.first else {
       throw TransactionsError.internalInconsistency
     }
-    throw TransactionsError.internalInconsistency
+    return mapper.map(from: createdTransaction)
   }
 
   // MARK: - Delete
@@ -66,13 +54,6 @@ public class DefaultTransactionsRepository: TransactionsRepository {
     // TODO: - Decide where the requests headers keys should be placed and documented.
     let headers: [String: String] = [Constants.transactionIdentifierHeaderKey: transaction.id]
     let request = Request(id: TransactionsEndpointsID.deleteTransaction.rawValue, requestHeaders: headers)
-    let result: Result<[TransactionDTO]?, DataSourceError> = try await dataSource.executeRequest(request: request)
-
-    switch result {
-    case .success:
-      return
-    case .failure:
-      throw TransactionsError.internalInconsistency
-    }
+    let _: [TransactionDTO]? = try await dataSource.executeRequest(request: request)
   }
 }

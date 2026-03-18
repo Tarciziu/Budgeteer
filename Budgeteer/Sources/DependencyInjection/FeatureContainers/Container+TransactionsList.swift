@@ -45,65 +45,23 @@ extension Container {
   }
 
   private func makeGetTransactionsEndpoint() -> GetTransactionsEndpoint? {
-    // Define the schema.
-    let schema = Schema([TransactionModel.self])
-
-    // Configure storage.
-    let configuration = ModelConfiguration(schema: schema)
-
-    // Create the container and context
-    guard
-      let container = try? ModelContainer(for: schema, configurations: configuration) else {
-      return nil
-    }
-
-    let modelContext = ModelContext(container)
-
     return GetTransactionsEndpoint(
       id: TransactionsEndpointsID.getTransacitons.rawValue,
-      modelContext: modelContext
+      modelContainer: dataSourceAssember().modelContainer
     )
   }
 
   private func makeCreateTransactionEndpoint() -> CreateTransactionsEndpoint? {
-    // Define the schema.
-    let schema = Schema(TransactionModel.self)
-
-    // Configure storage.
-    let configuration = ModelConfiguration(schema: schema)
-
-    // Create the container and context
-    guard
-      let container = try? ModelContainer(for: schema, configurations: configuration) else {
-      return nil
-    }
-
-    let modelContext = ModelContext(container)
-
     return CreateTransactionsEndpoint(
       id: TransactionsEndpointsID.createTransaction.rawValue,
-      modelContext: modelContext
+      modelContainer: dataSourceAssember().modelContainer
     )
   }
 
   private func makeDeleteTransactionEndpoint() -> DeleteTransactionsEndpoint? {
-    // Define the schema.
-    let schema = Schema(TransactionModel.self)
-
-    // Configure storage.
-    let configuration = ModelConfiguration(schema: schema)
-
-    // Create the container and context
-    guard
-      let container = try? ModelContainer(for: schema, configurations: configuration) else {
-      return nil
-    }
-
-    let modelContext = ModelContext(container)
-
     return DeleteTransactionsEndpoint(
       id: TransactionsEndpointsID.deleteTransaction.rawValue,
-      modelContext: modelContext
+      modelContainer: dataSourceAssember().modelContainer
     )
   }
 }

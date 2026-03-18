@@ -11,29 +11,32 @@ import SwiftData
 import BTCustomerExperience
 
 /// Implementation of the `GetTransactions` endpoint
-class CreateTransactionsEndpoint: Endpoint {
+final actor CreateTransactionsEndpoint: Endpoint, ModelActor {
   // MARK: - Endpoint Properties
 
-  var id: EndpointPath
+  let id: EndpointPath
 
-  // MARK: - Private Properties
+  // MARK: - ModelActor Properties
 
-  private let modelContext: ModelContext
+  let modelExecutor: any ModelExecutor
+  let modelContainer: ModelContainer
 
   // MARK: - Init
 
-  init(id: EndpointPath, modelContext: ModelContext) {
+  init(id: EndpointPath, modelContainer: ModelContainer) {
     self.id = id
-    self.modelContext = modelContext
+    self.modelContainer = modelContainer
+    let context = ModelContext(modelContainer)
+    self.modelExecutor = DefaultSerialModelExecutor(modelContext: context)
   }
 
   // MARK: - Endpoint Methods
 
   func executeRequest<R>(
     requestModel: Request
-  ) async throws -> Result<[R]?, DataSourceError> where R: DataSourceModel {
+  ) async throws -> [R]? where R: DataSourceModel {
     guard let model = requestModel.body as? TransactionCreationRequestDTO else {
-      return .failure(DataSourceError.invalidRequest)
+      throw DataSourceError.invalidRequest
     }
 
     let transactionModel = TransactionModel(
@@ -45,7 +48,7 @@ class CreateTransactionsEndpoint: Endpoint {
 
     let helper = DataSourceHelper.shared
     guard let modelId = helper.map(id: transactionModel.id) else {
-      return .failure(.internalInconsistency)
+      throw DataSourceError.internalInconsistency
     }
 
     modelContext.insert(transactionModel)
@@ -60,6 +63,6 @@ class CreateTransactionsEndpoint: Endpoint {
 
     let newTransactions: [R]? = [transactionDTO] as? [R]
 
-    return .success(newTransactions)
+    return newTransactions
   }
 }

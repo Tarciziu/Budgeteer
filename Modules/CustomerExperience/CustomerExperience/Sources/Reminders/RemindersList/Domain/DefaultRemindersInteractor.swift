@@ -24,15 +24,15 @@ final public class DefaultRemindersInteractor: RemindersInteractor {
 
   // MARK: - RemindersInteractor Methods
 
-  public func getReminders() -> [Reminder] {
-    repository.getReminders()
+  public func getReminders() async throws -> [Reminder] {
+    try await repository.getReminders()
   }
 
-  public func storeReminder(_ reminder: Reminder) {
-    repository.storeReminder(reminder)
+  public func storeReminder(_ reminder: Reminder) async throws {
+    try await repository.storeReminder(reminder)
   }
 
-  public func removeReminder(_ reminder: Reminder) {
-    repository.removeReminder(reminder)
+  public func removeReminder(_ reminder: Reminder) async throws {
+    try await repository.removeReminder(reminder)
   }
 }
