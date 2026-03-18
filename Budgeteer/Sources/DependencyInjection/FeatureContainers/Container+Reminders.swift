@@ -12,9 +12,23 @@ import BTCustomerExperience
 import BTBusinessCore
 
 extension Container {
-  var remindersInteractor: Factory<RemindersInteractor> {
+  var createReminderUsecase: Factory<CreateReminderUseCase> {
     self {
-      DefaultRemindersInteractor(repository: self.remindersRepository)
+      DefaultCreateReminderUseCase(repository: self.remindersRepository)
+    }
+    .shared
+  }
+
+  var removeReminderUsecase: Factory<RemoveReminderUseCase> {
+    self {
+      DefaultRemoveReminderUseCase(repository: self.remindersRepository)
+    }
+    .shared
+  }
+
+  var getRemindersUsecase: Factory<GetRemindersUseCase> {
+    self {
+      DefaultGetRemindersUseCase(repository: self.remindersRepository)
     }
     .shared
   }

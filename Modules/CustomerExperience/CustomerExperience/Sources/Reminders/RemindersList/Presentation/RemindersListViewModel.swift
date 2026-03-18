@@ -13,18 +13,24 @@ final public class RemindersListViewModel: ObservableObject {
   // MARK: - Published Properties
 
   @Published var uiModel: RemindersListUIModel
+  private var reminders: [Reminder] = []
 
   // MARK: - Private Properties
 
-  private let interactor: RemindersInteractor
+  private let getReminersUsecase: GetRemindersUseCase
+  private let removeReminderUsecase: RemoveReminderUseCase
   private let mapper = RemindersListUIMapper()
 
   // MARK: - Init
 
   /// Creates a new `RemindersListViewModel`
   /// - Parameter interactor: The interactor associated with the feature.
-  public init(interactor: RemindersInteractor) {
-    self.interactor = interactor
+  public init(
+    getRemindersUseCase: GetRemindersUseCase,
+    removeReminderUsecase: RemoveReminderUseCase
+  ) {
+    self.getReminersUsecase = getRemindersUseCase
+    self.removeReminderUsecase = removeReminderUsecase
     uiModel = mapper.map()
   }
 

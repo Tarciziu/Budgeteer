@@ -19,15 +19,15 @@ public class ReminderConfigurationViewModel {
   var amount = String()
   var note = String()
 
-  private let interactor: RemindersInteractor
+  private let addReminderUseCase: CreateReminderUseCase
   private let mapper = ReminderConfigUIMapper()
 
   // MARK: - Init
 
   /// Creates a new `ReminderConfigurationViewModel`.
   /// - Parameter interactor: The interactor used by the feature.
-  public init(interactor: RemindersInteractor) {
-    self.interactor = interactor
+  public init(addReminderUseCase: CreateReminderUseCase) {
+    self.addReminderUseCase = addReminderUseCase
     uiModel = mapper.map()
   }
 

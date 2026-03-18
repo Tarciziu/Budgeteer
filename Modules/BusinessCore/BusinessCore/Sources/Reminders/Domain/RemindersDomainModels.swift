@@ -7,9 +7,12 @@
 
 import Foundation
 
+/// Type describing a unique identifier for a reminder.
+public typealias ReminderID = String
+
 /// Domain model representing a user configured reminder.
-public struct Reminder: Equatable, Codable {
-  public let id: String
+public struct Reminder: Equatable {
+  public let id: ReminderID
   public let name: String
   public let triggerDate: Date
   public let performance: ReminderPerformance?
@@ -17,6 +20,7 @@ public struct Reminder: Equatable, Codable {
 
   /// Creates a new `Reminder`.
   /// - Parameters:
+  ///   - id: Unique identifier of the reminder.
   ///   - name: The name of the reminder.
   ///   - triggerDate: The date at which the remidnder should be triggered.
   ///   - performance: The monetary value attached to the reminder.
@@ -37,7 +41,7 @@ public struct Reminder: Equatable, Codable {
 }
 
 /// Creates a new performance configuration for a reminder.
-public struct ReminderPerformance: Equatable, Codable {
+public struct ReminderPerformance: Equatable {
   public let value: Float
   public let performance: Performance
   public let currency: CurrencyDM
@@ -52,4 +56,12 @@ public struct ReminderPerformance: Equatable, Codable {
     self.performance = performance
     self.currency = currency
   }
+}
+
+/// Type encapsulating all properties necessary to create a reminder.
+public struct ReminderCreationDM: Equatable {
+  public let name: String
+  public let triggerDate: Date
+  public let performance: ReminderPerformance?
+  public let details: String?
 }

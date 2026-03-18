@@ -21,7 +21,7 @@ struct RemindersListDataMapper {
 
   // MARK: - DM to DTO
 
-  func map(_ reminder: Reminder) -> ReminderDTO {
+  func map(_ reminder: ReminderCreationDM) -> ReminderCreationRequestDTO {
     var performanceDTO: ReminderPerformanceDTO?
     if let performanceDM = reminder.performance {
       performanceDTO = ReminderPerformanceDTO(
@@ -29,8 +29,7 @@ struct RemindersListDataMapper {
         currency: currencyMapper.map(currency: performanceDM.currency)
       )
     }
-    return ReminderDTO(
-      id: reminder.id,
+    return ReminderCreationRequestDTO(
       name: reminder.name,
       date: reminder.triggerDate,
       performance: performanceDTO,

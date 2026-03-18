@@ -61,18 +61,22 @@
 				Sources/Currency/CurrencyDM.swift,
 				Sources/Currency/CurrencyMapper.swift,
 				Sources/Performance/Performance.swift,
+				Sources/Reminders/Domain/CreateReminderUseCase.swift,
+				Sources/Reminders/Domain/GetRemindersUseCase.swift,
 				Sources/Reminders/Domain/RemindersDomainModels.swift,
-				Sources/Reminders/Domain/RemindersInteractor.swift,
 				Sources/Reminders/Domain/RemindersRepository.swift,
+				Sources/Reminders/Domain/RemoveReminderUseCase.swift,
 			);
 			target = 73855F5B2F0EA7AE0070923D /* BusinessCore */;
 		};
 		738563F22F0EBB9C0070923D /* Exceptions for "BusinessCore" folder in "BusinessCoreHostingApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Sources/Reminders/Domain/CreateReminderUseCase.swift,
+				Sources/Reminders/Domain/GetRemindersUseCase.swift,
 				Sources/Reminders/Domain/RemindersDomainModels.swift,
-				Sources/Reminders/Domain/RemindersInteractor.swift,
 				Sources/Reminders/Domain/RemindersRepository.swift,
+				Sources/Reminders/Domain/RemoveReminderUseCase.swift,
 			);
 			target = 73855FA12F0EB2260070923D /* BusinessCoreHostingApp */;
 		};

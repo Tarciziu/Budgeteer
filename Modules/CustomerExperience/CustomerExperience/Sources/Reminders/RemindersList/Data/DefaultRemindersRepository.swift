@@ -38,15 +38,15 @@ final public class DefaultRemindersRepository: RemindersRepository {
     return mapper.map(result ?? [])
   }
 
-  public func storeReminder(_ reminder: Reminder) async throws {
+  public func storeReminder(_ reminder: ReminderCreationDM) async throws {
     let requestBody = mapper.map(reminder)
     let requestId = RemindersEndpotsID.createReminder.rawValue
     let request = Request(id: requestId, body: requestBody)
     let _: [ReminderDTO]? = try await dataSource.executeRequest(request: request)
   }
 
-  public func removeReminder(_ reminder: Reminder) async throws {
-    let headers: [String: String] = [Constants.reminderIdKey: reminder.id]
+  public func removeReminder(id: ReminderID) async throws {
+    let headers: [String: String] = [Constants.reminderIdKey: id]
     let request = Request(id: RemindersEndpotsID.deleteReminder.rawValue, requestHeaders: headers)
     let _: [ReminderDTO]? = try await dataSource.executeRequest(request: request)
   }
