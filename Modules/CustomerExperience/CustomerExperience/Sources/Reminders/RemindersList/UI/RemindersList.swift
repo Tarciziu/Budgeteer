@@ -7,6 +7,7 @@
 
 import SwiftUI
 import BTCoreUI
+import BTCore
 
 /// UI element serving as the container for the reminders list page.
 public struct RemindersList: View {
@@ -27,6 +28,8 @@ public struct RemindersList: View {
   @State private var isPendingRemindersExpanded = true
   @State private var isExpiredRemindersExpanded = true
 
+  @State private var note: String?
+
   private var uiModel: RemindersListUIModel {
     viewModel.uiModel
   }
@@ -46,10 +49,19 @@ public struct RemindersList: View {
   // MARK: - Body
 
   public var body: some View {
+    switch uiModel.loadingContent {
+    case .loaded(let content):
+      makeLoadedView(with: content)
+    default:
+      EmptyView()
+    }
+  }
+
+  private func makeLoadedView(with content: RemindersListUIModel.LoadingContent) -> some View {
     List {
-      makePendingRemindersSection(with: uiModel.pendingRemindersSection)
+      makePendingRemindersSection(with: content.pendingRemindersSection)
         .listRowInsets(EdgeInsets(top: .zero, leading: .zero, bottom: .zero, trailing: .zero))
-      makeExpiredRemindersSection(with: uiModel.expiredReminderSection)
+      makeExpiredRemindersSection(with: content.expiredReminderSection)
         .listRowInsets(EdgeInsets(top: .zero, leading: .zero, bottom: .zero, trailing: .zero))
     }
     .scrollIndicators(.hidden)
@@ -137,15 +149,18 @@ public struct RemindersList: View {
   }
 
   private func makeMenuCellPerformance(
-    from reminderPerformanceUIModel: RemindersListUIModel.Performance
-  ) -> MenuListCell.Performance {
+    from reminderPerformanceUIModel: RemindersListUIModel.Performance?
+  ) -> MenuListCell.Performance? {
+    guard let reminderPerformanceUIModel else {
+      return nil
+    }
     switch reminderPerformanceUIModel.type {
     case .positive:
-      MenuListCell.Performance(label: reminderPerformanceUIModel.label, type: .positive)
+      return MenuListCell.Performance(label: reminderPerformanceUIModel.label, type: .positive)
     case .negative:
-      MenuListCell.Performance(label: reminderPerformanceUIModel.label, type: .negative)
+      return MenuListCell.Performance(label: reminderPerformanceUIModel.label, type: .negative)
     case .neutral:
-      MenuListCell.Performance(label: reminderPerformanceUIModel.label, type: .neutral)
+      return MenuListCell.Performance(label: reminderPerformanceUIModel.label, type: .neutral)
     }
   }
 
@@ -155,7 +170,7 @@ public struct RemindersList: View {
     var buttons: [PillButton.Content] = []
     if let note = reminder.note {
       let buttonContent = PillButton.Content(
-        label: uiModel.noteLabel,
+        label: uiModel.staticContent.noteLabel,
         type: .highlight
       ) {
         currentNote = note
@@ -172,10 +187,10 @@ public struct RemindersList: View {
     onEditTap: ((Int) -> Void)?
   ) -> [PillButton.Content] {
     var buttons: [PillButton.Content] = []
-    let deleteButtonContent = PillButton.Content(label: uiModel.deleteLabel, type: .error, action: onDeleteTap)
+    let deleteButtonContent = PillButton.Content(label: uiModel.staticContent.deleteLabel, type: .error, action: onDeleteTap)
     buttons.append(deleteButtonContent)
     if let onEditTap {
-      let editButtonContet = PillButton.Content(label: uiModel.editLabel) {
+      let editButtonContet = PillButton.Content(label: uiModel.staticContent.editLabel) {
         onEditTap(index)
       }
       buttons.append(editButtonContet)

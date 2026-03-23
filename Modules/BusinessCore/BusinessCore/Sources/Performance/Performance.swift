@@ -10,6 +10,6 @@ import Foundation
 /// Type representing the possbile states of a financial performance.
 public enum Performance: Equatable, Codable {
   case positive
-  case nevative
+  case negative
   case neutral
 }

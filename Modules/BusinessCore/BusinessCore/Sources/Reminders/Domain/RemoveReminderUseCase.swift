@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import BTBusinessCore
 
 /// Protocol encapsulating the busines logic for the `RemoveReminder` use case.
 public protocol RemoveReminderUseCase {

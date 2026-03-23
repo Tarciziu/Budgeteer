@@ -83,10 +83,12 @@ public struct MenuListCell: View {
     }
   }
 
-  private var performance: some View {
-    Text(content.performance.label)
-      .foregroundStyle(performanceColor)
-      .font(theme.typography.body.subheadline)
+  @ViewBuilder private var performance: some View {
+    if let performance = content.performance {
+      Text(performance.label)
+        .foregroundStyle(makePerformanceColor(performance: performance))
+        .font(theme.typography.body.subheadline)
+    }
   }
 
   private var leadingButtons: some View {
@@ -105,8 +107,8 @@ public struct MenuListCell: View {
     }
   }
 
-  private var performanceColor: Color {
-    switch content.performance.type {
+  private func  makePerformanceColor(performance: Performance) -> Color {
+    switch performance.type {
     case .positive:
       theme.colorPalette.text.positive
     case .neutral:
@@ -165,7 +167,7 @@ public extension MenuListCell {
   struct Content {
     let title: String
     let subtitle: Subtitle
-    let performance: Performance
+    let performance: Performance?
     let leadingButtons: [PillButton.Content]
     let trailingButtons: [PillButton.Content]
 
@@ -179,7 +181,7 @@ public extension MenuListCell {
     public init(
       title: String,
       subtitle: Subtitle,
-      performance: Performance,
+      performance: Performance?,
       leadingButtons: [PillButton.Content],
       trailingButtons: [PillButton.Content]
     ) {

@@ -6,14 +6,26 @@
 //
 
 import Foundation
+import BTCore
 
 struct RemindersListUIModel {
-  let noteLabel: String
-  let deleteLabel: String
-  let editLabel: String
+  let staticContent: StaticContent
+  let loadingContent: LoadableContent<LoadingContent, String>
+}
 
-  let pendingRemindersSection: RemindersSection
-  let expiredReminderSection: RemindersSection
+extension RemindersListUIModel {
+  struct LoadingContent {
+    let pendingRemindersSection: RemindersSection
+    let expiredReminderSection: RemindersSection
+  }
+}
+
+extension RemindersListUIModel {
+  struct StaticContent {
+    let noteLabel: String
+    let deleteLabel: String
+    let editLabel: String
+  }
 }
 
 extension RemindersListUIModel {
@@ -32,7 +44,7 @@ extension RemindersListUIModel {
     let id = UUID()
     let title: String
     let caption: String
-    let performance: Performance
+    let performance: Performance?
     let note: String?
   }
 

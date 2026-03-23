@@ -12,10 +12,15 @@ public typealias ReminderID = String
 
 /// Domain model representing a user configured reminder.
 public struct Reminder: Equatable {
+  /// Unique identifier for the reminder.
   public let id: ReminderID
+  /// Title for the reminder used to identify it's purpose.
   public let name: String
+  /// Date at which the reminder should be triggered in the future.
   public let triggerDate: Date
+  /// Additional value attached to a reminder.
   public let performance: ReminderPerformance?
+  /// Optional additional details which can be mentioned for a reminder.
   public let details: String?
 
   /// Creates a new `Reminder`.
@@ -42,8 +47,11 @@ public struct Reminder: Equatable {
 
 /// Creates a new performance configuration for a reminder.
 public struct ReminderPerformance: Equatable {
+  /// Finanical value attached to a reminder.
   public let value: Float
+  /// Performance indicating the finanicla state for a reminder.
   public let performance: Performance
+  /// Currency in which the reminder is done.
   public let currency: CurrencyDM
 
   /// Creates a new `ReminderPerformance`.
@@ -60,8 +68,30 @@ public struct ReminderPerformance: Equatable {
 
 /// Type encapsulating all properties necessary to create a reminder.
 public struct ReminderCreationDM: Equatable {
+  /// The selected name of the reminder by the user.
   public let name: String
+  /// Future date at which the reminder will be triggered.
   public let triggerDate: Date
+  /// Additional value attached to a reminder.
   public let performance: ReminderPerformance?
+  /// Optional additional details which can be mentioned for a reminder.
   public let details: String?
+
+  /// Creates a new `ReminderCreationDM`.
+  /// - Parameters:
+  ///   - name: selected name of the reminder by the user.
+  ///   - triggerDate: date at which the reminder will be triggered.
+  ///   - performance: Additional value attached to a reminder.
+  ///   - details: Optional additional details which can be mentioned for a reminder.
+  public init(
+    name: String,
+    triggerDate: Date,
+    performance: ReminderPerformance?,
+    details: String?
+  ) {
+    self.name = name
+    self.triggerDate = triggerDate
+    self.performance = performance
+    self.details = details
+  }
 }

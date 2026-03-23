@@ -46,7 +46,7 @@ struct RemindersListDataMapper {
       if performanceDTO.value > .zero {
         performance = .positive
       } else if performanceDTO.value < .zero {
-        performance = .nevative
+        performance = .negative
       }
 
       performanceDM = ReminderPerformance(
