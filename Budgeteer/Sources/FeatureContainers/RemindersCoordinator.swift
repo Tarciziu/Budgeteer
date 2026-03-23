@@ -15,8 +15,14 @@ class RemindersCoordinator {
   @Injected(\.theme)
   private var theme
 
-  @Injected(\.remindersInteractor)
-  private var remindersInteractor
+  @Injected(\.getRemindersUsecase)
+  private var getRemindersUsecase
+
+  @Injected(\.removeReminderUsecase)
+  private var removeReminderUsecase
+
+  @Injected(\.createReminderUsecase)
+  private var createReminderUsecase
 
   // MARK: - Private Properties
 
@@ -39,7 +45,11 @@ class RemindersCoordinator {
   // MARK: - Private Methods
 
   private func assembleRemindersPage() -> RemindersList {
-    let remindersViewModel = RemindersListViewModel(interactor: remindersInteractor)
+    let remindersViewModel = RemindersListViewModel(
+      getRemindersUseCase: getRemindersUsecase,
+      removeReminderUsecase: removeReminderUsecase
+    )
+
     let closeAction = NavigationBarConfiguration.CloseAction(
       icon: theme.imageCatalog.uiAction.chevronLeft
     ) { [weak self] in
@@ -67,7 +77,7 @@ class RemindersCoordinator {
   }
 
   private func assembleReminderConfigurationPage() -> ReminderConfigurationPage {
-    let reminderConfigurationViewModel = ReminderConfigurationViewModel(interactor: remindersInteractor)
+    let reminderConfigurationViewModel = ReminderConfigurationViewModel(addReminderUseCase: createReminderUsecase)
 
     let closeAction = NavigationBarConfiguration.CloseAction(
       icon: theme.imageCatalog.uiActionCircle.closeCircle
