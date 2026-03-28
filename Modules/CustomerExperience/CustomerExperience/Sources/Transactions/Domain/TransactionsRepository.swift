@@ -12,5 +12,5 @@ public protocol TransactionsRepository {
   func getTransactions() async throws -> [TransactionDM]
   @discardableResult
   func create(parameters: TransactionParametersDM) async throws -> TransactionDM
-  func delete(_ transaction: TransactionDM) async throws
+  func delete(_ transactionId: String) async throws
 }

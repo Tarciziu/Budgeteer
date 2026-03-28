@@ -5,8 +5,6 @@
 //  Created by Adrian-Zoltan Herczeg on 17.03.2026.
 //
 
-import BTBusinessCore
-
 /// Protocol encapsulating the busines logic for the `GetReminders` use case.
 public protocol GetRemindersUseCase {
   func getReminders() async throws -> [Reminder]
@@ -26,7 +24,7 @@ final public class DefaultGetRemindersUseCase: GetRemindersUseCase {
     self.repository = repository
   }
 
-  // MARK: - GetRemindersUseCase Methods.
+  // MARK: - GetRemindersUseCase Methods
 
   public func getReminders() async throws -> [Reminder] {
     try await repository.getReminders()

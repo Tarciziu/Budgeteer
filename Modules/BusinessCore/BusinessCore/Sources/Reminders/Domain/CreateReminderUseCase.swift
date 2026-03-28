@@ -5,8 +5,6 @@
 //  Created by Adrian-Zoltan Herczeg on 17.03.2026.
 //
 
-import BTBusinessCore
-
 /// Protocol encapsulating the busines logic for the `CreateReminder` use case.
 public protocol CreateReminderUseCase {
   func createReminder(_ creationDM: ReminderCreationDM) async throws
@@ -26,7 +24,7 @@ final public class DefaultCreateReminderUseCase: CreateReminderUseCase {
     self.repository = repository
   }
 
-  // MARK: - GetRemindersUseCase Methods.
+  // MARK: - CreateReminderUseCase Methods
 
   public func createReminder(_ creationDM: ReminderCreationDM) async throws {
     try await repository.storeReminder(creationDM)

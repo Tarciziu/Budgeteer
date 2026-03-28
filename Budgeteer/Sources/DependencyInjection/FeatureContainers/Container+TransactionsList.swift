@@ -13,8 +13,16 @@ import BTCore
 extension Container {
   // MARK: - Transactions List entities
 
-  var transactionsInteractor: Factory<TransactionsInteractor> {
-    self { DefaultTransactionsInteractor(transactionsRepository: self.transactionsRepository()) }.shared
+  var getTransactionsUseCase: Factory<GetTransactionsUseCase> {
+    self { DefaultGetTransactionsUseCase(repository: self.transactionsRepository()) }.shared
+  }
+
+  var createTransactionUseCase: Factory<CreateTransactionUseCase> {
+    self { DefaultCreateTransactionUseCase(repository: self.transactionsRepository()) }.shared
+  }
+
+  var removeTransactionUseCase: Factory<RemoveTransactionUseCase> {
+    self { DefaultRemoveTransactionUseCase(repository: self.transactionsRepository()) }.shared
   }
 
   private var transactionsRepository: Factory<TransactionsRepository> {

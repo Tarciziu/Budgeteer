@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import BTBusinessCore
 
 /// Protocol encapsulating the busines logic for the `RemoveReminder` use case.
 public protocol RemoveReminderUseCase {
@@ -27,7 +26,7 @@ final public class DefaultRemoveReminderUseCase: RemoveReminderUseCase {
     self.repository = repository
   }
 
-  // MARK: - DefaultRemoveReminderUseCase Methods.
+  // MARK: - RemoveReminderUseCase Methods
 
   public func removeReminder(id: ReminderID) async throws {
     try await repository.removeReminder(id: id)
