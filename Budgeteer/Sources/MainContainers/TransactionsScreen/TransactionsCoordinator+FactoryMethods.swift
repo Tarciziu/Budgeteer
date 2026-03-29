@@ -12,7 +12,7 @@ import BTCustomerExperience
 extension TransactionsCoordinator {
   func makeFullTransactionsScreen() -> BTHostingController {
     let viewModel = TransactionsViewModel(
-      interactor: Container.shared.transactionsInteractor(),
+      getTransactionsUseCase: Container.shared.getTransactionsUseCase(),
       configuration: TransactionsConfiguration(type: .expanded)
     )
 

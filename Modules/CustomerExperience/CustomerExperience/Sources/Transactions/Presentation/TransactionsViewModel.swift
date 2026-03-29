@@ -32,7 +32,7 @@ public class TransactionsViewModel: ObservableObject {
   // MARK: - Private Properties
 
   private let mapper = TransactionsUIMapper()
-  private let interactor: TransactionsInteractor
+  private let getTransactionsUseCase: GetTransactionsUseCase
   private let configuration: TransactionsConfiguration
   private let eventSubject = PassthroughSubject<TransactionsOutputEvents, Never>()
 
@@ -40,10 +40,10 @@ public class TransactionsViewModel: ObservableObject {
 
   /// Initializes a new instance of ``TransactionsViewModel``.
   /// - Parameters:
-  ///   - interactor: Instance of ``TransactionsInteractor``.
+  ///   - getTransactionsUseCase: Instance of ``GetTransactionsUseCase``.
   ///   - configuration: ``TransactionsConfiguration`` providing information about the transactions mode (compact or full).
-  public init(interactor: TransactionsInteractor, configuration: TransactionsConfiguration) {
-    self.interactor = interactor
+  public init(getTransactionsUseCase: GetTransactionsUseCase, configuration: TransactionsConfiguration) {
+    self.getTransactionsUseCase = getTransactionsUseCase
     self.configuration = configuration
   }
 
@@ -51,7 +51,7 @@ public class TransactionsViewModel: ObservableObject {
 
   func loadTransactions() async {
     transactions = .isLoading(nil)
-    guard let transactions = try? await interactor.getTransactions() else {
+    guard let transactions = try? await getTransactionsUseCase.getTransactions() else {
       transactions = .failed(nil)
       return
     }

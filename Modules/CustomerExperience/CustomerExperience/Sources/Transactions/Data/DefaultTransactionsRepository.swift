@@ -50,9 +50,9 @@ public class DefaultTransactionsRepository: TransactionsRepository {
 
   // MARK: - Delete
 
-  public func delete(_ transaction: TransactionDM) async throws {
+  public func delete(_ transactionId: String) async throws {
     // TODO: - Decide where the requests headers keys should be placed and documented.
-    let headers: [String: String] = [Constants.transactionIdentifierHeaderKey: transaction.id]
+    let headers: [String: String] = [Constants.transactionIdentifierHeaderKey: transactionId]
     let request = Request(id: TransactionsEndpointsID.deleteTransaction.rawValue, requestHeaders: headers)
     let _: [TransactionDTO]? = try await dataSource.executeRequest(request: request)
   }
