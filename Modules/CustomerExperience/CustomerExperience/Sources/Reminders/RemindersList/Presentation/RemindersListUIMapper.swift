@@ -6,60 +6,80 @@
 //
 
 import Foundation
+import BTBusinessCore
+import BTCore
 
 struct RemindersListUIMapper {
   // MARK: - Internal Methods
 
-  func map() -> RemindersListUIModel {
-    RemindersListUIModel(
-      noteLabel: "Note",
-      deleteLabel: "Delete",
-      editLabel: "Edit",
-      pendingRemindersSection: .init(
-        title: "Pending Reminders",
-        reminders: [
-          .init(
-            title: "Pay Monthly Rent",
-            caption: "Due on October 26, 2024",
-            performance: .init(label: "+$800.00", type: .positive),
-            note: "Do not forget"
-          ),
-          .init(
-            title: "Submit Project Report",
-            caption: "Due on November 10, 2024",
-            performance: .init(label: "+$450.00", type: .positive),
-            note: nil
-          ),
-          .init(
-            title: "Call Doctor Appointment",
-            caption: "Due on December 1, 2024",
-            performance: .init(label: "+$100.00", type: .positive),
-            note: "Reminder"
-          ),
-          .init(
-            title: "Buy Weekly Groceries",
-            caption: "Due on December 15, 2024",
-            performance: .init(label: "+$600.00", type: .positive),
-            note: nil
-          )
-        ]
-      ),
-      expiredReminderSection: .init(
-        title: "Expired Reminders", reminders: [
-          .init(
-            title: "Renew Streaming Subscription (Yearly)",
-            caption: "Due on January 5, 2025",
-            performance: .init(label: "+$1000.00", type: .positive),
-            note: "Note 1"
-          ),
-          .init(
-            title: "Buy Weekly Groceries",
-            caption: "Due on December 15, 2024",
-            performance: .init(label: "+$100.00", type: .positive),
-            note: nil
-          )
-        ]
+  func map(pendingReminders: [Reminder], expiredReminders: [Reminder]) -> RemindersListUIModel {
+    let staticContent = makeStatiContent()
+    let pendingRemindersUIModel = pendingReminders.map(map)
+    let expiredRemindersUIMOdel = expiredReminders.map(map)
+
+    let pendingRemindersSection = RemindersListUIModel.RemindersSection.init(
+      title: "Pending reminders",
+      reminders: pendingRemindersUIModel
+    )
+
+    let expiredRemindersSection = RemindersListUIModel.RemindersSection.init(
+      title: "Expired reminders",
+      reminders: expiredRemindersUIMOdel
+    )
+    return RemindersListUIModel(
+      staticContent: staticContent,
+      loadingContent: .loaded(
+        .init(
+          pendingRemindersSection: pendingRemindersSection,
+          expiredReminderSection: expiredRemindersSection
+        )
       )
     )
+  }
+
+  func makeLoadingState() -> RemindersListUIModel {
+    RemindersListUIModel(
+      staticContent: makeStatiContent(),
+      loadingContent: .isLoading(nil)
+    )
+  }
+
+  // MARK: - Private Methods
+
+  private func map(_ reminder: Reminder) -> RemindersListUIModel.ReminderUIModel {
+    let formattedDate = DateFormatterStore().longDateTimeFormatter.string(from: reminder.triggerDate)
+    var performanceUIModel: RemindersListUIModel.Performance?
+    if let performance = reminder.performance {
+      let numberFormatter = NumberFormatterStore().amountInputFormatter
+      let formattedValue = numberFormatter.string(from: performance.value as NSNumber) ?? String()
+      let formattedCurrency = CurrencyMapper().map(currency: performance.currency)
+      let formattedLabel = "\(formattedValue) \(formattedCurrency)"
+      performanceUIModel = RemindersListUIModel.Performance(
+        label: formattedLabel,
+        type: makePerformance(for: performance.value)
+      )
+    }
+
+    return RemindersListUIModel.ReminderUIModel(
+      title: reminder.name,
+      caption: formattedDate,
+      performance: performanceUIModel,
+      note: reminder.details
+    )
+  }
+
+  private func makeStatiContent() -> RemindersListUIModel.StaticContent {
+    return RemindersListUIModel.StaticContent(
+      noteLabel: "Note",
+      deleteLabel: "Delete",
+      editLabel: "Edit"
+    )
+  }
+
+  private func makePerformance(for value: Float) -> RemindersListUIModel.PerformanceType {
+    guard value != .zero else {
+      return .neutral
+    }
+    return value > .zero ? .positive : .negative
   }
 }

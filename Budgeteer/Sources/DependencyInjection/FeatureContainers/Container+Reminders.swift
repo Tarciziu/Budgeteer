@@ -45,8 +45,7 @@ extension Container {
       makeUpdateRemindersEndpoint()
     ]
 
-    let filteredEndpoints = endpoints.compactMap { $0 }
-    return LocalDataSource(endpoints: filteredEndpoints)
+    return LocalDataSource(endpoints: endpoints)
   }
 }
 
@@ -68,13 +67,13 @@ private extension Container {
   }
 
   private func makeCreateRemindersEndpoint() -> Endpoint {
-    return GetReminderEndpoints(
+    return CreateReminderEndpoint(
       id: RemindersEndpotsID.createReminder.rawValue,
       modelContainer: dataSourceAssember().modelContainer
     )
   }
 
-  private func makeUpdateRemindersEndpoint() -> Endpoint? {
+  private func makeUpdateRemindersEndpoint() -> Endpoint {
     return UpdateReminderEndpoint(
       id: RemindersEndpotsID.updateReminder.rawValue,
       modelContainer: dataSourceAssember().modelContainer

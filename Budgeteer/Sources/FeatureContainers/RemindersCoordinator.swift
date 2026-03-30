@@ -8,6 +8,8 @@
 import BTCoreUI
 import BTCustomerExperience
 import FactoryKit
+import Combine
+
 
 class RemindersCoordinator {
   // MARK: - Injected Properties
@@ -27,6 +29,10 @@ class RemindersCoordinator {
   // MARK: - Private Properties
 
   private let navigationController: BTNavigationController
+
+  private var cancellables: [AnyCancellable] = []
+
+  private var remindersListViewModel: RemindersListViewModel?
 
   // MARK: - Init
 
@@ -49,7 +55,7 @@ class RemindersCoordinator {
       getRemindersUseCase: getRemindersUsecase,
       removeReminderUsecase: removeReminderUsecase
     )
-
+    self.remindersListViewModel = remindersViewModel
     let closeAction = NavigationBarConfiguration.CloseAction(
       icon: theme.imageCatalog.uiAction.chevronLeft
     ) { [weak self] in
@@ -77,7 +83,11 @@ class RemindersCoordinator {
   }
 
   private func assembleReminderConfigurationPage() -> ReminderConfigurationPage {
-    let reminderConfigurationViewModel = ReminderConfigurationViewModel(addReminderUseCase: createReminderUsecase)
+    let reminderConfigurationViewModel = ReminderConfigurationViewModel(
+      initialReminder: nil,
+      addReminderUseCase: createReminderUsecase
+    )
+    observe(reminderConfigurationViewModel)
 
     let closeAction = NavigationBarConfiguration.CloseAction(
       icon: theme.imageCatalog.uiActionCircle.closeCircle
@@ -98,5 +108,20 @@ class RemindersCoordinator {
 
   private func closeReminderConfigurationPage() {
     navigationController.dismiss(animated: true)
+  }
+
+  private func observe(_ viewModel: ReminderConfigurationViewModel) {
+    viewModel.outputPublisher.sink { [weak self] event in
+      switch event {
+      case .didCreateReminder:
+        self?.navigationController.dismiss(animated: true)
+        self?.remindersListViewModel?.refresh()
+      case .didClosePage:
+        self?.navigationController.dismiss(animated: true)
+      @unknown default:
+        return
+      }
+    }
+    .store(in: &cancellables)
   }
 }

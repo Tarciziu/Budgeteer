@@ -38,6 +38,7 @@ public struct InputField: View {
   private let placeholder: String
   private let inputFieldState: InputFieldState
   private let hasClearIcon: Bool
+  private let caption: String?
   private let leadingIconConfig: IconConfig?
   private let trailingIconConfig: IconConfig?
   private let visualTransformation: VisualTransformation?
@@ -51,6 +52,7 @@ public struct InputField: View {
   ///   - placeholder: Placeholder indicating the purpose of the input field, displayed when no text is written inside.
   ///   - inputFieldState: The state of the input field (normal, disabled, error).
   ///   - hasClearIcon: A boolean indicating whether the clear icon should be shown.
+  ///   - caption: Optional caption displayed bellow the field.
   ///   - leadingIconConfig: An optional leading icon configuration.
   ///   - trailingIconConfig: An optional trailing icon configuration.
   ///   - visualTransformation: An optional visual transformation for the text input.
@@ -60,6 +62,7 @@ public struct InputField: View {
     placeholder: String = String(),
     inputFieldState: InputFieldState = .normal,
     hasClearIcon: Bool = false,
+    caption: String? = nil,
     leadingIconConfig: IconConfig? = nil,
     trailingIconConfig: IconConfig? = nil,
     visualTransformation: VisualTransformation? = nil
@@ -67,6 +70,7 @@ public struct InputField: View {
     self._text = text
     self.label = label
     self.placeholder = placeholder
+    self.caption = caption
     self.inputFieldState = inputFieldState
     self.hasClearIcon = hasClearIcon
     self.leadingIconConfig = leadingIconConfig
@@ -114,6 +118,7 @@ public struct InputField: View {
     VStack(spacing: theme.spacing.spacerL) {
       labelView
       textField
+      captionView
     }
     .padding(theme.spacing.spacerL)
     .onChange(of: text) { oldValue, newValue in
@@ -157,6 +162,15 @@ public struct InputField: View {
     .padding(.horizontal, theme.spacing.spacerS)
     .overlay {
       borderView
+    }
+  }
+
+  @ViewBuilder private var captionView: some View {
+    if let caption {
+      Text(caption)
+        .font(theme.typography.body.subheadline)
+        .foregroundColor(labelColor)
+        .frame(maxWidth: .infinity, alignment: .trailing)
     }
   }
 

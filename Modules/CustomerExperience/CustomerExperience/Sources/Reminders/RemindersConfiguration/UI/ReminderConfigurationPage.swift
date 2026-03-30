@@ -10,6 +10,12 @@ import BTCoreUI
 
 /// UI entity responsbile for displaying the reminder configuration page.
 public struct ReminderConfigurationPage: View {
+  // MARK: - Nested Types
+
+  private enum Constants {
+    static let oneMinuteInSeconds = TimeInterval(60)
+  }
+
   // MARK: - Observed Properties
 
   @Environment(BTTheme.self)
@@ -47,7 +53,7 @@ public struct ReminderConfigurationPage: View {
       VStack(spacing: theme.spacing.spacerL) {
         reminderderTitleSection
         reminderDateSection
-        amountSection
+        ammountAndCurrencySection
         noteSection
       }
     }
@@ -66,25 +72,55 @@ public struct ReminderConfigurationPage: View {
     InputField(
       text: $viewModel.reminderTitleText,
       label: uiModel.reminderTitleLabel,
-      placeholder: uiModel.reminderTitlePlaceholder
+      placeholder: uiModel.reminderTitlePlaceholder,
+      inputFieldState: viewModel.hasInputError ? .error : .normal,
+      caption: viewModel.hasInputError ? uiModel.nameErrorText : nil
     )
   }
 
   private var reminderDateSection: some View {
-    DatePicker(selection: $viewModel.reminderDate) {
-      Text(uiModel.reminderDatePlaceholder)
-        .font(theme.typography.body.subheadline)
-        .foregroundStyle(theme.colorPalette.text.secondary)
+    VStack(alignment: .trailing, spacing: theme.spacing.spacerS) {
+      DatePicker(selection: $viewModel.reminderDate, in: Date.now.addingTimeInterval(Constants.oneMinuteInSeconds)...) {
+        Text(uiModel.reminderDateLabel)
+          .font(theme.typography.body.subheadline)
+          .foregroundStyle(
+            viewModel.haseDateError ? theme.colorPalette.text.negative : theme.colorPalette.text.secondary
+          )
+      }
+      .datePickerStyle(.compact)
+      if viewModel.haseDateError {
+        dateError
+      }
     }
-    .datePickerStyle(.compact)
     .padding(theme.spacing.spacerL)
+  }
+
+  private var ammountAndCurrencySection: some View {
+    VStack(spacing: theme.spacing.spacerXS) {
+      amountSection
+      currency
+    }
   }
 
   private var amountSection: some View {
     InputField(
       text: $viewModel.amount,
-      label: uiModel.reminderAmountLabel
+      label: uiModel.reminderAmountLabel,
+      visualTransformation: viewModel.visualTransformation
     )
+  }
+
+  private var currency: some View {
+    Picker.init(selection: $viewModel.selectedCurrencyIndex) {
+      let currencies = uiModel.availableCurrencties
+      ForEach(uiModel.availableCurrencties.indices, id: \.self) { currencyIndex in
+        Text(currencies[currencyIndex]).tag(currencyIndex)
+      }
+    } label: {
+      Text(String())
+    }
+    .pickerStyle(.segmented)
+    .padding(.horizontal, theme.spacing.spacerL)
   }
 
   private var noteSection: some View {
@@ -104,5 +140,11 @@ public struct ReminderConfigurationPage: View {
         viewModel.handleSaveButton()
       }
     }
+  }
+
+  private var dateError: some View {
+    Text(uiModel.dateErrorText)
+      .font(theme.typography.body.footnote)
+      .foregroundStyle(theme.colorPalette.text.negative)
   }
 }

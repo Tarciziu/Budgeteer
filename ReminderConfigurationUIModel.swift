@@ -1,17 +1,17 @@
 //
 //  ReminderConfigurationUIModel.swift
-//  CustomerExperience
+//  
 //
-//  Created by Adrian-Zoltan Herczeg on 03.01.2026.
+//  Created by Adrian-Zoltan Herczeg on 23.03.2026.
 //
+
 
 import Foundation
 
 struct ReminderConfigurationUIModel {
   let reminderTitleLabel: String
   let reminderTitlePlaceholder: String
-  let nameErrorText: String
-  let dateErrorText: String
+  let errorLabelText: String
   let reminderDateLabel: String
   let reminderAmountLabel: String
   let noteLabel: String

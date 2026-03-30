@@ -8,7 +8,7 @@
 import Foundation
 
 /// Type mapping supported currencies in the app.
-public enum CurrencyDM: Equatable, Codable {
+public enum CurrencyDM: Equatable, Codable, CaseIterable {
   case eur
   case usd
 
