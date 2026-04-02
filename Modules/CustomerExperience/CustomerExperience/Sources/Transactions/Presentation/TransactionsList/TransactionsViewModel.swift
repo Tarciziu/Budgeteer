@@ -14,14 +14,14 @@ public class TransactionsViewModel: ObservableObject {
   // MARK: - Nested Types
 
   /// Events emitted by the `TransactionsViewModel`.
-  public enum TransactionsOutputEvents {
+  public enum TransactionsOutputEvent {
     case didTapTransaction(transactionIdentifier: String? = nil)
     case didTapExpand /// Only for compact transaction list type.
   }
 
   // MARK: - Public Properties
 
-  public var eventPublisher: AnyPublisher<TransactionsOutputEvents, Never> {
+  public var eventPublisher: AnyPublisher<TransactionsOutputEvent, Never> {
     eventSubject.eraseToAnyPublisher()
   }
 
@@ -34,7 +34,7 @@ public class TransactionsViewModel: ObservableObject {
   private let mapper = TransactionsUIMapper()
   private let getTransactionsUseCase: GetTransactionsUseCase
   private let configuration: TransactionsConfiguration
-  private let eventSubject = PassthroughSubject<TransactionsOutputEvents, Never>()
+  private let eventSubject = PassthroughSubject<TransactionsOutputEvent, Never>()
 
   // MARK: - Lifecycle
 
@@ -47,9 +47,10 @@ public class TransactionsViewModel: ObservableObject {
     self.configuration = configuration
   }
 
-  // MARK: - Internal Methods
+  // MARK: - Public Methods
 
-  func loadTransactions() async {
+  @MainActor
+  public func loadTransactions() async {
     transactions = .isLoading(nil)
     guard let transactions = try? await getTransactionsUseCase.getTransactions() else {
       transactions = .failed(nil)
@@ -58,6 +59,8 @@ public class TransactionsViewModel: ObservableObject {
     let transactionsList = TransactionsListUIModel.full(mapper.map(transactions: transactions))
     self.transactions = .loaded(transactionsList)
   }
+
+  // MARK: - Internal Methods
 
   func handleNewTransaction() {
     eventSubject.send(.didTapTransaction())

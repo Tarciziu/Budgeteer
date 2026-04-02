@@ -9,15 +9,15 @@ import Combine
 import Foundation
 import FactoryKit
 import BTCoreUI
+import BTCustomerExperience
 
 class TransactionsCoordinator {
   // MARK: - Internal Properties
 
   var cancellables: Set<AnyCancellable> = []
-
-  // MARK: - Private Properties
-
-  private let navigationController: BTNavigationController
+  let navigationController: BTNavigationController
+  var transactionsViewModel: TransactionsViewModel?
+  var transactionSubscription: AnyCancellable?
 
   // MARK: - Init
 
@@ -32,8 +32,8 @@ class TransactionsCoordinator {
     navigationController.viewControllers = [hostingController]
   }
 
-  func openTransactionScreen(with transactionIdentifier: String?) {
-    let controller = makeTransactionScreen(for: transactionIdentifier)
+  func openTransactionDetailsScreen(with transactionIdentifier: String?) {
+    let controller = makeTransactionDetailsScreen(for: transactionIdentifier)
     let modalNavigationController = BTNavigationController()
     modalNavigationController.viewControllers = [controller]
     modalNavigationController.isModalInPresentation = true
