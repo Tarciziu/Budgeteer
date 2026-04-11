@@ -38,7 +38,10 @@ extension Container {
   }
 
   var appLaunchViewModel: Factory<AppLaunchViewModel> {
-    self { AppLaunchViewModel() }.shared
+    self {
+      AppLaunchViewModel(notificationsHandler: LocalNotificationsHandler())
+    }
+    .shared
   }
 
   var mainWindowViewModel: Factory<MainWindowViewModel> {

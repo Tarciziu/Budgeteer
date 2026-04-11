@@ -34,6 +34,10 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
     mainWindowViewModel.handleAppStateChange(newEvent: .didEnterBackground)
   }
 
+  func sceneDidBecomeActive(_ scene: UIScene) {
+    UNUserNotificationCenter.current().setBadgeCount(.zero)
+  }
+
   // MARK: - Private Methods
 
   private func setupWindow(in windowScene: UIWindowScene) {
