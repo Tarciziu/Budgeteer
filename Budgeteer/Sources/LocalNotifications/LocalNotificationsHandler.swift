@@ -23,14 +23,14 @@ final class LocalNotificationsHandler: NSObject, UNUserNotificationCenterDelegat
 
   // MARK: - Computed Properties
 
-  var outputPublisher: AnyPublisher<OutputEvent, Never> {
+  var outputPublisher: AnyPublisher<LocalNotificationEvent, Never> {
     outputSubject.eraseToAnyPublisher()
   }
 
   // MARK: - Private Properties
 
   private let parser = LocalNotificationsIdentifierParser()
-  private let outputSubject = PassthroughSubject<OutputEvent, Never>()
+  private let outputSubject = PassthroughSubject<LocalNotificationEvent, Never>()
 
   // MARK: - UNUserNotificationCenterDelegate Methods
 
@@ -53,7 +53,7 @@ final class LocalNotificationsHandler: NSObject, UNUserNotificationCenterDelegat
     let parsedId = parser.parse(identifier: identifier)
     switch parsedId {
     case .reminder(let id):
-      outputSubject.send(.reminderNotification(id: id))
+      outputSubject.send(.reminder(id: id))
     case .unknown:
       return
     }

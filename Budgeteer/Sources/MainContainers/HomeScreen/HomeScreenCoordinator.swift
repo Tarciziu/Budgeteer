@@ -28,3 +28,9 @@ class HomeScreenCoordinator {
     navigationController.viewControllers = [hostingController]
   }
 }
+
+extension HomeScreenCoordinator {
+  func process(_ event: LocalNotificationEvent) {
+    // TODO: - Add Handling when necessary
+  }
+}
