@@ -11,6 +11,9 @@
 		4601DF912E63400A0028EEC0 /* BTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF902E63400A0028EEC0 /* BTCore.framework */; };
 		467F2E2C2E9BCB1400AA8807 /* BTAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467F2E2B2E9BCB1400AA8807 /* BTAuthentication.framework */; };
 		467F2E2D2E9BCB1400AA8807 /* BTAuthentication.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 467F2E2B2E9BCB1400AA8807 /* BTAuthentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		731A3B012F8B6DA000D2D1D4 /* BTCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF902E63400A0028EEC0 /* BTCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		731A3B022F8B6DA500D2D1D4 /* BTCoreUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF8E2E633FF10028EEC0 /* BTCoreUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		731A3B032F8B6DA900D2D1D4 /* BTCustomerExperience.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7344C55E2E8BF6A900FAAE51 /* BTCustomerExperience.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7344C55F2E8BF6A900FAAE51 /* BTCustomerExperience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7344C55E2E8BF6A900FAAE51 /* BTCustomerExperience.framework */; };
 		73492B402EAE605F00382483 /* InstantMock in Frameworks */ = {isa = PBXBuildFile; productRef = 73492B3F2EAE605F00382483 /* InstantMock */; };
 		73855F972F0EAA0D0070923D /* BTBusinessCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73855F962F0EAA0D0070923D /* BTBusinessCore.framework */; };
@@ -36,6 +39,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				731A3B032F8B6DA900D2D1D4 /* BTCustomerExperience.framework in Embed Frameworks */,
+				731A3B022F8B6DA500D2D1D4 /* BTCoreUI.framework in Embed Frameworks */,
+				731A3B012F8B6DA000D2D1D4 /* BTCore.framework in Embed Frameworks */,
 				467F2E2D2E9BCB1400AA8807 /* BTAuthentication.framework in Embed Frameworks */,
 				73855F982F0EAA0D0070923D /* BTBusinessCore.framework in Embed Frameworks */,
 			);
