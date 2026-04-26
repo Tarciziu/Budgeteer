@@ -25,6 +25,16 @@ struct TransactionDetailsUIMapper {
     )
   }
 
+  func map(from transaction: TransactionDM) -> TransactionDetailsUIModel {
+    TransactionDetailsUIModel(
+      id: transaction.id,
+      title: transaction.title,
+      description: transaction.description ?? String(),
+      amount: amountFormatter.string(for: transaction.amount) ?? String(),
+      transactionDate: hyphenDateFormatter.string(from: transaction.transactionDate)
+    )
+  }
+
   func mapAmount(_ amount: String) -> Decimal {
     Decimal(string: amount, locale: amountFormatter.locale) ?? .zero
   }

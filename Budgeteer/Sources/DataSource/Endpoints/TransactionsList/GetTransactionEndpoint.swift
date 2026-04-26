@@ -16,6 +16,7 @@ final actor GetTransactionEndpoint: Endpoint, ModelActor {
 
   private enum Constants {
     static let transactionIdentifierHeaderKey = "txId"
+    static let fetchLimit = 1
   }
 
   // MARK: - Endpoint Properties
@@ -50,7 +51,7 @@ final actor GetTransactionEndpoint: Endpoint, ModelActor {
     }
 
     var fetchDescriptor = FetchDescriptor<TransactionModel>(predicate: predicate)
-    fetchDescriptor.fetchLimit = 1
+    fetchDescriptor.fetchLimit = Constants.fetchLimit
 
     guard let fetchedModel = try? modelContext.fetch(fetchDescriptor).first else {
       throw DataSourceError.missingData

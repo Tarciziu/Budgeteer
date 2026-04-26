@@ -39,7 +39,9 @@ extension TransactionsCoordinator {
   func makeTransactionDetailsScreen(for transactionIdentifier: String?) -> BTHostingController {
     let viewModel = TransactionDetailsViewModel(
       transactionIdentifier: transactionIdentifier,
-      createTransactionUseCase: Container.shared.createTransactionUseCase()
+      createTransactionUseCase: Container.shared.createTransactionUseCase(),
+      updateTransactionUseCase: Container.shared.updateTransactionUseCase(),
+      getTransactionUseCase: Container.shared.getTransactionUseCase()
     )
 
     transactionSubscription = viewModel.eventPublisher

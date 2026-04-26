@@ -16,6 +16,7 @@ final actor UpdateReminderEndpoint: Endpoint, ModelActor {
 
   private enum Constants {
     static let reminderIdentifierKey = "rmId"
+    static let fetchLimit = 1
   }
 
   // MARK: - Endpoint Properties
@@ -59,7 +60,7 @@ final actor UpdateReminderEndpoint: Endpoint, ModelActor {
     }
 
     var fetchDescriptor = FetchDescriptor<ReminderModel>(predicate: predicate)
-    fetchDescriptor.fetchLimit = 1
+    fetchDescriptor.fetchLimit = Constants.fetchLimit
 
     guard let fetchedModel = try? modelContext.fetch(fetchDescriptor).first else {
       throw DataSourceError.missingData

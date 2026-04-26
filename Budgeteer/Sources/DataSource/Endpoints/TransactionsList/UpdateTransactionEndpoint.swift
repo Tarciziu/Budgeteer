@@ -16,6 +16,7 @@ final actor UpdateTransactionEndpoint: Endpoint, ModelActor {
 
   private enum Constants {
     static let transactionIdentifierHeaderKey = "txId"
+    static let fetchLimit = 1
   }
 
   // MARK: - Endpoint Properties
@@ -53,7 +54,7 @@ final actor UpdateTransactionEndpoint: Endpoint, ModelActor {
     }
 
     var fetchDescriptor = FetchDescriptor<TransactionModel>(predicate: predicate)
-    fetchDescriptor.fetchLimit = 1
+    fetchDescriptor.fetchLimit = Constants.fetchLimit
 
     let fetchedModel: TransactionModel
     do {

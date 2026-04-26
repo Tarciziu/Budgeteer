@@ -31,6 +31,9 @@ public struct TransactionDetailsScreen: View {
 
   public var body: some View {
     content
+      .onAppear { [weak viewModel] in
+        viewModel?.loadTransaction()
+      }
       .navigationBar(makeConfiguration())
   }
 
@@ -57,6 +60,7 @@ public struct TransactionDetailsScreen: View {
           label: viewModel.localizedStrings.dateLabel
         )
       }
+      .disabled(!viewModel.isActionEnabled)
     }
     .contentMargins(theme.spacing.spacerL)
     .safeAreaInset(edge: .bottom) {

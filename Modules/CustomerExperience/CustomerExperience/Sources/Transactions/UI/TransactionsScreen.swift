@@ -168,7 +168,9 @@ public struct TransactionsScreen: View {
       trailingContent: trailingContent,
       hasDivider: hasDivider
     )
-    ValueListCell(content: content)
+    ValueListCell(content: content) { [weak viewModel] in
+      viewModel?.handleTransactionTap(transactionIdentifier: transaction.id)
+    }
       .frame(maxWidth: .infinity)
   }
 }

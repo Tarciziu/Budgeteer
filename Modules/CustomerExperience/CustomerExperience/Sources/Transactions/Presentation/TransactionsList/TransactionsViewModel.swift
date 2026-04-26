@@ -65,6 +65,10 @@ public class TransactionsViewModel: ObservableObject {
   func handleNewTransaction() {
     eventSubject.send(.didTapTransaction())
   }
+
+  func handleTransactionTap(transactionIdentifier: String) {
+    eventSubject.send(.didTapTransaction(transactionIdentifier: transactionIdentifier))
+  }
 }
 
 // MARK: - Constants
