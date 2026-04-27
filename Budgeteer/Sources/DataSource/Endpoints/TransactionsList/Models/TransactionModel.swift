@@ -12,6 +12,7 @@ import BTCore
 /// Type acting as a data model in the Swiftdata storage environment.
 @Model
 class TransactionModel: DataSourceModel {
+  public var identifier: String = UUID().uuidString
   public var title: String
   public var information: String?
   public var amount: Decimal

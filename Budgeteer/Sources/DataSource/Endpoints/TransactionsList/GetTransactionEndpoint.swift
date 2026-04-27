@@ -1,8 +1,8 @@
 //
-//  DeleteTransactionEndpoint.swift
+//  GetTransactionEndpoint.swift
 //  Budgeteer
 //
-//  Created by Adrian-Zoltan Herczeg on 09.03.2026.
+//  Created by Tarciziu Gologan on 27/04/2026.
 //
 
 import Foundation
@@ -10,11 +10,11 @@ import BTCore
 import SwiftData
 import BTCustomerExperience
 
-/// Implementation of the `DeleteTransaction` endpoint.
-final actor DeleteTransactionsEndpoint: Endpoint, ModelActor {
-  // MARK: - Constants
+/// Implementation of the `GetTransaction` endpoint for fetching a single transaction by identifier.
+final actor GetTransactionEndpoint: Endpoint, ModelActor {
+  // MARK: - Nested Types
 
-  enum Constants {
+  private enum Constants {
     static let transactionIdentifierHeaderKey = "txId"
   }
 
@@ -49,9 +49,21 @@ final actor DeleteTransactionsEndpoint: Endpoint, ModelActor {
       model.identifier == transactionIdentifier
     }
 
-    try modelContext.delete(model: TransactionModel.self, where: predicate)
-    try modelContext.save()
+    var fetchDescriptor = FetchDescriptor<TransactionModel>(predicate: predicate)
+    fetchDescriptor.fetchLimit = 1
 
-    return nil
+    guard let fetchedModel = try? modelContext.fetch(fetchDescriptor).first else {
+      throw DataSourceError.missingData
+    }
+
+    let transactionDTO = TransactionDTO(
+      id: fetchedModel.identifier,
+      title: fetchedModel.title,
+      information: fetchedModel.information,
+      amount: fetchedModel.amount,
+      transactionDate: fetchedModel.transactionDate
+    )
+
+    return [transactionDTO] as? [R]
   }
 }

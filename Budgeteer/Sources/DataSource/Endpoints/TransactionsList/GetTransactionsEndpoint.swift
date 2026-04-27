@@ -10,7 +10,7 @@ import BTCore
 import SwiftData
 import BTCustomerExperience
 
-/// Implementation of the `GetTransactions` endpoint
+/// Implementation of the `GetTransactions` endpoint.
 final actor GetTransactionsEndpoint: Endpoint, ModelActor {
   // MARK: - Endpoint Properties
 
@@ -35,38 +35,26 @@ final actor GetTransactionsEndpoint: Endpoint, ModelActor {
   func executeRequest<R>(
     requestModel: Request
   ) async throws -> [R]? where R: DataSourceModel {
-    // Note: - This can be improved by passing the order and date sorting information as configuration in the
-    // request headers.
     var descriptor = FetchDescriptor<TransactionModel>()
     descriptor.sortBy = [SortDescriptor(\TransactionModel.transactionDate, order: .reverse)]
 
     do {
-      let models = (try? modelContext.fetch(descriptor)) ?? []
-      let transactionsDTOs = models.compactMap { model in
-        map(transacitonModel: model, id: model.id)
+      let models = try modelContext.fetch(descriptor)
+      let transactionsDTOs = models.map { model in
+        TransactionDTO(
+          id: model.identifier,
+          title: model.title,
+          information: model.information,
+          amount: model.amount,
+          transactionDate: model.transactionDate
+        )
       }
-      let transformedModels = transactionsDTOs as? [R]
-      guard let transformedModels else {
+      guard let transformedModels = transactionsDTOs as? [R] else {
         throw DataSourceError.internalInconsistency
       }
       return transformedModels
     } catch {
       throw DataSourceError.invalidDataSource
     }
-  }
-
-  // MARK: - Private Methods
-
-  private func map(transacitonModel: TransactionModel, id: PersistentIdentifier) -> TransactionDTO? {
-    guard let id = DataSourceHelper.shared.map(id: id) else {
-      return nil
-    }
-    return TransactionDTO(
-      id: id,
-      title: transacitonModel.title,
-      information: transacitonModel.information,
-      amount: transacitonModel.amount,
-      transactionDate: transacitonModel.transactionDate
-    )
   }
 }

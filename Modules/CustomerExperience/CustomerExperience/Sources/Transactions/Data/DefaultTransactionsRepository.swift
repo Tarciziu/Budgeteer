@@ -31,9 +31,19 @@ public class DefaultTransactionsRepository: TransactionsRepository {
   // MARK: - Read
 
   public func getTransactions() async throws -> [TransactionDM] {
-    let request = Request(id: TransactionsEndpointsID.getTransacitons.rawValue)
+    let request = Request(id: TransactionsEndpointsID.getTransactions.rawValue)
     let result: [TransactionDTO]? = try await dataSource.executeRequest(request: request)
     return mapper.map(from: result ?? [])
+  }
+
+  public func getTransaction(id: String) async throws -> TransactionDM {
+    let headers: [String: String] = [Constants.transactionIdentifierHeaderKey: id]
+    let request = Request(id: TransactionsEndpointsID.getTransaction.rawValue, requestHeaders: headers)
+    let result: [TransactionDTO]? = try await dataSource.executeRequest(request: request)
+    guard let transaction = result?.first else {
+      throw TransactionsError.missingData
+    }
+    return mapper.map(from: transaction)
   }
 
   // MARK: - Create
@@ -46,6 +56,24 @@ public class DefaultTransactionsRepository: TransactionsRepository {
       throw TransactionsError.internalInconsistency
     }
     return mapper.map(from: createdTransaction)
+  }
+
+  // MARK: - Update
+
+  @discardableResult
+  public func update(id: String, parameters: TransactionParametersDM) async throws -> TransactionDM {
+    let body = mapper.map(from: parameters)
+    let headers: [String: String] = [Constants.transactionIdentifierHeaderKey: id]
+    let request = Request(
+      id: TransactionsEndpointsID.updateTransaction.rawValue,
+      body: body,
+      requestHeaders: headers
+    )
+    let result: [TransactionDTO]? = try await dataSource.executeRequest(request: request)
+    guard let updatedTransaction = result?.first else {
+      throw TransactionsError.internalInconsistency
+    }
+    return mapper.map(from: updatedTransaction)
   }
 
   // MARK: - Delete
