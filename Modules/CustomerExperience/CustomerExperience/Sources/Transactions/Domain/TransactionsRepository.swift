@@ -10,7 +10,10 @@ import Foundation
 /// Repository handling transactions related operations.
 public protocol TransactionsRepository {
   func getTransactions() async throws -> [TransactionDM]
+  func getTransaction(id: String) async throws -> TransactionDM
   @discardableResult
   func create(parameters: TransactionParametersDM) async throws -> TransactionDM
   func delete(_ transactionId: String) async throws
+  @discardableResult
+  func update(id: String, parameters: TransactionParametersDM) async throws -> TransactionDM
 }

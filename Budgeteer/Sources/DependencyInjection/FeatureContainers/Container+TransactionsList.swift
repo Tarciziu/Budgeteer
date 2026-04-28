@@ -25,6 +25,14 @@ extension Container {
     self { DefaultRemoveTransactionUseCase(repository: self.transactionsRepository()) }.shared
   }
 
+  var updateTransactionUseCase: Factory<UpdateTransactionUseCase> {
+    self { DefaultUpdateTransactionUseCase(repository: self.transactionsRepository()) }.shared
+  }
+
+  var getTransactionUseCase: Factory<GetTransactionUseCase> {
+    self { DefaultGetTransactionUseCase(repository: self.transactionsRepository()) }.shared
+  }
+
   private var transactionsRepository: Factory<TransactionsRepository> {
     self {
       let dataSource = self.swiftDataSource()
@@ -43,8 +51,10 @@ extension Container {
   private func makeTransactionsDataSource() -> DataSource {
     let endpoints: [Endpoint?] = [
       makeGetTransactionsEndpoint(),
+      makeGetTransactionEndpoint(),
       makeCreateTransactionEndpoint(),
-      makeDeleteTransactionEndpoint()
+      makeDeleteTransactionEndpoint(),
+      makeUpdateTransactionEndpoint()
     ]
 
     let filteredEndpoints = endpoints.compactMap { $0 }
@@ -53,22 +63,36 @@ extension Container {
   }
 
   private func makeGetTransactionsEndpoint() -> GetTransactionsEndpoint? {
-    return GetTransactionsEndpoint(
-      id: TransactionsEndpointsID.getTransacitons.rawValue,
+    GetTransactionsEndpoint(
+      id: TransactionsEndpointsID.getTransactions.rawValue,
+      modelContainer: dataSourceAssember().modelContainer
+    )
+  }
+
+  private func makeGetTransactionEndpoint() -> GetTransactionEndpoint? {
+    GetTransactionEndpoint(
+      id: TransactionsEndpointsID.getTransaction.rawValue,
       modelContainer: dataSourceAssember().modelContainer
     )
   }
 
   private func makeCreateTransactionEndpoint() -> CreateTransactionsEndpoint? {
-    return CreateTransactionsEndpoint(
+    CreateTransactionsEndpoint(
       id: TransactionsEndpointsID.createTransaction.rawValue,
       modelContainer: dataSourceAssember().modelContainer
     )
   }
 
   private func makeDeleteTransactionEndpoint() -> DeleteTransactionsEndpoint? {
-    return DeleteTransactionsEndpoint(
+    DeleteTransactionsEndpoint(
       id: TransactionsEndpointsID.deleteTransaction.rawValue,
+      modelContainer: dataSourceAssember().modelContainer
+    )
+  }
+
+  private func makeUpdateTransactionEndpoint() -> UpdateTransactionEndpoint? {
+    UpdateTransactionEndpoint(
+      id: TransactionsEndpointsID.updateTransaction.rawValue,
       modelContainer: dataSourceAssember().modelContainer
     )
   }

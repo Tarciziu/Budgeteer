@@ -10,7 +10,7 @@ import BTCore
 import SwiftData
 import BTCustomerExperience
 
-/// Implementation of the `GetTransactions` endpoint
+/// Implementation of the `CreateTransaction` endpoint.
 final actor CreateTransactionsEndpoint: Endpoint, ModelActor {
   // MARK: - Endpoint Properties
 
@@ -43,26 +43,20 @@ final actor CreateTransactionsEndpoint: Endpoint, ModelActor {
       title: model.title,
       information: model.information,
       amount: model.amount,
-      transactionDate: model.transactionDate,
+      transactionDate: model.transactionDate
     )
-
-    let helper = DataSourceHelper.shared
-    guard let modelId = helper.map(id: transactionModel.id) else {
-      throw DataSourceError.internalInconsistency
-    }
 
     modelContext.insert(transactionModel)
     try modelContext.save()
 
     let transactionDTO = TransactionDTO(
-      id: modelId,
+      id: transactionModel.identifier,
       title: transactionModel.title,
+      information: transactionModel.information,
       amount: transactionModel.amount,
       transactionDate: transactionModel.transactionDate
     )
 
-    let newTransactions: [R]? = [transactionDTO] as? [R]
-
-    return newTransactions
+    return [transactionDTO] as? [R]
   }
 }

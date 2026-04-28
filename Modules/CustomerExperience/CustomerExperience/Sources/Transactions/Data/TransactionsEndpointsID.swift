@@ -7,9 +7,11 @@
 
 import Foundation
 
-/// Type encapsulating identifiers for all endpoints responsbile for the transactions list feature.
+/// Type encapsulating identifiers for all endpoints responsible for the transactions list feature.
 public enum TransactionsEndpointsID: String {
-  case getTransacitons
+  case getTransactions
+  case getTransaction
   case createTransaction
   case deleteTransaction
+  case updateTransaction
 }
