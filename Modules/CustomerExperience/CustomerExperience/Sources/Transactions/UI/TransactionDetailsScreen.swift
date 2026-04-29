@@ -54,6 +54,7 @@ public struct TransactionDetailsScreen: View {
           with: $viewModel.model.amount,
           label: viewModel.localizedStrings.amountLabel
         )
+        makeCategoryPicker()
         // TODO: Add date picker when implemented and visual transformation for date
         makeInputField(
           with: $viewModel.model.transactionDate,
@@ -81,6 +82,21 @@ public struct TransactionDetailsScreen: View {
     InputField(
       text: binding,
       label: label
+    )
+  }
+
+  private func makeCategoryPicker() -> some View {
+    let chips = viewModel.getCategories().map { category in
+      return ChipButton.Content(
+        label: category.title,
+        isSelected: viewModel.model.categories.contains(category)
+      ) { [weak viewModel] in
+        viewModel?.toggleCategory(category)
+      }
+    }
+    return ChipGroup(
+      label: viewModel.localizedStrings.categoryLabel,
+      chips: chips
     )
   }
 

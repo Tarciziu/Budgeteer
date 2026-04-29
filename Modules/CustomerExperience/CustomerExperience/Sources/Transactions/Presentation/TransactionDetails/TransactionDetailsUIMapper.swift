@@ -11,19 +11,11 @@ import BTCore
 struct TransactionDetailsUIMapper {
   // MARK: - Private Properties
 
+  private let categoryMapper = TransactionCategoryUIMapper()
   private let hyphenDateFormatter = DateFormatterStore().hyphenDateFormatter
   private let amountFormatter = NumberFormatterStore().amountFormatter
 
-  // MARK: - Mapping Methods
-
-  func mapParameters(transaction: TransactionDetailsUIModel) -> TransactionParametersDM {
-    TransactionParametersDM(
-      title: transaction.title,
-      description: transaction.description,
-      amount: mapAmount(transaction.amount),
-      transactionDate: hyphenDateFormatter.date(from: transaction.transactionDate) ?? Date()
-    )
-  }
+  // MARK: - DM to UIModel
 
   func map(from transaction: TransactionDM) -> TransactionDetailsUIModel {
     TransactionDetailsUIModel(
@@ -31,9 +23,24 @@ struct TransactionDetailsUIMapper {
       title: transaction.title,
       description: transaction.description ?? String(),
       amount: amountFormatter.string(for: transaction.amount) ?? String(),
+      categories: Set(categoryMapper.map(transaction.categories)),
       transactionDate: hyphenDateFormatter.string(from: transaction.transactionDate)
     )
   }
+
+  // MARK: - UIModel to DM
+
+  func mapParameters(transaction: TransactionDetailsUIModel) -> TransactionParametersDM {
+    TransactionParametersDM(
+      title: transaction.title,
+      description: transaction.description,
+      amount: mapAmount(transaction.amount),
+      categories: categoryMapper.map(transaction.categories),
+      transactionDate: hyphenDateFormatter.date(from: transaction.transactionDate) ?? Date()
+    )
+  }
+
+  // MARK: - Mapping Methods
 
   func mapAmount(_ amount: String) -> Decimal {
     Decimal(string: amount, locale: amountFormatter.locale) ?? .zero
@@ -45,6 +52,7 @@ struct TransactionDetailsUIMapper {
       title: String(),
       description: String(),
       amount: String(),
+      categories: [],
       transactionDate: String()
     )
   }

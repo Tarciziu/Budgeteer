@@ -11,9 +11,10 @@ import BTCore
 struct TransactionsUIMapper {
   // MARK: - Private Properties
 
-  let hyphenDateFormatter = DateFormatterStore().hyphenDateFormatter
-  let longMonthYearDateFormatter = DateFormatterStore().longMonthYearDateFormatter
-  let amountFormatter = NumberFormatterStore().amountFormatter
+  private let categoryMapper = TransactionCategoryUIMapper()
+  private let hyphenDateFormatter = DateFormatterStore().hyphenDateFormatter
+  private let longMonthYearDateFormatter = DateFormatterStore().longMonthYearDateFormatter
+  private let amountFormatter = NumberFormatterStore().amountFormatter
 
   // MARK: - Map from domain to UIModel
 
@@ -60,7 +61,7 @@ struct TransactionsUIMapper {
     TransactionUIModel(
       id: transaction.id,
       title: transaction.title,
-      subtitle: transaction.description,
+      categories: categoryMapper.mapCategoriesLabel(transaction.categories),
       amount: mapAmount(transaction.amount),
       isPositiveAmount: transaction.amount >= .zero,
       transactionDate: hyphenDateFormatter.string(from: transaction.transactionDate)
@@ -73,14 +74,8 @@ struct TransactionsUIMapper {
 
   // MARK: - Map from UIModel to domain
 
-  func map(transaction: TransactionUIModel) -> TransactionDM {
-    TransactionDM(
-      id: transaction.id,
-      title: transaction.title,
-      description: transaction.subtitle,
-      amount: mapAmount(transaction.amount),
-      transactionDate: hyphenDateFormatter.date(from: transaction.transactionDate ?? String()) ?? Date()
-    )
+  func mapCategories(_ label: String) -> [TransactionCategoryDM] {
+    categoryMapper.mapCategoriesFromLabel(label)
   }
 
   func mapAmount(_ amount: String) -> Decimal {

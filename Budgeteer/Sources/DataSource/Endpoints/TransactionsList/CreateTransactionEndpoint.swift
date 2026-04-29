@@ -43,6 +43,7 @@ final actor CreateTransactionsEndpoint: Endpoint, ModelActor {
       title: model.title,
       information: model.information,
       amount: model.amount,
+      categories: model.categories,
       transactionDate: model.transactionDate
     )
 
@@ -54,6 +55,7 @@ final actor CreateTransactionsEndpoint: Endpoint, ModelActor {
       title: transactionModel.title,
       information: transactionModel.information,
       amount: transactionModel.amount,
+      categories: transactionModel.categories.compactMap { TransactionCategoryDTO(rawValue: $0) },
       transactionDate: transactionModel.transactionDate
     )
 

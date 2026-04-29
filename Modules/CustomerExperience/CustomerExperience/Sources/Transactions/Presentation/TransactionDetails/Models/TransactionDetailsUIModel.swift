@@ -12,5 +12,6 @@ struct TransactionDetailsUIModel: Equatable {
   var title: String
   var description: String
   var amount: String
+  var categories: Set<TransactionCategoryUIModel>
   var transactionDate: String
 }
