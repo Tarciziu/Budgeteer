@@ -18,12 +18,14 @@ struct DeveloperMenu: View {
 
   // MARK: - Observed Properties
 
+  @Environment(BTTheme.self)
+  private var theme
   private var viewModel: DeveloperMenuViewModel
 
   // MARK: - Private Properties
 
   private var navigationConfiguration: NavigationBarConfiguration {
-    let trailingAction = NavigationBarConfiguration.CloseAction(icon: "xmark") {
+    let trailingAction = NavigationBarConfiguration.CloseAction(icon: theme.imageCatalog.uiAction.close) {
       viewModel.close()
     }
     return NavigationBarConfiguration(title: Constants.title, trailingAction: trailingAction)

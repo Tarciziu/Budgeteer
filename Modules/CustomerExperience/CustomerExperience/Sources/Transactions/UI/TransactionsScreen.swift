@@ -40,15 +40,29 @@ public struct TransactionsScreen: View {
       EmptyView()
     }
     .navigationBar(makeConfiguration())
+    .searchable(text: $viewModel.searchText, prompt: TransactionFilterStrings.searchPlaceholder)
+    .onChange(of: viewModel.searchText) {
+      viewModel.updateSearch()
+    }
     .task {
       await viewModel.loadTransactions()
+    }
+    .sheet(isPresented: $viewModel.isFilterSheetPresented) {
+      TransactionFilterSheet(
+        currentFilters: viewModel.activeFilters,
+        onApply: { [weak viewModel] filters in
+          viewModel?.applyFilters(filters)
+        },
+        onReset: { [weak viewModel] in
+          viewModel?.resetFilters()
+        }
+      )
     }
   }
 
   // MARK: - Subviews
 
   @ViewBuilder private var loadingView: some View {
-    // TODO: Replace with a proper loading state strings.
     let leadingContent = ValueListCell.LeadingContent(
       title: "Loading...",
       caption: "Loading..."
@@ -76,10 +90,32 @@ public struct TransactionsScreen: View {
       .stroke(theme.colorPalette.border.primary, lineWidth: theme.spacing.lineWidth)
   }
 
+  private var filterChipBar: some View {
+    let filterButtonChip = ChipButton.Content(
+      label: TransactionFilterStrings.filterLabel,
+      isSelected: true,
+      trailingIcon: theme.imageCatalog.uiAction.horizontalSlider
+    ) { [weak viewModel] in
+      viewModel?.presentFilterSheet()
+    }
+    let activeFilterChips = viewModel.activeFilters.map { filter in
+      ChipButton.Content(
+        label: filter.displayLabel,
+        isSelected: true,
+        trailingIcon: theme.imageCatalog.uiAction.close
+      ) { [weak viewModel] in
+        viewModel?.removeFilter(filter)
+      }
+    }
+    return HorizontalChipBar(pinnedChips: [filterButtonChip], chips: activeFilterChips)
+  }
+
   // MARK: - Navigation Configuration
 
   private func makeConfiguration() -> NavigationBarConfiguration {
-    let trailingAction = NavigationBarConfiguration.CloseAction(icon: "plus") { [weak viewModel] in
+    let trailingAction = NavigationBarConfiguration.CloseAction(
+      icon: theme.imageCatalog.uiAction.plus
+    ) { [weak viewModel] in
       viewModel?.handleNewTransaction()
     }
     return NavigationBarConfiguration(
@@ -92,16 +128,19 @@ public struct TransactionsScreen: View {
 
   @ViewBuilder
   private func makeTransactionsListView(transactions: TransactionsListUIModel) -> some View {
-    ScrollView {
-      switch transactions {
-      case let .full(sections):
-        makeSections(sections: sections)
-      case let .compact(transactions):
-        makeCompactTransactionsList(transactions: transactions)
+    VStack(spacing: theme.spacing.spacerM) {
+      filterChipBar
+      ScrollView {
+        switch transactions {
+        case let .full(sections):
+          makeSections(sections: sections)
+        case let .compact(transactions):
+          makeCompactTransactionsList(transactions: transactions)
+        }
       }
+      .contentMargins(.horizontal, theme.spacing.spacerL)
+      .scrollIndicators(.hidden)
     }
-    .contentMargins(.horizontal, theme.spacing.spacerL)
-    .scrollIndicators(.hidden)
   }
 
   // MARK: - Full Transactions List
