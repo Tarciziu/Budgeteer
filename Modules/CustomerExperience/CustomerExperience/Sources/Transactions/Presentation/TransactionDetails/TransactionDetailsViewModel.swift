@@ -39,7 +39,7 @@ public class TransactionDetailsViewModel: ObservableObject {
   }
 
   var isActionEnabled: Bool {
-    !model.title.isEmpty && !model.amount.isEmpty
+    !isEditMode || model != initialModel
   }
 
   var actionLabel: String {
@@ -48,13 +48,16 @@ public class TransactionDetailsViewModel: ObservableObject {
 
   // MARK: - Private Properties
 
-  private let mapper: TransactionDetailsUIMapper
+  private let mapper = TransactionDetailsUIMapper()
   private let eventSubject = PassthroughSubject<TransactionOutputEvent, Never>()
+  private var initialModel: TransactionDetailsUIModel
 
   // MARK: - Dependencies
 
   private let transactionIdentifier: String?
   private let createTransactionUseCase: CreateTransactionUseCase
+  private let updateTransactionUseCase: UpdateTransactionUseCase
+  private let getTransactionUseCase: GetTransactionUseCase
 
   // MARK: - Initializer
 
@@ -62,14 +65,21 @@ public class TransactionDetailsViewModel: ObservableObject {
   /// - Parameters:
   ///   - transactionIdentifier: Unique identifier of the transaction.
   ///   - createTransactionUseCase: Instance of ``CreateTransactionUseCase``.
+  ///   - updateTransactionUseCase: Instance of ``UpdateTransactionUseCase``.
+  ///   - getTransactionUseCase: Instance of ``GetTransactionUseCase``.
   public init(
     transactionIdentifier: String?,
-    createTransactionUseCase: CreateTransactionUseCase
+    createTransactionUseCase: CreateTransactionUseCase,
+    updateTransactionUseCase: UpdateTransactionUseCase,
+    getTransactionUseCase: GetTransactionUseCase
   ) {
     self.transactionIdentifier = transactionIdentifier
     self.createTransactionUseCase = createTransactionUseCase
-    mapper = TransactionDetailsUIMapper()
-    model = mapper.makeEmptyTransactionModel()
+    self.updateTransactionUseCase = updateTransactionUseCase
+    self.getTransactionUseCase = getTransactionUseCase
+    let emptyModel = mapper.makeEmptyTransactionModel()
+    model = emptyModel
+    initialModel = emptyModel
   }
 
   // MARK: - Internal Methods
@@ -78,11 +88,27 @@ public class TransactionDetailsViewModel: ObservableObject {
     eventSubject.send(.dismiss)
   }
 
+  func loadTransaction() {
+    guard let transactionIdentifier else { return }
+    Task {
+      do {
+        let transaction = try await getTransactionUseCase.getTransaction(id: transactionIdentifier)
+        let mappedModel = mapper.map(from: transaction)
+        await MainActor.run {
+          model = mappedModel
+          initialModel = mappedModel
+        }
+      } catch {
+        // TODO: Handle Error
+      }
+    }
+  }
+
   func saveTransaction() {
     guard !isOperationOngoing else { return }
     isOperationOngoing = true
-    if transactionIdentifier != nil {
-      // TODO: Handle update
+    if let transactionIdentifier {
+      updateTransaction(id: transactionIdentifier)
     } else {
       createTransaction()
     }
@@ -95,6 +121,22 @@ public class TransactionDetailsViewModel: ObservableObject {
       do {
         try await createTransactionUseCase.createTransaction(mapper.mapParameters(transaction: model))
         eventSubject.send(.successful)
+        isOperationOngoing = false
+      } catch {
+        // TODO: Handle Error
+      }
+    }
+  }
+
+  private func updateTransaction(id: String) {
+    Task { @MainActor in
+      do {
+        try await updateTransactionUseCase.updateTransaction(
+          id: id,
+          parameters: mapper.mapParameters(transaction: model)
+        )
+        eventSubject.send(.successful)
+        isOperationOngoing = false
       } catch {
         isOperationOngoing = false
       }

@@ -16,7 +16,7 @@ final public class DefaultUpdateTransactionUseCase: UpdateTransactionUseCase {
 
   private let repository: TransactionsRepository
 
-  // MARK: - Init
+  // MARK: - Initializer
 
   /// Creates a new default implementation of ``UpdateTransactionUseCase``.
   /// - Parameter repository: Instance of ``TransactionsRepository``.
