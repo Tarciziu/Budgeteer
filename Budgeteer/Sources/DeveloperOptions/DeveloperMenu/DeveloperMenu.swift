@@ -40,7 +40,67 @@ struct DeveloperMenu: View {
   // MARK: - Body
 
   var body: some View {
-    Text("Developer Menu")
-      .navigationBar(navigationConfiguration)
+    ScrollView {
+      VStack(spacing: theme.spacing.spacerXL) {
+        reusableViewsSection
+        samplesSection
+        developerOptionsSection
+      }
+    }
+    .contentMargins(theme.spacing.spacerL)
+    .scrollIndicators(.hidden)
+    .navigationBar(navigationConfiguration)
+  }
+
+  // MARK: - Reusable Views
+
+  private var reusableViewsSection: some View {
+    VStack(alignment: .leading, spacing: .zero) {
+      SectionHeader(content: .init(icon: "puzzlepiece.extension", title: "Reusable Views"))
+      NavigationListCell(
+        content: .init(
+          icon: "square.grid.2x2",
+          title: "Components Library",
+          caption: "Browse all reusable components",
+          navigationIcon: .default
+        )
+      ) {
+        viewModel.navigate(to: .componentsLibrary)
+      }
+    }
+    .background(theme.colorPalette.surface.primary)
+    .clipShape(RoundedRectangle(cornerRadius: theme.borderRadius.radiusS))
+    .overlay {
+      RoundedRectangle(cornerRadius: theme.borderRadius.radiusS)
+        .stroke(theme.colorPalette.border.primary, lineWidth: theme.spacing.lineWidth)
+    }
+  }
+
+  // MARK: - Samples
+
+  private var samplesSection: some View {
+    VStack(alignment: .leading, spacing: .zero) {
+      SectionHeader(content: .init(icon: "flask", title: "Samples", caption: "Coming Soon"))
+    }
+    .background(theme.colorPalette.surface.primary)
+    .clipShape(RoundedRectangle(cornerRadius: theme.borderRadius.radiusS))
+    .overlay {
+      RoundedRectangle(cornerRadius: theme.borderRadius.radiusS)
+        .stroke(theme.colorPalette.border.primary, lineWidth: theme.spacing.lineWidth)
+    }
+  }
+
+  // MARK: - Developer Options
+
+  private var developerOptionsSection: some View {
+    VStack(alignment: .leading, spacing: .zero) {
+      SectionHeader(content: .init(icon: "wrench.and.screwdriver", title: "Developer Options", caption: "Coming Soon"))
+    }
+    .background(theme.colorPalette.surface.primary)
+    .clipShape(RoundedRectangle(cornerRadius: theme.borderRadius.radiusS))
+    .overlay {
+      RoundedRectangle(cornerRadius: theme.borderRadius.radiusS)
+        .stroke(theme.colorPalette.border.primary, lineWidth: theme.spacing.lineWidth)
+    }
   }
 }

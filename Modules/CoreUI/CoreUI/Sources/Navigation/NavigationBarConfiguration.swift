@@ -74,7 +74,6 @@ public struct NavigationBarConfigurationModifier: ViewModifier {
   public func body(content: Content) -> some View {
     content
       .toolbar(config.isHidden ? .hidden : .visible, for: .navigationBar)
-      .navigationBarBackButtonHidden(config.leadingAction == nil)
       .if(config.leadingAction != nil) { content in
         content
           .navigationBarBackButtonHidden(true)

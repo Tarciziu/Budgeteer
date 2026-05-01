@@ -26,7 +26,7 @@ class DeveloperMenuCoordinator {
   // MARK: - Private Properties
 
   private let rootNavigationController: UINavigationController
-  private let navigationController = BTNavigationController()
+  let navigationController = BTNavigationController()
   private let eventSubject = PassthroughSubject<DeveloperMenuFlowEvent, Never>()
 
   // MARK: - Initializer
