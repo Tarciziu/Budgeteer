@@ -14,6 +14,11 @@ class DeveloperMenuViewModel {
 
   enum FlowEvent {
     case close
+    case navigate(Destination)
+  }
+
+  enum Destination {
+    case componentsLibrary
   }
 
   // MARK: - Internal Properties
@@ -30,5 +35,9 @@ class DeveloperMenuViewModel {
 
   func close() {
     eventSubject.send(.close)
+  }
+
+  func navigate(to destination: Destination) {
+    eventSubject.send(.navigate(destination))
   }
 }
