@@ -40,3 +40,9 @@ class TransactionsCoordinator {
     navigationController.present(modalNavigationController, animated: true)
   }
 }
+
+extension TransactionsCoordinator {
+  func process(_ event: LocalNotificationEvent) {
+    // TODO: - Add Handling when necessary
+  }
+}

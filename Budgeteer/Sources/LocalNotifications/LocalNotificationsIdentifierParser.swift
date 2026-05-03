@@ -15,14 +15,20 @@ final class LocalNotificationsIdentifierParser {
 
   // MARK: - Internal Methods
 
-  func parse(identifier: String?) -> LocalNotificationsDestination {
+  func parse(identifier: String?) -> LocalNotificationEvent {
     guard let identifier else {
       return .unknown
     }
     if identifier.hasPrefix(reminderPrefix) {
-      let id = identifier.split(separator: reminderPrefix)
-      return .reminder(id: String(id[.zero]))
+      return processReminderPayload(payload: identifier)
     }
     return .unknown
+  }
+
+  // MARK: - Private Methods
+
+  private func processReminderPayload(payload: String) -> LocalNotificationEvent {
+    let id = payload.split(separator: reminderPrefix)
+    return .reminder(id: String(id[.zero]))
   }
 }

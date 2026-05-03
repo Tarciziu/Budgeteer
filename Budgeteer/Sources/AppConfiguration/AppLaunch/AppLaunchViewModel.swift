@@ -17,7 +17,7 @@ final class AppLaunchViewModel {
 
   @Published var appPhase: AppPhase = .initialisation
 
-  var notificationsHandlerOutputPublisher: AnyPublisher<LocalNotificationsHandler.OutputEvent, Never> {
+  var notificationsHandlerOutputPublisher: AnyPublisher<LocalNotificationEvent, Never> {
     notificationsHandler.outputPublisher
   }
 

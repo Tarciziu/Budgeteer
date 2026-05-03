@@ -80,3 +80,9 @@ class ProfilePageCoordinator {
     }
   }
 }
+
+extension ProfilePageCoordinator {
+  func process(_ event: LocalNotificationEvent) {
+    // TODO: - Add Handling when necessary
+  }
+}

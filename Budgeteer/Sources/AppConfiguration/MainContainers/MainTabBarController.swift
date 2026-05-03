@@ -73,3 +73,14 @@ class MainTabBarController: UITabBarController {
     return navigationController
   }
 }
+
+extension MainTabBarController {
+  func process(_ event: LocalNotificationEvent) {
+    switch event {
+    case .reminder:
+      profilePageCoordinator?.process(event)
+    default:
+      return
+    }
+  }
+}

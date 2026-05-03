@@ -17,6 +17,7 @@ import BTCoreUI
 final class MainWindow: UIWindow {
   // MARK: - Private Properties
 
+  private var mainTabBarController: MainTabBarController?
   private let mainWindowViewModel = Container.shared.appLaunchViewModel()
   private let appLaunchViewModel = Container.shared.appLaunchViewModel()
   private var mainNavigationController = BTNavigationController()
@@ -68,17 +69,26 @@ final class MainWindow: UIWindow {
   }
 
   private func handleMainAppPhase() {
+    let tabBarController = MainTabBarController()
+    mainTabBarController = tabBarController
     mainNavigationController.isNavigationBarHidden = true
-    mainNavigationController.setViewControllers([MainTabBarController()], animated: true)
+    mainNavigationController.setViewControllers([tabBarController], animated: true)
     // TODO: - Decide at which step the user will be asked about notifications permisions.
     // If the user get's asked during the registration phase, this method sohuld be moved to the corresponding function.
     monitorLocalNotifications()
   }
+}
 
+private extension MainWindow {
   private func monitorLocalNotifications() {
-    localNotificationsCancellable = appLaunchViewModel.notificationsHandlerOutputPublisher.sink { _ in
-      // TODO: - To be done as part of 15k(https://mobile4fun.codecks.io/decks/13-reminders/card/15k-add-routing-to-target-navigation-from-notifications).
+    localNotificationsCancellable =
+    appLaunchViewModel.notificationsHandlerOutputPublisher.sink { [weak self] event in
+      self?.handleNotificationsEvent(event)
     }
+  }
+
+  private func handleNotificationsEvent(_ event: LocalNotificationEvent) {
+    mainTabBarController?.process(event)
   }
 }
 
