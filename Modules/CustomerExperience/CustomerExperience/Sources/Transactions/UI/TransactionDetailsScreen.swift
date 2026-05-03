@@ -64,6 +64,7 @@ public struct TransactionDetailsScreen: View {
       .disabled(!viewModel.isActionEnabled)
     }
     .contentMargins(theme.spacing.spacerL)
+    .scrollIndicators(.hidden)
     .safeAreaInset(edge: .bottom) {
       RegularButton(text: viewModel.actionLabel, imageName: nil) { [weak viewModel] in
         viewModel?.saveTransaction()
@@ -103,7 +104,9 @@ public struct TransactionDetailsScreen: View {
   // MARK: - Navigation Configuration
 
   private func makeConfiguration() -> NavigationBarConfiguration {
-    let trailingAction = NavigationBarConfiguration.CloseAction(icon: "xmark") { [weak viewModel] in
+    let trailingAction = NavigationBarConfiguration.CloseAction(
+      icon: theme.imageCatalog.uiAction.close
+    ) { [weak viewModel] in
       viewModel?.requestDismiss()
     }
     return NavigationBarConfiguration(

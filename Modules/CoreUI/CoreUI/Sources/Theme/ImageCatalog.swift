@@ -47,6 +47,7 @@ extension ImageCatalog {
     public let plus: String
     public let minus: String
     public let check: String
+    public let horizontalSlider: String
 
     public init(
       chevronRight: String,
@@ -62,7 +63,8 @@ extension ImageCatalog {
       close: String,
       plus: String,
       minus: String,
-      check: String
+      check: String,
+      horizontalSlider: String
     ) {
       self.chevronRight = chevronRight
       self.chevronLeft = chevronLeft
@@ -78,6 +80,7 @@ extension ImageCatalog {
       self.plus = plus
       self.minus = minus
       self.check = check
+      self.horizontalSlider = horizontalSlider
     }
   }
 }

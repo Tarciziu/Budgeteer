@@ -23,7 +23,8 @@ extension ImageCatalog {
       close: "xmark",
       plus: "plus",
       minus: "minus",
-      check: "checkmark"
+      check: "checkmark",
+      horizontalSlider: "slider.horizontal.3"
     )
 
     let uiActionsCircle = UIActionsCircle(
