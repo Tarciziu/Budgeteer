@@ -156,7 +156,7 @@ public struct TransactionsScreen: View {
   private func makeTransaction(transaction: TransactionUIModel, hasDivider: Bool) -> some View {
     let leadingContent = ValueListCell.LeadingContent(
       title: transaction.title,
-      caption: transaction.subtitle
+      caption: transaction.categories
     )
     let trailingContent = ValueListCell.TrailingContent(
       title: transaction.amount,

@@ -12,6 +12,7 @@ extension TransactionDetailsViewModel {
     let titleLabel = Strings.CustomerExperience.singular("transactions.details.titleLabel")
     let descriptionLabel = Strings.CustomerExperience.singular("transactions.details.descriptionLabel")
     let amountLabel = Strings.CustomerExperience.singular("transactions.details.amountLabel")
+    let categoryLabel = Strings.CustomerExperience.singular("transactions.details.categoryLabel")
     let dateLabel = Strings.CustomerExperience.singular("transactions.details.dateLabel")
     let saveActionLabel = Strings.CustomerExperience.singular("transactions.details.saveActionLabel")
     let updateActionLabel = Strings.CustomerExperience.singular("transactions.details.updateActionLabel")

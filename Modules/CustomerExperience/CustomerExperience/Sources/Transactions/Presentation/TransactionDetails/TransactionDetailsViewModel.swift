@@ -48,6 +48,7 @@ public class TransactionDetailsViewModel: ObservableObject {
 
   // MARK: - Private Properties
 
+  private let categoryMapper = TransactionCategoryUIMapper()
   private let mapper = TransactionDetailsUIMapper()
   private let eventSubject = PassthroughSubject<TransactionOutputEvent, Never>()
   private var initialModel: TransactionDetailsUIModel
@@ -84,6 +85,14 @@ public class TransactionDetailsViewModel: ObservableObject {
 
   // MARK: - Internal Methods
 
+  func toggleCategory(_ category: TransactionCategoryUIModel) {
+    if model.categories.contains(category) {
+      model.categories.remove(category)
+    } else {
+      model.categories.insert(category)
+    }
+  }
+
   func requestDismiss() {
     eventSubject.send(.dismiss)
   }
@@ -112,6 +121,10 @@ public class TransactionDetailsViewModel: ObservableObject {
     } else {
       createTransaction()
     }
+  }
+
+  func getCategories() -> [TransactionCategoryUIModel] {
+    categoryMapper.allCategories()
   }
 
   // MARK: - Private Methods

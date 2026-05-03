@@ -22,8 +22,30 @@ struct TransactionsDataMapper {
       title: transaction.title,
       description: transaction.information,
       amount: transaction.amount,
+      categories: transaction.categories.map { map(from: $0) },
       transactionDate: transaction.transactionDate
     )
+  }
+
+  func map(from category: TransactionCategoryDTO) -> TransactionCategoryDM {
+    switch category {
+    case .groceries:
+      return .groceries
+    case .bills:
+      return .bills
+    case .entertainment:
+      return .entertainment
+    case .salary:
+      return .salary
+    case .transport:
+      return .transport
+    case .health:
+      return .health
+    case .shopping:
+      return .shopping
+    case .other:
+      return .other
+    }
   }
 
   // MARK: - Mapping from domain to data layer
@@ -33,7 +55,29 @@ struct TransactionsDataMapper {
       title: parameters.title,
       information: parameters.description,
       amount: parameters.amount,
+      categories: parameters.categories.map { map(from: $0).rawValue },
       transactionDate: parameters.transactionDate
     )
+  }
+
+  func map(from category: TransactionCategoryDM) -> TransactionCategoryDTO {
+    switch category {
+    case .groceries:
+      return .groceries
+    case .bills:
+      return .bills
+    case .entertainment:
+      return .entertainment
+    case .salary:
+      return .salary
+    case .transport:
+      return .transport
+    case .health:
+      return .health
+    case .shopping:
+      return .shopping
+    case .other:
+      return .other
+    }
   }
 }
