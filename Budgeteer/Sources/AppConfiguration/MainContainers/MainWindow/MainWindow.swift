@@ -22,7 +22,8 @@ final class MainWindow: UIWindow {
   private var mainNavigationController = BTNavigationController()
   private var developerMenuCoordinator: DeveloperMenuCoordinator?
   private var developerMenuSubscription: AnyCancellable?
-  private var cancellable: AnyCancellable?
+  private var appPhaseCancellable: AnyCancellable?
+  private var localNotificationsCancellable: AnyCancellable?
 
   // MARK: - Init
 
@@ -39,7 +40,7 @@ final class MainWindow: UIWindow {
   // MARK: - Private Methods
 
   private func observeAppLaunchViewModel() {
-    cancellable = appLaunchViewModel.$appPhase.sink { [weak self] phase in
+    appPhaseCancellable = appLaunchViewModel.$appPhase.sink { [weak self] phase in
       self?.handlePhase(phase)
     }
   }
@@ -69,6 +70,15 @@ final class MainWindow: UIWindow {
   private func handleMainAppPhase() {
     mainNavigationController.isNavigationBarHidden = true
     mainNavigationController.setViewControllers([MainTabBarController()], animated: true)
+    // TODO: - Decide at which step the user will be asked about notifications permisions.
+    // If the user get's asked during the registration phase, this method sohuld be moved to the corresponding function.
+    monitorLocalNotifications()
+  }
+
+  private func monitorLocalNotifications() {
+    localNotificationsCancellable = appLaunchViewModel.notificationsHandlerOutputPublisher.sink { _ in
+      // TODO: - To be done as part of 15k(https://mobile4fun.codecks.io/decks/13-reminders/card/15k-add-routing-to-target-navigation-from-notifications).
+    }
   }
 }
 
