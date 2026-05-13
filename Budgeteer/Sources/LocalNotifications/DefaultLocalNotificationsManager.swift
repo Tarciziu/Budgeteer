@@ -25,7 +25,7 @@ final class DefaultLocalNotificationsManager: LocalNotificationsManager {
   // MARK: - LocalNotificationsManager Methods
 
   func getNotificationsAuthorizationStatus() async -> LocalNotificationsAuthorizationStatus {
-    let settings = await     notificationCenter.notificationSettings()
+    let settings = await notificationCenter.notificationSettings()
     let authorizationStatus = settings.authorizationStatus
     switch authorizationStatus {
     case .authorized:
@@ -38,7 +38,7 @@ final class DefaultLocalNotificationsManager: LocalNotificationsManager {
   }
 
   func registerForLocalNotifications() async -> Result<Void, LocalNotificationsError> {
-    let requestStatus = try? await     notificationCenter.requestAuthorization(options: Self.remindersNotificationsPermissions)
+    let requestStatus = try? await notificationCenter.requestAuthorization(options: Self.remindersNotificationsPermissions)
     return requestStatus == true ? .success(()) : .failure(.authorizationFailure)
   }
 

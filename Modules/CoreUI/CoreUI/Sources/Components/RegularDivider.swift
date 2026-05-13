@@ -25,7 +25,7 @@ public struct RegularDivider: View {
 
   public var body: some View {
     Rectangle()
-      .foregroundStyle(theme.colorPalette.surface.overlay) // TODO: Replace when adding border color catalog
+      .foregroundStyle(theme.colorPalette.border.primary)
       .frame(height: theme.spacing.lineWidth)
   }
 }

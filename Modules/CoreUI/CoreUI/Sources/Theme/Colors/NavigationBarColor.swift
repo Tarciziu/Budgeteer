@@ -13,18 +13,16 @@ import SwiftUI
 public struct NavigationBarColors {
   public let surface: Color
   public let text: Color
-  public let caption: Color
   public let icon: Color
   public let textUIColor: UIColor
   public let surfaceUIColor: UIColor
   public let iconUIColor: UIColor
 
-    // MARK: - Initializer
+  // MARK: - Initializer
 
   public init(
     surface: Color,
     text: Color,
-    caption: Color,
     icon: Color,
     textUIColor: UIColor,
     surfaceUIColor: UIColor,
@@ -32,7 +30,6 @@ public struct NavigationBarColors {
   ) {
     self.surface = surface
     self.text = text
-    self.caption = caption
     self.icon = icon
     self.textUIColor = textUIColor
     self.surfaceUIColor = surfaceUIColor
