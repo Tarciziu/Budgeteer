@@ -12,6 +12,7 @@ public struct ColorPalette {
   // MARK: - Public Properties
 
   public let surface: SurfaceColors
+  public let tint: TintColors
   public let tabBar: TabBarColors
   public let navigationBar: NavigationBarColors
   public let bottomSheet: BottomSheetColors
@@ -23,6 +24,7 @@ public struct ColorPalette {
 
   public init(
     surface: SurfaceColors,
+    tint: TintColors,
     tabBar: TabBarColors,
     navigationBar: NavigationBarColors,
     bottomSheet: BottomSheetColors,
@@ -31,6 +33,7 @@ public struct ColorPalette {
     border: BorderColors
   ) {
     self.surface = surface
+    self.tint = tint
     self.tabBar = tabBar
     self.navigationBar = navigationBar
     self.bottomSheet = bottomSheet

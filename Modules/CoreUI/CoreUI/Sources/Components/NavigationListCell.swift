@@ -116,7 +116,7 @@ public struct NavigationListCell: View {
       .resizable()
       .renderingMode(.template)
       .frame(width: theme.iconSize.iconXL, height: theme.iconSize.iconXL)
-      .foregroundStyle(theme.colorPalette.bottomSheet.button)
+      .foregroundStyle(theme.colorPalette.tint.primary)
     }
   }
 
