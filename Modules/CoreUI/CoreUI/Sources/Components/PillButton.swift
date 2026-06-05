@@ -97,7 +97,7 @@ public struct PillButton: View {
     case .idle:
       theme.colorPalette.surface.light
     case .highlight:
-      theme.colorPalette.bottomSheet.button
+      theme.colorPalette.tint.primary
     }
   }
 

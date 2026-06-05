@@ -76,7 +76,7 @@ public struct CardButton: View {
 
   @ViewBuilder private var borderView: some View {
     RoundedRectangle(cornerRadius: theme.borderRadius.radiusS)
-      .stroke(theme.colorPalette.icon.disabled, lineWidth: theme.spacing.lineWidth)
+      .stroke(theme.colorPalette.border.primary, lineWidth: theme.spacing.lineWidth)
   }
 }
 

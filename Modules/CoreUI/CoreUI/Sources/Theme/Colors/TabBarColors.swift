@@ -11,40 +11,19 @@ import SwiftUI
 
 /// Type containing tab bar colors used all over the application.
 public struct TabBarColors {
-  // MARK: - Nested Types
-
-  public struct TabColors {
-    // MARK: - Public Properties
-
-    public let activeIcon: UIColor
-    public let activeLabel: UIColor
-    public let defaultIcon: UIColor
-    public let defaultLabel: UIColor
-
-    // MARK: - Initializer
-
-    public init(
-      activeIcon: UIColor,
-      activeLabel: UIColor,
-      defaultIcon: UIColor,
-      defaultLabel: UIColor
-    ) {
-      self.activeIcon = activeIcon
-      self.activeLabel = activeLabel
-      self.defaultIcon = defaultIcon
-      self.defaultLabel = defaultLabel
-    }
-  }
-
   // MARK: - Public Properties
 
   public let background: UIColor
-  public let tab: TabColors
+  /// The color applied to both the icon and label of the selected tab.
+  public let active: UIColor
+  /// The color applied to both the icon and label of unselected tabs.
+  public let `default`: UIColor
 
   // MARK: - Initializer
 
-  public init(background: UIColor, tab: TabColors) {
+  public init(background: UIColor, active: UIColor, default defaultColor: UIColor) {
     self.background = background
-    self.tab = tab
+    self.active = active
+    self.default = defaultColor
   }
 }
