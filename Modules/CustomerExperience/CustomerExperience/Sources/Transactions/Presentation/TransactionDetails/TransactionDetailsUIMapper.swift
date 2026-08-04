@@ -24,7 +24,7 @@ struct TransactionDetailsUIMapper {
       description: transaction.description ?? String(),
       amount: amountFormatter.string(for: transaction.amount) ?? String(),
       categories: Set(categoryMapper.map(transaction.categories)),
-      transactionDate: hyphenDateFormatter.string(from: transaction.transactionDate)
+      transactionDate: transaction.transactionDate
     )
   }
 
@@ -36,7 +36,7 @@ struct TransactionDetailsUIMapper {
       description: transaction.description,
       amount: mapAmount(transaction.amount),
       categories: categoryMapper.map(transaction.categories),
-      transactionDate: hyphenDateFormatter.date(from: transaction.transactionDate) ?? Date()
+      transactionDate: transaction.transactionDate
     )
   }
 
@@ -53,7 +53,7 @@ struct TransactionDetailsUIMapper {
       description: String(),
       amount: String(),
       categories: [],
-      transactionDate: String()
+      transactionDate: Date.now
     )
   }
 }

@@ -79,17 +79,13 @@ public struct ChipGroup: View {
       labelView
       chipsGridView
     }
-    .padding(theme.spacing.spacerL)
   }
 
   private var labelView: some View {
-    VStack(spacing: .zero) {
-      Text(label)
-        .font(theme.typography.body.subheadline)
-        .foregroundStyle(theme.colorPalette.text.secondary)
-        .frame(maxWidth: .infinity, alignment: .leading)
-      RegularDivider()
-    }
+    Text(label)
+      .font(theme.typography.body.subheadline)
+      .foregroundStyle(theme.colorPalette.text.secondary)
+      .frame(maxWidth: .infinity, alignment: .leading)
   }
 
   private var chipsGridView: some View {
