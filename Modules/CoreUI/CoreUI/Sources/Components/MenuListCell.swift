@@ -107,7 +107,7 @@ public struct MenuListCell: View {
     }
   }
 
-  private func  makePerformanceColor(performance: Performance) -> Color {
+  private func makePerformanceColor(performance: Performance) -> Color {
     switch performance.type {
     case .positive:
       theme.colorPalette.text.positive

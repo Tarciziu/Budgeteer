@@ -93,7 +93,7 @@ public struct TransactionsScreen: View {
   private var filterChipBar: some View {
     let filterButtonChip = ChipButton.Content(
       label: TransactionFilterStrings.filterLabel,
-      isSelected: true,
+      isSelected: false,
       trailingIcon: theme.imageCatalog.uiAction.horizontalSlider
     ) { [weak viewModel] in
       viewModel?.presentFilterSheet()
