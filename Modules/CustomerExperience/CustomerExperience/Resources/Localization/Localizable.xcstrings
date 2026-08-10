@@ -273,17 +273,6 @@
         }
       }
     },
-    "transactions.details.updateActionLabel" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Update"
-          }
-        }
-      }
-    },
     "transactions.details.titleLabel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -291,6 +280,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Title"
+          }
+        }
+      }
+    },
+    "transactions.details.updateActionLabel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
           }
         }
       }

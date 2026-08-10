@@ -41,27 +41,7 @@ public struct TransactionDetailsScreen: View {
 
   private var content: some View {
     ScrollView {
-      VStack(spacing: .zero) {
-        makeInputField(
-          with: $viewModel.model.title,
-          label: viewModel.localizedStrings.titleLabel
-        )
-        makeInputField(
-          with: $viewModel.model.description,
-          label: viewModel.localizedStrings.descriptionLabel
-        )
-        makeInputField(
-          with: $viewModel.model.amount,
-          label: viewModel.localizedStrings.amountLabel
-        )
-        makeCategoryPicker()
-        // TODO: Add date picker when implemented and visual transformation for date
-        makeInputField(
-          with: $viewModel.model.transactionDate,
-          label: viewModel.localizedStrings.dateLabel
-        )
-      }
-      .disabled(!viewModel.isActionEnabled)
+      fields
     }
     .contentMargins(theme.spacing.spacerL)
     .scrollIndicators(.hidden)
@@ -72,6 +52,47 @@ public struct TransactionDetailsScreen: View {
       .disabled(!viewModel.isActionEnabled)
     }
     .allowsHitTesting(!viewModel.isOperationOngoing)
+  }
+
+  @ViewBuilder private var fields: some View {
+    VStack(spacing: .zero) {
+      makeInputField(
+        with: $viewModel.model.title,
+        label: viewModel.localizedStrings.titleLabel
+      )
+      makeInputField(
+        with: $viewModel.model.amount,
+        label: viewModel.localizedStrings.amountLabel
+      )
+      VStack(spacing: theme.spacing.spacerM) {
+        makeInputField(
+          with: $viewModel.model.description,
+          label: viewModel.localizedStrings.descriptionLabel
+        )
+        dateInputField
+        makeCategoryPicker()
+      }
+    }
+  }
+
+  @ViewBuilder private var dateInputField: some View {
+    HStack(spacing: .zero) {
+      Text(viewModel.localizedStrings.dateLabel)
+        .font(theme.typography.body.subheadline)
+        .foregroundColor(theme.colorPalette.text.secondary)
+        .frame(maxWidth: .infinity, alignment: .leading)
+      Spacer()
+      datePicker
+    }
+  }
+
+  @ViewBuilder private var datePicker: some View {
+    DatePicker(
+      String(),
+      selection: $viewModel.model.transactionDate,
+      in: Date.distantPast...Date.now,
+      displayedComponents: [.date, .hourAndMinute]
+    )
   }
 
   // MARK: - View Builders
@@ -86,19 +107,21 @@ public struct TransactionDetailsScreen: View {
     )
   }
 
+  @ViewBuilder
   private func makeCategoryPicker() -> some View {
     let chips = viewModel.getCategories().map { category in
-      return ChipButton.Content(
+      ChipButton.Content(
         label: category.title,
         isSelected: viewModel.model.categories.contains(category)
       ) { [weak viewModel] in
         viewModel?.toggleCategory(category)
       }
     }
-    return ChipGroup(
+    ChipGroup(
       label: viewModel.localizedStrings.categoryLabel,
       chips: chips
     )
+    .frame(maxWidth: .infinity)
   }
 
   // MARK: - Navigation Configuration
