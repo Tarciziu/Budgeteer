@@ -103,7 +103,6 @@ public struct InputField: View {
       VStack(alignment: .leading, spacing: .zero) {
         Text(Constants.loadingString)
           .font(theme.typography.body.body)
-        RegularDivider()
       }
       Text(Constants.loadingString)
         .font(theme.typography.title.title2)
@@ -115,12 +114,11 @@ public struct InputField: View {
   // MARK: - Subviews
 
   private var loadedContentView: some View {
-    VStack(spacing: theme.spacing.spacerL) {
+    VStack(alignment: .leading, spacing: theme.spacing.spacerXS) {
       labelView
       textField
       captionView
     }
-    .padding(theme.spacing.spacerL)
     .onChange(of: text) { oldValue, newValue in
       if oldValue != newValue {
         formatText(newValue)
@@ -129,13 +127,10 @@ public struct InputField: View {
   }
 
   private var labelView: some View {
-    VStack(spacing: .zero) {
-      Text(label)
-        .font(theme.typography.body.subheadline)
-        .foregroundColor(labelColor)
-        .frame(maxWidth: .infinity, alignment: .leading)
-      RegularDivider()
-    }
+    Text(label)
+      .font(theme.typography.body.subheadline)
+      .foregroundColor(labelColor)
+      .frame(maxWidth: .infinity, alignment: .leading)
   }
 
   private var textField: some View {
@@ -146,11 +141,11 @@ public struct InputField: View {
         .font(theme.typography.body.body)
         .focused($isFocused)
         .disabled(inputFieldState == .disabled)
-        .tint(theme.colorPalette.border.primary)
+        .tint(theme.colorPalette.text.primary)
         .foregroundStyle(contentColor)
-        .onChange(of: formattedText) { _, newValue in
+        .onChange(of: formattedText) { oldValue, newValue in
           if newValue != formattedTextBuffer.currentValue {
-            formattedTextBuffer = (formattedTextBuffer.currentValue, newValue)
+            formattedTextBuffer = (oldValue, newValue)
           }
           formatText(newValue)
         }
@@ -160,9 +155,9 @@ public struct InputField: View {
       }
     }
     .padding(.horizontal, theme.spacing.spacerS)
-    .overlay {
-      borderView
-    }
+    .background(theme.colorPalette.surface.primary)
+    .clipShape(.rect(cornerRadius: theme.borderRadius.radiusXL))
+    .glassEffect(glassStyle, in: .rect(cornerRadius: theme.borderRadius.radiusXL))
   }
 
   @ViewBuilder private var captionView: some View {
@@ -180,12 +175,6 @@ public struct InputField: View {
       text: visualTransformation != nil ? $formattedText : $text
     )
   }
-
-  @ViewBuilder private var borderView: some View {
-    RoundedRectangle(cornerRadius: theme.borderRadius.radiusS)
-      .stroke(borderColor, lineWidth: theme.spacing.lineWidth)
-  }
-
   @ViewBuilder private var clearIconView: some View {
     if hasClearIcon && !text.isEmpty && inputFieldState != .disabled && isFocused {
       Button {
@@ -248,14 +237,14 @@ extension InputField {
     }
   }
 
-  private var borderColor: Color {
+  private var glassStyle: Glass {
     switch inputFieldState {
     case .normal:
-      theme.colorPalette.border.primary
+      .regular
     case .disabled:
-      theme.colorPalette.text.disabled
+      .regular
     case .error:
-      theme.colorPalette.border.negative
+      .regular.tint(theme.colorPalette.border.negative)
     }
   }
 
