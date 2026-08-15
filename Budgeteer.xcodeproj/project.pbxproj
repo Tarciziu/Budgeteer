@@ -11,6 +11,17 @@
 		4601DF912E63400A0028EEC0 /* BTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF902E63400A0028EEC0 /* BTCore.framework */; };
 		467F2E2C2E9BCB1400AA8807 /* BTAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467F2E2B2E9BCB1400AA8807 /* BTAuthentication.framework */; };
 		467F2E2D2E9BCB1400AA8807 /* BTAuthentication.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 467F2E2B2E9BCB1400AA8807 /* BTAuthentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46AF65923030C3FB0005B3DB /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 46AF658D3030C3FB0005B3DB /* FactoryKit */; };
+		46AF65933030C3FB0005B3DB /* BTBusinessCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73855F962F0EAA0D0070923D /* BTBusinessCore.framework */; };
+		46AF65943030C3FB0005B3DB /* BTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF902E63400A0028EEC0 /* BTCore.framework */; };
+		46AF65953030C3FB0005B3DB /* BTCustomerExperience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7344C55E2E8BF6A900FAAE51 /* BTCustomerExperience.framework */; };
+		46AF65963030C3FB0005B3DB /* BTAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467F2E2B2E9BCB1400AA8807 /* BTAuthentication.framework */; };
+		46AF65973030C3FB0005B3DB /* BTCoreUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF8E2E633FF10028EEC0 /* BTCoreUI.framework */; };
+		46AF659A3030C3FB0005B3DB /* BTCustomerExperience.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7344C55E2E8BF6A900FAAE51 /* BTCustomerExperience.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46AF659B3030C3FB0005B3DB /* BTCoreUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF8E2E633FF10028EEC0 /* BTCoreUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46AF659C3030C3FB0005B3DB /* BTCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF902E63400A0028EEC0 /* BTCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46AF659D3030C3FB0005B3DB /* BTAuthentication.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 467F2E2B2E9BCB1400AA8807 /* BTAuthentication.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46AF659E3030C3FB0005B3DB /* BTBusinessCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73855F962F0EAA0D0070923D /* BTBusinessCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		731A3B012F8B6DA000D2D1D4 /* BTCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF902E63400A0028EEC0 /* BTCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		731A3B022F8B6DA500D2D1D4 /* BTCoreUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4601DF8E2E633FF10028EEC0 /* BTCoreUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		731A3B032F8B6DA900D2D1D4 /* BTCustomerExperience.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7344C55E2E8BF6A900FAAE51 /* BTCustomerExperience.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -48,6 +59,21 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		46AF65993030C3FB0005B3DB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				46AF659A3030C3FB0005B3DB /* BTCustomerExperience.framework in Embed Frameworks */,
+				46AF659B3030C3FB0005B3DB /* BTCoreUI.framework in Embed Frameworks */,
+				46AF659C3030C3FB0005B3DB /* BTCore.framework in Embed Frameworks */,
+				46AF659D3030C3FB0005B3DB /* BTAuthentication.framework in Embed Frameworks */,
+				46AF659E3030C3FB0005B3DB /* BTBusinessCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +81,8 @@
 		4601DF902E63400A0028EEC0 /* BTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		467F2E0B2E9BCA4100AA8807 /* Authentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Authentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		467F2E2B2E9BCB1400AA8807 /* BTAuthentication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTAuthentication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46AF65A23030C3FB0005B3DB /* BudgeteerInternal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgeteerInternal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46AF65A33030C3FB0005B3DB /* BudgeteerInternal-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "BudgeteerInternal-Info.plist"; path = "/Users/tarciziu/Projects/Budgeteer/BudgeteerInternal-Info.plist"; sourceTree = "<absolute>"; };
 		46CFAD172E564A7F00931D2B /* Budgeteer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budgeteer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CFAD242E564A8000931D2B /* BudgeteerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgeteerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7344C55E2E8BF6A900FAAE51 /* BTCustomerExperience.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BTCustomerExperience.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,10 +90,29 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		46AF65A43030C3FC0005B3DB /* Exceptions for "Budgeteer" folder in "BudgeteerInternal" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 46AF658C3030C3FB0005B3DB /* BudgeteerInternal */;
+		};
 		7340CB562E6F52430020FE30 /* Exceptions for "Budgeteer" folder in "Budgeteer" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ComponentsLibraryScreen.swift,
+				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ComponentsLibraryViewModel.swift,
+				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/AvatarSampleScreen.swift,
+				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/ButtonsSampleScreen.swift,
+				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/CardsSampleScreen.swift,
+				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/ChipsSampleScreen.swift,
+				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/InputFieldSampleScreen.swift,
+				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/ListCellsSampleScreen.swift,
+				Sources/DeveloperOptions/DeveloperMenu/DeveloperMenu.swift,
+				Sources/DeveloperOptions/DeveloperMenu/DeveloperMenuCoordinator.swift,
+				"Sources/DeveloperOptions/DeveloperMenu/DeveloperMenuCoordinator+Screens.swift",
+				Sources/DeveloperOptions/DeveloperMenu/DeveloperMenuViewModel.swift,
 			);
 			target = 46CFAD162E564A7F00931D2B /* Budgeteer */;
 		};
@@ -81,6 +128,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				7340CB562E6F52430020FE30 /* Exceptions for "Budgeteer" folder in "Budgeteer" target */,
+				46AF65A43030C3FC0005B3DB /* Exceptions for "Budgeteer" folder in "BudgeteerInternal" target */,
 			);
 			path = Budgeteer;
 			sourceTree = "<group>";
@@ -88,6 +136,19 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		46AF65913030C3FB0005B3DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46AF65923030C3FB0005B3DB /* FactoryKit in Frameworks */,
+				46AF65933030C3FB0005B3DB /* BTBusinessCore.framework in Frameworks */,
+				46AF65943030C3FB0005B3DB /* BTCore.framework in Frameworks */,
+				46AF65953030C3FB0005B3DB /* BTCustomerExperience.framework in Frameworks */,
+				46AF65963030C3FB0005B3DB /* BTAuthentication.framework in Frameworks */,
+				46AF65973030C3FB0005B3DB /* BTCoreUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		46CFAD142E564A7F00931D2B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,6 +193,7 @@
 				73EDFB6C2E6710D3008C83A3 /* Budgeteer */,
 				46CFAD272E564A8000931D2B /* BudgeteerTests */,
 				46C2E7C22E62EC3E0022119E /* Frameworks */,
+				46AF65A33030C3FB0005B3DB /* BudgeteerInternal-Info.plist */,
 				46CFAD182E564A7F00931D2B /* Products */,
 			);
 			indentWidth = 2;
@@ -143,6 +205,7 @@
 			children = (
 				46CFAD172E564A7F00931D2B /* Budgeteer.app */,
 				46CFAD242E564A8000931D2B /* BudgeteerTests.xctest */,
+				46AF65A23030C3FB0005B3DB /* BudgeteerInternal.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,6 +213,31 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		46AF658C3030C3FB0005B3DB /* BudgeteerInternal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46AF659F3030C3FB0005B3DB /* Build configuration list for PBXNativeTarget "BudgeteerInternal" */;
+			buildPhases = (
+				46AF658F3030C3FB0005B3DB /* Sources */,
+				46AF65903030C3FB0005B3DB /* ShellScript */,
+				46AF65913030C3FB0005B3DB /* Frameworks */,
+				46AF65983030C3FB0005B3DB /* Resources */,
+				46AF65993030C3FB0005B3DB /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				73EDFB6C2E6710D3008C83A3 /* Budgeteer */,
+			);
+			name = BudgeteerInternal;
+			packageProductDependencies = (
+				46AF658D3030C3FB0005B3DB /* FactoryKit */,
+			);
+			productName = Budgeteer;
+			productReference = 46AF65A23030C3FB0005B3DB /* BudgeteerInternal.app */;
+			productType = "com.apple.product-type.application";
+		};
 		46CFAD162E564A7F00931D2B /* Budgeteer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46CFAD382E564A8000931D2B /* Build configuration list for PBXNativeTarget "Budgeteer" */;
@@ -239,12 +327,20 @@
 			projectRoot = "";
 			targets = (
 				46CFAD162E564A7F00931D2B /* Budgeteer */,
+				46AF658C3030C3FB0005B3DB /* BudgeteerInternal */,
 				46CFAD232E564A8000931D2B /* BudgeteerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		46AF65983030C3FB0005B3DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		46CFAD152E564A7F00931D2B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,6 +358,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		46AF65903030C3FB0005B3DB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Tools/Setup/SetupScript.sh",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SETUP_SCRIPT_PATH=$PWD\"/Tools/Setup/SetupScript.sh\"\nbash $SETUP_SCRIPT_PATH\n";
+		};
 		736BA8502E64356A00E0C5E1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -284,6 +399,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		46AF658F3030C3FB0005B3DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		46CFAD132E564A7F00931D2B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -309,6 +431,77 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		46AF65A03030C3FB0005B3DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BudgeteerInternal-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobile4fun.BudgeteerInternal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited) DEVELOPER_MENU_ENABLED";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		46AF65A13030C3FB0005B3DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BudgeteerInternal-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobile4fun.BudgeteerInternal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		46CFAD362E564A8000931D2B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -461,7 +654,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited) DEVELOPER_MENU_ENABLED";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -550,6 +743,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		46AF659F3030C3FB0005B3DB /* Build configuration list for PBXNativeTarget "BudgeteerInternal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46AF65A03030C3FB0005B3DB /* Debug */,
+				46AF65A13030C3FB0005B3DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		46CFAD122E564A7F00931D2B /* Build configuration list for PBXProject "Budgeteer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -580,6 +782,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		46AF658E3030C3FB0005B3DB /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.3;
+			};
+		};
 		73492B3E2EAE605F00382483 /* XCRemoteSwiftPackageReference "InstantMock" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pirishd/InstantMock";
@@ -599,6 +809,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		46AF658D3030C3FB0005B3DB /* FactoryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46AF658E3030C3FB0005B3DB /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = FactoryKit;
+		};
 		73492B3F2EAE605F00382483 /* InstantMock */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 73492B3E2EAE605F00382483 /* XCRemoteSwiftPackageReference "InstantMock" */;
