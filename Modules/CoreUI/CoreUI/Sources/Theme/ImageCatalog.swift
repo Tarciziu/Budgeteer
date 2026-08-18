@@ -14,17 +14,20 @@ public struct ImageCatalog {
   public let uiAction: UIActions
   public let uiActionCircle: UIActionsCircle
   public let feedback: Feedback
+  public let selection: Selection
 
   // MARK: - Initializer
 
   public init(
     uiAction: UIActions,
     uiActionCircle: UIActionsCircle,
-    feedback: Feedback
+    feedback: Feedback,
+    selection: Selection
   ) {
     self.uiAction = uiAction
     self.uiActionCircle = uiActionCircle
     self.feedback = feedback
+    self.selection = selection
   }
 }
 
@@ -135,6 +138,21 @@ extension ImageCatalog {
       self.error = error
       self.warningFilled = warningFilled
       self.errorFilled = errorFilled
+    }
+  }
+}
+
+// MARK: - Selection
+
+extension ImageCatalog {
+  /// Type containing selection icons.
+  public struct Selection {
+    public let circle: String
+    public let circleFilled: String
+
+    public init(circle: String, circleFilled: String) {
+      self.circle = circle
+      self.circleFilled = circleFilled
     }
   }
 }

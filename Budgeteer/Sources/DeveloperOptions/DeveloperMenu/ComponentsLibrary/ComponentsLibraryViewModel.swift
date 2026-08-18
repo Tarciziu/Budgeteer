@@ -23,6 +23,7 @@ class ComponentsLibraryViewModel {
     case listCells
     case cards
     case avatars
+    case accountCards
 
     var title: String {
       switch self {
@@ -32,6 +33,7 @@ class ComponentsLibraryViewModel {
       case .listCells: "List Cells"
       case .cards: "Cards"
       case .avatars: "Avatars"
+      case .accountCards: "Account Cards"
       }
     }
 
@@ -43,6 +45,7 @@ class ComponentsLibraryViewModel {
       case .listCells: "Value and navigation cells"
       case .cards: "Card buttons and menu cells"
       case .avatars: "Avatar sizes and shapes"
+      case .accountCards: "Account cards"
       }
     }
 
@@ -54,6 +57,7 @@ class ComponentsLibraryViewModel {
       case .listCells: "list.bullet"
       case .cards: "rectangle.on.rectangle"
       case .avatars: "person.circle"
+      case .accountCards: "person.crop.circle"
       }
     }
   }
