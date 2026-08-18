@@ -22,3 +22,22 @@ extension View {
     environment(\.isEnabled, isEnabled)
   }
 }
+
+// MARK: - View Size
+
+extension View {
+  func readSize(onChange: @escaping (CGSize) -> Void) -> some View {
+    background(
+      GeometryReader { geometryProxy in
+        Color.clear
+          .preference(key: ContainerSizePreferenceKey.self, value: geometryProxy.size)
+      }
+    )
+    .onPreferenceChange(ContainerSizePreferenceKey.self, perform: onChange)
+  }
+}
+
+struct ContainerSizePreferenceKey: PreferenceKey {
+  static var defaultValue: CGSize = .zero
+  static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
+}

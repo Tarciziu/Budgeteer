@@ -108,6 +108,7 @@
 				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/ButtonsSampleScreen.swift,
 				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/CardsSampleScreen.swift,
 				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/ChipsSampleScreen.swift,
+				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/HorizontalPagerSampleScreen.swift,
 				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/InputFieldSampleScreen.swift,
 				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/ListCellsSampleScreen.swift,
 				Sources/DeveloperOptions/DeveloperMenu/DeveloperMenu.swift,

@@ -18,7 +18,8 @@ extension ColorPalette {
       bottomSheet: makeBottomSheetColors(),
       text: makeTextColors(),
       icon: makeIconColors(),
-      border: makeBorderColors()
+      border: makeBorderColors(),
+      pageControl: makePageControlColors()
     )
   }()
 }
@@ -99,6 +100,13 @@ extension ColorPalette {
     BorderColors(
       primary: Color("border-primary"),
       negative: Color("border-negative")
+    )
+  }
+
+  private static func makePageControlColors() -> PageControlColors {
+    PageControlColors(
+      selected: Color("page-control-selected"),
+      unselected: Color("page-control-unselected")
     )
   }
 }
