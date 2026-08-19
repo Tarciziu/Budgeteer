@@ -81,6 +81,8 @@ extension DeveloperMenuCoordinator {
       AvatarSampleScreen()
     case .accountCards:
       AccountCardSampleScreen()
+    case .horizontalPager:
+      HorizontalPagerSampleScreen()
     }
   }
 }

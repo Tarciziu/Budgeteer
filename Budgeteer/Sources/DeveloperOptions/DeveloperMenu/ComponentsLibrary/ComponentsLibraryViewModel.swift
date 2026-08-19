@@ -24,6 +24,7 @@ class ComponentsLibraryViewModel {
     case cards
     case avatars
     case accountCards
+    case horizontalPager
 
     var title: String {
       switch self {
@@ -34,6 +35,7 @@ class ComponentsLibraryViewModel {
       case .cards: "Cards"
       case .avatars: "Avatars"
       case .accountCards: "Account Cards"
+      case .horizontalPager: "Horizontal Pager"
       }
     }
 
@@ -46,6 +48,7 @@ class ComponentsLibraryViewModel {
       case .cards: "Card buttons and menu cells"
       case .avatars: "Avatar sizes and shapes"
       case .accountCards: "Account cards"
+      case .horizontalPager: "Horizontal Pager with Account Cards"
       }
     }
 
@@ -58,6 +61,7 @@ class ComponentsLibraryViewModel {
       case .cards: "rectangle.on.rectangle"
       case .avatars: "person.circle"
       case .accountCards: "person.crop.circle"
+      case .horizontalPager: "menucard"
       }
     }
   }
