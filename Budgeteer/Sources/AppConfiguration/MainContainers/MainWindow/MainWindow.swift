@@ -21,10 +21,12 @@ final class MainWindow: UIWindow {
   private let mainWindowViewModel = Container.shared.appLaunchViewModel()
   private let appLaunchViewModel = Container.shared.appLaunchViewModel()
   private var mainNavigationController = BTNavigationController()
-  private var developerMenuCoordinator: DeveloperMenuCoordinator?
-  private var developerMenuSubscription: AnyCancellable?
   private var appPhaseCancellable: AnyCancellable?
   private var localNotificationsCancellable: AnyCancellable?
+#if DEVELOPER_MENU_ENABLED
+  private var developerMenuCoordinator: DeveloperMenuCoordinator?
+  private var developerMenuSubscription: AnyCancellable?
+#endif
 
   // MARK: - Init
 
@@ -93,7 +95,8 @@ private extension MainWindow {
 }
 
 // MARK: - Developer menu entry point.
-// TODO: - Move these lines of code behind compiler flags.
+
+#if DEVELOPER_MENU_ENABLED
 extension MainWindow {
   override func becomeFirstResponder() -> Bool {
     true
@@ -102,9 +105,7 @@ extension MainWindow {
   override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
     switch motion {
     case .motionShake:
-      #if DEVELOPER_MENU_ENABLED
       presentDeveloperMenu()
-      #endif
     default: break
     }
   }
@@ -125,3 +126,4 @@ extension MainWindow {
     developerMenuCoordinator.start()
   }
 }
+#endif
