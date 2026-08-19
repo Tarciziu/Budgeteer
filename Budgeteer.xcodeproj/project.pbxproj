@@ -38,8 +38,8 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 46CFAD0F2E564A7F00931D2B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 46CFAD162E564A7F00931D2B;
-			remoteInfo = Budgeteer;
+			remoteGlobalIDString = 46AF658C3030C3FB0005B3DB;
+			remoteInfo = BudgeteerInternal;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -305,7 +305,7 @@
 					};
 					46CFAD232E564A8000931D2B = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 46CFAD162E564A7F00931D2B;
+						TestTargetID = 46AF658C3030C3FB0005B3DB;
 					};
 				};
 			};
@@ -427,7 +427,7 @@
 /* Begin PBXTargetDependency section */
 		46CFAD262E564A8000931D2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 46CFAD162E564A7F00931D2B /* Budgeteer */;
+			target = 46AF658C3030C3FB0005B3DB /* BudgeteerInternal */;
 			targetProxy = 46CFAD252E564A8000931D2B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -457,6 +457,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobile4fun.BudgeteerInternal;
+				PRODUCT_MODULE_NAME = Budgeteer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -493,6 +494,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobile4fun.BudgeteerInternal;
+				PRODUCT_MODULE_NAME = Budgeteer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -716,7 +718,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Budgeteer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Budgeteer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BudgeteerInternal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BudgeteerInternal";
 			};
 			name = Debug;
 		};
@@ -738,7 +740,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Budgeteer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Budgeteer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BudgeteerInternal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BudgeteerInternal";
 			};
 			name = Release;
 		};
