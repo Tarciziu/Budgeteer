@@ -103,6 +103,7 @@
 				Info.plist,
 				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ComponentsLibraryScreen.swift,
 				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ComponentsLibraryViewModel.swift,
+				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/AccountCardSampleScreen.swift,
 				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/AvatarSampleScreen.swift,
 				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/ButtonsSampleScreen.swift,
 				Sources/DeveloperOptions/DeveloperMenu/ComponentsLibrary/ReusableViews/CardsSampleScreen.swift,

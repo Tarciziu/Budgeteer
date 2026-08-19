@@ -43,10 +43,16 @@ extension ImageCatalog {
       errorFilled: "exclamationmark.octagon.fill"
     )
 
+    let selection = Selection(
+      circle: "circle",
+      circleFilled: "circle.fill"
+    )
+
     return ImageCatalog(
       uiAction: uiActions,
       uiActionCircle: uiActionsCircle,
-      feedback: feedback
+      feedback: feedback,
+      selection: selection
     )
   }()
 }

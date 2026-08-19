@@ -79,6 +79,8 @@ extension DeveloperMenuCoordinator {
       CardsSampleScreen()
     case .avatars:
       AvatarSampleScreen()
+    case .accountCards:
+      AccountCardSampleScreen()
     }
   }
 }
