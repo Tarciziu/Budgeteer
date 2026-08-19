@@ -14,6 +14,7 @@ public class TransactionsViewModel: ObservableObject {
   // MARK: - Nested Types
 
   /// Events emitted by the `TransactionsViewModel`.
+  @frozen
   public enum TransactionsOutputEvent {
     case didTapTransaction(transactionIdentifier: String? = nil)
     case didTapExpand /// Only for compact transaction list type.

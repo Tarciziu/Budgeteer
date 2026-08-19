@@ -63,22 +63,25 @@ public struct TransactionsScreen: View {
   // MARK: - Subviews
 
   @ViewBuilder private var loadingView: some View {
-    let leadingContent = ValueListCell.LeadingContent(
-      title: "Loading...",
-      caption: "Loading..."
-    )
-    let trailingContent = ValueListCell.TrailingContent(
-      title: "Loading...",
-      titleState: .neutral,
-      caption: "Loading..."
-    )
-    let content = ValueListCell.Content(
-      leadingContent: leadingContent,
-      trailingContent: trailingContent,
-      hasDivider: true
-    )
-    ValueListCell(content: content)
-      .frame(maxWidth: .infinity)
+    VStack(spacing: .zero) {
+      let leadingContent = ValueListCell.LeadingContent(
+        title: "Loading...",
+        caption: "Loading..."
+      )
+      let trailingContent = ValueListCell.TrailingContent(
+        title: "Loading...",
+        titleState: .neutral,
+        caption: "Loading..."
+      )
+      let content = ValueListCell.Content(
+        leadingContent: leadingContent,
+        trailingContent: trailingContent,
+        hasDivider: true
+      )
+      ValueListCell(content: content)
+        .frame(maxWidth: .infinity)
+      Spacer()
+    }
   }
 
   private var roundingShape: some Shape {
