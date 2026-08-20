@@ -8,12 +8,20 @@
 import SwiftUI
 
 public struct AccountCard: View {
+  // MARK: - Nested Types
+
+  private enum Constants {
+    static let loadingString = "Loading..."
+  }
+
   // MARK: - Environment
 
   @Environment(BTTheme.self)
   private var theme
   @Environment(\.isEnabled)
   private var isEnabled
+  @Environment(\.isLoading)
+  private var isLoading
 
   // MARK: - Private Properties
 
@@ -40,6 +48,49 @@ public struct AccountCard: View {
   // MARK: - Body
 
   public var body: some View {
+    if isLoading {
+      loadingView
+    } else {
+      loadedView
+    }
+  }
+
+  // MARK: - Loading View
+
+  private var loadingView: some View {
+    VStack(alignment: .leading, spacing: theme.spacing.spacerS) {
+      HStack(spacing: .zero) {
+        Text(Constants.loadingString)
+          .font(theme.typography.title.headline)
+          .foregroundStyle(theme.colorPalette.text.primary)
+        Spacer()
+        Image(systemName: theme.imageCatalog.selection.circleFilled)
+          .renderingMode(.template)
+          .resizable()
+          .foregroundStyle(theme.colorPalette.tint.primary)
+          .frame(width: theme.iconSize.iconXS, height: theme.iconSize.iconXS)
+          .clipShape(roundingShape)
+      }
+      Text(Constants.loadingString)
+        .font(theme.typography.title.title2)
+        .foregroundStyle(theme.colorPalette.text.primary)
+      Text(Constants.loadingString)
+        .font(theme.typography.body.footnote)
+        .foregroundStyle(theme.colorPalette.text.secondary)
+    }
+    .redacted(reason: .placeholder)
+    .shimmer(style: ShimmerStyle(theme: theme), active: isLoading)
+    .padding(theme.spacing.spacerXL)
+    .background(makeBackgroundColor())
+    .clipShape(roundingShape)
+    .overlay {
+      borderView
+    }
+  }
+
+  // MARK: - Loaded View
+
+  private var loadedView: some View {
     VStack(alignment: .leading, spacing: theme.spacing.spacerS) {
       labelText
       titleText
@@ -53,21 +104,23 @@ public struct AccountCard: View {
     }
   }
 
-  // MARK: - Subviews
-
   private var labelText: some View {
     HStack(spacing: .zero) {
       Text(label)
         .font(theme.typography.title.headline)
         .foregroundStyle(theme.colorPalette.text.primary)
       Spacer()
-      if isSelected {
-        Image(systemName: theme.imageCatalog.selection.circleFilled)
-          .renderingMode(.template)
-          .resizable()
-          .foregroundStyle(theme.colorPalette.tint.primary)
-          .frame(width: theme.iconSize.iconXS, height: theme.iconSize.iconXS)
-      }
+      imageView
+    }
+  }
+
+  @ViewBuilder private var imageView: some View {
+    if isSelected {
+      Image(systemName: theme.imageCatalog.selection.circleFilled)
+        .renderingMode(.template)
+        .resizable()
+        .foregroundStyle(theme.colorPalette.tint.primary)
+        .frame(width: theme.iconSize.iconXS, height: theme.iconSize.iconXS)
     }
   }
 
