@@ -58,11 +58,15 @@ public class TransactionsViewModel: ObservableObject {
   @MainActor
   public func loadTransactions() async {
     transactions = .isLoading(nil)
-    guard let transactions = try? await getTransactionsUseCase.getTransactions() else {
+    guard let transactionItems = try? await getTransactionsUseCase.getTransactions() else {
       transactions = .failed(nil)
       return
     }
-    allTransactions = transactions
+    guard !transactionItems.isEmpty else {
+      transactions = .empty
+      return
+    }
+    allTransactions = transactionItems
     applyFiltersAndSearch()
   }
 

@@ -438,6 +438,28 @@
         }
       }
     },
+    "transactions.list.empty.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transactions you add will show up here. Tap the + button to record your first one."
+          }
+        }
+      }
+    },
+    "transactions.list.empty.headline" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No transactions yet"
+          }
+        }
+      }
+    },
     "transactionsScreen.title" : {
       "comment" : "The title of the screen",
       "extractionState" : "manual",

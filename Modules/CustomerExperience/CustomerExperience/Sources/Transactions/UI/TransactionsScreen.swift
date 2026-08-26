@@ -10,6 +10,12 @@ import BTCoreUI
 
 /// Main screen of transactions list feature.
 public struct TransactionsScreen: View {
+  // MARK: - Nested Types
+
+  private enum Constants {
+    static let imageSize: CGFloat = 100
+  }
+
   // MARK: - Environment Properties
 
   @Environment(BTTheme.self)
@@ -31,7 +37,7 @@ public struct TransactionsScreen: View {
 
   public var body: some View {
     LoadableContentView(content: viewModel.transactions) {
-      EmptyView()
+      emptyView
     } loadingView: { _ in
       loadingView
     } loadedView: { transactions in
@@ -111,6 +117,41 @@ public struct TransactionsScreen: View {
       }
     }
     return HorizontalChipBar(pinnedChips: [filterButtonChip], chips: activeFilterChips)
+  }
+
+  // MARK: - Empty View
+
+  private var emptyView: some View {
+    VStack(spacing: theme.spacing.spacerXXL) {
+      Spacer()
+      imageView
+      VStack(spacing: theme.spacing.spacerM) {
+        headlineView
+        descriptionView
+      }
+      Spacer()
+    }
+    .padding(.horizontal, theme.spacing.spacerL)
+  }
+
+  private var imageView: some View {
+    // TODO: Update image with an illustration
+    Image(systemName: "receipt")
+      .resizable()
+      .frame(width: Constants.imageSize, height: Constants.imageSize)
+  }
+
+  private var headlineView: some View {
+    Text(TransactionsViewModel.LocalizedString.transactionsListEmptyHeadline)
+      .font(theme.typography.title.title3)
+      .foregroundStyle(theme.colorPalette.text.primary)
+  }
+
+  private var descriptionView: some View {
+    Text(TransactionsViewModel.LocalizedString.transactionsListEmptyDescription)
+      .font(theme.typography.body.body)
+      .foregroundStyle(theme.colorPalette.text.primary)
+      .multilineTextAlignment(.center)
   }
 
   // MARK: - Navigation Configuration
