@@ -45,6 +45,11 @@ struct AccountCardSampleScreen: View {
           isSelected: true
         )
         .disabled(true)
+        AccountCard(
+          label: String(),
+          title: String()
+        )
+        .isLoading(true)
       }
       .padding(.horizontal, 16)
     }

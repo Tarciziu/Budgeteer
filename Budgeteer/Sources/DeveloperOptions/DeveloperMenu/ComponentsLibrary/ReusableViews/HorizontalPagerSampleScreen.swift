@@ -21,6 +21,7 @@ struct HorizontalPagerSampleScreen: View {
   private var items: [Account] = [
     Account(name: "Euros", balance: "€ 1.300,12"),
     Account(name: "Dollar", balance: "$ 1.300,12"),
+    Account(name: "Pound", balance: "£ 1.300,12"),
     Account(name: "Pound", balance: "£ 1.300,12")
   ]
 
@@ -32,6 +33,7 @@ struct HorizontalPagerSampleScreen: View {
     VStack {
       HorizontalPagerView(items: items, selectedItem: $selectedItem, hasPageControl: true) { item in
         AccountCard(label: item.name, title: item.balance, isSelected: selectedItem == item)
+          .isLoading(item == items.last)
       }
       Spacer()
     }
