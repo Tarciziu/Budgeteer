@@ -53,24 +53,33 @@ jobs:
           echo "Using simulator: $device"
           echo "name=$device" >> "$GITHUB_OUTPUT"
 
-      - name: Run Build Wrapper (build, test, collect coverage)
+      - name: Run Build Wrapper
         run: |
           build-wrapper-macosx-x86 --out-dir "$BUILD_WRAPPER_OUT_DIR" \
-            xcodebuild test \
+            xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" \
+            -destination "platform=iOS Simulator,name=${{ steps.device.outputs.name }}"
+
+      - name: Run tests to generate coverage statistics
+        run: |
+          xcodebuild test \
             -workspace "$WORKSPACE" \
             -scheme "$SCHEME" \
             -destination "platform=iOS Simulator,name=${{ steps.device.outputs.name }}" \
             -enableCodeCoverage YES \
-            -resultBundlePath TestResults.xcresult
+            -derivedDataPath build
 
-      - name: Convert coverage to SonarQube generic format
+      - name: Collect coverage into one XML report
         run: |
           # Official SonarSource conversion script, pinned to a fixed commit:
           # https://github.com/SonarSource/sonar-scanning-examples/tree/master/swift-coverage
           curl -fsSL -o xccov-to-sonarqube-generic.sh \
             "https://raw.githubusercontent.com/SonarSource/sonar-scanning-examples/de677435078ca8873be775e7f718d8dd0669c03d/swift-coverage/swift-coverage-example/xccov-to-sonarqube-generic.sh"
           chmod +x xccov-to-sonarqube-generic.sh
-          ./xccov-to-sonarqube-generic.sh TestResults.xcresult > sonarqube-generic-coverage.xml
+          ./xccov-to-sonarqube-generic.sh build/Logs/Test/*.xcresult > sonarqube-generic-coverage.xml
+          # xccov reports file paths as absolute (e.g. "$GITHUB_WORKSPACE/Budgeteer/Foo.swift"),
+          # but SonarQube's generic coverage importer expects paths relative to the project root
+          # and silently drops coverage for any file it can't match. Strip the workspace prefix.
+          sed -i '' "s|${GITHUB_WORKSPACE}/||g" sonarqube-generic-coverage.xml
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v7
