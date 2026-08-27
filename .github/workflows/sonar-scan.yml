@@ -1,0 +1,82 @@
+name: Daily SonarQube Scan
+
+on:
+  schedule:
+    # Runs every day at 03:00 UTC. Adjust to taste.
+    - cron: "0 3 * * *"
+  workflow_dispatch: # allows triggering a run manually from the Actions tab
+
+concurrency:
+  group: sonar-daily-scan
+  cancel-in-progress: false
+
+jobs:
+  setup:
+    runs-on: macos-latest
+    outputs:
+      runner: ${{ steps.check.outputs.runner }}
+    steps:
+      - name: Check macOS version and adjust runner
+        id: check
+        run: |
+          version=$(sw_vers -productVersion | cut -d'.' -f1)
+          echo "Detected macOS version: $version"
+          if [ "$version" -lt 26 ]; then
+            echo "Using macos-26 instead..."
+            echo "runner=macos-26" >> $GITHUB_OUTPUT
+          else
+            echo "runner=macos-latest" >> $GITHUB_OUTPUT
+          fi
+
+  sonar:
+    needs: setup
+    name: Build, Test, Coverage & SonarQube Scan
+    runs-on: ${{ needs.setup.outputs.runner }}
+    timeout-minutes: 60
+    env:
+      BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
+      SCHEME: BudgeteerInternal
+      WORKSPACE: Budgeteer.xcworkspace
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: Install Build Wrapper
+        uses: SonarSource/sonarqube-scan-action/install-build-wrapper@v7
+
+      - name: Select simulator device
+        id: device
+        run: |
+          # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
+          device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | tail -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
+          echo "Using simulator: $device"
+          echo "name=$device" >> "$GITHUB_OUTPUT"
+
+      - name: Run Build Wrapper (build, test, collect coverage)
+        run: |
+          build-wrapper-macosx-x86 --out-dir "$BUILD_WRAPPER_OUT_DIR" \
+            xcodebuild test \
+            -workspace "$WORKSPACE" \
+            -scheme "$SCHEME" \
+            -destination "platform=iOS Simulator,name=${{ steps.device.outputs.name }}" \
+            -enableCodeCoverage YES \
+            -resultBundlePath TestResults.xcresult
+
+      - name: Convert coverage to SonarQube generic format
+        run: |
+          # Official SonarSource conversion script, pinned to a fixed commit:
+          # https://github.com/SonarSource/sonar-scanning-examples/tree/master/swift-coverage
+          curl -fsSL -o xccov-to-sonarqube-generic.sh \
+            "https://raw.githubusercontent.com/SonarSource/sonar-scanning-examples/de677435078ca8873be775e7f718d8dd0669c03d/swift-coverage/swift-coverage-example/xccov-to-sonarqube-generic.sh"
+          chmod +x xccov-to-sonarqube-generic.sh
+          ./xccov-to-sonarqube-generic.sh TestResults.xcresult > sonarqube-generic-coverage.xml
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v7
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }} # Put the name of your token here
+        with:
+          args: >
+            --define sonar.cfamily.compile-commands=${{ env.BUILD_WRAPPER_OUT_DIR }}/compile_commands.json
+            --define sonar.coverageReportPaths=sonarqube-generic-coverage.xml
