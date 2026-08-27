@@ -83,6 +83,8 @@ extension DeveloperMenuCoordinator {
       AccountCardSampleScreen()
     case .horizontalPager:
       HorizontalPagerSampleScreen()
+    case .progressBar:
+      ProgressBarSampleScreen()
     }
   }
 }
