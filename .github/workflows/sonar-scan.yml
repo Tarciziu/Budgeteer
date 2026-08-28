@@ -61,12 +61,16 @@ jobs:
 
       - name: Run tests to generate coverage statistics
         run: |
+          # Derived data (and the SPM package checkouts under it) must live OUTSIDE the repo
+          # checkout: the project's SwiftLint build-phase script lints everything under the repo
+          # root, and would otherwise lint third-party dependency sources (e.g. InstantMock) and
+          # fail the build on their violations. $RUNNER_TEMP is a per-job dir outside the checkout.
           xcodebuild test \
             -workspace "$WORKSPACE" \
             -scheme "$SCHEME" \
             -destination "platform=iOS Simulator,name=${{ steps.device.outputs.name }}" \
             -enableCodeCoverage YES \
-            -derivedDataPath build
+            -derivedDataPath "$RUNNER_TEMP/DerivedData"
 
       - name: Collect coverage into one XML report
         run: |
@@ -75,7 +79,7 @@ jobs:
           curl -fsSL -o xccov-to-sonarqube-generic.sh \
             "https://raw.githubusercontent.com/SonarSource/sonar-scanning-examples/de677435078ca8873be775e7f718d8dd0669c03d/swift-coverage/swift-coverage-example/xccov-to-sonarqube-generic.sh"
           chmod +x xccov-to-sonarqube-generic.sh
-          ./xccov-to-sonarqube-generic.sh build/Logs/Test/*.xcresult > sonarqube-generic-coverage.xml
+          ./xccov-to-sonarqube-generic.sh "$RUNNER_TEMP/DerivedData"/Logs/Test/*.xcresult > sonarqube-generic-coverage.xml
           # xccov reports file paths as absolute (e.g. "$GITHUB_WORKSPACE/Budgeteer/Foo.swift"),
           # but SonarQube's generic coverage importer expects paths relative to the project root
           # and silently drops coverage for any file it can't match. Strip the workspace prefix.
