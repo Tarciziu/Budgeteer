@@ -62,7 +62,7 @@ final actor GetTransactionEndpoint: Endpoint, ModelActor {
       title: fetchedModel.title,
       information: fetchedModel.information,
       amount: fetchedModel.amount,
-      categories: fetchedModel.categories.compactMap { TransactionCategoryDTO(rawValue: $0) },
+      category: TransactionCategoryDTO(rawValue: fetchedModel.category) ?? .other,
       transactionDate: fetchedModel.transactionDate
     )
 

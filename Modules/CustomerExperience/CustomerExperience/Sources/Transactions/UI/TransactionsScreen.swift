@@ -239,7 +239,7 @@ public struct TransactionsScreen: View {
   private func makeTransaction(transaction: TransactionUIModel, hasDivider: Bool) -> some View {
     let leadingContent = ValueListCell.LeadingContent(
       title: transaction.title,
-      caption: transaction.categories
+      caption: transaction.category
     )
     let trailingContent = ValueListCell.TrailingContent(
       title: transaction.amount,

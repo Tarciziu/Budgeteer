@@ -69,7 +69,7 @@ final actor UpdateTransactionEndpoint: Endpoint, ModelActor {
     fetchedModel.title = body.title
     fetchedModel.information = body.information
     fetchedModel.amount = body.amount
-    fetchedModel.categories = body.categories
+    fetchedModel.category = body.category
     fetchedModel.transactionDate = body.transactionDate
 
     do {
@@ -83,7 +83,7 @@ final actor UpdateTransactionEndpoint: Endpoint, ModelActor {
       title: fetchedModel.title,
       information: fetchedModel.information,
       amount: fetchedModel.amount,
-      categories: fetchedModel.categories.compactMap { TransactionCategoryDTO(rawValue: $0) },
+      category: TransactionCategoryDTO(rawValue: fetchedModel.category) ?? .other,
       transactionDate: fetchedModel.transactionDate
     )
 

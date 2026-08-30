@@ -25,7 +25,7 @@ struct TransactionFilterSheet: View {
   @State private var afterDate = Date()
   @State private var startDate = Date()
   @State private var endDate = Date()
-  @State private var selectedCategories: Set<TransactionCategoryUIModel> = []
+  @State private var selectedCategory: TransactionCategoryUIModel?
 
   // MARK: - Private Properties
 
@@ -124,9 +124,9 @@ struct TransactionFilterSheet: View {
     let chips = TransactionCategoryUIMapper().allCategories().map { category in
       ChipButton.Content(
         label: category.title,
-        isSelected: selectedCategories.contains(category)
+        isSelected: selectedCategory == category
       ) {
-        toggleCategory(category)
+        selectCategory(category)
       }
     }
     return ChipGroup(label: TransactionFilterStrings.categoryFilterLabel, chips: chips)
@@ -184,11 +184,11 @@ struct TransactionFilterSheet: View {
 
   // MARK: - Actions
 
-  private func toggleCategory(_ category: TransactionCategoryUIModel) {
-    if selectedCategories.contains(category) {
-      selectedCategories.remove(category)
+  private func selectCategory(_ category: TransactionCategoryUIModel) {
+    if selectedCategory == category {
+      selectedCategory = nil
     } else {
-      selectedCategories.insert(category)
+      selectedCategory = category
     }
   }
 
@@ -204,8 +204,8 @@ struct TransactionFilterSheet: View {
     case .between:
       filters.append(.betweenDates(start: startDate, end: endDate))
     }
-    for category in selectedCategories {
-      filters.append(.category(category))
+    if let selectedCategory {
+      filters.append(.category(selectedCategory))
     }
     onApply(filters)
     dismiss()
@@ -217,7 +217,7 @@ struct TransactionFilterSheet: View {
     afterDate = Date()
     startDate = Date()
     endDate = Date()
-    selectedCategories = []
+    selectedCategory = nil
     onReset()
     dismiss()
   }
@@ -236,7 +236,7 @@ struct TransactionFilterSheet: View {
         startDate = start
         endDate = end
       case let .category(category):
-        selectedCategories.insert(category)
+        selectedCategory = category
       }
     }
   }

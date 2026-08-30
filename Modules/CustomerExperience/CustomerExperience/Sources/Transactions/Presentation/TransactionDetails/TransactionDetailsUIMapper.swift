@@ -23,19 +23,22 @@ struct TransactionDetailsUIMapper {
       title: transaction.title,
       description: transaction.description ?? String(),
       amount: amountFormatter.string(for: transaction.amount) ?? String(),
-      categories: Set(categoryMapper.map(transaction.categories)),
+      category: categoryMapper.map(transaction.category),
       transactionDate: transaction.transactionDate
     )
   }
 
   // MARK: - UIModel to DM
 
-  func mapParameters(transaction: TransactionDetailsUIModel) -> TransactionParametersDM {
-    TransactionParametersDM(
+  /// Maps the edited UI model into domain parameters.
+  /// - Returns: `nil` when the model is missing a required field such as the category.
+  func mapParameters(transaction: TransactionDetailsUIModel) -> TransactionParametersDM? {
+    guard let category = transaction.category else { return nil }
+    return TransactionParametersDM(
       title: transaction.title,
       description: transaction.description,
       amount: mapAmount(transaction.amount),
-      categories: categoryMapper.map(transaction.categories),
+      category: categoryMapper.map(category),
       transactionDate: transaction.transactionDate
     )
   }
@@ -52,7 +55,7 @@ struct TransactionDetailsUIMapper {
       title: String(),
       description: String(),
       amount: String(),
-      categories: [],
+      category: nil,
       transactionDate: Date.now
     )
   }

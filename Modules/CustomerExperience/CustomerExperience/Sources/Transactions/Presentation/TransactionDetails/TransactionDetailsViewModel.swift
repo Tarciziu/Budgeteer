@@ -23,6 +23,7 @@ public class TransactionDetailsViewModel: ObservableObject {
 
   @Published var model: TransactionDetailsUIModel
   @Published private(set) var isOperationOngoing = false
+  @Published var validationMessage: String?
 
   // MARK: - Public Properties
 
@@ -44,6 +45,14 @@ public class TransactionDetailsViewModel: ObservableObject {
 
   var actionLabel: String {
     isEditMode ? localizedStrings.updateActionLabel : localizedStrings.saveActionLabel
+  }
+
+  var validationAlertTitle: String {
+    localizedStrings.validationAlertTitle
+  }
+
+  var validationAlertDismissTitle: String {
+    localizedStrings.validationAlertDismissTitle
   }
 
   // MARK: - Private Properties
@@ -85,16 +94,16 @@ public class TransactionDetailsViewModel: ObservableObject {
 
   // MARK: - Internal Methods
 
-  func toggleCategory(_ category: TransactionCategoryUIModel) {
-    if model.categories.contains(category) {
-      model.categories.remove(category)
-    } else {
-      model.categories.insert(category)
-    }
+  func selectCategory(_ category: TransactionCategoryUIModel) {
+    model.category = model.category == category ? nil : category
   }
 
   func requestDismiss() {
     eventSubject.send(.dismiss)
+  }
+
+  func dismissValidationAlert() {
+    validationMessage = nil
   }
 
   func loadTransaction() {
@@ -115,11 +124,12 @@ public class TransactionDetailsViewModel: ObservableObject {
 
   func saveTransaction() {
     guard !isOperationOngoing else { return }
+    guard let parameters = validatedParameters() else { return }
     isOperationOngoing = true
     if let transactionIdentifier {
-      updateTransaction(id: transactionIdentifier)
+      updateTransaction(id: transactionIdentifier, parameters: parameters)
     } else {
-      createTransaction()
+      createTransaction(parameters: parameters)
     }
   }
 
@@ -129,10 +139,20 @@ public class TransactionDetailsViewModel: ObservableObject {
 
   // MARK: - Private Methods
 
-  private func createTransaction() {
+  /// Validates the current model and returns the domain parameters, or `nil` if validation fails.
+  /// When validation fails, ``validationMessage`` is populated so the UI can surface an alert.
+  private func validatedParameters() -> TransactionParametersDM? {
+    guard model.category != nil else {
+      validationMessage = localizedStrings.missingCategoryMessage
+      return nil
+    }
+    return mapper.mapParameters(transaction: model)
+  }
+
+  private func createTransaction(parameters: TransactionParametersDM) {
     Task { @MainActor in
       do {
-        try await createTransactionUseCase.createTransaction(mapper.mapParameters(transaction: model))
+        try await createTransactionUseCase.createTransaction(parameters)
         eventSubject.send(.successful)
         isOperationOngoing = false
       } catch {
@@ -141,12 +161,12 @@ public class TransactionDetailsViewModel: ObservableObject {
     }
   }
 
-  private func updateTransaction(id: String) {
+  private func updateTransaction(id: String, parameters: TransactionParametersDM) {
     Task { @MainActor in
       do {
         try await updateTransactionUseCase.updateTransaction(
           id: id,
-          parameters: mapper.mapParameters(transaction: model)
+          parameters: parameters
         )
         eventSubject.send(.successful)
         isOperationOngoing = false
