@@ -9,21 +9,11 @@ import Foundation
 import BTCore
 
 struct TransactionCategoryUIMapper {
-  // MARK: - Nested Types
-
-  private enum Constants {
-    static let categorySeparator = ", "
-  }
-
   // MARK: - DM to UIModel
 
   func map(_ category: TransactionCategoryDM) -> TransactionCategoryUIModel {
     let type = mapType(category)
     return TransactionCategoryUIModel(type: type, title: mapLabel(type))
-  }
-
-  func map(_ categories: [TransactionCategoryDM]) -> [TransactionCategoryUIModel] {
-    categories.map { map($0) }
   }
 
   func allCategories() -> [TransactionCategoryUIModel] {
@@ -32,8 +22,8 @@ struct TransactionCategoryUIMapper {
     }
   }
 
-  func mapCategoriesLabel(_ categories: [TransactionCategoryDM]) -> String {
-    categories.map { map($0).title }.joined(separator: Constants.categorySeparator)
+  func label(for category: TransactionCategoryDM) -> String {
+    mapLabel(mapType(category))
   }
 
   // MARK: - UIModel to DM
@@ -42,18 +32,10 @@ struct TransactionCategoryUIMapper {
     mapDM(category.type)
   }
 
-  func map(_ categories: Set<TransactionCategoryUIModel>) -> [TransactionCategoryDM] {
-    categories.map { map($0) }
-  }
-
   func mapFromLabel(_ label: String) -> TransactionCategoryDM? {
     TransactionCategoryDM.allCases.first { category in
       mapLabel(mapType(category)) == label
     }
-  }
-
-  func mapCategoriesFromLabel(_ label: String) -> [TransactionCategoryDM] {
-    label.split(separator: Constants.categorySeparator).compactMap { mapFromLabel(String($0)) }
   }
 
   // MARK: - Private Methods

@@ -136,7 +136,7 @@ public class TransactionsViewModel: ObservableObject {
       }
     case let .category(category):
       let domainCategory = categoryMapper.map(category)
-      return transactions.filter { $0.categories.contains(domainCategory) }
+      return transactions.filter { $0.category == domainCategory }
     }
   }
 
@@ -146,7 +146,7 @@ public class TransactionsViewModel: ObservableObject {
       transaction.title.lowercased().contains(lowercased)
       || (transaction.description?.lowercased().contains(lowercased) ?? false)
       || mapper.mapAmount(transaction.amount).lowercased().contains(lowercased)
-      || categoryMapper.mapCategoriesLabel(transaction.categories).lowercased().contains(lowercased)
+      || categoryMapper.label(for: transaction.category).lowercased().contains(lowercased)
       || DateFormatterStore().hyphenDateFormatter.string(from: transaction.transactionDate).contains(lowercased)
     }
   }

@@ -17,5 +17,10 @@ extension TransactionDetailsViewModel {
     let saveActionLabel = Strings.CustomerExperience.singular("transactions.details.saveActionLabel")
     let updateActionLabel = Strings.CustomerExperience.singular("transactions.details.updateActionLabel")
     let screenTitle = Strings.CustomerExperience.singular("transactions.details.screenTitle")
+    let validationAlertTitle =
+    Strings.CustomerExperience.singular("transactions.alert.missingInformation.title")
+    let missingCategoryMessage =
+    Strings.CustomerExperience.singular("transactions.alert.missingInformation.description")
+    let validationAlertDismissTitle = Strings.CustomerExperience.singular("generalStrings.ok")
   }
 }

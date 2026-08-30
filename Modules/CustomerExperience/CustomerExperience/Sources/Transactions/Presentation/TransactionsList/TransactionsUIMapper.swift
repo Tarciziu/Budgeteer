@@ -61,7 +61,7 @@ struct TransactionsUIMapper {
     TransactionUIModel(
       id: transaction.id,
       title: transaction.title,
-      categories: categoryMapper.mapCategoriesLabel(transaction.categories),
+      category: categoryMapper.label(for: transaction.category),
       amount: mapAmount(transaction.amount),
       isPositiveAmount: transaction.amount >= .zero,
       transactionDate: hyphenDateFormatter.string(from: transaction.transactionDate)
@@ -74,8 +74,8 @@ struct TransactionsUIMapper {
 
   // MARK: - Map from UIModel to domain
 
-  func mapCategories(_ label: String) -> [TransactionCategoryDM] {
-    categoryMapper.mapCategoriesFromLabel(label)
+  func mapCategory(_ label: String) -> TransactionCategoryDM? {
+    categoryMapper.mapFromLabel(label)
   }
 
   func mapAmount(_ amount: String) -> Decimal {

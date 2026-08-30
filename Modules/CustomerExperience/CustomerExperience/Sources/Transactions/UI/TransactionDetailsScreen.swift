@@ -52,6 +52,20 @@ public struct TransactionDetailsScreen: View {
       .disabled(!viewModel.isActionEnabled)
     }
     .allowsHitTesting(!viewModel.isOperationOngoing)
+    .alert(
+      viewModel.validationAlertTitle,
+      isPresented: Binding(
+        get: { viewModel.validationMessage != nil },
+        set: { isPresented in
+          if !isPresented { viewModel.dismissValidationAlert() }
+        }
+      ),
+      presenting: viewModel.validationMessage
+    ) { _ in
+      Button(viewModel.validationAlertDismissTitle, role: .cancel) {}
+    } message: { message in
+      Text(message)
+    }
   }
 
   @ViewBuilder private var fields: some View {
@@ -112,9 +126,9 @@ public struct TransactionDetailsScreen: View {
     let chips = viewModel.getCategories().map { category in
       ChipButton.Content(
         label: category.title,
-        isSelected: viewModel.model.categories.contains(category)
+        isSelected: viewModel.model.category == category
       ) { [weak viewModel] in
-        viewModel?.toggleCategory(category)
+        viewModel?.selectCategory(category)
       }
     }
     ChipGroup(

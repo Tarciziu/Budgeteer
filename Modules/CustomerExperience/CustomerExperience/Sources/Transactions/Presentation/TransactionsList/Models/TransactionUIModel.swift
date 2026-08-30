@@ -12,7 +12,7 @@ struct TransactionUIModel: Identifiable, Equatable {
   /// Title of a transaction.
   let title: String
   /// Category label of the transaction.
-  let categories: String
+  let category: String
   /// Positive or negative amount of a transaction.
   let amount: String
   /// Indicates if the amount is positive or negative.
@@ -23,14 +23,14 @@ struct TransactionUIModel: Identifiable, Equatable {
   init(
     id: String,
     title: String,
-    categories: String,
+    category: String,
     amount: String,
     isPositiveAmount: Bool,
     transactionDate: String? = nil
   ) {
     self.id = id
     self.title = title
-    self.categories = categories
+    self.category = category
     self.amount = amount
     self.isPositiveAmount = isPositiveAmount
     self.transactionDate = transactionDate
