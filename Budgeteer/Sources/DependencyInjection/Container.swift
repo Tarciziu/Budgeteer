@@ -37,9 +37,14 @@ extension Container {
     .singleton
   }
 
+  var localNotificationsHandler: Factory<LocalNotificationsHandler> {
+    self { LocalNotificationsHandler() }
+      .singleton
+  }
+
   var appLaunchViewModel: Factory<AppLaunchViewModel> {
     self {
-      AppLaunchViewModel(notificationsHandler: LocalNotificationsHandler())
+      AppLaunchViewModel(notificationsHandler: self.localNotificationsHandler())
     }
     .shared
   }

@@ -53,6 +53,23 @@ final actor CreateReminderEndpoint: Endpoint, ModelActor {
       throw DataSourceError.internalInconsistency
     }
 
-    return nil
+    guard let id = DataSourceHelper.shared.map(id: newReminder.persistentModelID) else {
+      throw DataSourceError.internalInconsistency
+    }
+
+    var performance: ReminderPerformanceDTO?
+    if let value = body.performance?.value, let currency = body.performance?.currency {
+      performance = ReminderPerformanceDTO(value: value, currency: currency)
+    }
+
+    let dto = ReminderDTO(
+      id: id,
+      name: body.name,
+      date: body.date,
+      performance: performance,
+      details: body.details
+    )
+
+    return [dto] as? [R]
   }
 }

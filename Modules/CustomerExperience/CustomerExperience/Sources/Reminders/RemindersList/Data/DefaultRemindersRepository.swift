@@ -38,11 +38,16 @@ final public class DefaultRemindersRepository: RemindersRepository {
     return mapper.map(result ?? [])
   }
 
-  public func storeReminder(_ reminder: ReminderCreationDM) async throws {
+  @discardableResult
+  public func storeReminder(_ reminder: ReminderCreationDM) async throws -> Reminder {
     let requestBody = mapper.map(reminder)
     let requestId = RemindersEndpotsID.createReminder.rawValue
     let request = Request(id: requestId, body: requestBody)
-    let _: [ReminderDTO]? = try await dataSource.executeRequest(request: request)
+    let result: [ReminderDTO]? = try await dataSource.executeRequest(request: request)
+    guard let created = mapper.map(result ?? []).first else {
+      throw DataSourceError.internalInconsistency
+    }
+    return created
   }
 
   public func removeReminder(id: ReminderID) async throws {

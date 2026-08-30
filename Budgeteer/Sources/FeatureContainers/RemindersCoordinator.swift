@@ -26,6 +26,12 @@ class RemindersCoordinator {
   @Injected(\.createReminderUsecase)
   private var createReminderUsecase
 
+  @Injected(\.localNotificationsManager)
+  private var localNotificationsManager
+
+  @Injected(\.observeReminderNotificationsUsecase)
+  private var observeReminderNotificationsUsecase
+
   // MARK: - Private Properties
 
   private let navigationController: BTNavigationController
@@ -53,7 +59,8 @@ class RemindersCoordinator {
   private func assembleRemindersPage() -> RemindersList {
     let remindersViewModel = RemindersListViewModel(
       getRemindersUseCase: getRemindersUsecase,
-      removeReminderUsecase: removeReminderUsecase
+      removeReminderUsecase: removeReminderUsecase,
+      observeReminderNotificationsUsecase: observeReminderNotificationsUsecase
     )
     self.remindersListViewModel = remindersViewModel
     let closeAction = NavigationBarConfiguration.CloseAction(
@@ -85,7 +92,8 @@ class RemindersCoordinator {
   private func assembleReminderConfigurationPage() -> ReminderConfigurationPage {
     let reminderConfigurationViewModel = ReminderConfigurationViewModel(
       initialReminder: nil,
-      addReminderUseCase: createReminderUsecase
+      addReminderUseCase: createReminderUsecase,
+      localNotificationsManager: localNotificationsManager
     )
     observe(reminderConfigurationViewModel)
 

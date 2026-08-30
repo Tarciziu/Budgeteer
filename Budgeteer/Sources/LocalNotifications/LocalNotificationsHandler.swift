@@ -36,13 +36,15 @@ final class LocalNotificationsHandler: NSObject, UNUserNotificationCenterDelegat
 
   func userNotificationCenter(
     _ center: UNUserNotificationCenter,
-    didReceive response: UNNotificationResponse,
-    withCompletionHandler completionHandler: @escaping () -> Void
+    willPresent notification: UNNotification,
+    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
   ) {
+    // This will make so that the notifications are handled silently when the app is in foreground.
+    // This method will be triggered, and the block of code will be exectured, but the notification,
+    // will not be displayed.
     clearBadge()
-    let content = response.notification
-    process(content)
-    completionHandler()
+    process(notification)
+    completionHandler([])
   }
 
   // MARK: - Private Methods

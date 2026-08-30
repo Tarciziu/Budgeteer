@@ -12,9 +12,19 @@ import BTCustomerExperience
 import BTBusinessCore
 
 extension Container {
+  var observeReminderNotificationsUsecase: Factory<ObserveReminderNotificationsUseCase> {
+    self {
+      DefaultObserveReminderNotifUseCase(notificationsHandler: self.localNotificationsHandler())
+    }
+    .singleton
+  }
+
   var createReminderUsecase: Factory<CreateReminderUseCase> {
     self {
-      DefaultCreateReminderUseCase(repository: self.remindersRepository)
+      DefaultCreateReminderUseCase(
+        repository: self.remindersRepository,
+        notificationsManager: self.localNotificationsManager()
+      )
     }
     .shared
   }

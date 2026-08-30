@@ -53,6 +53,7 @@ final class DefaultLocalNotificationsManager: LocalNotificationsManager {
     content.body = notification.body
     content.sound = .default
     content.threadIdentifier = config.appNotificationsGroupIdentifier
+    content.userInfo = [Constants.userInfoIdentifierKey: "\(Constants.reminderIdentifierPrefix)\(notification.identifier)"]
 
     let request = UNNotificationRequest(identifier: notification.identifier, content: content, trigger: trigger)
     notificationCenter.add(request)
@@ -66,5 +67,10 @@ extension DefaultLocalNotificationsManager {
 }
 
 private extension DefaultLocalNotificationsManager {
+  enum Constants {
+    static let userInfoIdentifierKey = "id"
+    static let reminderIdentifierPrefix = "reminder:"
+  }
+
   static let remindersNotificationsPermissions: UNAuthorizationOptions = [.alert, .sound, .badge]
 }

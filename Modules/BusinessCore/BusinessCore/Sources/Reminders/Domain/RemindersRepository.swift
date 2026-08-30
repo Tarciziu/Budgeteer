@@ -13,9 +13,11 @@ public protocol RemindersRepository {
   /// - Returns: The list of stored reminders on the device.
   func getReminders() async throws -> [Reminder]
 
-  /// Stores a new reminder.
-  /// - Parameter reminder: The new reminder to be cached.
-  func storeReminder(_ creationDM: ReminderCreationDM) async throws
+  /// Stores a new reminder and returns the persisted instance with its assigned identifier.
+  /// - Parameter creationDM: The new reminder to be cached.
+  /// - Returns: The persisted `Reminder` with its assigned unique identifier.
+  @discardableResult
+  func storeReminder(_ creationDM: ReminderCreationDM) async throws -> Reminder
 
   /// Removes a remidner from the list of reminders stored in the data base.
   /// - Parameter id: Unique identifier of the reminder which should be removed.
