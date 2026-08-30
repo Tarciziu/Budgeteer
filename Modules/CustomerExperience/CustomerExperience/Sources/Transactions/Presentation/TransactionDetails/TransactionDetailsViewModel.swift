@@ -14,6 +14,7 @@ public class TransactionDetailsViewModel: ObservableObject {
   // MARK: - Nested Types
 
   /// Events emitted by the `TransactionsViewModel`.
+  @frozen
   public enum TransactionOutputEvent {
     case dismiss
     case successful

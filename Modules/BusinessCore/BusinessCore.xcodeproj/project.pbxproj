@@ -57,6 +57,15 @@
 		73855FD72F0EB4900070923D /* Exceptions for "BusinessCore" folder in "BusinessCore" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Sources/BudgetPlans/Domain/BudgetPlanRepository.swift,
+				Sources/BudgetPlans/Domain/CreateBudgetPlanUseCase.swift,
+				Sources/BudgetPlans/Domain/GetBudgetPlansUseCase.swift,
+				Sources/BudgetPlans/Domain/GetBudgetPlanUseCase.swift,
+				Sources/BudgetPlans/Domain/Models/BudgetPlanCreationDM.swift,
+				Sources/BudgetPlans/Domain/Models/BudgetPlanDM.swift,
+				Sources/BudgetPlans/Domain/Models/MonthlyBudgetCreationDM.swift,
+				Sources/BudgetPlans/Domain/Models/MonthlyBudgetDM.swift,
+				Sources/BudgetPlans/Domain/Models/PeriodDayDM.swift,
 				Sources/BusinessCore.docc,
 				Sources/Currency/CurrencyDM.swift,
 				Sources/Currency/CurrencyMapper.swift,
