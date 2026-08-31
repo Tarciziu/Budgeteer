@@ -12,10 +12,6 @@ import BTCoreUI
 public struct ReminderConfigurationPage: View {
   // MARK: - Nested Types
 
-  private enum Constants {
-    static let oneMinuteInSeconds = TimeInterval(60)
-  }
-
   // MARK: - Observed Properties
 
   @Environment(BTTheme.self)
@@ -64,6 +60,9 @@ public struct ReminderConfigurationPage: View {
       buttonsSet
         .padding(theme.spacing.spacerXXL)
     }
+    .onAppear {
+      viewModel.handleViewAppear()
+    }
   }
 
   // MARK: - Subviews
@@ -80,7 +79,7 @@ public struct ReminderConfigurationPage: View {
 
   private var reminderDateSection: some View {
     VStack(alignment: .trailing, spacing: theme.spacing.spacerS) {
-      DatePicker(selection: $viewModel.reminderDate, in: Date.now.addingTimeInterval(Constants.oneMinuteInSeconds)...) {
+      DatePicker(selection: $viewModel.reminderDate, in: viewModel.minimumReminderDate...) {
         Text(uiModel.reminderDateLabel)
           .font(theme.typography.body.subheadline)
           .foregroundStyle(

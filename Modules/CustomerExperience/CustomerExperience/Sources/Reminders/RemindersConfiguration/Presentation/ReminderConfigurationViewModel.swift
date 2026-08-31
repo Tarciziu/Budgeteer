@@ -27,6 +27,12 @@ public class ReminderConfigurationViewModel {
 
   // MARK: - Public Properties
 
+  public var minimumReminderDate: Date {
+    Self.nextCleanMinute()
+  }
+
+  // MARK: - Public Properties
+
   public var outputPublisher: AnyPublisher<OutputEvent, Never> {
     outputSubject.eraseToAnyPublisher()
   }
@@ -49,7 +55,7 @@ public class ReminderConfigurationViewModel {
     }
   }
 
-  var reminderDate = Date() {
+  var reminderDate = ReminderConfigurationViewModel.nextCleanMinute() {
     didSet {
       haseDateError = false
     }
@@ -69,6 +75,7 @@ public class ReminderConfigurationViewModel {
   // MARK: - Private Properties
 
   private let addReminderUseCase: CreateReminderUseCase
+  private let localNotificationsManager: LocalNotificationsManager
   private let mapper = ReminderConfigUIMapper()
   private let currencies: [CurrencyDM] = [.eur, .usd]
 
@@ -84,14 +91,24 @@ public class ReminderConfigurationViewModel {
   /// - Parameter interactor: The interactor used by the feature.
   public init(
     initialReminder: Reminder?,
-    addReminderUseCase: CreateReminderUseCase
+    addReminderUseCase: CreateReminderUseCase,
+    localNotificationsManager: LocalNotificationsManager
   ) {
     uiModel = mapper.map(currencies: self.currencies)
     self.addReminderUseCase = addReminderUseCase
+    self.localNotificationsManager = localNotificationsManager
     configureInitialState(initialReminder: initialReminder)
   }
 
   // MARK: - Internal Methods
+
+  func handleViewAppear() {
+    Task {
+      let status = await localNotificationsManager.getNotificationsAuthorizationStatus()
+      guard status == .notRequested else { return }
+      await localNotificationsManager.registerForLocalNotifications()
+    }
+  }
 
   func handleCancelButton() {
     outputSubject.send(.didClosePage)
@@ -143,5 +160,13 @@ public class ReminderConfigurationViewModel {
 
   private func getSelectedCurrency() -> CurrencyDM {
     currencies[selectedCurrencyIndex]
+  }
+
+  private static func nextCleanMinute() -> Date {
+    let calendar = Calendar.current
+    var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
+    components.minute = (components.minute ?? 0) + 1
+    components.second = 0
+    return calendar.date(from: components) ?? Date.now.addingTimeInterval(60)
   }
 }

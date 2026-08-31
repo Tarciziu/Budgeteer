@@ -31,7 +31,9 @@ final public class RemindersListViewModel: ObservableObject {
 
   private let getReminersUsecase: GetRemindersUseCase
   private let removeReminderUsecase: RemoveReminderUseCase
+  private let observeReminderNotificationsUsecase: ObserveReminderNotificationsUseCase
   private let mapper = RemindersListUIMapper()
+  private var cancellables: Set<AnyCancellable> = []
 
   // MARK: - Init
 
@@ -39,12 +41,15 @@ final public class RemindersListViewModel: ObservableObject {
   /// - Parameter interactor: The interactor associated with the feature.
   public init(
     getRemindersUseCase: GetRemindersUseCase,
-    removeReminderUsecase: RemoveReminderUseCase
+    removeReminderUsecase: RemoveReminderUseCase,
+    observeReminderNotificationsUsecase: ObserveReminderNotificationsUseCase
   ) {
     self.getReminersUsecase = getRemindersUseCase
     self.removeReminderUsecase = removeReminderUsecase
+    self.observeReminderNotificationsUsecase = observeReminderNotificationsUsecase
     uiModel = mapper.makeLoadingState()
     fetchReminders()
+    observeNotifications()
   }
 
   // MARK: - Public Methods
@@ -81,6 +86,15 @@ final public class RemindersListViewModel: ObservableObject {
   }
 
   // MARK: - Private Methods
+
+  private func observeNotifications() {
+    observeReminderNotificationsUsecase.reminderReceivedPublisher
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] _ in
+        self?.fetchReminders()
+      }
+      .store(in: &cancellables)
+  }
 
   private func fetchReminders() {
     Task {
