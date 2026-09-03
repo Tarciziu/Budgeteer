@@ -62,7 +62,9 @@ public struct TransactionDetailsScreen: View {
       ),
       presenting: viewModel.validationMessage
     ) { _ in
-      Button(viewModel.validationAlertDismissTitle, role: .cancel) {}
+      Button(viewModel.validationAlertDismissTitle, role: .cancel) {
+        viewModel.dismissValidationAlert()
+      }
     } message: { message in
       Text(message)
     }
