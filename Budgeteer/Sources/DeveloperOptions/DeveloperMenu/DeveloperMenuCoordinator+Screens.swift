@@ -85,6 +85,8 @@ extension DeveloperMenuCoordinator {
       HorizontalPagerSampleScreen()
     case .progressBar:
       ProgressBarSampleScreen()
+    case .reusableComponents:
+      ReusableComponentsSampleScreen()
     }
   }
 }

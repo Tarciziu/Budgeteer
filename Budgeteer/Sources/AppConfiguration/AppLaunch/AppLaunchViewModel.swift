@@ -24,11 +24,16 @@ final class AppLaunchViewModel {
   // MARK: - Private Properties
 
   private let notificationsHandler: LocalNotificationsHandler
+  private let onboardingState: OnboardingState
 
   // MARK: - Init
 
-  init(notificationsHandler: LocalNotificationsHandler) {
+  init(
+    notificationsHandler: LocalNotificationsHandler,
+    onboardingState: OnboardingState
+  ) {
     self.notificationsHandler = notificationsHandler
+    self.onboardingState = onboardingState
   }
 
   // MARK: - Internal Methods
@@ -43,6 +48,12 @@ final class AppLaunchViewModel {
     // The phases will be used in other cases as well. Such as the main window in order to do the root navigation.
     AppearanceManager.sharedInstance.setTheme(Container.shared.theme())
     UNUserNotificationCenter.current().delegate = notificationsHandler
-    appPhase = .newCustomerSetup
+    appPhase = onboardingState.hasCompletedOnboarding ? .mainApp : .newCustomerSetup
+  }
+
+  /// Marks onboarding as completed and transitions the app to its main phase.
+  func completeOnboarding() {
+    onboardingState.markOnboardingCompleted()
+    appPhase = .mainApp
   }
 }

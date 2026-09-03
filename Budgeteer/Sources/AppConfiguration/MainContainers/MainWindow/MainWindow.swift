@@ -9,7 +9,6 @@ import FactoryKit
 
 import UIKit
 import Combine
-import SwiftUI
 
 import BTCoreUI
 
@@ -18,6 +17,7 @@ final class MainWindow: UIWindow {
   // MARK: - Private Properties
 
   private var mainTabBarController: MainTabBarController?
+  private var onboardingCoordinator: OnboardingCoordinator?
   private let mainWindowViewModel = Container.shared.appLaunchViewModel()
   private let appLaunchViewModel = Container.shared.appLaunchViewModel()
   private var mainNavigationController = BTNavigationController()
@@ -51,7 +51,7 @@ final class MainWindow: UIWindow {
   private func handlePhase(_ phase: AppPhase) {
     switch phase {
     case .newCustomerSetup:
-      handleRegistrationPhase()
+      handleOnboardingPhase()
     case .mainApp:
       handleMainAppPhase()
     default:
@@ -60,17 +60,18 @@ final class MainWindow: UIWindow {
     }
   }
 
-  private func handleRegistrationPhase() {
-    let registrationScreen = RegistrationScreen { [weak self] in
-      self?.appLaunchViewModel.handlePhase(.mainApp)
+  private func handleOnboardingPhase() {
+    let coordinator = OnboardingCoordinator(
+      navigationController: mainNavigationController
+    ) { [weak self] in
+      self?.appLaunchViewModel.completeOnboarding()
     }
-
-    let hostingController = UIHostingController(rootView: registrationScreen)
-    mainNavigationController.isNavigationBarHidden = true
-    mainNavigationController.setViewControllers([hostingController], animated: true)
+    onboardingCoordinator = coordinator
+    coordinator.start()
   }
 
   private func handleMainAppPhase() {
+    onboardingCoordinator = nil
     let tabBarController = MainTabBarController()
     mainTabBarController = tabBarController
     mainNavigationController.isNavigationBarHidden = true
