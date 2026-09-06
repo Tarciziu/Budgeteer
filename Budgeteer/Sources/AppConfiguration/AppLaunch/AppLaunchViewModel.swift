@@ -7,6 +7,7 @@
 
 import Foundation
 import BTCoreUI
+import BTBusinessCore
 import FactoryKit
 import UserNotifications
 import Combine
@@ -24,16 +25,16 @@ final class AppLaunchViewModel {
   // MARK: - Private Properties
 
   private let notificationsHandler: LocalNotificationsHandler
-  private let onboardingState: OnboardingState
+  private let getBudgetPlansUseCase: GetBudgetPlansUseCase
 
   // MARK: - Init
 
   init(
     notificationsHandler: LocalNotificationsHandler,
-    onboardingState: OnboardingState
+    getBudgetPlansUseCase: GetBudgetPlansUseCase
   ) {
     self.notificationsHandler = notificationsHandler
-    self.onboardingState = onboardingState
+    self.getBudgetPlansUseCase = getBudgetPlansUseCase
   }
 
   // MARK: - Internal Methods
@@ -48,12 +49,24 @@ final class AppLaunchViewModel {
     // The phases will be used in other cases as well. Such as the main window in order to do the root navigation.
     AppearanceManager.sharedInstance.setTheme(Container.shared.theme())
     UNUserNotificationCenter.current().delegate = notificationsHandler
-    appPhase = onboardingState.hasCompletedOnboarding ? .mainApp : .newCustomerSetup
+    Task { await resolveInitialPhase() }
   }
 
-  /// Marks onboarding as completed and transitions the app to its main phase.
+  /// Decides the initial phase from the data layer: a stored budget plan means the user already
+  /// completed onboarding. A failed read routes to the initialisation-failure screen.
+  @MainActor
+  func resolveInitialPhase() async {
+    do {
+      let plans = try await getBudgetPlansUseCase.getBudgetPlans()
+      appPhase = plans.isEmpty ? .newCustomerSetup : .mainApp
+    } catch {
+      appPhase = .initialisationFailure
+    }
+  }
+
+  /// Transitions the app to its main phase once onboarding is done (the budget plan is persisted by
+  /// the onboarding flow itself, so there is nothing else to record here).
   func completeOnboarding() {
-    onboardingState.markOnboardingCompleted()
     appPhase = .mainApp
   }
 }

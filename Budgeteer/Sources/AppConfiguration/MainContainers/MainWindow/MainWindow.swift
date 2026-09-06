@@ -22,6 +22,7 @@ final class MainWindow: UIWindow {
   private let appLaunchViewModel = Container.shared.appLaunchViewModel()
   private var mainNavigationController = BTNavigationController()
   private var appPhaseCancellable: AnyCancellable?
+  private var appLaunchFailureCancellable: AnyCancellable?
   private var localNotificationsCancellable: AnyCancellable?
 #if DEVELOPER_MENU_ENABLED
   private var developerMenuCoordinator: DeveloperMenuCoordinator?
@@ -54,6 +55,8 @@ final class MainWindow: UIWindow {
       handleOnboardingPhase()
     case .mainApp:
       handleMainAppPhase()
+    case .initialisationFailure:
+      handleInitialisationFailurePhase()
     default:
       // TODO: - Implement when necessary
       return
@@ -61,6 +64,7 @@ final class MainWindow: UIWindow {
   }
 
   private func handleOnboardingPhase() {
+    appLaunchFailureCancellable = nil
     let coordinator = OnboardingCoordinator(
       navigationController: mainNavigationController
     ) { [weak self] in
@@ -70,8 +74,26 @@ final class MainWindow: UIWindow {
     coordinator.start()
   }
 
+  private func handleInitialisationFailurePhase() {
+    onboardingCoordinator = nil
+    mainTabBarController = nil
+
+    let viewModel = Container.shared.appLaunchFailureViewModel()
+    appLaunchFailureCancellable = viewModel.eventsPublisher.sink { [weak self] event in
+      switch event {
+      case let .retrySucceeded(phase):
+        self?.appLaunchViewModel.handlePhase(phase)
+      }
+    }
+
+    let screen = AppLaunchFailureScreen(viewModel: viewModel)
+    mainNavigationController.isNavigationBarHidden = true
+    mainNavigationController.setViewControllers([BTHostingController(containedView: screen)], animated: false)
+  }
+
   private func handleMainAppPhase() {
     onboardingCoordinator = nil
+    appLaunchFailureCancellable = nil
     let tabBarController = MainTabBarController()
     mainTabBarController = tabBarController
     mainNavigationController.isNavigationBarHidden = true

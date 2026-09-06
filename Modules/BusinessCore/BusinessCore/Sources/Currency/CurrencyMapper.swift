@@ -14,6 +14,8 @@ public struct CurrencyMapper {
   private enum Constants {
     static let usd = "USD"
     static let eur = "EUR"
+    static let ron = "RON"
+    static let gbp = "GBP"
   }
 
   // MARK: - Init
@@ -29,6 +31,10 @@ public struct CurrencyMapper {
       Constants.eur
     case .usd:
       Constants.usd
+    case .ron:
+      Constants.ron
+    case .gbp:
+      Constants.gbp
     }
   }
 
@@ -38,6 +44,10 @@ public struct CurrencyMapper {
       return .usd
     case Constants.eur:
       return .eur
+    case Constants.ron:
+      return .ron
+    case Constants.gbp:
+      return .gbp
     default:
       return nil
     }

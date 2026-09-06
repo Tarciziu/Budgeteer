@@ -37,6 +37,7 @@ final class DefaultLocalNotificationsManager: LocalNotificationsManager {
     }
   }
 
+  @discardableResult
   func registerForLocalNotifications() async -> Result<Void, LocalNotificationsError> {
     let requestStatus = try? await     notificationCenter.requestAuthorization(options: Self.remindersNotificationsPermissions)
     return requestStatus == true ? .success(()) : .failure(.authorizationFailure)

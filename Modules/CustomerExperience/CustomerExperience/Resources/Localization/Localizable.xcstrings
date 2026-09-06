@@ -35,6 +35,23 @@
         }
       }
     },
+    "onboarding.account.balanceField.error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter an amount greater than zero."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introdu o sumă mai mare ca zero."
+          }
+        }
+      }
+    },
     "onboarding.account.currency.label" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -150,6 +167,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Creează bugetul"
+          }
+        }
+      }
+    },
+    "onboarding.budgetPeriod.creationError.dismiss" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "onboarding.budgetPeriod.creationError.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong while saving. Please try again."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A apărut o eroare la salvare. Încearcă din nou."
+          }
+        }
+      }
+    },
+    "onboarding.budgetPeriod.creationError.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't create your budget"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugetul nu a putut fi creat"
           }
         }
       }

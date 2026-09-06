@@ -8,7 +8,7 @@
 import Foundation
 
 /// Type representing different phases of the app.
-enum AppPhase {
+enum AppPhase: Equatable {
   case initialisation
   case initialisationFailure
   case launching
