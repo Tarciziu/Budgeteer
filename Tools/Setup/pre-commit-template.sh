@@ -25,7 +25,7 @@ fi
 
 # Necessary for some external git clients.
 ZSH_FLE_PATH="~/.zshrc"
-if test -f "$ZSH_FLE_PATH"; then
+if [[ -f $ZSH_FLE_PATH ]]; then
   source ~/.zshrc
 fi
 
@@ -35,7 +35,7 @@ branch="$(git rev-parse --abbrev-ref HEAD)"
 echo ""
 echo "Current Branch: $branch"
 
-if [ "$branch" = "main" ]; then
+if [[ $branch = "main" ]]; then
   echo "You can't commit directly to main branch"
   exit 1
 fi
@@ -57,7 +57,7 @@ for file_path in $(git diff --name-only --cached --diff-filter=d | grep ".swift$
 done
 export SCRIPT_INPUT_FILE_COUNT=$count
 
-if [ $count -eq 0 ]; then
+if [[ $count -eq 0 ]]; then
     echo ""
     echo "No files to lint!"
     exit 0
@@ -80,13 +80,13 @@ for file_path in $(git diff --name-only --cached --diff-filter=d); do
   remaining_count+=1
 done
 
-if [ $remaining_count -eq 0 ]; then
+if [[ $remaining_count -eq 0 ]]; then
   echo ""
   echo "No changes to commit"
   exit 0
 fi
 
-if ! [ $RESULT -eq 0 ]; then
+if ! [[ $RESULT -eq 0 ]]; then
   echo ""
   echo "*********************************************************"
   echo "SwiftLint found violations it could not fix."
