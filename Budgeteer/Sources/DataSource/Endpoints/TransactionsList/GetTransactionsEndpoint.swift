@@ -47,7 +47,8 @@ final actor GetTransactionsEndpoint: Endpoint, ModelActor {
           information: model.information,
           amount: model.amount,
           category: TransactionCategoryDTO(rawValue: model.category) ?? .other,
-          transactionDate: model.transactionDate
+          transactionDate: model.transactionDate,
+          budgetPlanId: model.budgetPlanId
         )
       }
       guard let transformedModels = transactionsDTOs as? [R] else {

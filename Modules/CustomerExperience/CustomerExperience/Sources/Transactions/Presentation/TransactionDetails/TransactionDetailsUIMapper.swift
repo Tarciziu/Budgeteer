@@ -39,7 +39,9 @@ struct TransactionDetailsUIMapper {
       description: transaction.description,
       amount: mapAmount(transaction.amount),
       category: categoryMapper.map(category),
-      transactionDate: transaction.transactionDate
+      transactionDate: transaction.transactionDate,
+      // TODO: Supply the real budget plan id once the budget-plans integration is wired into this screen.
+      budgetPlanId: String()
     )
   }
 
