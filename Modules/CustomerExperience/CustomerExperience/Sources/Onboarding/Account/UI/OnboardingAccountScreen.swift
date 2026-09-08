@@ -88,7 +88,10 @@ public struct OnboardingAccountScreen: View {
     InputField(
       text: $viewModel.startingBalance,
       label: uiModel.balanceFieldLabel,
-      placeholder: uiModel.balanceFieldPlaceholder
+      placeholder: uiModel.balanceFieldPlaceholder,
+      inputFieldState: viewModel.hasBalanceError ? .error : .normal,
+      caption: viewModel.hasBalanceError ? uiModel.balanceErrorText : nil,
+      visualTransformation: viewModel.visualTransformation
     )
   }
 

@@ -73,7 +73,9 @@ struct BudgetPlansDataMapperTests {
 
   @Test("Resolves the currency code of a budget plan DTO", arguments: [
     ("EUR", CurrencyDM.eur),
-    ("USD", CurrencyDM.usd)
+    ("USD", CurrencyDM.usd),
+    ("RON", CurrencyDM.ron),
+    ("GBP", CurrencyDM.gbp)
   ])
   func test_Map_DTOToDM_ResolvesKnownCurrency(code: String, expected: CurrencyDM) {
     // Given
@@ -89,7 +91,7 @@ struct BudgetPlansDataMapperTests {
   @Test("Falls back to the default currency for an unknown currency code")
   func test_Map_DTOToDM_FallsBackToDefaultCurrency() {
     // Given
-    let dto = BudgetPlanDataGenerator.budgetPlanDTO(currency: "GBP")
+    let dto = BudgetPlanDataGenerator.budgetPlanDTO(currency: "CHF")
 
     // When
     let result = mapper.map(dto)

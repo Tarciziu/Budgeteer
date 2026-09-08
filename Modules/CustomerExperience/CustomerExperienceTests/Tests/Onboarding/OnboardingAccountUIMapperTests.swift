@@ -25,9 +25,10 @@ struct OnboardingAccountUIMapperTests {
       balanceFieldPlaceholder: "0",
       currencyGroupLabel: "Currency",
       currencyCodes: ["RON", "EUR", "USD", "GBP"],
+      balanceErrorText: "Enter an amount greater than zero.",
       primaryButtonTitle: "Continue",
       defaultName: "Cont principal",
-      defaultBalance: "3.000",
+      defaultBalance: "",
       defaultCurrencyCode: "RON"
     )
   }

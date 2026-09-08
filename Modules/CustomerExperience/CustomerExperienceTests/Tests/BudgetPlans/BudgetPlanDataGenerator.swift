@@ -42,6 +42,32 @@ enum BudgetPlanDataGenerator {
     )
   }
 
+  static func budgetPlanDM(
+    id: String = "bp-1",
+    name: String = "Household",
+    currency: CurrencyDM = .eur,
+    recurrentBalance: Decimal = 4_200,
+    periodStartDate: Date = BudgetPlanDataGenerator.periodStartDate,
+    periodEndDate: Date = BudgetPlanDataGenerator.periodEndDate
+  ) -> BudgetPlanDM {
+    BudgetPlanDM(
+      id: id,
+      name: name,
+      openingDate: openingDate,
+      currency: currency,
+      periodStartDay: .day05,
+      recurrentBalance: recurrentBalance,
+      monthlyBudgets: [
+        MonthlyBudgetDM(
+          id: "mb-1",
+          startingBalance: recurrentBalance,
+          periodStartDate: periodStartDate,
+          periodEndDate: periodEndDate
+        )
+      ]
+    )
+  }
+
   static func budgetPlanCreationDM(
     currency: CurrencyDM = .usd,
     periodStartDay: PeriodDayDM = .day05
