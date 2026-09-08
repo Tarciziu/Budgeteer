@@ -9,6 +9,7 @@ import Foundation
 import FactoryKit
 import BTCoreUI
 import BTCustomerExperience
+import BTBusinessCore
 
 extension TransactionsCoordinator {
   func makeFullTransactionsScreen() -> BTHostingController {
@@ -41,7 +42,8 @@ extension TransactionsCoordinator {
       transactionIdentifier: transactionIdentifier,
       createTransactionUseCase: Container.shared.createTransactionUseCase(),
       updateTransactionUseCase: Container.shared.updateTransactionUseCase(),
-      getTransactionUseCase: Container.shared.getTransactionUseCase()
+      getTransactionUseCase: Container.shared.getTransactionUseCase(),
+      getBudgetPlansUseCase: Container.shared.getBudgetPlansUseCase()
     )
 
     transactionSubscription = viewModel.eventPublisher

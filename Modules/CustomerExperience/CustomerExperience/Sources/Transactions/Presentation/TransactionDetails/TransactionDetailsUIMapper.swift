@@ -7,6 +7,7 @@
 
 import Foundation
 import BTCore
+import BTBusinessCore
 
 struct TransactionDetailsUIMapper {
   // MARK: - Private Properties
@@ -24,8 +25,15 @@ struct TransactionDetailsUIMapper {
       description: transaction.description ?? String(),
       amount: amountFormatter.string(for: transaction.amount) ?? String(),
       category: categoryMapper.map(transaction.category),
+      // The `TransactionDM` only carries the identifier; the name is resolved against the fetched
+      // budget plans in `TransactionDetailsViewModel`.
+      budgetPlan: TransactionBudgetPlanUIModel(id: transaction.budgetPlanId, name: String()),
       transactionDate: transaction.transactionDate
     )
+  }
+
+  func mapBudgetPlans(_ plans: [BudgetPlanDM]) -> [TransactionBudgetPlanUIModel] {
+    plans.map { TransactionBudgetPlanUIModel(id: $0.id, name: $0.name) }
   }
 
   // MARK: - UIModel to DM
@@ -40,8 +48,7 @@ struct TransactionDetailsUIMapper {
       amount: mapAmount(transaction.amount),
       category: categoryMapper.map(category),
       transactionDate: transaction.transactionDate,
-      // TODO: Supply the real budget plan id once the budget-plans integration is wired into this screen.
-      budgetPlanId: String()
+      budgetPlanId: transaction.budgetPlan.id
     )
   }
 
@@ -58,6 +65,7 @@ struct TransactionDetailsUIMapper {
       description: String(),
       amount: String(),
       category: nil,
+      budgetPlan: TransactionBudgetPlanUIModel(id: String(), name: String()),
       transactionDate: Date.now
     )
   }
