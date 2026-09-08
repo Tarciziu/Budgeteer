@@ -26,6 +26,7 @@ class ComponentsLibraryViewModel {
     case accountCards
     case horizontalPager
     case progressBar
+    case donutChart
     case reusableComponents
 
     var title: String {
@@ -39,6 +40,7 @@ class ComponentsLibraryViewModel {
       case .accountCards: "Account Cards"
       case .horizontalPager: "Horizontal Pager"
       case .progressBar: "Progress Bar"
+      case .donutChart: "Donut Chart"
       case .reusableComponents: "Reusable Components"
       }
     }
@@ -54,6 +56,7 @@ class ComponentsLibraryViewModel {
       case .accountCards: "Account cards"
       case .horizontalPager: "Horizontal Pager with Account Cards"
       case .progressBar: "Progress Bar"
+      case .donutChart: "Donut chart with segments"
       case .reusableComponents: "Labeled value row and highlight card"
       }
     }
@@ -69,6 +72,7 @@ class ComponentsLibraryViewModel {
       case .accountCards: "person.crop.circle"
       case .horizontalPager: "menucard"
       case .progressBar: "progress.indicator"
+      case .donutChart: "chart.pie"
       case .reusableComponents: "rectangle.grid.1x2"
       }
     }

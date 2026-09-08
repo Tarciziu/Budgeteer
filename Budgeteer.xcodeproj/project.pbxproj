@@ -93,7 +93,6 @@
 		46AF65A43030C3FC0005B3DB /* Exceptions for "Budgeteer" folder in "BudgeteerInternal" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Assets.xcassets,
 				Info.plist,
 			);
 			target = 46AF658C3030C3FB0005B3DB /* BudgeteerInternal */;

@@ -79,14 +79,28 @@ extension DeveloperMenuCoordinator {
       CardsSampleScreen()
     case .avatars:
       AvatarSampleScreen()
+    default:
+      makeAdditionalComponentSampleScreen(for: destination)
+    }
+  }
+
+  @ViewBuilder
+  private func makeAdditionalComponentSampleScreen(
+    for destination: ComponentsLibraryViewModel.ComponentDestination
+  ) -> some View {
+    switch destination {
     case .accountCards:
       AccountCardSampleScreen()
     case .horizontalPager:
       HorizontalPagerSampleScreen()
     case .progressBar:
       ProgressBarSampleScreen()
+    case .donutChart:
+      DonutChartSampleScreen()
     case .reusableComponents:
       ReusableComponentsSampleScreen()
+    default:
+      EmptyView()
     }
   }
 }
