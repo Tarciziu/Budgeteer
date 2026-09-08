@@ -23,7 +23,8 @@ struct TransactionsDataMapper {
       description: transaction.information,
       amount: transaction.amount,
       category: map(from: transaction.category),
-      transactionDate: transaction.transactionDate
+      transactionDate: transaction.transactionDate,
+      budgetPlanId: transaction.budgetPlanId
     )
   }
 
@@ -56,7 +57,8 @@ struct TransactionsDataMapper {
       information: parameters.description,
       amount: parameters.amount,
       category: map(from: parameters.category).rawValue,
-      transactionDate: parameters.transactionDate
+      transactionDate: parameters.transactionDate,
+      budgetPlanId: parameters.budgetPlanId
     )
   }
 
