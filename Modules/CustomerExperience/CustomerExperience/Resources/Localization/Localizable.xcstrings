@@ -829,6 +829,28 @@
         }
       }
     },
+    "transactions.details.budgetPlan.sheetTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Budget Plans"
+          }
+        }
+      }
+    },
+    "transactions.details.budgetPlanLabel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Budget plan"
+          }
+        }
+      }
+    },
     "transactions.details.categoryLabel" : {
       "extractionState" : "manual",
       "localizations" : {
