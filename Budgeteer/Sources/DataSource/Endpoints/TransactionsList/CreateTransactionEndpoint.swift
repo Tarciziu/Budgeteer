@@ -44,7 +44,8 @@ final actor CreateTransactionsEndpoint: Endpoint, ModelActor {
       information: model.information,
       amount: model.amount,
       category: model.category,
-      transactionDate: model.transactionDate
+      transactionDate: model.transactionDate,
+      budgetPlanId: model.budgetPlanId
     )
 
     modelContext.insert(transactionModel)
@@ -56,7 +57,8 @@ final actor CreateTransactionsEndpoint: Endpoint, ModelActor {
       information: transactionModel.information,
       amount: transactionModel.amount,
       category: TransactionCategoryDTO(rawValue: transactionModel.category) ?? .other,
-      transactionDate: transactionModel.transactionDate
+      transactionDate: transactionModel.transactionDate,
+      budgetPlanId: transactionModel.budgetPlanId
     )
 
     return [transactionDTO] as? [R]

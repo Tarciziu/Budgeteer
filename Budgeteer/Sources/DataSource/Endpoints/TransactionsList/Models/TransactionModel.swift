@@ -18,18 +18,21 @@ class TransactionModel: DataSourceModel {
   public var amount: Decimal
   public var category: String
   public var transactionDate: Date
+  public var budgetPlanId: String
 
   public init(
     title: String,
     information: String? = nil,
     amount: Decimal,
     category: String,
-    transactionDate: Date
+    transactionDate: Date,
+    budgetPlanId: String
   ) {
     self.title = title
     self.information = information
     self.amount = amount
     self.category = category
     self.transactionDate = transactionDate
+    self.budgetPlanId = budgetPlanId
   }
 }
