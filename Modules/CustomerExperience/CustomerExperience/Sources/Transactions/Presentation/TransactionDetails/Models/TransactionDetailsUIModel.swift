@@ -13,5 +13,6 @@ struct TransactionDetailsUIModel: Equatable {
   var description: String
   var amount: String
   var category: TransactionCategoryUIModel?
+  var budgetPlan: TransactionBudgetPlanUIModel
   var transactionDate: Date
 }

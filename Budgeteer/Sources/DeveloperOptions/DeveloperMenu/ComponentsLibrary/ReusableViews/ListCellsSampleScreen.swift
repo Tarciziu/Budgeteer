@@ -14,6 +14,10 @@ struct ListCellsSampleScreen: View {
   @Environment(BTTheme.self)
   private var theme
 
+  // MARK: - State Properties
+
+  @State private var selectedOption = "Checking"
+
   // MARK: - Body
 
   var body: some View {
@@ -21,6 +25,7 @@ struct ListCellsSampleScreen: View {
       VStack(spacing: theme.spacing.spacerXXL) {
         valueListCellSection
         navigationListCellSection
+        selectionListCellSection
       }
     }
     .contentMargins(theme.spacing.spacerL)
@@ -87,6 +92,28 @@ struct ListCellsSampleScreen: View {
       NavigationListCell(
         content: .init(icon: nil, title: "No Icon Cell", navigationIcon: .none)
       )
+    }
+  }
+
+  // MARK: - Selection List Cells
+
+  private var selectionListCellSection: some View {
+    let options = ["Checking", "Savings", "Travel fund"]
+    return VStack(alignment: .leading, spacing: theme.spacing.spacerM) {
+      sectionLabel("Selection List Cells")
+      VStack(spacing: .zero) {
+        ForEach(options, id: \.self) { option in
+          SelectionListCell(
+            content: .init(
+              label: option,
+              trailingIcon: option == selectedOption ? theme.imageCatalog.uiAction.check : nil,
+              hasDivider: option != options.last
+            ) {
+              selectedOption = option
+            }
+          )
+        }
+      }
     }
   }
 

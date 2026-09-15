@@ -1,23 +1,23 @@
 //
 //  MockedGetBudgetPlansUseCase.swift
-//  BudgeteerTests
+//  CustomerExperienceTests
 //
-//  Created by Adrian-Zoltan Herczeg on 06.09.2026.
+//  Created by Adrian-Zoltan Herczeg on 08.09.2026.
 //
 
-import BTBusinessCore
 import InstantMock
+import BTBusinessCore
 
 /// InstantMock based test double for ``GetBudgetPlansUseCase``.
 ///
-/// Stub the outcome with `stub().call(...)` combined with `andReturn(...)` / `andThrow(...)`.
+/// Configure it with `stub().call(...)` / `expect().call(...)` combined with `andReturn(...)` /
+/// `andThrow(...)`.
 final class MockedGetBudgetPlansUseCase: Mock, GetBudgetPlansUseCase {
+  init() {
+    super.init(SwiftTestingMock.factory)
+  }
+
   func getBudgetPlans() async throws -> [BudgetPlanDM] {
     try callThrowing() ?? []
   }
-}
-
-/// Error used to stub failing launch use-case calls.
-enum AppLaunchTestError: Error {
-  case failed
 }
