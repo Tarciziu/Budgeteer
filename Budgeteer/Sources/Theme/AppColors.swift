@@ -19,7 +19,8 @@ extension ColorPalette {
       text: makeTextColors(),
       icon: makeIconColors(),
       border: makeBorderColors(),
-      pageControl: makePageControlColors()
+      pageControl: makePageControlColors(),
+      chart: makeChartColors()
     )
   }()
 }
@@ -107,6 +108,14 @@ extension ColorPalette {
     PageControlColors(
       selected: Color("page-control-selected"),
       unselected: Color("page-control-unselected")
+    )
+  }
+
+  private static func makeChartColors() -> ChartColors {
+    ChartColors(
+      one: Color("chart-one"),
+      two: Color("chart-two"),
+      three: Color("chart-three")
     )
   }
 }

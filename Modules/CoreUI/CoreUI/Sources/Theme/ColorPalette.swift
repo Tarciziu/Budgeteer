@@ -20,6 +20,7 @@ public struct ColorPalette {
   public let icon: IconColors
   public let border: BorderColors
   public let pageControl: PageControlColors
+  public let chart: ChartColors
 
   // MARK: - Initializer
 
@@ -32,7 +33,8 @@ public struct ColorPalette {
     text: TextColors,
     icon: IconColors,
     border: BorderColors,
-    pageControl: PageControlColors
+    pageControl: PageControlColors,
+    chart: ChartColors
   ) {
     self.surface = surface
     self.tint = tint
@@ -43,5 +45,6 @@ public struct ColorPalette {
     self.icon = icon
     self.border = border
     self.pageControl = pageControl
+    self.chart = chart
   }
 }
