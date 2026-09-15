@@ -71,6 +71,7 @@ final actor UpdateTransactionEndpoint: Endpoint, ModelActor {
     fetchedModel.amount = body.amount
     fetchedModel.category = body.category
     fetchedModel.transactionDate = body.transactionDate
+    fetchedModel.budgetPlanId = body.budgetPlanId
 
     do {
       try modelContext.save()
@@ -84,7 +85,8 @@ final actor UpdateTransactionEndpoint: Endpoint, ModelActor {
       information: fetchedModel.information,
       amount: fetchedModel.amount,
       category: TransactionCategoryDTO(rawValue: fetchedModel.category) ?? .other,
-      transactionDate: fetchedModel.transactionDate
+      transactionDate: fetchedModel.transactionDate,
+      budgetPlanId: fetchedModel.budgetPlanId
     )
 
     return [transactionDTO] as? [R]
