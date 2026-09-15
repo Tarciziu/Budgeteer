@@ -24,6 +24,7 @@ struct OnboardingAccountUIMapper {
       balanceFieldPlaceholder: LocalizedStrings.balanceFieldPlaceholder,
       currencyGroupLabel: LocalizedStrings.currencyGroupLabel,
       currencyCodes: Constants.currencyCodes,
+      balanceErrorText: LocalizedStrings.balanceErrorText,
       primaryButtonTitle: LocalizedStrings.primaryButtonTitle,
       defaultName: Constants.defaultName,
       defaultBalance: Constants.defaultBalance,
@@ -37,7 +38,9 @@ private extension OnboardingAccountUIMapper {
     static let progress: CGFloat = 0.5
     static let currencyCodes = ["RON", "EUR", "USD", "GBP"]
     static let defaultName = "Cont principal"
-    static let defaultBalance = "3.000"
+    /// The balance is intentionally not pre-filled: the user must enter a positive amount before
+    /// they can continue.
+    static let defaultBalance = ""
     static let defaultCurrencyCode = "RON"
   }
 
@@ -50,6 +53,7 @@ private extension OnboardingAccountUIMapper {
     static let balanceFieldLabel = Strings.CustomerExperience.singular("onboarding.account.balanceField.label")
     static let balanceFieldPlaceholder =
     Strings.CustomerExperience.singular("onboarding.account.balanceField.placeholder")
+    static let balanceErrorText = Strings.CustomerExperience.singular("onboarding.account.balanceField.error")
     static let currencyGroupLabel = Strings.CustomerExperience.singular("onboarding.account.currency.label")
     static let primaryButtonTitle = Strings.CustomerExperience.singular("onboarding.cta.continue")
   }

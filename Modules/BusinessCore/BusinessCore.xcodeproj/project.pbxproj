@@ -59,6 +59,7 @@
 			membershipExceptions = (
 				Sources/BudgetPlans/Domain/BudgetPlanRepository.swift,
 				Sources/BudgetPlans/Domain/CreateBudgetPlanUseCase.swift,
+				Sources/BudgetPlans/Domain/CreateInitialPlanUseCase.swift,
 				Sources/BudgetPlans/Domain/GetBudgetPlansUseCase.swift,
 				Sources/BudgetPlans/Domain/GetBudgetPlanUseCase.swift,
 				Sources/BudgetPlans/Domain/Models/BudgetPlanCreationDM.swift,

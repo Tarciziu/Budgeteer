@@ -7,7 +7,9 @@
 
 import Combine
 import UIKit
+import FactoryKit
 import BTCoreUI
+import BTBusinessCore
 import BTCustomerExperience
 
 /// Drives the onboarding flow: welcome carousel → account → budget period → success.
@@ -16,17 +18,23 @@ import BTCustomerExperience
 /// end, `onFinished` is invoked so the app can persist completion and switch to the main
 /// phase.
 final class OnboardingCoordinator {
+  // MARK: - Injected Properties
+
+  @Injected(\.createInitialPlanUseCase)
+  var createInitialPlanUseCase
+
   // MARK: - Internal Properties
 
   var cancellables: [AnyCancellable] = []
+
+  /// Accumulates the values entered across the steps; the account step writes into it and the
+  /// budget-period step builds and persists the plan from it.
+  let dataProvider = OnboardingSelectionDataProvider()
 
   // MARK: - Private Properties
 
   private let navigationController: BTNavigationController
   private let onFinished: () -> Void
-
-  /// Presentation-only state carried between steps so the success screen can echo it back.
-  private(set) var selections: OnboardingSelections = .placeholder
 
   // MARK: - Init
 
@@ -63,16 +71,13 @@ final class OnboardingCoordinator {
     push(makeAccountScreen())
   }
 
-  func showBudgetPeriodStep(with draft: OnboardingAccountViewModel.Draft) {
-    selections.accountName = draft.name
-    selections.startingBalance = draft.startingBalance
-    selections.currencyCode = draft.currencyCode
+  func showBudgetPeriodStep() {
     push(makeBudgetPeriodScreen())
   }
 
-  func showSuccessStep() {
+  func showSuccessStep(with plan: BudgetPlanDM) {
     navigationController.setNavigationBarHidden(true, animated: true)
-    push(makeSuccessScreen())
+    push(makeSuccessScreen(plan: plan))
   }
 
   func goToPreviousStep() {

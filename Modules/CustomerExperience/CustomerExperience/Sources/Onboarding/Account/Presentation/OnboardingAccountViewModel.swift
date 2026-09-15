@@ -7,49 +7,68 @@
 
 import Foundation
 import Combine
+import BTCore
+import BTCoreUI
+import BTBusinessCore
 
 /// Presentation layer entiy responsible for the screen in which the user configures the initial depot.
 public final class OnboardingAccountViewModel: ObservableObject {
   // MARK: - Nested Types
 
-  /// The values collected on this step. Presentation-only — not persisted.
-  public struct Draft: Equatable {
-    public let name: String
-    public let startingBalance: String
-    public let currencyCode: String
-
-    public init(name: String, startingBalance: String, currencyCode: String) {
-      self.name = name
-      self.startingBalance = startingBalance
-      self.currencyCode = currencyCode
-    }
-  }
-
+  /// Type indicating the signals emited by the view model.
   public enum OutputEvent: Equatable {
-    case backRequested
-    case continueRequested(Draft)
+    /// Signal emited when the user reqeusts to go to the next page and all the validations have passed.
+    case continueRequested
   }
 
   // MARK: - Published Properties
 
   @Published var uiModel: OnboardingAccountUIModel
   @Published var name: String
-  @Published var startingBalance: String
+  @Published var startingBalance: String {
+    didSet { hasBalanceError = false }
+  }
   @Published var selectedCurrencyIndex: Int
+  @Published var hasBalanceError = false
 
   public var eventsPublisher: AnyPublisher<OutputEvent, Never> {
     eventsSubject.eraseToAnyPublisher()
   }
 
+  // MARK: - Internal Properties
+
+  let visualTransformation = NumericalVisualTransformation(formatter: NumberFormatterStore().amountInputFormatter)
+
   // MARK: - Private Properties
 
+  private let dataProvider: OnboardingSelectionDataProvider
   private let mapper = OnboardingAccountUIMapper()
   private let eventsSubject = PassthroughSubject<OutputEvent, Never>()
+
+  private var parsedBalance: Decimal? {
+    NumberFormatterStore().amountInputFormatter.number(from: startingBalance)?.decimalValue
+  }
+
+  private var isBalanceValid: Bool {
+    guard let parsedBalance else { return false }
+    return parsedBalance > 0
+  }
+
+  private var selectedCurrency: CurrencyDM {
+    let codes = uiModel.currencyCodes
+    let currencyCode = codes.indices.contains(selectedCurrencyIndex)
+      ? codes[selectedCurrencyIndex]
+      : uiModel.defaultCurrencyCode
+    return CurrencyMapper().map(currency: currencyCode) ?? .defaultCurrency
+  }
 
   // MARK: - Init
 
   /// Creates a new `OnboardingAccountViewModel`.
-  public init() {
+  /// - Parameter dataProvider: Accumulates the values entered across the onboarding steps; this step
+  ///   writes the account name, starting balance and currency onto it.
+  public init(dataProvider: OnboardingSelectionDataProvider) {
+    self.dataProvider = dataProvider
     let uiModel = mapper.map()
     self.uiModel = uiModel
     self.name = uiModel.defaultName
@@ -64,25 +83,13 @@ public final class OnboardingAccountViewModel: ObservableObject {
     selectedCurrencyIndex = index
   }
 
-  func handleBackTap() {
-    eventsSubject.send(.backRequested)
-  }
-
   func handleContinueTap() {
-    eventsSubject.send(.continueRequested(makeDraft()))
-  }
+    hasBalanceError = !isBalanceValid
+    guard let balance = parsedBalance, balance > 0 else { return }
 
-  // MARK: - Private Methods
-
-  private func makeDraft() -> Draft {
-    let codes = uiModel.currencyCodes
-    let currencyCode = codes.indices.contains(selectedCurrencyIndex)
-      ? codes[selectedCurrencyIndex]
-      : uiModel.defaultCurrencyCode
-    return Draft(
-      name: name,
-      startingBalance: startingBalance,
-      currencyCode: currencyCode
-    )
+    dataProvider.setAccountName(name)
+    dataProvider.setStartingBalance(balance)
+    dataProvider.setCurrency(selectedCurrency)
+    eventsSubject.send(.continueRequested)
   }
 }

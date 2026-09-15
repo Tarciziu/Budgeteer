@@ -43,3 +43,22 @@ public enum PeriodDayDM {
   case day28
   case lastDayOfMonth
 }
+
+public extension PeriodDayDM {
+  /// Maps a calendar day-of-month (`1...31`) to a period start day.
+  ///
+  /// Only the 1st to the 28th are represented explicitly, so days `29`, `30` and `31`
+  /// collapse to ``lastDayOfMonth``.
+  /// - Parameter day: The calendar day-of-month, as returned by `Calendar.component(.day, from:)`.
+  /// - Returns: The matching ``PeriodDayDM``.
+  static func from(dayOfMonth day: Int) -> PeriodDayDM {
+    byDayOfMonth[day] ?? .lastDayOfMonth
+  }
+
+  private static let byDayOfMonth: [Int: PeriodDayDM] = [
+    1: .day01, 2: .day02, 3: .day03, 4: .day04, 5: .day05, 6: .day06, 7: .day07,
+    8: .day08, 9: .day09, 10: .day10, 11: .day11, 12: .day12, 13: .day13, 14: .day14,
+    15: .day15, 16: .day16, 17: .day17, 18: .day18, 19: .day19, 20: .day20, 21: .day21,
+    22: .day22, 23: .day23, 24: .day24, 25: .day25, 26: .day26, 27: .day27, 28: .day28
+  ]
+}

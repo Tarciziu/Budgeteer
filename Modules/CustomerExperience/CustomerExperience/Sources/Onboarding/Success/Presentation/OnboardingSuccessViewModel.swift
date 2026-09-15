@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import BTBusinessCore
 
 /// View model responsible for the presenation layer of the `OnboardingSuccessScreen`,
 public final class OnboardingSuccessViewModel: ObservableObject {
@@ -33,10 +34,17 @@ public final class OnboardingSuccessViewModel: ObservableObject {
 
   // MARK: - Init
 
-  /// Creates a new `OnboardingSuccessViewModel`,
-  /// - Parameter selections: The model contaning the data selected by the user.
-  public init(selections: OnboardingSelections = .placeholder) {
-    self.uiModel = mapper.map(selections: selections)
+  /// Creates a new `OnboardingSuccessViewModel`.
+  /// - Parameters:
+  ///   - plan: The budget plan that was just persisted, echoed back on the success screen.
+  ///   - calendar: Calendar used to render the period dates. Injectable for tests.
+  ///   - locale: Locale used to render the period dates and the balance. Injectable for tests.
+  public init(
+    plan: BudgetPlanDM,
+    calendar: Calendar = .current,
+    locale: Locale = .current
+  ) {
+    self.uiModel = mapper.map(plan: plan, calendar: calendar, locale: locale)
   }
 
   // MARK: - Internal Methods

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import BTCoreUI
+import BTBusinessCore
 import BTCustomerExperience
 
 extension OnboardingCoordinator {
@@ -31,14 +32,12 @@ extension OnboardingCoordinator {
   // MARK: - Account
 
   func makeAccountScreen() -> BTHostingController {
-    let viewModel = OnboardingAccountViewModel()
+    let viewModel = OnboardingAccountViewModel(dataProvider: dataProvider)
 
     viewModel.eventsPublisher.sink { [weak self] event in
       switch event {
-      case .backRequested:
-        self?.goToPreviousStep()
-      case let .continueRequested(draft):
-        self?.showBudgetPeriodStep(with: draft)
+      case .continueRequested:
+        self?.showBudgetPeriodStep()
       default:
         return
       }
@@ -51,14 +50,17 @@ extension OnboardingCoordinator {
   // MARK: - Budget Period
 
   func makeBudgetPeriodScreen() -> BTHostingController {
-    let viewModel = OnboardingBudgetPeriodViewModel()
+    let viewModel = OnboardingBudgetPeriodViewModel(
+      dataProvider: dataProvider,
+      createInitialPlanUseCase: createInitialPlanUseCase
+    )
 
     viewModel.eventsPublisher.sink { [weak self] event in
       switch event {
       case .backRequested:
         self?.goToPreviousStep()
-      case .createRequested:
-        self?.showSuccessStep()
+      case let .planCreated(plan):
+        self?.showSuccessStep(with: plan)
       default:
         return
       }
@@ -70,8 +72,8 @@ extension OnboardingCoordinator {
 
   // MARK: - Success
 
-  func makeSuccessScreen() -> BTHostingController {
-    let viewModel = OnboardingSuccessViewModel(selections: selections)
+  func makeSuccessScreen(plan: BudgetPlanDM) -> BTHostingController {
+    let viewModel = OnboardingSuccessViewModel(plan: plan)
 
     viewModel.eventsPublisher.sink { [weak self] event in
       switch event {

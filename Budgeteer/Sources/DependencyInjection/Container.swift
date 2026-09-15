@@ -8,6 +8,7 @@
 import FactoryKit
 import BTCore
 import BTCoreUI
+import BTBusinessCore
 
 /// All dependencies for the app features should be added as an extension of the `Container` class.
 /// For more information see: https://github.com/hmlongco/Factory
@@ -46,7 +47,7 @@ extension Container {
     self {
       AppLaunchViewModel(
         notificationsHandler: self.localNotificationsHandler(),
-        onboardingState: self.onboardingState()
+        getBudgetPlansUseCase: self.getBudgetPlansUseCase()
       )
     }
     .shared

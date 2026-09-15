@@ -17,6 +17,7 @@ public protocol LocalNotificationsManager {
   /// - Returns: Type providing the status of registration for local notifications.
   ///
   /// - Note: The returned result will be either ``Void`` if the registration was succesfull or a ``LocalNotificationsError`` otherwise.
+  @discardableResult
   func registerForLocalNotifications() async -> Result<Void, LocalNotificationsError>
 
   /// Registers a notification for a future triggering.

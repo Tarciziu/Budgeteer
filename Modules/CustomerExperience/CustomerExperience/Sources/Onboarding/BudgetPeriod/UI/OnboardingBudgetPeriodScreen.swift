@@ -16,6 +16,10 @@ public struct OnboardingBudgetPeriodScreen: View {
   @Environment(BTTheme.self)
   private var theme
 
+  // MARK: - State
+
+  @State private var isStartDatePickerExpanded = false
+
   // MARK: - Computed Properties
 
   private var uiModel: OnboardingBudgetPeriodUIModel {
@@ -59,7 +63,16 @@ public struct OnboardingBudgetPeriodScreen: View {
       RegularButton(text: uiModel.primaryButtonTitle, imageName: nil) { [weak viewModel] in
         viewModel?.handleCreateTap()
       }
+      .isLoading(viewModel.isCreatingPlan)
       .padding(.horizontal, theme.spacing.spacerXL)
+    }
+    .alert(
+      uiModel.creationErrorTitle,
+      isPresented: $viewModel.hasCreationError
+    ) {
+      Button(uiModel.creationErrorDismissTitle, role: .cancel) {}
+    } message: {
+      Text(uiModel.creationErrorMessage)
     }
   }
 
@@ -69,13 +82,51 @@ public struct OnboardingBudgetPeriodScreen: View {
     VStack(alignment: .leading, spacing: theme.spacing.spacerXL) {
       ProgressBar(progress: .constant(uiModel.progress))
       header
-      LabeledValueRow(label: uiModel.startDateLabel, value: uiModel.startDateText)
+      startDateSection
       HighlightCard(
         label: uiModel.previewCardLabel,
         value: uiModel.previewRangeText,
         caption: uiModel.previewCaption
       )
     }
+  }
+
+  private var startDateSection: some View {
+    VStack(alignment: .leading, spacing: theme.spacing.spacerS) {
+      LabeledValueRow(
+        label: uiModel.startDateLabel,
+        value: uiModel.startDateText,
+        isExpanded: isStartDatePickerExpanded
+      ) {
+        withAnimation {
+          isStartDatePickerExpanded.toggle()
+        }
+      }
+      if isStartDatePickerExpanded {
+        startDatePicker
+      }
+    }
+  }
+
+  private var startDatePicker: some View {
+    DatePicker(
+      String(),
+      selection: $viewModel.selectedStartDate,
+      in: viewModel.minimumStartDate...,
+      displayedComponents: .date
+    )
+    .datePickerStyle(.graphical)
+    .labelsHidden()
+    .tint(theme.colorPalette.tint.primary)
+    .padding(theme.spacing.spacerS)
+    .frame(maxWidth: .infinity)
+    .background(theme.colorPalette.surface.primary)
+    .clipShape(.rect(cornerRadius: theme.borderRadius.radiusXL))
+    .overlay {
+      RoundedRectangle(cornerRadius: theme.borderRadius.radiusXL)
+        .stroke(theme.colorPalette.border.primary, lineWidth: theme.spacing.lineWidth)
+    }
+    .transition(.opacity.combined(with: .move(edge: .top)))
   }
 
   private var header: some View {

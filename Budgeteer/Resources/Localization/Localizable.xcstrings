@@ -68,6 +68,57 @@
         }
       }
     },
+    "appLaunch.failure.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn't load your data. Please try again."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nu am putut încărca datele. Încearcă din nou."
+          }
+        }
+      }
+    },
+    "appLaunch.failure.retry" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try again"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Încearcă din nou"
+          }
+        }
+      }
+    },
+    "appLaunch.failure.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A apărut o problemă"
+          }
+        }
+      }
+    },
     "profile.appearanceSection.child.subtitle" : {
       "extractionState" : "manual",
       "localizations" : {

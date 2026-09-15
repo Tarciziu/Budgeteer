@@ -11,6 +11,8 @@ import Foundation
 public enum CurrencyDM: Equatable, Codable, CaseIterable {
   case eur
   case usd
+  case ron
+  case gbp
 
   /// Default currency of the app.
   public static let defaultCurrency: CurrencyDM = .eur

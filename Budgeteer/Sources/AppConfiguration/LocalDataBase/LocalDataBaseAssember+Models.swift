@@ -14,7 +14,8 @@ extension LocalDataBaseAssembler {
   static let appModels: [any PersistentModel.Type] = {
     [
       ReminderModel.self,
-      TransactionModel.self
+      TransactionModel.self,
+      BudgetPlanModel.self
     ]
   }()
 }

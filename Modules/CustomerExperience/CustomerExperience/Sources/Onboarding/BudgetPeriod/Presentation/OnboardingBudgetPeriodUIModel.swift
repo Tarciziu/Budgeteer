@@ -15,7 +15,7 @@ struct OnboardingBudgetPeriodUIModel: Equatable {
   let subtitle: String
 
   let startDateLabel: String
-  /// Dummy pre-selected start date, already formatted for display.
+  /// The selected start date, already formatted for display.
   let startDateText: String
 
   let previewCardLabel: String
@@ -23,4 +23,8 @@ struct OnboardingBudgetPeriodUIModel: Equatable {
   let previewCaption: String
 
   let primaryButtonTitle: String
+
+  let creationErrorTitle: String
+  let creationErrorMessage: String
+  let creationErrorDismissTitle: String
 }

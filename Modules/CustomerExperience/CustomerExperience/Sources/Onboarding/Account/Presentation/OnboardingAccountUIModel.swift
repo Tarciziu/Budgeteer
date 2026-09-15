@@ -21,11 +21,14 @@ struct OnboardingAccountUIModel: Equatable {
   let currencyGroupLabel: String
   let currencyCodes: [String]
 
+  let balanceErrorText: String
+
   let primaryButtonTitle: String
 
-  // MARK: - Dummy defaults pre-filled into the form
+  // MARK: - Values the form starts with
 
   let defaultName: String
+  /// Empty — the balance is not pre-filled and must be entered before continuing.
   let defaultBalance: String
   let defaultCurrencyCode: String
 }
