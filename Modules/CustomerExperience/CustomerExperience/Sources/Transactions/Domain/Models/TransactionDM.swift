@@ -21,6 +21,8 @@ public struct TransactionDM: Identifiable, Equatable {
   public let category: TransactionCategoryDM
   /// Transaction's date.
   public let transactionDate: Date
+  /// Identifier of the budget plan this transaction belongs to.
+  public let budgetPlanId: String
 
   /// Initializes a new instance of `TransactionDM`.
   /// - Parameters:
@@ -36,7 +38,8 @@ public struct TransactionDM: Identifiable, Equatable {
     description: String?,
     amount: Decimal,
     category: TransactionCategoryDM,
-    transactionDate: Date
+    transactionDate: Date,
+    budgetPlanId: String
   ) {
     self.id = id
     self.title = title
@@ -44,5 +47,6 @@ public struct TransactionDM: Identifiable, Equatable {
     self.amount = amount
     self.category = category
     self.transactionDate = transactionDate
+    self.budgetPlanId = budgetPlanId
   }
 }

@@ -15,6 +15,7 @@ public class TransactionDTO: DataSourceModel {
   public var amount: Decimal
   public var category: TransactionCategoryDTO
   public var transactionDate: Date
+  public var budgetPlanId: String
 
   public init(
     id: String,
@@ -22,7 +23,8 @@ public class TransactionDTO: DataSourceModel {
     information: String? = nil,
     amount: Decimal,
     category: TransactionCategoryDTO,
-    transactionDate: Date
+    transactionDate: Date,
+    budgetPlanId: String
   ) {
     self.id = id
     self.title = title
@@ -30,5 +32,6 @@ public class TransactionDTO: DataSourceModel {
     self.amount = amount
     self.category = category
     self.transactionDate = transactionDate
+    self.budgetPlanId = budgetPlanId
   }
 }
