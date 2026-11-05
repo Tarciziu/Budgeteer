@@ -63,7 +63,8 @@ final actor GetTransactionEndpoint: Endpoint, ModelActor {
       information: fetchedModel.information,
       amount: fetchedModel.amount,
       category: TransactionCategoryDTO(rawValue: fetchedModel.category) ?? .other,
-      transactionDate: fetchedModel.transactionDate
+      transactionDate: fetchedModel.transactionDate,
+      budgetPlanId: fetchedModel.budgetPlanId
     )
 
     return [transactionDTO] as? [R]
