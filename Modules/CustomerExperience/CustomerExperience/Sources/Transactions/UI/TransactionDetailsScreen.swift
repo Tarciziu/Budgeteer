@@ -32,7 +32,7 @@ public struct TransactionDetailsScreen: View {
   public var body: some View {
     content
       .onAppear { [weak viewModel] in
-        viewModel?.loadTransaction()
+        viewModel?.load()
       }
       .navigationBar(makeConfiguration())
   }
@@ -68,6 +68,17 @@ public struct TransactionDetailsScreen: View {
     } message: { message in
       Text(message)
     }
+    .sheet(isPresented: $viewModel.isBudgetPlanSheetPresented) { [weak viewModel] in
+      if let viewModel {
+        BudgetPlanSelectionSheet(
+          title: viewModel.localizedStrings.budgetPlanSheetTitle,
+          plans: viewModel.budgetPlans,
+          selectedPlanID: viewModel.model.budgetPlan.id
+        ) { [weak viewModel] plan in
+          viewModel?.selectBudgetPlan(plan)
+        }
+      }
+    }
   }
 
   @ViewBuilder private var fields: some View {
@@ -87,6 +98,7 @@ public struct TransactionDetailsScreen: View {
         )
         dateInputField
         makeCategoryPicker()
+        makeBudgetPlanPicker()
       }
     }
   }
@@ -139,6 +151,19 @@ public struct TransactionDetailsScreen: View {
     )
     .frame(maxWidth: .infinity)
   }
+
+  @ViewBuilder
+  private func makeBudgetPlanPicker() -> some View {
+    if !viewModel.budgetPlans.isEmpty {
+      LabeledValueRow(
+        label: viewModel.localizedStrings.budgetPlanLabel,
+        value: viewModel.model.budgetPlan.name
+      ) { [weak viewModel] in
+        viewModel?.presentBudgetPlanSheet()
+      }
+    }
+  }
+
 
   // MARK: - Navigation Configuration
 

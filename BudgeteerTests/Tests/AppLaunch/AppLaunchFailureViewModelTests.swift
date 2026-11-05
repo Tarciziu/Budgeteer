@@ -7,6 +7,7 @@
 
 import Testing
 import Combine
+import InstantMock
 import BTBusinessCore
 
 @testable import Budgeteer
@@ -26,20 +27,24 @@ struct AppLaunchFailureViewModelTests {
 
   @Test("The failure screen exposes the expected content.")
   func test_UIModel_MatchesExpectedContent() {
+    // When
     let viewModel = AppLaunchFailureViewModel(getBudgetPlansUseCase: MockedGetBudgetPlansUseCase())
 
+    // Then
     #expect(viewModel.uiModel == Constants.expectedUIModel)
   }
 
   // MARK: - Retry
 
   @Test("Retrying with no stored plans emits `.retrySucceeded(.newCustomerSetup)`.")
-  func test_HandleRetryTap_WithNoStoredPlans_EmitsRetrySucceededOnboarding() async {
+  func test_HandleRetryTap_WithNoStoredPlans_EmitsRetrySucceededOnboarding() async throws {
+    // Given
     let useCase = MockedGetBudgetPlansUseCase()
-    useCase.stubbedPlans = []
+    useCase.stub().call(try await useCase.getBudgetPlans()).andReturn([])
     let viewModel = AppLaunchFailureViewModel(getBudgetPlansUseCase: useCase)
     var cancellable: AnyCancellable?
 
+    // When
     await withCheckedContinuation { continuation in
       cancellable = viewModel.eventsPublisher.sink { event in
         #expect(event == .retrySucceeded(.newCustomerSetup))
@@ -50,16 +55,19 @@ struct AppLaunchFailureViewModelTests {
     }
 
     cancellable?.cancel()
+
+    // Then
     #expect(viewModel.isRetrying == false)
   }
 
   @Test("Retrying with stored plans emits `.retrySucceeded(.mainApp)`.")
-  func test_HandleRetryTap_WithStoredPlans_EmitsRetrySucceededMainApp() async {
+  func test_HandleRetryTap_WithStoredPlans_EmitsRetrySucceededMainApp() async throws {
     let useCase = MockedGetBudgetPlansUseCase()
-    useCase.stubbedPlans = [makeBudgetPlanDM()]
+    useCase.stub().call(try await useCase.getBudgetPlans()).andReturn([BudgetPlanDataGenerator.budgetPlanDM()])
     let viewModel = AppLaunchFailureViewModel(getBudgetPlansUseCase: useCase)
     var cancellable: AnyCancellable?
 
+    // When
     await withCheckedContinuation { continuation in
       cancellable = viewModel.eventsPublisher.sink { event in
         #expect(event == .retrySucceeded(.mainApp))
@@ -74,8 +82,10 @@ struct AppLaunchFailureViewModelTests {
   }
 
   @Test("A failing retry emits nothing and clears the loading state.")
-  func test_HandleRetryTap_WhenFetchThrows_EmitsNothingAndResetsLoading() async {
+  func test_HandleRetryTap_WhenFetchThrows_EmitsNothingAndResetsLoading() async throws {
+    // Given
     let useCase = MockedGetBudgetPlansUseCase()
+    useCase.stub().call(try await useCase.getBudgetPlans()).andThrow(AppLaunchTestError.failed)
     useCase.stubbedError = AppLaunchTestError.failed
     let viewModel = AppLaunchFailureViewModel(getBudgetPlansUseCase: useCase)
 
@@ -83,6 +93,7 @@ struct AppLaunchFailureViewModelTests {
     let eventCancellable = viewModel.eventsPublisher.sink { _ in didEmit = true }
     var loadingCancellable: AnyCancellable?
 
+    // When
     await withCheckedContinuation { continuation in
       var resumed = false
       loadingCancellable = viewModel.$isRetrying
@@ -96,6 +107,7 @@ struct AppLaunchFailureViewModelTests {
       viewModel.handleRetryTap()
     }
 
+    // Then
     #expect(viewModel.isRetrying == false)
     #expect(!didEmit)
 
